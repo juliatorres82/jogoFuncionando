@@ -7,8 +7,8 @@ Jogo::Jogo()
     gerenciador_colisoes = Gerenciadores::Gerenciador_Colisoes::getInstancia();
     jogador2 = nullptr;
     jogador1.setGG(gerenciador_grafico);
-    inimigo1.setGG(gerenciador_grafico);
-    gerenciador_colisoes->incluirInimigos(&inimigo1);
+    fantasma1.setGG(gerenciador_grafico);
+    gerenciador_colisoes->incluirInimigos(&fantasma1);
     gerenciador_colisoes->incluirJogador(&jogador1);
     gerenciador_colisoes->incluirObstaculos(&plataforma1);
     gerenciador_colisoes->incluirObstaculos(&plataforma2);  
@@ -42,7 +42,7 @@ void Jogo::Executar()
         janela_jogo->clear();
         
         jogador1.executar();
-        inimigo1.executar();
+        fantasma1.executar();
         plataforma1.desenhar();
         plataforma2.desenhar();
 

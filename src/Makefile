@@ -1,0 +1,2 @@
+all:
+	g++ -o jogoVini Ente.cpp Jogo.cpp main.cpp Entidades/Obstaculos/Obstaculo.cpp Entidades/Obstaculos/Plataforma.cpp Entidades/Entidade.cpp Entidades/Personagens/Inimigo.cpp Entidades/Personagens/Jogador.cpp Entidades/Personagens/Personagem.cpp Gerenciadores/Gerenciador_Grafico.cpp Listas/ListaEntidades.cpp -lsfml-graphics -lsfml-window -lsfml-system 

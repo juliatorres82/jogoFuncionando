@@ -23,13 +23,8 @@ namespace Gerenciadores{
         public:
             ~Gerenciador_Eventos();
             static Gerenciador_Eventos* getGerenciadorEventos();
-            void setJogador(Jogador* j1, Jogador* j2 = NULL);
-            void setGerenciadorGrafico(Gerenciador_Grafico* gg);
-            const bool isDoisJogadores();
-            const bool haEventos();
             bool teclaSolta(sf::Keyboard::Key tecla);
             bool teclaPressionada(sf::Keyboard::Key tecla);
-            void apertaTecla();
             void gerencia();
 
     };

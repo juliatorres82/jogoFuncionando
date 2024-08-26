@@ -20,6 +20,7 @@ namespace Entidades
 			Jogador* jogador2;
 			qJogador qJog;
 
+
 		public:
 			Jogador();
 			Jogador(Jogador* j2);

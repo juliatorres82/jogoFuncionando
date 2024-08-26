@@ -9,7 +9,8 @@ class Observador {
 
     public:
         Observador();
-        virtual ~Observador(); //para deletar apenas uma instância de Observador
+        ~Observador(); 
+        
         void notificaTeclaPressionadaJog(sf::Keyboard::Key);
         void notificaTeclaSoltaJog (sf::Keyboard:: Key);
         void notificaTeclaPressionadaJan(sf::Keyboard::Key);

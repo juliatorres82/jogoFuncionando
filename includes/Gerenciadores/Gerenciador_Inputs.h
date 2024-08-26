@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <list>
 #include "SFML/Graphics.hpp"
 #include "Gerenciador_Grafico.h"
 #include "Gerenciador_Eventos.h"
@@ -18,11 +19,14 @@ namespace Gerenciadores {
             std::vector<sf::Keyboard::Key> comandosFechamento;
             Gerenciador_Grafico* pGG;
             Gerenciador_Eventos* pGE;
-            Observador obs;
+            std::list<Observador*> observadoresVigiando;
 
 
         public:
             ~Gerenciador_Inputs();
+            Gerenciador_Inputs* getInstancia();
+            void addObservadoresVigiando(Observador* obs);
+            void tiraObservadoresVigiando(Observador* obs);
             void gerenciaTeclasPressionadas();
             void gerenciaTeclasSoltas();
     };

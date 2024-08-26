@@ -35,7 +35,11 @@ bool Gerenciadores::Gerenciador_Eventos::teclaPressionada(sf::Keyboard::Key tecl
 
 bool Gerenciadores::Gerenciador_Eventos::teclaSolta(sf::Keyboard::Key tecla)
 {
-	return !sf::Keyboard::isKeyPressed(tecla);
+    if(evento.type == evento.KeyReleased){
+	    if(evento.key.code == tecla)
+            return true;
+    }
+    return false;
 }
 
 
@@ -45,12 +49,12 @@ void Gerenciador_Eventos::gerencia(){
         if(pGG->getJanela()->pollEvent(evento)){
             
             if(evento.type == sf::Event::KeyPressed)
-                //chama observador
+                pGI->gerenciaTeclasPressionadas();
 
             if (evento.type == sf::Event::KeyReleased)
-               //chama observador
+               pGI->gerenciaTeclasSoltas();
             
-            if(evento.type == sf::Event::Closed) //requisita à janela fechar
+            if(evento.type == sf::Event::Closed) 
                 pGG->fecharJanela();
         }
 

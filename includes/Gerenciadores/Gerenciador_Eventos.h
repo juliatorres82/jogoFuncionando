@@ -15,10 +15,9 @@ namespace Gerenciadores{
             static Gerenciador_Eventos* pGE; 
             Gerenciador_Eventos();
             Gerenciador_Grafico* pGG; // para resgatarmos as janelas
+            Gerenciador_Inputs* pGI;
             sf::Event evento;
-            Entidades::Personagens::Jogador* jog1 = nullptr; // para resgatarmos os jogadores
-            std::vector<sf::Keyboard::Key> vetorTeclasJog;
-            std::vector<sf::Keyboard::Key> vetorTeclasGG;
+           
 
         public:
             ~Gerenciador_Eventos();

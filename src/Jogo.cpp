@@ -9,7 +9,7 @@ plataforma3(sf::Vector2f(400.f, 200.f),0, sf::Vector2f(200.f, 40.f))
     gerenciador_grafico = Gerenciadores::Gerenciador_Grafico::getInstancia();
     gerenciador_colisoes = Gerenciadores::Gerenciador_Colisoes::getInstancia();
     gerenciador_eventos = Gerenciadores::Gerenciador_Eventos::getGerenciadorEventos();
-    gerenciador_estados = Gerenciadores::Gerenciador_Estados::getInstancia();
+    //gerenciador_estados = Gerenciadores::Gerenciador_Estados::getInstancia();
 
     janela_jogo = gerenciador_grafico->getJanela();
 

@@ -15,7 +15,7 @@ class Jogo
 		Gerenciador_Grafico* gerenciador_grafico;
 		Gerenciador_Eventos* gerenciador_eventos;
 		Gerenciador_Colisoes* gerenciador_colisoes; 
-		Gerenciador_Estados* gerenciador_estados;
+		//Gerenciador_Estados* gerenciador_estados;
 		Personagens::Jogador jogador1;
 		Personagens::Jogador* jogador2;
 		Inimigo inimigo1;

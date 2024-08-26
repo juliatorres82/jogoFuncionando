@@ -1,5 +1,5 @@
-#include "../Estado/Menu.h"
-#include "../Estado/Jogando.h"
+#include "../Estados/Menu.h"
+#include "../Estados/Jogando.h"
 #include <map>
 #include <string>
 using std::map;

@@ -1,7 +1,11 @@
+#include <string>
+using namespace std;
+
 namespace Gerenciadores
 {
     class Gerenciador_Estados;
 }
+
 namespace Estados
 {
     class Estado

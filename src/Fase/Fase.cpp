@@ -89,7 +89,6 @@ void Fase:: criaJogadores(){
 
     jogador1 = new Jogador();
     listaJogadores.incluir(jogador1);
-
 }
 
 
@@ -123,6 +122,10 @@ void Fase:: tratarColisoes(){
 
 }
 
+void Fases::Fase::tratarEventos()
+{
+    p_GE->apertaTecla();
+}
  void Fases::Fase::executar()
 {
     criaPlataforma();
@@ -130,7 +133,19 @@ void Fase:: tratarColisoes(){
     criaJogadores();
     criaInimigos();
 
+    while(p_GG->janelaAberta())
+    {
+        atualizar();
+    }
 }
+
+void Fase::atualizar() {
+
+    tratarEventos();
+    tratarColisoes();
+    desenhar();
+}
+
 void Fase:: desenhar() {
 
     pGG->desenharEnte(this);

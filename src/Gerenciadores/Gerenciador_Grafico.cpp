@@ -1,6 +1,5 @@
 #include "../../includes/Gerenciadores/Gerenciador_Grafico.h"
 #include "../../includes/Ente.h"
-#include "Gerenciador_Grafico.h"
 
 using namespace Gerenciadores;
 

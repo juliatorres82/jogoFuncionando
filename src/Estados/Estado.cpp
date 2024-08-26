@@ -1,12 +1,11 @@
-#include "../../includes/Gerenciadores/Gerenciador_Estados.h"
-using namespace Estados;
+#include "../../Gerenciadores/Gerenciador_Estados.h"
 
-Estado::Estado()
+Estados::Estado::Estado()
 {
     gerenciador_estados = Gerenciadores::Gerenciador_Estados::getInstancia();
 }
 
-Estado::~Estado()
+Estados::Estado::~Estado()
 {
     if(gerenciador_estados)
     {
@@ -15,7 +14,7 @@ Estado::~Estado()
     gerenciador_estados = nullptr;
 }
 
-void Estado::setId(const std::string& id)
+void Estados::Estado::setId(const std::string& id)
 {
     this->idEst = id;
 }

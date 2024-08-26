@@ -12,6 +12,11 @@ void Fantasma:: perseguir() {
 
     if(jog1){
 
+        if(jog1->getPosicaox() - getPosicaox() < 2*jog1->getCorpo().getSize().x && jog1->getPosicaoy() - getPosicaoy() < 10.0){
+            ficarVisivel();
+        }
+        else
+            ficarInvisivel();
         if(jog1->getPosicaox() - getPosicaox() > 0.0 ){ //jogador à frente do inimigo em x;
             corpo.move(velx, 0.0); 
         }
@@ -20,10 +25,10 @@ void Fantasma:: perseguir() {
             corpo.move(-velx, 0.0);
 
         if(jog1->getPosicaoy() - getPosicaoy() > 0.0 ) //jogador acima do inimigo;
-            corpo.move(0.0, vely);
+            corpo.move(0.0, -vely);
 
         else if(jog1->getPosicaoy() - getPosicaoy() < 0.0 )
-            corpo.move(0.0, -vely);
+            corpo.move(0.0, vely);
     }
 
     else 
@@ -37,7 +42,10 @@ void Fantasma :: ficarInvisivel() {
 
 }
 
+void Fantasma :: ficarVisivel() {
 
+    invisivel = false;
+}
 bool Fantasma :: isInvisivel() {
 
     return invisivel;
@@ -46,4 +54,11 @@ bool Fantasma :: isInvisivel() {
 void Fantasma :: mover() {
 
     perseguir();
+}
+
+void Fantasma :: executar() {
+
+    mover();
+    if(!invisivel)
+        desenhar();
 }

@@ -1,7 +1,7 @@
 #pragma once
-
 #include "Personagem.h"
-
+#define velocidadeInimigo 2.0f
+#define puloInimigo -20.0f
 
 namespace Entidades
 {
@@ -23,7 +23,8 @@ namespace Entidades
 				void setJogador(Jogador* jog1);
 				Jogador* getJogador1();
 				virtual void executar();
-				virtual void mover() = 0; 
+				virtual void mover();
+				void voltar();
 		};
 	}
 }

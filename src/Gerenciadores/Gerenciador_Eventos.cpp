@@ -1,10 +1,11 @@
 #include "../../includes/Gerenciadores/Gerenciador_Eventos.h"
+
 using namespace Gerenciadores;
 
-Gerenciador_Eventos* Gerenciador_Eventos:: pGE (NULL);
+Gerenciador_Eventos* Gerenciador_Eventos:: pGE (nullptr);
 
 
-Gerenciador_Eventos::Gerenciador_Eventos() : pGG(NULL), jog1(NULL){
+Gerenciador_Eventos::Gerenciador_Eventos() : pGG(nullptr), jog1(nullptr){
     //perguntar a um monitor se faz sentido inicializar pGG com NULL ---------------------------
 
     vetorTeclasJog.push_back(sf::Keyboard::Key::A);
@@ -28,6 +29,8 @@ Gerenciador_Eventos::~Gerenciador_Eventos(){
         delete pGE;
     pGE = NULL;
 
+       if (jog1->getJogador2())
+       delete jog1->getJogador2();
 }
 
 void Gerenciador_Eventos:: setJogador(Jogador* j1, Jogador* j2){
@@ -61,6 +64,18 @@ Gerenciador_Eventos* Gerenciador_Eventos::getGerenciadorEventos(){
     return pGE;
 
 }
+
+bool Gerenciadores::Gerenciador_Eventos::teclaPressionada(sf::Keyboard::Key tecla)
+{
+	return sf::Keyboard::isKeyPressed(tecla);
+}
+
+
+bool Gerenciadores::Gerenciador_Eventos::teclaSolta(sf::Keyboard::Key tecla)
+{
+	return !sf::Keyboard::isKeyPressed(tecla);
+}
+
 
 const bool Gerenciador_Eventos:: haEventos(){
 

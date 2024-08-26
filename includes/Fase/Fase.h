@@ -38,7 +38,8 @@ class Fase : public Ente {
 
         void tratarColisoes();
         void tratarEventos(); //
-
+        void atualizar(); //
+        void executar(); //
         void desenhar(); 
 };
 

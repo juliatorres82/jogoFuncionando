@@ -41,6 +41,15 @@ void Gerenciador_Grafico::desenhar(sf::RectangleShape ret)
 	janela->draw(ret);
 }
 
+void Gerenciador_Grafico::desenhar(sf::Sprite sprite)
+{
+	janela->draw(sprite);
+}
+
+void Gerenciador_Grafico::desenhar(sf::Text texto)
+{
+	janela->draw(texto);
+}
 void Gerenciadores::Gerenciador_Grafico::fecharJanela()
 {
 	janela->close();

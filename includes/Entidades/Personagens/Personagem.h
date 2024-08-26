@@ -7,20 +7,23 @@ namespace Entidades
     {
         class Personagem :
             public Entidade
-        {  
+        {
             protected:
                 int vidas;
                 float velx;
                 float vely;
-			    bool colidindo;
-
+                bool podePular;
 
             public:
                 Personagem();
                 ~Personagem();
                 virtual void mover();
-			    void pular(float pulo);
-                void mudaColidindo(bool flagColid);
+                void pular(float pulo);
+                void mudaPodePular(bool flagPodePular);
+                virtual void parar();
+                virtual void voltar() = 0;
+                float getVelx() { return velx; };
+                float getVely() { return vely; };
         };
     }
 }

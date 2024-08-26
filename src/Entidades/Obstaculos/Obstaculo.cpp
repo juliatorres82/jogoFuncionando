@@ -14,5 +14,10 @@ Obstaculo::~Obstaculo()
 
 void Obstaculo::empuxo()
 {
-	empuxo();
+	corpo.move(sf::Vector2f(0, -gravidade));
+}
+
+const bool Entidades::Obstaculos::Obstaculo::ehDanoso() const
+{
+    return danoso;
 }

@@ -18,6 +18,7 @@ namespace Entidades
 				virtual void executar() = 0;
 				virtual void obstacular() = 0;
 				void empuxo();
+				const bool ehDanoso() const;
 
 		};
 	}

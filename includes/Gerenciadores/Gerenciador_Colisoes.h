@@ -8,12 +8,13 @@ using namespace Personagens;
 
 namespace Gerenciadores
 {
+
 	class Gerenciador_Colisoes
 	{
 	private:
 		vector<Inimigo*> lIs;
-		list<Entidades:: Obstaculos::Obstaculo*> lOS;
-		Entidades::Personagens::Jogador* jog;
+		list<Entidades::Obstaculos::Obstaculo*> lOS;
+		vector<Jogador*> jogs;
 
 		Gerenciador_Colisoes();
 		static Gerenciador_Colisoes* instancia;
@@ -26,10 +27,9 @@ namespace Gerenciadores
 		void tratarColisoesJogsObstacs();
 		void tratarColisoesJogsInims();
 		void tratarColisoesInimsObstacs();
-		void tratarColisoesInims();
 		void tratarColisoes();
-		bool colidindo();
 		void resolverColisao(Entidade* p1, Entidade* p2, sf::FloatRect intersec);
+		void resolverColisaoComDin(Entidade* p1, Entidade* p2, sf::FloatRect intersec);
+		void resolverColisaoComEstat(Entidade* p1, Entidade* p2, sf::FloatRect intersec);
 	};
 }
-

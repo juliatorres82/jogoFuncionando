@@ -4,7 +4,6 @@ using namespace Gerenciadores;
 
 Gerenciador_Eventos* Gerenciador_Eventos:: pGE (nullptr);
 
-
 Gerenciador_Eventos::Gerenciador_Eventos() : pGG(nullptr), jog1(nullptr){
     //perguntar a um monitor se faz sentido inicializar pGG com NULL ---------------------------
 }

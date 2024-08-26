@@ -1,5 +1,5 @@
 #include "../../includes/Estados/Menu.h"
-
+#include "../../includes/Gerenciadores/Gerenciador_Estados.h"
 Menu::Menu()
 {
 }
@@ -71,4 +71,17 @@ void Menu::executar()
     desenhar();
     exec();
     atualizar();
+}
+
+void Menu::iniciar()
+{
+    setFundo("resources/images/fundo.png");
+    setTitulo("Menu");
+    setPosTitulo(sf::Vector2f(pGG->getTamx()/2, 0));
+    setCorTitulo(sf::Color::White);
+    setTamTitulo(50);
+    adicionarBotao("Jogar", sf::Vector2f(200, 50), sf::Vector2f(pGG->getTamx()/2, pGG->getTamy()/2));
+    adicionarBotao("Sair", sf::Vector2f(200, 50), sf::Vector2f(pGG->getTamx()/2, pGG->getTamy()/2 + 100));
+
+    gerenciador_estados->adicionarEstado(this->getIdEst(), this);
 }

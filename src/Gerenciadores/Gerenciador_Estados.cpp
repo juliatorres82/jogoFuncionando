@@ -58,7 +58,7 @@ void Gerenciadores::Gerenciador_Estados::mudaEstado(const std::string& id)
 {
     if (estado_atual != nullptr)
     {
-        if (estado_atual->getId() == id)
+        if (estado_atual->getIdEst() == id)
         {
             return;
         }

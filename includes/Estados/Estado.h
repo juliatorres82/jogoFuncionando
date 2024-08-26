@@ -17,9 +17,10 @@ namespace Estados
         public:
             Estado();
             virtual ~Estado();
-            void setId(const std::string& id);
-            const std::string& getId() const;
+            void setIdEst(const std::string& id);
+            const std::string& getIdEst() const;
             virtual void atualizar() = 0;
             virtual void exec() = 0;
+            virtual void iniciar() = 0;
     };
 }

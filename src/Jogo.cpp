@@ -10,8 +10,7 @@ plataforma3(sf::Vector2f(400.f, 200.f),0, sf::Vector2f(200.f, 40.f))
     gerenciador_colisoes = Gerenciadores::Gerenciador_Colisoes::getInstancia();
     gerenciador_eventos = Gerenciadores::Gerenciador_Eventos::getGerenciadorEventos();
     //gerenciador_estados = Gerenciadores::Gerenciador_Estados::getInstancia();
-
-    janela_jogo = gerenciador_grafico->getJanela();
+    janela_jogo = gerenciador_grafico->getJanela();   
 
     jogador2 = nullptr;
     jogador1.setGG(gerenciador_grafico);
@@ -37,7 +36,7 @@ plataforma3(sf::Vector2f(400.f, 200.f),0, sf::Vector2f(200.f, 40.f))
     
     jogador1.setPosicao(100.f, 100.f);
     inimigo1.setPosicao(300.f, 100.f);
-    fantasma1.setPosicao(200.f, 100.f);
+    fantasma1.setPosicao(200.f, 100.f); 
 }
 
 Jogo::~Jogo()

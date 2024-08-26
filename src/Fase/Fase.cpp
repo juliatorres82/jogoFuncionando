@@ -1,5 +1,4 @@
 #include "../../includes/Fase/Fase.h"
-#include "Fase.h"
 
 using namespace Fases;
 using namespace Entidades;
@@ -78,7 +77,7 @@ Fase::~Fase() {
 
 void Fase:: criaJogadores(){
 
-    Jogador* jogador1 = NULL;
+    Jogador* jogador1 = nullptr;
 
     if(p_GE->isDoisJogadores()){
         Jogador* jogador2 = NULL;
@@ -128,24 +127,22 @@ void Fases::Fase::tratarEventos()
 }
  void Fases::Fase::executar()
 {
+    while(p_GG->janelaAberta())
+    {
+        tratarEventos();
+        tratarColisoes();
+        desenhar();
+    }
+}
+
+void Fase::iniciar() {
+    criaPlataforma();
     criaPlataforma();
     criaPlataforma();
     criaJogadores();
     criaInimigos();
-
-    while(p_GG->janelaAberta())
-    {
-        atualizar();
-    }
+    
 }
-
-void Fase::atualizar() {
-
-    tratarEventos();
-    tratarColisoes();
-    desenhar();
-}
-
 void Fase:: desenhar() {
 
     pGG->desenharEnte(this);

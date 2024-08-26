@@ -10,4 +10,5 @@ class Jogando : public Estados::Estado
         ~Jogando();
         void exec();
         void atualizar();
+        void iniciar();
 };

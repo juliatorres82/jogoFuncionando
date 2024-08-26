@@ -4,7 +4,8 @@
 #include "Gerenciadores/Gerenciador_Eventos.h" 
 #include "Gerenciadores/Gerenciador_Colisoes.h"
 #include "Entidades/Personagens/Fantasma.h"
-#include "Estado/Menu.h"
+//#include "Gerenciadores/Gerenciador_Estados.h"
+
 using namespace Entidades;
 using namespace Personagens;
 using namespace Obstaculos;

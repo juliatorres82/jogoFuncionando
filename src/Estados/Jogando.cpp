@@ -1,4 +1,5 @@
-#include "Jogando.h"
+#include "../../includes/Estados/Jogando.h"
+#include "../../includes/Gerenciadores/Gerenciador_Estados.h"
 
 Jogando::Jogando()
 {
@@ -21,5 +22,10 @@ void Jogando::exec()
 
 void Jogando::atualizar()
 {
-    fase->atualizar();
+    fase->executar();
+}
+
+void Jogando::iniciar()
+{
+    fase->iniciar();
 }

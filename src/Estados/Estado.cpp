@@ -14,12 +14,13 @@ Estados::Estado::~Estado()
     gerenciador_estados = nullptr;
 }
 
-void Estados::Estado::setId(const std::string& id)
+void Estados::Estado::setIdEst(const std::string& id)
 {
     this->idEst = id;
 }
 
-const std::string &Estados::Estado::getId() const
+const std::string &Estados::Estado::getIdEst() const
 {
     return idEst;
 }
+

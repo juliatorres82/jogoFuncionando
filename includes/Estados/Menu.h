@@ -26,4 +26,5 @@ class Menu: public Estados::Estado, public Ente
         virtual void exec();
         virtual void desenhar();
         void executar();
+        virtual void iniciar();
 };

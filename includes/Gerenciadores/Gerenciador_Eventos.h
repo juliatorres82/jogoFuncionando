@@ -17,13 +17,13 @@ namespace Gerenciadores{
             Entidades::Personagens::Jogador* jog1 = nullptr; // para resgatarmos os jogadores
 
         public:
-
             ~Gerenciador_Eventos();
             static Gerenciador_Eventos* getGerenciadorEventos();
-            const bool isDoisJogadores();
+            bool teclaPressionada(sf::Keyboard::Key tecla);
+            bool teclaSolta(sf::Keyboard::Key tecla);
             const bool haEventos();
             void apertaTecla();
-
+            bool isDoisJogadores() const;
     };
 
 }

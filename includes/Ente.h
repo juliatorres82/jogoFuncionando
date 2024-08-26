@@ -22,7 +22,7 @@ class Ente
 		virtual void executar() = 0;
 		virtual void desenhar() = 0;
 		static void setGG(Gerenciador_Grafico* gG);
-		int getId();
+		idEntes getId();
 };
 
 

@@ -1,10 +1,11 @@
 #include "../../includes/Gerenciadores/Gerenciador_Eventos.h"
+
 using namespace Gerenciadores;
 
-Gerenciador_Eventos* Gerenciador_Eventos:: pGE (NULL);
+Gerenciador_Eventos* Gerenciador_Eventos:: pGE (nullptr);
 
 
-Gerenciador_Eventos::Gerenciador_Eventos() : pGG(NULL), jog1(NULL){
+Gerenciador_Eventos::Gerenciador_Eventos() : pGG(nullptr), jog1(nullptr){
     //perguntar a um monitor se faz sentido inicializar pGG com NULL ---------------------------
 }
 
@@ -14,17 +15,9 @@ Gerenciador_Eventos::~Gerenciador_Eventos(){
         delete pGE;
     pGE = NULL;
 
+       if (jog1->getJogador2())
+       delete jog1->getJogador2();
 }
-
-const bool Gerenciador_Eventos:: isDoisJogadores(){ // depois o menu vai interferir nessa função aqui
-
-    if(jog1!=NULL){
-        if(jog1->getJogador2()!=NULL)
-            return true;
-    }
-    return false;
-}
-
 
 Gerenciador_Eventos* Gerenciador_Eventos::getGerenciadorEventos(){
 
@@ -33,6 +26,16 @@ Gerenciador_Eventos* Gerenciador_Eventos::getGerenciadorEventos(){
     }
     return pGE;
 
+}
+
+bool Gerenciadores::Gerenciador_Eventos::teclaPressionada(sf::Keyboard::Key tecla)
+{
+	return sf::Keyboard::isKeyPressed(tecla);
+}
+
+bool Gerenciadores::Gerenciador_Eventos::teclaSolta(sf::Keyboard::Key tecla)
+{
+	return !sf::Keyboard::isKeyPressed(tecla);
 }
 
 const bool Gerenciador_Eventos:: haEventos(){
@@ -47,32 +50,24 @@ const bool Gerenciador_Eventos:: haEventos(){
 
 void Gerenciador_Eventos:: apertaTecla(){
 
-    while(haEventos()){
+    while (haEventos()) 
+ {
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-		    jog1->movDir();
-
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-            jog1->movEsq();
-
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-            jog1->Pular();
-        
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+        if (evento.type == sf::Event::Closed)
             pGG->fecharJanela();
-        
 
-        if(isDoisJogadores()){
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
+            pGG->fecharJanela();
 
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-		        jog1->getJogador2()->movDir();
-
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-                jog1->getJogador2()->movEsq();
-
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-                jog1->getJogador2()->Pular();
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::C) && !(jog1->doisJogadores()))
+        {
+            jog1->setJogador2(new Entidades::Personagens::Jogador(jog1));
         }
-    }
 
+ }
+}
+
+bool Gerenciadores::Gerenciador_Eventos::isDoisJogadores() const
+{
+    return jog1->doisJogadores();
 }

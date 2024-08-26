@@ -1,10 +1,15 @@
 #include "../../includes/Entidades/Entidade.h"
+
 using namespace Entidades;
 
-Entidade::Entidade() :
-	corpo(sf::Vector2f(20.f, 40.f))
+Entidade::Entidade()
 {
+	dimensoes = sf::Vector2f(0.f, 0.f);
+	pos = sf::Vector2f(0.f, 0.f);
 	tipo = estatico;
+	gravidade = 0.0;
+	caiu = false;
+	colidindo = false;
 }
 
 Entidade::~Entidade()
@@ -18,32 +23,36 @@ void Entidade::desenhar()
 
 void Entidade::setTam()
 {
-	sf::Vector2f v;
-	v.x = 20.f;
-	v.y = 40.f;
-	
-	corpo.setSize(v);
+	corpo.setSize(dimensoes);
 }
 
-void Entidade::atualizar(){
+void Entidade::atualizar() {
 	pos = corpo.getPosition();
 }
 
 float Entidade::getPosicaox()
 {
 	atualizar();
-    return pos.x;
+	return pos.x;
 }
 
 float Entidade::getPosicaoy()
 {
 	atualizar();
-    return pos.y;
+	return pos.y;
 }
 
 void Entidade::cair()
 {
-	corpo.move(sf::Vector2f(0, aCgravidade));
+	if (tipo != estatico && gravidade <= velTerminal)
+		gravidade += aCgravidade;
+
+	if(caiu)
+		gravidade = 0;
+
+	corpo.move(sf::Vector2f(0.f, gravidade));
+	if(colidindo && !caiu)
+		corpo.move(sf::Vector2f(0.f, -2.f));
 }
 
 sf::RectangleShape& Entidade::getCorpo()
@@ -51,12 +60,38 @@ sf::RectangleShape& Entidade::getCorpo()
 	return corpo;
 }
 
-const bool Entidade::ehDinamico() const
+sf::FloatRect Entidades::Entidade::getContorno() const
 {
-	return tipo == dinamico;
+	return corpo.getGlobalBounds();
 }
 
+const bool Entidade::ehDinamico() const
+{
+	return (tipo == dinamico);
+}
+
+bool Entidades::Entidade::emColisao(const Entidade& outro, sf::FloatRect& intersec) const
+{
+	return (getContorno().intersects(outro.getContorno(), intersec));			
+}
+
+void Entidades::Entidade::mudaColidindo(bool flagColid)
+{
+	colidindo = flagColid;
+}
+void Entidade::mudaCaiu(bool queda)
+{
+	caiu = queda;
+}
 void Entidade::setPosicao(float x, float y)
 {
-	corpo.setPosition(sf::Vector2f(x, y));
+	pos.x = x;
+	pos.y = y;
+
+	corpo.setPosition(pos);
+}
+
+void Entidades::Entidade::setPosicao()
+{
+	corpo.setPosition(pos);
 }

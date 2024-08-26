@@ -3,29 +3,29 @@ using namespace Entidades::Obstaculos;
 
 Plataforma::Plataforma()
 {
+	id = plataForma;
 	dimensoes.x = 20.0;
 	dimensoes.y = 40.0;
-
+	elasticidade = 0;
 	corpo.setFillColor(sf::Color::Blue);
-	corpo.setSize(dimensoes);
-	corpo.setPosition(300.0, 300.0);
+	setTam();
+	setPosicao(0.f, 0.f);
 	danoso = false;
-
-	id = plataForma;
 	//desenhar();
 	//windowEnt->draw(shape);
 }
 Plataforma::Plataforma(sf::Vector2f posicao, int e, sf::Vector2f tam)
 {
+	pos = posicao;
 	dimensoes = tam;
-	corpo.setSize(dimensoes);
-	corpo.setPosition(posicao);
+	setTam();
+	setPosicao();
 	setElasticidade(e);
 	danoso = false;
 }
 Plataforma::~Plataforma()
 {
-	pGG = NULL;
+	pGG = nullptr;
 }
 
 void Plataforma::setElasticidade(int e)
@@ -36,9 +36,11 @@ void Plataforma::setElasticidade(int e)
 void Plataforma::executar()
 {
 	obstacular();
+	desenhar();
 }
 
 void Plataforma::obstacular()
-{
+{	
+	cair();
 	empuxo();
 }

@@ -16,3 +16,8 @@ void Obstaculo::empuxo()
 {
 	empuxo();
 }
+
+const bool Entidades::Obstaculos::Obstaculo::ehDanoso() const
+{
+    return danoso;
+}

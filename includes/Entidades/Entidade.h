@@ -1,7 +1,9 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "../Ente.h"
-#define aCgravidade 10.f
+#define aCgravidade 4.f
+#define velTerminal 20.f
+
 enum dinamismo 
 { estatico, dinamico };
 
@@ -14,6 +16,9 @@ namespace Entidades
 			sf::Vector2f pos;
 			sf::Vector2f dimensoes;
 			dinamismo tipo;
+			float gravidade;
+			bool caiu;
+			bool colidindo;
 
 		public:
 			Entidade();
@@ -22,15 +27,18 @@ namespace Entidades
 			virtual void executar() = 0;
 			void setTam();
 			sf::RectangleShape& getCorpo();
+			sf::FloatRect getContorno() const;
 			void atualizar();
 			float getPosicaox();
 			float getPosicaoy();
 			const bool ehDinamico() const;
+			bool emColisao(const Entidade& outro, sf::FloatRect& intersec) const;
+			void mudaColidindo(bool flagColid);
+			void mudaCaiu(bool queda);
 			void setPosicao(float x, float y);
+			void setPosicao();
 			void cair();
 	};
 
 }
-
-
 

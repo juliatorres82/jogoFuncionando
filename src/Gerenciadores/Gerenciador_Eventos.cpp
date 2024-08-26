@@ -6,6 +6,20 @@ Gerenciador_Eventos* Gerenciador_Eventos:: pGE (NULL);
 
 Gerenciador_Eventos::Gerenciador_Eventos() : pGG(NULL), jog1(NULL){
     //perguntar a um monitor se faz sentido inicializar pGG com NULL ---------------------------
+
+    vetorTeclasJog.push_back(sf::Keyboard::Key::A);
+    vetorTeclasJog.push_back(sf::Keyboard::Key::W);
+    vetorTeclasJog.push_back(sf::Keyboard::Key::D);
+    vetorTeclasJog.push_back(sf::Keyboard::Key::S);
+    vetorTeclasJog.push_back(sf::Keyboard::Key::Space);
+    vetorTeclasJog.push_back(sf::Keyboard::Key::Up);
+    vetorTeclasJog.push_back(sf::Keyboard::Key::Right);
+    vetorTeclasJog.push_back(sf::Keyboard::Key::Left);
+    vetorTeclasJog.push_back(sf::Keyboard::Key::Down);
+
+    vetorTeclasGG.push_back(sf::Keyboard::Key::Escape);
+    vetorTeclasGG.push_back(sf::Keyboard::Key::Enter);
+
 }
 
 Gerenciador_Eventos::~Gerenciador_Eventos(){
@@ -15,6 +29,19 @@ Gerenciador_Eventos::~Gerenciador_Eventos(){
     pGE = NULL;
 
 }
+
+void Gerenciador_Eventos:: setJogador(Jogador* j1, Jogador* j2){
+
+    jog1 = j1;
+    if(j2)
+        jog1->setJogador2(j2);
+
+}
+
+void Gerenciador_Eventos:: setGerenciadorGrafico(Gerenciador_Grafico* gg){
+    pGG = gg;
+}
+
 
 const bool Gerenciador_Eventos:: isDoisJogadores(){ // depois o menu vai interferir nessa função aqui
 
@@ -47,32 +74,21 @@ const bool Gerenciador_Eventos:: haEventos(){
 
 void Gerenciador_Eventos:: apertaTecla(){
 
+    std::vector<sf::Keyboard::Key>::iterator it = vetorTeclasGG.begin();
+
     while(haEventos()){
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-		    jog1->movDir();
-
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-            jog1->movEsq();
-
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-            jog1->Pular();
-        
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-            pGG->fecharJanela();
-        
-
-        if(isDoisJogadores()){
-
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-		        jog1->getJogador2()->movDir();
-
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-                jog1->getJogador2()->movEsq();
-
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-                jog1->getJogador2()->Pular();
+        if(sf::Keyboard::isKeyPressed(*it)){
+            pGG->getJanela()->close();
         }
     }
+}
 
+
+void Gerenciador_Eventos::gerencia(){
+
+    if (pGG){
+        while(pGG->getJanela()->pollEvent(evento)){
+            apertaTecla();
+        }
+    }
 }

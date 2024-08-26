@@ -10,6 +10,7 @@ Entidades::Personagens::Jogador::Jogador(Jogador* j2) :
 	corpo.setPosition(sf::Vector2f(200.f, 100.f));
 	corpo.setFillColor(sf::Color::Green);
 }
+
 Entidades::Personagens::Jogador::Jogador() :
 	pontos(0), jogador2(NULL)
 {
@@ -66,7 +67,7 @@ bool Entidades::Personagens::Jogador:: doisJogadores(){
 void Entidades::Personagens::Jogador::mover()
 {
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+  if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
 		velx = 0;
 	}

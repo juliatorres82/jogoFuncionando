@@ -66,3 +66,7 @@ float Gerenciador_Grafico::getTamy()
 	return janela->getSize().y;
 }
 
+void Gerenciador_Grafico:: setJanela(sf::RenderWindow* jan){
+
+	janela = jan;
+}

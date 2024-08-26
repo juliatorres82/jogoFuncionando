@@ -7,12 +7,13 @@ Entidades::Personagens::Jogador::Jogador(Jogador* j2) :
 	velx = velocidadeJogador;
 	vely = pulo;
 	pos = sf::Vector2f(200.f, 100.f);
-	setPosicao(pos.x, pos.y);
+	setPosicao();
 	corpo.setFillColor(sf::Color::Green);
 	dimensoes = sf::Vector2f(40.f, 40.f);
 	setTam();
 	setQJog();
 }
+
 Entidades::Personagens::Jogador::Jogador() :
 	pontos(0), jogador2(NULL)
 {
@@ -89,7 +90,6 @@ void Entidades::Personagens::Jogador::mover()
 	cair();
 
 }
-
 
 void Entidades::Personagens::Jogador::executar()
 {

@@ -1,5 +1,4 @@
 #pragma once
-#include "Inimigo.h"
 #include "Jogador.h"
 
 using namespace Entidades::Personagens;
@@ -16,6 +15,8 @@ class Fantasma : public Inimigo {
         ~Fantasma();
         void perseguir();
         void ficarInvisivel();
+        void ficarVisivel();
         bool isInvisivel();
         void mover();
+        void executar();
 };

@@ -4,7 +4,7 @@
 #include "Gerenciadores/Gerenciador_Eventos.h" 
 #include "Gerenciadores/Gerenciador_Colisoes.h"
 #include "Entidades/Personagens/Fantasma.h"
-
+#include "Estado/Menu.h"
 using namespace Entidades;
 using namespace Personagens;
 using namespace Obstaculos;
@@ -14,7 +14,8 @@ class Jogo
 	private:
 		Gerenciador_Grafico* gerenciador_grafico;
 		Gerenciador_Eventos* gerenciador_eventos;
-		Gerenciador_Colisoes* gerenciador_colisoes; // Fix the class name
+		Gerenciador_Colisoes* gerenciador_colisoes; 
+		Gerenciador_Estados* gerenciador_estados;
 		Personagens::Jogador jogador1;
 		Personagens::Jogador* jogador2;
 		Inimigo inimigo1;

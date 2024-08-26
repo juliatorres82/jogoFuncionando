@@ -22,8 +22,10 @@ namespace Gerenciadores
 		void desenharEnte(Ente* pEnte);
 		void desenhar(sf::RectangleShape ret);
 		void fecharJanela();
-		sf::RenderWindow* getJanela();
-		const bool janelaAberta() const;
+        void desenhar(sf::Text texto);
+		void desenhar(sf::Sprite sprite);
+        sf::RenderWindow *getJanela();
+        const bool janelaAberta() const;
 		float getTamx();
 		float getTamy();
 	};

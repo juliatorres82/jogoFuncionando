@@ -33,6 +33,7 @@ namespace Entidades
 			float getPosicaoy();
 			const bool ehDinamico() const;
 			bool emColisao(const Entidade& outro, sf::FloatRect& intersec) const;
+			bool emColisao(const Entidade& outro) const;
 			void mudaColidindo(bool flagColid);
 			void mudaCaiu(bool queda);
 			void setPosicao(float x, float y);

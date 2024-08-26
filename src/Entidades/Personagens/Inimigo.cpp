@@ -9,9 +9,11 @@ Inimigo::Inimigo() :
 {
 	id = idEntes::iniMigo;
 	corpo.setFillColor(sf::Color::Red);
-	corpo.setPosition(sf::Vector2f(100.f, 250.f));
+	pos = sf::Vector2f(100.f, 250.f);
+	setPosicao(pos.x, pos.y);
 	dimensoes = sf::Vector2f(40.0, 40.0);
 	velx = velocidadeInimigo;
+	setTam();
 	vely = puloInimigo;
 }
 
@@ -37,11 +39,13 @@ Jogador* Inimigo:: getJogador1() {
 
 void Inimigo::mover()
 {
-	if(colidindo)
-		corpo.move(velx, vely);
+	if(getPosicaox() >= 0.0)
+		corpo.move(-velx, vely);
 
 	else 
-		corpo.move(-velx, vely);
+		corpo.move(velx, vely);
+
+	cair();
 }
 void Inimigo::executar()
 {

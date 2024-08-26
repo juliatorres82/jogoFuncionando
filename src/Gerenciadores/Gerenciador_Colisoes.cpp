@@ -154,9 +154,12 @@ void Gerenciadores::Gerenciador_Colisoes::resolverColisaoComDin(Entidade* p1, En
 	else
 	{	
 		Personagem* aux = nullptr;
-		deCima ? aux = static_cast<Personagem*>(p2) : aux = static_cast<Personagem*>(p1);
+		Personagem* aux2 = nullptr;
+		deCima ? aux = static_cast<Personagem*>(p2),aux2 = static_cast<Personagem*>(p1): aux = static_cast<Personagem*>(p1), aux2 = static_cast<Personagem*>(p2);
 		aux->mudaPodePular(true);
 		aux->mudaCaiu(true);
+		aux2->mudaCaiu(true);
+
 		p1->getCorpo().move(0.f, deCima ? tamVertical : -tamVertical);
 		aux = nullptr;
 	}

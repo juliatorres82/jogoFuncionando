@@ -2,7 +2,8 @@
 
 using namespace Entidades;
 
-Entidade::Entidade()
+Entidade::Entidade() :
+	corpo(sf::Vector2f(40.f, 40.f))
 {
 	dimensoes = sf::Vector2f(0.f, 0.f);
 	pos = sf::Vector2f(0.f, 0.f);
@@ -75,6 +76,11 @@ bool Entidades::Entidade::emColisao(const Entidade& outro, sf::FloatRect& inters
 	return (getContorno().intersects(outro.getContorno(), intersec));			
 }
 
+bool Entidades::Entidade::emColisao(const Entidade& outro) const
+{
+	return (getContorno().intersects(outro.getContorno()));
+}
+
 void Entidades::Entidade::mudaColidindo(bool flagColid)
 {
 	colidindo = flagColid;
@@ -83,15 +89,14 @@ void Entidade::mudaCaiu(bool queda)
 {
 	caiu = queda;
 }
+void Entidade::setPosicao()
+{
+	corpo.setPosition(pos);
+}
 void Entidade::setPosicao(float x, float y)
 {
 	pos.x = x;
 	pos.y = y;
 
-	corpo.setPosition(pos);
-}
-
-void Entidades::Entidade::setPosicao()
-{
 	corpo.setPosition(pos);
 }

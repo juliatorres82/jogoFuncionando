@@ -7,7 +7,9 @@ enum idEntes
 	jogaDor,
 	iniMigo,
 	obsTaculo,
-	plataForma
+	plataForma,
+	botao,
+	menu
 };
 
 class Ente

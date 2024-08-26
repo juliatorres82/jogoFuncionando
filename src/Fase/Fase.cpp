@@ -1,4 +1,5 @@
 #include "../../includes/Fase/Fase.h"
+#include "Fase.h"
 
 using namespace Fases;
 using namespace Entidades;
@@ -122,7 +123,15 @@ void Fase:: tratarColisoes(){
 
 }
 
+ void Fases::Fase::executar()
+{
+    criaPlataforma();
+    criaPlataforma();
+    criaJogadores();
+    criaInimigos();
 
+}
 void Fase:: desenhar() {
+
     pGG->desenharEnte(this);
 }

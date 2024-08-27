@@ -45,7 +45,7 @@ bool Gerenciadores::Gerenciador_Eventos::teclaSolta(sf::Keyboard::Key tecla)
 
 void Gerenciador_Eventos::gerencia(){
 
-    while(pGG->janelaAberta()){
+    /*while(pGG->janelaAberta()){
         if(pGG->getJanela()->pollEvent(evento)){
             
             if(evento.type == sf::Event::KeyPressed)
@@ -59,5 +59,5 @@ void Gerenciador_Eventos::gerencia(){
         }
 
     }
-
+*/
 }

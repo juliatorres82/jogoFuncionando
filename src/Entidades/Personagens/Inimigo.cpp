@@ -17,6 +17,17 @@ Inimigo::Inimigo() :
 	vely = puloInimigo;
 }
 
+Inimigo:: Inimigo(float x, float y) {
+	corpo.setPosition(sf::Vector2f(x, y));
+	id = idEntes::iniMigo;
+	corpo.setFillColor(sf::Color::Red);
+	dimensoes = sf::Vector2f(40.0, 40.0);
+	velx = velocidadeInimigo;
+	setTam();
+	vely = puloInimigo;
+
+}
+
 Inimigo::~Inimigo()
 {
 	jogador1 = nullptr;

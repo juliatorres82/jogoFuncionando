@@ -3,6 +3,10 @@
 Fantasma :: Fantasma() : invisivel(false) {}
 
 
+Fantasma :: Fantasma(float x, float y) {
+    corpo.setPosition(sf::Vector2f(x, y));
+} 
+
 Fantasma :: ~Fantasma() {}
 
 
@@ -46,6 +50,7 @@ void Fantasma :: ficarVisivel() {
 
     invisivel = false;
 }
+
 bool Fantasma :: isInvisivel() {
 
     return invisivel;

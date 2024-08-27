@@ -25,6 +25,15 @@ Entidades::Personagens::Jogador::Jogador() :
 	corpo.setFillColor(sf::Color::Green);
 }
 
+Entidades::Personagens::Jogador:: Jogador(float x, float y){
+	corpo.setPosition(sf::Vector2f(x, y));
+	setQJog();
+	id = idEntes::jogaDor;
+	velx = velocidadeJogador;
+	vely = pulo;
+	corpo.setFillColor(sf::Color::Green);
+}
+
 Entidades::Personagens::Jogador::~Jogador()
 {
 	jogador2 = nullptr;

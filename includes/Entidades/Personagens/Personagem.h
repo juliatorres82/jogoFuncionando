@@ -16,6 +16,7 @@ namespace Entidades
 
             public:
                 Personagem();
+                Personagem(float x, float y);
                 ~Personagem();
                 virtual void mover();
                 void pular(float pulo);

@@ -24,6 +24,7 @@ namespace Entidades
 		public:
 			Jogador();
 			Jogador(Jogador* j2);
+			Jogador(float x, float y);
 			~Jogador();
 
 

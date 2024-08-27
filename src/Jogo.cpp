@@ -63,17 +63,23 @@ void Jogo::Executar()
 
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::C) && !jogador1.doisJogadores())
             {
-                jogador2 = new Jogador(&jogador1);
+                /*jogador2 = new Jogador(&jogador1);
                 gerenciador_colisoes->incluirJogador(jogador2);
                 jogador1.setJogador2(jogador2);
-                jogador2->setJogador2(&jogador1);
+                jogador2->setJogador2(&jogador1); 
+                */
+               jogador2 = new Jogador();
+               gerenciador_colisoes->incluirJogador(jogador2);
+               jogador1.setJogador2(jogador2);
             }
 
             while (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
             {
                 janela_jogo->setKeyRepeatEnabled(true);
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
                     break;
+                    janela_jogo->close();
+                }
             }
 
                 janela_jogo->setKeyRepeatEnabled(true);
@@ -83,16 +89,20 @@ void Jogo::Executar()
         gerenciador_colisoes->tratarColisoes();
 
         janela_jogo->clear();
-        inimigo1.executar();
-        fantasma1.executar();
+        
+        //inimigo1.executar();
+
+        //fantasma1.executar();
         jogador1.executar();
+        jogador1.mover();
+        
 		if (jogador1.doisJogadores())
 			jogador2->executar();
         
         plataforma1.executar();
         plataforma2.executar();
         plataforma3.executar();
-             
+        
         janela_jogo->display();
 
     }

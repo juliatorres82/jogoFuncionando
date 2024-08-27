@@ -1,5 +1,6 @@
 #include "../includes/Ente.h"
 
+
 Gerenciador_Grafico* Ente::pGG = nullptr;
 
 Ente::Ente():
@@ -14,8 +15,7 @@ Ente::~Ente()
 
 void Ente::setGG(Gerenciador_Grafico* g)
 {
-	if (pGG == nullptr)
-		pGG = g;
+	pGG = g;
 }
 
 idEntes Ente::getId()

@@ -3,9 +3,17 @@
 #include "../Listas/ListaEntidades.h"
 #include "../Gerenciadores/Gerenciador_Eventos.h"
 #include "../Entidades/Obstaculos/Plataforma.h"
+#include "../Entidades/Obstaculos/PlataformaGelo.h"
+#include "../Entidades/Obstaculos/Gosma.h"
 #include "../Entidades/Personagens/Fantasma.h"
+#include "../Entidades/Personagens/Lagarto.h"
+#include "../Estados/MenuPrincipal.h"
+
+#include <fstream>
+#include <nlohmann/json.hpp> // Inclui a biblioteca JSON
 
 using namespace Listas;
+using json = nlohmann::json;
 
 namespace Fases {
 
@@ -13,14 +21,18 @@ class Fase : public Ente {
 
     protected:
 
-        ListaEntidades listaJogadores;
-        ListaEntidades listaInimigos;
-        ListaEntidades listaObstaculos;
-        ListaEntidades listaPlataforma;
+        ListaEntidades* listaJogadores;
+        ListaEntidades* listaInimigos;
+        ListaEntidades* listaObstaculos;
+        ListaEntidades* listaPlataforma;
 
-        Gerenciador_Grafico* p_GG;
-        Gerenciador_Eventos* p_GE;
-        Gerenciador_Colisoes* p_GC;
+        Gerenciadores::Gerenciador_Grafico* p_GG;
+        Gerenciadores::Gerenciador_Eventos* p_GE;
+        Gerenciadores::Gerenciador_Colisoes* p_GC;
+
+
+        MenuPrincipal menu; 
+        std::string caminho;
 
     public:
 
@@ -32,9 +44,11 @@ class Fase : public Ente {
         void criaObstaculos();
         void criaPlataforma();
 
-        void lerJSON(); //
+        json lerJSON(const std::string caminho); //
+        void constroiFase();
         void criaFundo(); //
-        void criaMapa();  //
+        vector<vector<vector<int>>> converteJsonParaMatriz(const std::string& caminhoArquivoJson, int numLayers);
+        void criarTudo(int posx, int poxy, int valor);
 
         void tratarColisoes();
         void tratarEventos(); //

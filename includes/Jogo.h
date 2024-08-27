@@ -6,17 +6,19 @@
 #include "Gerenciadores/Gerenciador_Eventos.h"
 #include "Entidades/Personagens/Fantasma.h"
 #include "Estados/Menu.h"
+#include "Fase/Fase.h"
 
 using namespace Entidades;
 using namespace Personagens;
 using namespace Obstaculos;
+using namespace Fases;
 
 class Jogo
 {
 	private:
-		Gerenciador_Grafico* gerenciador_grafico;
-		Gerenciador_Eventos* gerenciador_eventos;
-		Gerenciador_Colisoes* gerenciador_colisoes; 
+		Gerenciadores::Gerenciador_Grafico* gerenciador_grafico;
+		Gerenciadores::Gerenciador_Eventos* gerenciador_eventos;
+		Gerenciadores::Gerenciador_Colisoes* gerenciador_colisoes; 
 		//Gerenciador_Estados* gerenciador_estados;
 		Personagens::Jogador jogador1;
 		Personagens::Jogador* jogador2;
@@ -25,6 +27,8 @@ class Jogo
 		Plataforma plataforma1;
 		Plataforma plataforma2;
 		Plataforma plataforma3;
+
+		//Fase fase1;
 		
 		sf::RenderWindow* janela_jogo;
 	public:

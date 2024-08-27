@@ -14,8 +14,7 @@ namespace Gerenciadores{
 
             static Gerenciador_Eventos* pGE; 
             Gerenciador_Eventos();
-            Gerenciador_Grafico* pGG; // para resgatarmos as janelas
-            Gerenciador_Inputs* pGI;
+            Gerenciadores::Gerenciador_Grafico* pGG; // para resgatarmos as janelas
             sf::Event evento;
            
 

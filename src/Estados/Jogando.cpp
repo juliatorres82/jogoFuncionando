@@ -14,6 +14,10 @@ Jogando::~Jogando()
     fase = nullptr;
 }
 
+void Jogando::criaFase()
+{
+    fase->constroiFase();
+}
 void Jogando::exec()
 {
     fase->executar();

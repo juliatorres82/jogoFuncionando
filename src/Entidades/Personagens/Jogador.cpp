@@ -1,5 +1,7 @@
 #include "../../../includes/Entidades/Personagens/Jogador.h"
+
 using namespace Entidades::Personagens;
+
 Entidades::Personagens::Jogador::Jogador(Jogador* j2) :
 	pontos(0), jogador2(j2)
 {
@@ -47,7 +49,7 @@ void Entidades::Personagens::Jogador::Pular()
 
 void Entidades::Personagens::Jogador::movDir()
 {
-	corpo.move(sf::Vector2f(velx, 0.f));
+		corpo.move(sf::Vector2f(velx, 0.f));
 }
 
 
@@ -72,34 +74,15 @@ void Entidades::Personagens::Jogador::setQJog()
 		qJog = jg2;
 }
 
-void Entidades::Personagens::Jogador::mover()
+const qJogador Entidades::Personagens::Jogador::getQJog() const
 {
-	if (qJog == jg1)
-	{
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-			movDir();
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-			movEsq();
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-			Pular();
-	}
-
-	else if (qJog == jg2)
-	{
-
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-			movDir();
-
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-			movEsq();
-
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-			Pular();
-	}
-	cair();
-
+    return qJogador();
 }
 
+void Entidades::Personagens::Jogador::mover()
+{
+	cair();
+}
 void Entidades::Personagens::Jogador::executar()
 {
 	mover();

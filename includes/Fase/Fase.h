@@ -10,8 +10,8 @@
 #include "../Estados/MenuPrincipal.h"
 
 #include <fstream>
-#include <nlohmann/json.hpp> // Inclui a biblioteca JSON
 
+#include "../../json.hpp" // Inclui a biblioteca JSON
 using namespace Listas;
 using json = nlohmann::json;
 
@@ -25,18 +25,16 @@ class Fase : public Ente {
         ListaEntidades* listaInimigos;
         ListaEntidades* listaObstaculos;
         ListaEntidades* listaPlataforma;
-
+        bool ehCoop;
         Gerenciadores::Gerenciador_Grafico* p_GG;
         Gerenciadores::Gerenciador_Eventos* p_GE;
         Gerenciadores::Gerenciador_Colisoes* p_GC;
-
-
-        MenuPrincipal menu; 
+        
         std::string caminho;
 
     public:
 
-        Fase(); //
+        Fase(bool coop = 0); //
         ~Fase();
 
         void criaJogadores();

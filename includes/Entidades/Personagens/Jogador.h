@@ -37,6 +37,7 @@ namespace Entidades
 			Jogador* getJogador2();
 			bool doisJogadores();
 			void setQJog();
+			const qJogador getQJog() const;
 			void voltar();
 		};
 	}

@@ -14,7 +14,6 @@ Menu::Menu(const std::string &id)
     titulo.setFillColor(sf::Color::White);
     titulo.setString("Titulo");
     titulo.setPosition(pGG->getTamx()/2, 0);
-    selecionado = false;
 }
 
 Menu::~Menu()
@@ -53,17 +52,18 @@ void Menu::atualizar()
 
 void Menu::exec()
 {
-    for(it = botoes.begin(); it != botoes.end(); it++)
-    {
-        (*it)->desenhar();
-    }
+
 }
 
 void Menu::desenhar()
 {
     pGG->desenhar(fundo);
     pGG->desenhar(titulo);
-    exec();
+    
+        for(it = botoes.begin(); it != botoes.end(); it++)
+    {
+        (*it)->desenhar();
+    }
 }
 
 void Menu::executar()

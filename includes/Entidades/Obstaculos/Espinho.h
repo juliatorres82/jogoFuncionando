@@ -9,7 +9,10 @@ class Espinho : public Obstaculo {
         bool espinhar;
     
     public:
+        Espinho();
         Espinho(int posx, int posy);
         ~Espinho();
-        void Espinhar(); //da dano se tocar ---- implementar
+        
+        void executar();
+        void obstacular(Jogador* jogd);
 };

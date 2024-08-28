@@ -2,6 +2,8 @@
 
 #include "../../Entidades/Personagens/Jogador.h"
 
+using namespace Entidades::Personagens;
+
 namespace Entidades
 {
 	namespace Obstaculos
@@ -13,11 +15,10 @@ namespace Entidades
 
 			public:
 				Obstaculo(bool daDano = false);
-				Obstaculo(float x, float y);
 				~Obstaculo();
 
 				virtual void executar() = 0;
-				virtual void obstacular() = 0;
+				virtual void obstacular(Jogador* jogad) = 0;
 				void empuxo();
 				const bool ehDanoso() const;
 

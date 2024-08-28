@@ -9,7 +9,6 @@ namespace Entidades
             public Entidade
         {
             protected:
-                int vidas;
                 float velx;
                 float vely;
                 bool podePular;

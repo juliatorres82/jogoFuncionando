@@ -16,27 +16,29 @@ plataforma3(sf::Vector2f(400.f, 200.f),0, sf::Vector2f(200.f, 40.f))
     jogador2 = nullptr;
     jogador1.setGG(gerenciador_grafico);
     
-    inimigo1.setGG(gerenciador_grafico);
+    //inimigo1.setGG(gerenciador_grafico);
     fantasma1.setGG(gerenciador_grafico);
+    lagarto1.setGG(gerenciador_grafico); 
+
 
     plataforma1.setGG(gerenciador_grafico);
     plataforma2.setGG(gerenciador_grafico);
     plataforma3.setGG(gerenciador_grafico);
 
-    inimigo1.setJogador(&jogador1);
+    //inimigo1.setJogador(&jogador1);
     fantasma1.setJogador(&jogador1);
 
     gerenciador_colisoes->incluirObstaculos(&plataforma1);
     gerenciador_colisoes->incluirObstaculos(&plataforma2);
     gerenciador_colisoes->incluirObstaculos(&plataforma3);
 
-    gerenciador_colisoes->incluirInimigos(&inimigo1);
+    //gerenciador_colisoes->incluirInimigos(&inimigo1);
     gerenciador_colisoes->incluirInimigos(&fantasma1);
 
     gerenciador_colisoes->incluirJogador(&jogador1);
     
     jogador1.setPosicao(100.f, 100.f);
-    inimigo1.setPosicao(300.f, 100.f);
+    //inimigo1.setPosicao(300.f, 100.f);
     fantasma1.setPosicao(200.f, 100.f);
 }
 
@@ -52,26 +54,23 @@ void Jogo::Executar()
     while (gerenciador_grafico->janelaAberta())
     {
         sf::Event event;
-        janela_jogo->setKeyRepeatEnabled(false);
+        janela_jogo->setKeyRepeatEnabled(false); //testar c true
         while (janela_jogo->pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
                 gerenciador_grafico->fecharJanela();
 
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::P) || (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)))
                 gerenciador_grafico->fecharJanela();
 
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::C) && !jogador1.doisJogadores())
+            /*else if (sf::Keyboard::isKeyPressed(sf::Keyboard::C) && !jogador1.doisJogadores())
             {
-                /*jogador2 = new Jogador(&jogador1);
+                jogador2 = new Jogador(&jogador1);
                 gerenciador_colisoes->incluirJogador(jogador2);
                 jogador1.setJogador2(jogador2);
                 jogador2->setJogador2(&jogador1); 
-                */
-               jogador2 = new Jogador();
-               gerenciador_colisoes->incluirJogador(jogador2);
-               jogador1.setJogador2(jogador2);
-            }
+                
+            }*/
 
             while (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
             {

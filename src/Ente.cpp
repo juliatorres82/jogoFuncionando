@@ -3,10 +3,9 @@
 
 Gerenciador_Grafico* Ente::pGG = nullptr;
 
-Ente::Ente():
-	id(jogaDor)
-{
-
+Ente::Ente(): id(jogaDor) {
+	pGG = pGG->getInstancia();
+	pGC = pGC->getInstancia();
 }
 
 Ente::~Ente()

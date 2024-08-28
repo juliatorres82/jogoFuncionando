@@ -13,32 +13,35 @@ namespace Entidades
 	{
 		protected:
 			sf::RectangleShape corpo;
-			sf::Vector2f pos;
-			sf::Vector2f dimensoes;
+			sf::Vector2f pos; //x
+			sf::Vector2f dimensoes; //x
 			dinamismo tipo;
-			float gravidade;
+			float gravidade; // --> fis
 			bool caiu;
 			bool colidindo;
+			float velx;
 
 		public:
 			Entidade();
 			~Entidade();
-			void desenhar();
+			void desenhar(); 
 			virtual void executar() = 0;
-			void setTam();
-			sf::RectangleShape& getCorpo();
+			void setTam(); //x
+			sf::RectangleShape& getCorpo(); 
 			sf::FloatRect getContorno() const;
 			void atualizar();
 			float getPosicaox();
 			float getPosicaoy();
 			const bool ehDinamico() const;
-			bool emColisao(const Entidade& outro, sf::FloatRect& intersec) const;
-			bool emColisao(const Entidade& outro) const;
+			bool emColisao(const Entidade& outro, sf::FloatRect& intersec) const; //x
+			bool emColisao(const Entidade& outro) const; //x
 			void mudaColidindo(bool flagColid);
 			void mudaCaiu(bool queda);
-			void setPosicao(float x, float y);
-			void setPosicao();
+			void setPosicao(float x, float y); //x
+			void setPosicao(); //x
 			void cair();
+			void setVelocidadex (float vel);
+			float getVelocidadex();
 	};
 
 }

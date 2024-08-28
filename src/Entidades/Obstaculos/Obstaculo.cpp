@@ -8,11 +8,12 @@ Obstaculo::Obstaculo(bool daDano)
 	danoso = daDano;
 }
 
+
 Obstaculo::~Obstaculo()
 {
 }
 
-void Obstaculo::empuxo()
+void Obstaculo::empuxo() //possibilita às plataformas flutuarem
 {
 	corpo.move(sf::Vector2f(0, -gravidade));
 }

@@ -8,7 +8,7 @@ class Fantasma : public Inimigo {
     private:
 
         bool invisivel;
-    
+
     public:
 
         Fantasma();
@@ -20,4 +20,5 @@ class Fantasma : public Inimigo {
         bool isInvisivel();
         void mover();
         void executar();
+        void atacar();
 };

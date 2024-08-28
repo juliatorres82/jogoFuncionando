@@ -2,16 +2,16 @@
 
 Jogando::Jogando()
 {
-    fase = new Fases::Fase();
+    //fase = new Fases::Fase1();
 }
 
 Jogando::~Jogando()
 {
-    if(fase)
+    /*if(fase)
     {
         delete fase;
     }
-    fase = nullptr;
+    fase = nullptr;*/
 }
 
 void Jogando::exec()

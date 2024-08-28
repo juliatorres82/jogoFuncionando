@@ -9,6 +9,9 @@ Fase:: Fase() {
     listaInimigos = new ListaEntidades();
     listaObstaculos = new ListaEntidades();
     listaPlataforma = new ListaEntidades();
+
+    pGG = pGG->getInstancia();
+    //setCaminho(caminho);
 }
 
 Fase::~Fase() {
@@ -77,98 +80,57 @@ Fase::~Fase() {
 
 }
 
-
-void Fase:: criaJogadores(){
-
-    Jogador* jogador1 = NULL;
-
-    if(menu.HaDoisJogadores()){
-        Jogador* jogador2 = NULL;
-        jogador2 = jogador1->getJogador2();
-        jogador2 = new Jogador();
-        listaJogadores->incluir(jogador2);
-    }
-
-    jogador1 = new Jogador();
-    listaJogadores->incluir(jogador1);
-}
-
-
-
-void Fase:: criaInimigos(){ // mudar mais tarde conforme formos criando os inimigos e colocando os rands();
-
-   Fantasma* fantasma1 = new Fantasma();
-   listaInimigos->incluir(fantasma1);
-
-   Lagarto* lagarto1 = new Lagarto();
-   listaInimigos->incluir(lagarto1);
-}
-
-
-void Fase:: criaObstaculos(){ 
-
-    //qndo criarmos obstáculos concretos
-}
-
-
-void Fase:: criaPlataforma() { 
-
-    Obstaculos::Plataforma* plat = new Plataforma();
-    listaPlataforma->incluir(plat);
-
-}
-
 void Fase:: criarTudo(int posx, int posy, int valor) {
 
-       /*switch (valor) {
+       switch (valor) {
+        
                     case 0: // Tile vazio
                         break;
-                    case 12: 
-                        new Plataforma(posx, posy);
-                        
+                    case 12: { 
+                        Plataforma* plataforma = new Plataforma(posx, posy);
+                        listaPlataforma->incluir(plataforma);
                         break;
-                    case 23: 
-                        new PlataformaGelo(posx, posy);
+                    }
+                    case 23: {
+                        PlataformaGelo* plataformaGelo = new PlataformaGelo(posx, posy);
+                        listaPlataforma->incluir(plataformaGelo);
                         break;
-                    case 34: // Por exemplo, 3 pode representar um Enemy
-                        new Jogador(posx, posy);
+                    }
+                    case 34: {
+                        Jogador* jogador = new Jogador(posx, posy);
+                        listaJogadores->incluir(jogador);
                         break;
-                    case 47:
-                        new Espinho(posx, posy);
-                    case 49:
-                        new Fantasma(posx, posy);
-                    case 29:
-                        new Lagarto(posx, posy);
-                    case 18:
-                        new Gosma(posx, posy);
-
+                    }
+                    case 47: {
+                        Espinho* espinho = new Espinho(posx, posy);
+                        listaObstaculos->incluir(espinho);
+                    }
+                    case 49: {
+                        Fantasma* fantasma = new Fantasma(posx, posy);
+                        listaInimigos->incluir(fantasma);
+                    }
+                    case 29: {
+                        Lagarto* lagarto = new Lagarto(posx, posy);
+                        listaInimigos->incluir(lagarto);
+                    }
+                    case 18: {
+                        Gosma* gosma = new Gosma(posx, posy);
+                        listaObstaculos->incluir(gosma);
+                    }
                     default:
                         break;
         }
-    */
 }
 
-json Fase::lerJSON(const std::string caminho) { //talvez podemos tirar
-
-	std::ifstream arquivo(caminho);
-	if (!arquivo.is_open()) {
-		throw std::runtime_error("Não foi possível abrir o arquivo JSON.");
-	}
-	json j;
-	arquivo >> j;
-	return j;
-}
-
-
+    /* Feito por chatGPT, revisado e verificado pelos autores */
 vector<vector<vector<int>>> Fase:: converteJsonParaMatriz(const std::string& caminhoArquivoJson, int numLayers){
-    // Ler o arquivo JSON
     std::ifstream arquivo(caminhoArquivoJson);
     if (!arquivo.is_open()) {
         throw std::runtime_error("Não foi possível abrir o arquivo JSON.");
     }
 
     json mapa;
-    arquivo >> mapa;
+    arquivo >> mapa; //Lê arquivo JSON;
 
     if (numLayers > mapa["layers"].size()) {
         throw std::runtime_error("Quantidade de camadas maior do que a declarada no JSON.");
@@ -187,7 +149,7 @@ vector<vector<vector<int>>> Fase:: converteJsonParaMatriz(const std::string& cam
         int altura = camada["height"];
         auto dados = camada["data"];
 
-        vector<vector<int>> matriz(altura, vector<int>(largura, 0));
+        vector<vector<int>> matriz(altura, vector<int>(largura, 0)); //Transforma JSON em matriz;
 
         for (int y = 0; y < altura; ++y) {
             for (int x = 0; x < largura; ++x) {
@@ -197,12 +159,12 @@ vector<vector<vector<int>>> Fase:: converteJsonParaMatriz(const std::string& cam
 
         matrizMapa.push_back(matriz);
     }
-
     return matrizMapa;
 }
 
 
-void Fase:: constroiFase(){
+
+void Fase:: constroiFase() {
 
     vector<vector<vector<int>>> matriz = converteJsonParaMatriz(caminho, 1);
 
@@ -217,23 +179,15 @@ void Fase:: constroiFase(){
 }
 
 
-void Fase:: tratarColisoes(){
-    
+void Fase:: tratarColisoes() {
     p_GC->tratarColisoes();
-
 }
 
-void Fases::Fase::tratarEventos()
-{
+
+void Fases::Fase::tratarEventos() {
     p_GE->gerencia();
 }
 
- void Fases::Fase::executar() {
-    while(p_GG->janelaAberta())
-    {
-        atualizar();
-    }
-}
 
 void Fase::atualizar() {
 

@@ -1,42 +1,38 @@
 #include "../../../includes/Entidades/Personagens/Lagarto.h"
 
-Lagarto:: Lagarto() : jog1(NULL){}
-
-Lagarto:: Lagarto(float x, float y) {
-    jog1 = NULL;
-    corpo.setPosition(sf::Vector2f(x, y));
+Lagarto:: Lagarto() : amplitude(10.0f){
+    setVelocidadex(2.0f);
 }
+
+
+Lagarto:: Lagarto(float x, float y) : amplitude(10.0f){
+    corpo.setPosition(sf::Vector2f(x, y));
+    setVelocidadex(2.0f);
+}
+
 
 Lagarto:: ~Lagarto() {}
 
-void Lagarto:: perseguir () {
-    
-     Jogador* jog1 = getJogador1();
-
-    if(jog1){
-
-        if(jog1->getPosicaox() - getPosicaox() > 0.0 ){ //jogador à frente do inimigo em x;
-            corpo.move(velx, 0.0); 
-        }
-
-        else if (jog1->getPosicaox() - getPosicaox() < 0.0 )
-            corpo.move(-velx, 0.0);
-
-        if(jog1->getPosicaoy() - getPosicaoy() > 0.0 ) //jogador acima do inimigo;
-            corpo.move(0.0, -vely);
-
-        else if(jog1->getPosicaoy() - getPosicaoy() < 0.0 )
-            corpo.move(0.0, vely);
-    }
-
-    else 
-        cout << " Não foi setado nenhum jogador para perseguição " << endl;
-}
 
 void Lagarto:: mover() {
-    perseguir();
+
+    float dx = 0.0;
+
+    while(pGG->janelaAberta()){ //----testar
+        dx = getPosicaox();
+        corpo.move(getVelocidadex(), 0);
+        if(dx == amplitude || dx == -amplitude)
+            setVelocidadex(-getVelocidadex()); 
+    } 
 }
 
 void Lagarto:: executar() {
     mover();
+    atacar();
+}
+
+void Lagarto:: atacar() { 
+    if(pGC->haColisao(this, getJogador1())){ //mudar p ambos os jjogs 
+        getJogador1()->setVidas(getJogador1()->getVidas()-1);
+    }
 }

@@ -104,10 +104,11 @@ void Gerenciador_Colisoes::tratarColisoesJogsObstacs()
 			jog->mudaCaiu(false);
 			for (auto& obstaculo : lOS)
 			{
-				if ((jog->getCorpo().getGlobalBounds().intersects(obstaculo->getCorpo().getGlobalBounds(), intersec)))
+				if ((jog->getCorpo().getGlobalBounds().intersects(obstaculo->getCorpo().getGlobalBounds(), intersec))) //se há interseção
 				{
 					jog->mudaColidindo(true);
 					jog->parar();
+					obstaculo->obstacular(jog); 
 					resolverColisao(static_cast<Entidade*>(jog), static_cast<Entidade*>(obstaculo), intersec);
 					jog->voltar();
 				}
@@ -194,4 +195,8 @@ void Gerenciadores::Gerenciador_Colisoes::resolverColisaoComEstat(Entidade* p1, 
 		}
 		p1->getCorpo().move(0.f, deCima ? tamVertical : -tamVertical);
 	}
+}
+
+bool Gerenciadores::Gerenciador_Colisoes:: haColisao(Entidade* p1, Entidade* p2) {
+	return p1->getContorno().intersects(p2->getContorno());
 }

@@ -16,7 +16,7 @@ namespace Entidades
 
             public:
                 Plataforma();
-                Plataforma(float x, float y);
+                Plataforma(int x, int y);
                 Plataforma(sf:: Vector2f posicao, int e, sf::Vector2f tam);
                 ~Plataforma();
                 void setElasticidade(int e);

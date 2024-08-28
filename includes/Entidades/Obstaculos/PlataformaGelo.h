@@ -12,9 +12,11 @@ namespace Entidades{
                 bool deslizante;
 
             public:
+                PlataformaGelo(); 
                 PlataformaGelo(int x, int y);
                 ~PlataformaGelo();
-                void deslizaJogador (Jogador* j1); //faz velocidade do jogador aumentar
+                void obstacular(Jogador* jogad);
+                void executar();
         };
     }
 

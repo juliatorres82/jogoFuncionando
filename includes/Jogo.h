@@ -22,15 +22,21 @@ class Jogo
 		//Gerenciador_Estados* gerenciador_estados;
 		Personagens::Jogador jogador1;
 		Personagens::Jogador* jogador2;
-		Inimigo inimigo1;
+		//Inimigo inimigo1;
 		Fantasma fantasma1;
+		Lagarto lagarto1;
+
 		Plataforma plataforma1;
 		Plataforma plataforma2;
 		Plataforma plataforma3;
 
+		PlataformaGelo platGelo;
+		Gosma gosma1;
+		Espinho espinho1;
+
 		//Fase fase1;
-		
 		sf::RenderWindow* janela_jogo;
+
 	public:
 		Jogo();
 		~Jogo();

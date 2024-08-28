@@ -1,7 +1,7 @@
 #include "../../../includes/Entidades/Personagens/Jogador.h"
 using namespace Entidades::Personagens;
 Entidades::Personagens::Jogador::Jogador(Jogador* j2) :
-	pontos(0), jogador2(j2)
+	pontos(0), jogador2(j2), vidas(10)
 {
 	id = idEntes::jogaDor;
 	velx = velocidadeJogador;
@@ -15,7 +15,7 @@ Entidades::Personagens::Jogador::Jogador(Jogador* j2) :
 }
 
 Entidades::Personagens::Jogador::Jogador() :
-	pontos(0), jogador2(NULL)
+	pontos(0), jogador2(NULL), vidas(10)
 {
 	setQJog();
 	id = idEntes::jogaDor;
@@ -25,7 +25,7 @@ Entidades::Personagens::Jogador::Jogador() :
 	corpo.setFillColor(sf::Color::Green);
 }
 
-Entidades::Personagens::Jogador:: Jogador(float x, float y){
+Entidades::Personagens::Jogador:: Jogador(float x, float y): vidas(10){
 	corpo.setPosition(sf::Vector2f(x, y));
 	setQJog();
 	id = idEntes::jogaDor;
@@ -116,4 +116,12 @@ void Entidades::Personagens::Jogador::voltar()
 {
 	velx = velocidadeJogador;
 	vely = pulo;
+}
+
+void Entidades::Personagens::Jogador::setVidas(int vidaNova){
+	vidas = vidaNova;
+}
+
+int Entidades::Personagens::Jogador::getVidas(){
+	return vidas;
 }

@@ -12,7 +12,7 @@ Fantasma :: ~Fantasma() {}
 
 void Fantasma:: perseguir() {
     
-    Jogador* jog1 = getJogador1();
+    Jogador* jog1 = getJogador1(); 
 
     if(jog1){
 
@@ -57,7 +57,6 @@ bool Fantasma :: isInvisivel() {
 }
 
 void Fantasma :: mover() {
-
     perseguir();
 }
 
@@ -66,4 +65,10 @@ void Fantasma :: executar() {
     mover();
     if(!invisivel)
         desenhar();
+    atacar();
+}
+
+void Fantasma :: atacar() {
+    if(pGC->haColisao(this, getJogador1()))
+        getJogador1()->setVidas(getJogador1()->getVidas()-1);
 }

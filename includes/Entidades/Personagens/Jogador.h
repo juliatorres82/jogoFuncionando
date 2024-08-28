@@ -26,6 +26,7 @@ namespace Entidades
 			Jogador(Jogador* j2);
 			Jogador(float x, float y);
 			~Jogador();
+			int vidas;
 
 
 			void executar();
@@ -38,6 +39,8 @@ namespace Entidades
 			bool doisJogadores();
 			void setQJog();
 			void voltar();
+			void setVidas(int vidaNova);
+			int getVidas();
 		};
 	}
 }

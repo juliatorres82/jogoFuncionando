@@ -1,7 +1,6 @@
 #include "../../../includes/Entidades/Personagens/Personagem.h"
 using namespace Entidades::Personagens;
-Personagem::Personagem() :
-	vidas(10), velx(0), vely(0)
+Personagem::Personagem() : velx(0), vely(0)
 {
 	podePular = true;
 	tipo = dinamico;

@@ -1,10 +1,11 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+//#include "../Entidades/Entidade.h"
 #include <iostream>
 using namespace std;
 
-
-class Ente;
+//using namespace Entidades;
+//class Entidade;
 
 namespace Gerenciadores
 {
@@ -19,18 +20,16 @@ namespace Gerenciadores
 
 		~Gerenciador_Grafico();
 		static Gerenciador_Grafico* getInstancia();
-		void desenharEnte(Ente* pEnte);
-		void desenhar(sf::RectangleShape ret);
+		//void desenharEntidade(Entidades::Entidade* pEntidade); //x
+		void desenhar(sf::RectangleShape ret); 
 		void fecharJanela();
         void desenhar(sf::Text texto);
 		void desenhar(sf::Sprite sprite);
-        sf::RenderWindow *getJanela();
+        sf::RenderWindow *getJanela(); 
         const bool janelaAberta() const;
-		float getTamx();
-		float getTamy();
-		void setJanela(sf::RenderWindow* jan);
+		float getTamx(); //x
+		float getTamy(); //x
+		void setJanela(sf::RenderWindow* jan); //x
 	};
-
-
 
 }

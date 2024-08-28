@@ -23,6 +23,13 @@ Plataforma::Plataforma(sf::Vector2f posicao, int e, sf::Vector2f tam)
 	setElasticidade(e);
 	danoso = false;
 }
+
+Plataforma:: Plataforma(int x, int y) : elasticidade(0) {
+	corpo.setPosition(x, y);
+	corpo.setFillColor(sf::Color::Blue);
+}
+
+
 Plataforma::~Plataforma()
 {
 	pGG = nullptr;

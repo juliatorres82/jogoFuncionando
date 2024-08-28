@@ -28,9 +28,6 @@ namespace Gerenciadores
         const bool janelaAberta() const;
 		float getTamx();
 		float getTamy();
-		void setJanela(sf::RenderWindow* jan);
-	};
-
-
-
+        void mostrar();
+    };
 }

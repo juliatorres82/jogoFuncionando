@@ -1,5 +1,6 @@
 #include "../../includes/Gerenciadores/Gerenciador_Grafico.h"
 #include "../../includes/Ente.h"
+#include "Gerenciador_Grafico.h"
 
 using namespace Gerenciadores;
 
@@ -75,7 +76,8 @@ float Gerenciador_Grafico::getTamy()
 	return janela->getSize().y;
 }
 
-void Gerenciador_Grafico:: setJanela(sf::RenderWindow* jan){
-
-	janela = jan;
+void Gerenciador_Grafico::mostrar()
+{
+	janela->display();
 }
+

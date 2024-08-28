@@ -2,7 +2,7 @@
 
 using namespace Gerenciadores;
 
-Gerenciador_Eventos* Gerenciador_Eventos:: pGE (nullptr);
+Gerenciador_Eventos* Gerenciador_Eventos:: pGE = nullptr;
 
 
 Gerenciador_Eventos::Gerenciador_Eventos() : pGG(nullptr){
@@ -14,13 +14,13 @@ Gerenciador_Eventos::~Gerenciador_Eventos(){
 
     if(pGE)
         delete pGE;
-    pGE = NULL;
+    pGE = nullptr;
 
 }
 
 Gerenciador_Eventos* Gerenciador_Eventos::getGerenciadorEventos(){
 
-    if(pGE == NULL){ // se ainda não instanciado 
+    if(pGE == nullptr){ // se ainda não instanciado 
         pGE = new Gerenciador_Eventos();
     }
     return pGE;

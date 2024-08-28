@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "../Entidades/Personagens/Jogador.h"
+#include "../Gerenciadores/Gerenciador_Inputs.h"
 #include <vector>
 using namespace Entidades::Personagens;
 using namespace std;

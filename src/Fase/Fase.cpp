@@ -11,23 +11,14 @@ Fase:: Fase() {
 Fase::~Fase() {
 
     /* desalocando jogadores*/
-    Lista<Entidade>::Iterador it = listaJogadores.getInicio();
-    Entidade* pE = NULL;
+    if(jogador2 != nullptr)
+        delete jogador2;
+    Entidade* pE = nullptr;
 
-    while(!it.isNulo()){
-       pE = (*it);
-
-       if(pE != NULL)
-        delete pE;
-
-       pE = NULL;
-       ++it;
-    }
-    listaJogadores.limpar();
 
 
    /* desalocando inimigos*/
-    it = listaInimigos.getInicio();
+    Lista<Entidade>::Iterador it = listaFantasmas.getInicio();
 
     while(!it.isNulo()){
        pE = (*it);
@@ -38,11 +29,11 @@ Fase::~Fase() {
        pE = NULL;
        ++it;
     }
-    listaInimigos.limpar();
+    listaFantasmas.limpar();
 
 
     /* desalocando obstaculos*/
-    it = listaObstaculos.getInicio();
+    it = listaPlataformas.getInicio();
 
     while(!it.isNulo()){
        pE = (*it);
@@ -54,11 +45,11 @@ Fase::~Fase() {
        ++it;
     }
 
-    listaObstaculos.limpar();
+    listaPlataformas.limpar();
 
 
      /* desalocando plataformas*/
-    it = listaPlataforma.getInicio();
+    it = listaPlataformas.getInicio();
 
     while(!it.isNulo()){
        pE = (*it);
@@ -70,39 +61,32 @@ Fase::~Fase() {
        ++it;
     }
 
-    listaPlataforma.limpar();
+    listaPlataformas.limpar();
 
 }
 
 
-void Fase:: criaJogadores(){
+void Fase::criaJogadores(bool coop){
 
-    Jogador* jogador1 = NULL;
-
-    if(p_GE->isDoisJogadores()){
-        Jogador* jogador2 = NULL;
-        jogador2 = jogador1->getJogador2();
-        jogador2 = new Jogador();
-        listaJogadores.incluir(jogador2);
+    jogador1.setPosicao(100.f, 100.f);
+    if(coop){
+        jogador2 = new Jogador(&jogador1);
+        p_GC->incluirJogador(jogador2);
+        jogador1.setJogador2(jogador2);
+        jogador2->setJogador2(&jogador1);
     }
-
-    jogador1 = new Jogador();
-    listaJogadores.incluir(jogador1);
+    else{
+        jogador2 = nullptr;
+    }
 }
 
 
-void Fase:: criaInimigos(){ // mudar mais tarde conforme formos criando os inimigos e colocando os rands();
+void Fase:: criaInimigosMedios(){ // mudar mais tarde conforme formos criando os inimigos e colocando os rands();
 
    Fantasma* fantasma1 = NULL;
    fantasma1 = new Fantasma();
-   listaInimigos.incluir(fantasma1);
+   listaFantasmas.incluir(fantasma1);
 
-}
-
-
-void Fase:: criaObstaculos(){ 
-
-    //qndo criarmos obstáculos concretos
 }
 
 
@@ -110,7 +94,7 @@ void Fase:: criaPlataforma() {
 
     Obstaculos::Plataforma* plat = NULL;
     plat = new Plataforma();
-    listaPlataforma.incluir(plat);
+    listaPlataformas.incluir(plat);
 
 }
 
@@ -123,14 +107,14 @@ void Fase:: tratarColisoes(){
 
 void Fases::Fase::tratarEventos()
 {
-    p_GE->apertaTecla();
+    p_GE->gerencia();
 }
- void Fases::Fase::executar()
+ void Fases::Fase::executar(bool coop)
 {
     criaPlataforma();
     criaPlataforma();
-    criaJogadores();
-    criaInimigos();
+    criaJogadores(coop);
+    criaInimigosMedios();
 
     while(p_GG->janelaAberta())
     {

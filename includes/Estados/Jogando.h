@@ -1,6 +1,7 @@
 #pragma once
 #include "Estado.h"
-#include "../Fase/Fase.h"
+#include "../Fase/Fase1.h"
+#include "../Fase/Fase2.h"
 
 class Jogando : public Estados::Estado
 {
@@ -9,6 +10,8 @@ class Jogando : public Estados::Estado
     public:
         Jogando();
         ~Jogando();
-        void exec();
+        void exec(bool coop);
         void atualizar();
+        void criaFase1();
+        void criaFase2();
 };

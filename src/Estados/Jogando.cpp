@@ -2,7 +2,7 @@
 
 Jogando::Jogando()
 {
-    fase = new Fases::Fase();
+    fase = nullptr;
 }
 
 Jogando::~Jogando()
@@ -14,12 +14,22 @@ Jogando::~Jogando()
     fase = nullptr;
 }
 
-void Jogando::exec()
+void Jogando::exec(bool coop)
 {
-    fase->executar();
+    fase->executar(coop);
 }
 
 void Jogando::atualizar()
 {
     fase->atualizar();
+}
+
+void Jogando::criaFase1()
+{
+    fase = new Fase1();
+}
+
+void Jogando::criaFase2()
+{
+    fase = 
 }

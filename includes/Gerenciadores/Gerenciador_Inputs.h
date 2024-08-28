@@ -27,7 +27,7 @@ namespace Gerenciadores {
 
         public:
             ~Gerenciador_Inputs();
-            Gerenciador_Inputs* getInstancia();
+            static Gerenciador_Inputs* getInstancia();
             void addObservadoresVigiando(Observadores::Observador* obs);
             void tiraObservadoresVigiando(Observadores::Observador* obs);
             void gerenciaTeclasPressionadas();

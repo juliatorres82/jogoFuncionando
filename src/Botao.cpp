@@ -22,8 +22,8 @@ Botao::Botao(const sf::Vector2f &tam, const sf::Vector2f &pos, const string &tex
     ret.setPosition(pos);
     ret.setFillColor(sf::Color::White);
 
-    fonte.loadFromFile("resources/fonts/arial.ttf");
-    this->texto.setFont(fonte);
+    //fonte.loadFromFile("resources/fonts/arial.ttf");
+    //this->texto.setFont(fonte);
     this->texto.setString(texto);
     this->texto.setCharacterSize(20);
     this->texto.setFillColor(sf::Color::Black);
@@ -102,7 +102,7 @@ void Botao::atualizar()
 }
 void Botao::executar()
 {
-    if (ativo)
+    if (ativo && selecionado)
     {
         clicado = true;
     }

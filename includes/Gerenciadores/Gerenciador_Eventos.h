@@ -14,8 +14,8 @@ namespace Gerenciadores{
         private: // Aplicando Singleton:
             static Gerenciador_Eventos* pGE; 
             Gerenciador_Eventos();
-            Gerenciador_Grafico* pGG; // para resgatarmos as janelas
-            Gerenciador_Inputs* pGI;
+            static Gerenciador_Grafico* pGG; // para resgatarmos as janelas
+            static Gerenciador_Inputs* pGI;
             sf::Event evento;
            
         public:

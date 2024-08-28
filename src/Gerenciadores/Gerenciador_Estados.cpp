@@ -38,8 +38,13 @@ void Gerenciador_Estados::limpar()
 void Gerenciador_Estados::criarEstados()
 {
     Estados::Menu* menu = new Estados::Menu("Menu");
-    //Estados::Jogando* jogando = new Estados::Jogando();
+    if(menu == nullptr)
+    {
+        std::cout << "Erro ao criar estado Menu" << std::endl;
+    }
+    Estados::Jogando* jogando = new Estados::Jogando();
     adicionarEstado("Menu", static_cast<Estados::Estado*>(menu));
+    adicionarEstado("Jogando", static_cast<Estados::Estado*>(jogando));
     mudaEstado("Menu");
 }
 void Gerenciador_Estados::adicionarEstado(const std::string &id, Estados::Estado *estado, const bool &substituir)

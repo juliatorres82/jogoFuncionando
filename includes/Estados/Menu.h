@@ -22,7 +22,7 @@ namespace Estados
                 
             public:
                 Menu();
-                Menu(const std::string& id);
+                Menu(const std::string& iD);
                 void limpar();
                 virtual ~Menu();
                 void setFundo(const string& caminho);

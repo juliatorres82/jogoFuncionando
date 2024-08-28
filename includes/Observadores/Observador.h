@@ -13,12 +13,12 @@ namespace Observadores {
                 bool ativo;
 
             public:
-                Observador();
+                Observador(bool ativado = true);
                 virtual ~Observador(); 
                 
                 virtual void notificaTeclaPressionada(const sf::Keyboard::Key) = 0;
                 virtual void notificaTeclaSolta(const sf::Keyboard:: Key) = 0;
-
+                void addObservadorVigiando();
                 void mudaEstadoAtivo();
                 bool getEstadoAtivo();
         };

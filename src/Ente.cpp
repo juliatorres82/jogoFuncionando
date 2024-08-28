@@ -3,8 +3,8 @@
 
 Gerenciador_Grafico* Ente::pGG = nullptr;
 
-Ente::Ente():
-	id(jogaDor)
+Ente::Ente(idEntes ID):
+	id(ID)
 {
 
 }

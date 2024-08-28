@@ -6,17 +6,21 @@ Jogo::Jogo()
     gerenciador_grafico = Gerenciadores::Gerenciador_Grafico::getInstancia();
     gerenciador_eventos = Gerenciadores::Gerenciador_Eventos::getGerenciadorEventos();
     gerenciador_estados = Gerenciadores::Gerenciador_Estados::getInstancia();
-    /*try
+    if(gerenciador_grafico == nullptr || gerenciador_eventos == nullptr || gerenciador_estados == nullptr)
+    {
+        std::cerr << "Erro ao criar os gerenciadores" << '\n';
+        gerenciador_grafico->fecharJanela();
+    }
+    try
     {      
-        gerenciador_estados->criarEstados();
-
-        throw std::runtime_error("Erro ao criar estados");
+        //gerenciador_estados->criarEstados();
     }
 
-    catch(const std::exception& e)
+    catch(...)
     {
-        std::cerr << e.what() << '\n';
-    }*/
+        std::cerr << "Erro ao criar os estados" << '\n';
+        gerenciador_grafico->fecharJanela();
+    }
    /* jogador2 = nullptr;
     jogador1.setGG(gerenciador_grafico);
     
@@ -50,9 +54,8 @@ Jogo::~Jogo()
     //delete jogador2;
     //janela_jogo = nullptr;
 }
-
 void Jogo::Executar()
-{
+{   
     /*
     while (gerenciador_grafico->janelaAberta())
     {

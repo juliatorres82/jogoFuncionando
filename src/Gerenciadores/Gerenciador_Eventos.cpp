@@ -3,26 +3,26 @@
 
 using namespace Gerenciadores;
 
-Gerenciador_Eventos* Gerenciador_Eventos:: pGE (nullptr);
-
+Gerenciador_Eventos* Gerenciador_Eventos::pGE = nullptr;
+Gerenciador_Grafico* Gerenciador_Eventos::pGG = nullptr;
+Gerenciador_Inputs* Gerenciador_Eventos::pGI = nullptr;
 
 Gerenciador_Eventos::Gerenciador_Eventos(){
     pGG = Gerenciador_Grafico::getInstancia();
-    pGI = pGI->getInstancia();
+    pGI = Gerenciador_Inputs::getInstancia();
 }
-
 
 Gerenciador_Eventos::~Gerenciador_Eventos(){
 
     if(pGE)
         delete pGE;
-    pGE = NULL;
+    pGE = nullptr;
 
 }
 
 Gerenciador_Eventos* Gerenciador_Eventos::getGerenciadorEventos(){
 
-    if(pGE == NULL){ // se ainda não instanciado 
+    if(pGE == nullptr){ // se ainda não instanciado 
         pGE = new Gerenciador_Eventos();
     }
     return pGE;
@@ -37,9 +37,8 @@ bool Gerenciadores::Gerenciador_Eventos::teclaPressionada(sf::Keyboard::Key tecl
 
 bool Gerenciadores::Gerenciador_Eventos::teclaSolta(sf::Keyboard::Key tecla)
 {
-    if(evento.type == evento.KeyReleased){
-	    if(evento.key.code == tecla)
-            return true;
+    if(evento.key.code == tecla){
+        return true;
     }
     return false;
 }

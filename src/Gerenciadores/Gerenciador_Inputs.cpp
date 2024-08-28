@@ -1,11 +1,13 @@
 #include "../../includes/Observadores/Observador.h"
 using namespace Gerenciadores;
 
-Gerenciador_Inputs* Gerenciador_Inputs:: gI = NULL;
+Gerenciador_Inputs* Gerenciador_Inputs:: gI = nullptr;
 Gerenciador_Grafico* Gerenciador_Inputs:: pGG = Gerenciador_Grafico::getInstancia();
 Gerenciador_Eventos* Gerenciador_Inputs:: pGE = Gerenciador_Eventos::getGerenciadorEventos();
 
 Gerenciador_Inputs:: Gerenciador_Inputs(){
+
+    gI = getInstancia();
 
     comandosMovimento.push_back(sf::Keyboard::A);
     comandosMovimento.push_back(sf::Keyboard::D);
@@ -26,16 +28,17 @@ Gerenciador_Inputs:: ~Gerenciador_Inputs() {
 
     if(gI)
         delete gI;
-    gI = NULL;
+    gI = nullptr;
 
     comandosFechamento.clear();
     comandosMovimento.clear();
     observadoresVigiando.clear();
 }
 
-Gerenciador_Inputs* Gerenciador_Inputs:: getInstancia(){
+Gerenciador_Inputs* Gerenciador_Inputs::getInstancia(){
 
-    if(gI = NULL){
+    if(gI = nullptr)
+    {
         gI = new Gerenciador_Inputs();
     }
     return gI;
@@ -44,7 +47,8 @@ Gerenciador_Inputs* Gerenciador_Inputs:: getInstancia(){
 
 void Gerenciador_Inputs::addObservadoresVigiando(Observadores::Observador* obs){
     
-    if(obs){
+    if(obs)
+    {
        observadoresVigiando.push_back(obs);
     }
 }
@@ -59,15 +63,14 @@ void Gerenciador_Inputs::tiraObservadoresVigiando(Observadores::Observador* obs)
 
 
 void Gerenciador_Inputs:: gerenciaTeclasPressionadas(){
-
+/*
     std::vector<sf::Keyboard::Key>::iterator it = comandosMovimento.begin();
     std::list<Observadores::Observador*>::iterator itObs = observadoresVigiando.begin();
-
 
     while(it != comandosMovimento.end()){
 
         if(pGE->teclaPressionada(*it)) //verifica qual a tecla pressionada
-            for(itObs; itObs!=observadoresVigiando.end(); itObs++) //conta para todos os observadores
+            for(itObs; itObs != observadoresVigiando.end(); itObs++) //conta para todos os observadores
                 (*itObs)->notificaTeclaPressionada(*it);
         it++;
     }
@@ -77,17 +80,17 @@ void Gerenciador_Inputs:: gerenciaTeclasPressionadas(){
     while(it != comandosFechamento.end()){
 
         if(pGE->teclaPressionada(*it))
-            for(itObs; itObs!=observadoresVigiando.end(); itObs++)
+            for(itObs; itObs != observadoresVigiando.end(); itObs++)
                 (*itObs)->notificaTeclaPressionada(*it);
         it++;
     }
-
+*/
 }
 
 
 void Gerenciador_Inputs:: gerenciaTeclasSoltas(){
 
-    std::vector<sf::Keyboard::Key>::iterator it = comandosMovimento.begin();
+    /*std::vector<sf::Keyboard::Key>::iterator it = comandosMovimento.begin();
     std::list<Observadores::Observador*>::iterator itObs = observadoresVigiando.begin();
 
     while(it != comandosMovimento.end()){
@@ -107,5 +110,5 @@ void Gerenciador_Inputs:: gerenciaTeclasSoltas(){
                 (*itObs)->notificaTeclaSolta(*it);
         it++;
     }
-
+*/
 }

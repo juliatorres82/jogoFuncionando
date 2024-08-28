@@ -1,16 +1,16 @@
-#include "ObservadorMenu.h"
+#include "../../includes/Observadores/ObservadorMenu.h"
 
-ObservadorMenu::ObservadorMenu(Estados::Menu* menu)
+Observadores::ObservadorMenu::ObservadorMenu(Estados::Menu* pmenu)
 {
     this->menu = menu;
 }
 
-ObservadorMenu::~ObservadorMenu()
+Observadores::ObservadorMenu::~ObservadorMenu()
 {
     this->menu = nullptr;
 }
 
-void ObservadorMenu::notificaTeclaPressionada(const sf::Keyboard::Key tecla)
+void Observadores::ObservadorMenu::notificaTeclaPressionada(const sf::Keyboard::Key tecla)
 {
     if(tecla == sf::Keyboard::Up)
     {
@@ -26,7 +26,7 @@ void ObservadorMenu::notificaTeclaPressionada(const sf::Keyboard::Key tecla)
     }
 }
 
-void ObservadorMenu::notificaTeclaSolta(const sf::Keyboard::Key)
+void Observadores::ObservadorMenu::notificaTeclaSolta(const sf::Keyboard::Key)
 {
     
 }

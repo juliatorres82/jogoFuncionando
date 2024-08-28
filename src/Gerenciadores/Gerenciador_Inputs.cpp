@@ -1,4 +1,5 @@
-#include "../../includes/Gerenciadores/Gerenciador_Inputs.h"
+#include "../../includes/Observadores/Observador.h"
+using namespace Gerenciadores;
 
 Gerenciador_Inputs* Gerenciador_Inputs:: gI = NULL;
 Gerenciador_Grafico* Gerenciador_Inputs:: pGG = Gerenciador_Grafico::getInstancia();
@@ -41,7 +42,7 @@ Gerenciador_Inputs* Gerenciador_Inputs:: getInstancia(){
 }
 
 
-void Gerenciador_Inputs::addObservadoresVigiando(Observador* obs){
+void Gerenciador_Inputs::addObservadoresVigiando(Observadores::Observador* obs){
     
     if(obs){
        observadoresVigiando.push_back(obs);
@@ -49,7 +50,7 @@ void Gerenciador_Inputs::addObservadoresVigiando(Observador* obs){
 }
 
 
-void Gerenciador_Inputs::tiraObservadoresVigiando(Observador* obs){
+void Gerenciador_Inputs::tiraObservadoresVigiando(Observadores::Observador* obs){
     
     if(obs){
        observadoresVigiando.remove(obs);
@@ -60,7 +61,7 @@ void Gerenciador_Inputs::tiraObservadoresVigiando(Observador* obs){
 void Gerenciador_Inputs:: gerenciaTeclasPressionadas(){
 
     std::vector<sf::Keyboard::Key>::iterator it = comandosMovimento.begin();
-    std::list<Observador*>::iterator itObs = observadoresVigiando.begin();
+    std::list<Observadores::Observador*>::iterator itObs = observadoresVigiando.begin();
 
 
     while(it != comandosMovimento.end()){
@@ -87,7 +88,7 @@ void Gerenciador_Inputs:: gerenciaTeclasPressionadas(){
 void Gerenciador_Inputs:: gerenciaTeclasSoltas(){
 
     std::vector<sf::Keyboard::Key>::iterator it = comandosMovimento.begin();
-    std::list<Observador*>::iterator itObs = observadoresVigiando.begin();
+    std::list<Observadores::Observador*>::iterator itObs = observadoresVigiando.begin();
 
     while(it != comandosMovimento.end()){
 

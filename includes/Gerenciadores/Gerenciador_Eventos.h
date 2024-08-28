@@ -1,7 +1,6 @@
 #pragma once
 #include "Gerenciador_Grafico.h"
 #include <vector>
-using namespace Entidades::Personagens;
 using namespace std;
 
 namespace Gerenciadores{
@@ -19,7 +18,6 @@ namespace Gerenciadores{
             Gerenciador_Inputs* pGI;
             sf::Event evento;
            
-
         public:
             ~Gerenciador_Eventos();
             static Gerenciador_Eventos* getGerenciadorEventos();

@@ -1,11 +1,11 @@
 #include "../../includes/Observadores/ObservadorJogador.h"
 
-ObservadorJogador::ObservadorJogador()
+Observadores::ObservadorJogador::ObservadorJogador()
 {
     pjogador = new Entidades::Personagens::Jogador();
 }
 
-ObservadorJogador::~ObservadorJogador()
+Observadores::ObservadorJogador::~ObservadorJogador()
 {
     if(pjogador)
     {
@@ -14,7 +14,7 @@ ObservadorJogador::~ObservadorJogador()
     pjogador = nullptr;
 }
 
-void ObservadorJogador::notificaTeclaPressionada(const sf::Keyboard::Key k)
+void Observadores::ObservadorJogador::notificaTeclaPressionada(const sf::Keyboard::Key k)
 {
     if(pjogador->getQJog() == 0)
     {
@@ -53,7 +53,7 @@ void ObservadorJogador::notificaTeclaPressionada(const sf::Keyboard::Key k)
     }
 }
 
-void ObservadorJogador::notificaTeclaSolta(const sf::Keyboard::Key k)
+void Observadores::ObservadorJogador::notificaTeclaSolta(const sf::Keyboard::Key k)
 {
     
 }

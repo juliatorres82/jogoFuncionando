@@ -217,6 +217,9 @@ void Fase:: constroiFase(){
 
 }
 
+void Fases::Fase::criaFundo()
+{
+}
 
 void Fase:: tratarColisoes(){
     

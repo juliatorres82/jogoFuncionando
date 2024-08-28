@@ -6,7 +6,7 @@ Jogo::Jogo()
     gerenciador_grafico = Gerenciadores::Gerenciador_Grafico::getInstancia();
     gerenciador_eventos = Gerenciadores::Gerenciador_Eventos::getGerenciadorEventos();
     gerenciador_estados = Gerenciadores::Gerenciador_Estados::getInstancia();
-    try
+    /*try
     {      
         gerenciador_estados->criarEstados();
 
@@ -16,7 +16,7 @@ Jogo::Jogo()
     catch(const std::exception& e)
     {
         std::cerr << e.what() << '\n';
-    }
+    }*/
    /* jogador2 = nullptr;
     jogador1.setGG(gerenciador_grafico);
     
@@ -112,11 +112,11 @@ void Jogo::Executar()
     }*/
    while(gerenciador_grafico->janelaAberta())
     {
-        gerenciador_eventos->gerencia();
+        //gerenciador_eventos->gerencia();
 
         gerenciador_grafico->limpaJanela();
         
-        gerenciador_estados->executar();
+        //gerenciador_estados->executar();
         
         gerenciador_grafico->mostrarJanela();
     }

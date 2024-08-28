@@ -9,9 +9,9 @@ namespace Estados
         private:
             Fases::Fase* fase;
         public:
-            Jogando();
+            Jogando(const std::string& id = "Jogando");
             ~Jogando();
-            void criaFase();
+            void criaFase(bool coop);
             void exec();
             void atualizar();
     };

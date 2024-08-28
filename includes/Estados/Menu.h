@@ -1,15 +1,19 @@
 #pragma once
 #include "Estado.h"
 #include "../Botao.h"
-#include "../Observadores/ObservadorMenu.h"
 #include <list>
+
+namespace Observadores
+{
+    class ObservadorMenu;
+}
 namespace Estados
 {
     class Menu: public Estados::Estado, public Ente
     {
             protected:
                 list<Botao*> botoes;
-                ObservadorMenu* observadorMenu;
+                Observadores::ObservadorMenu* observadorMenu;
                 list<Botao*>::iterator it;
                 sf::RectangleShape fundo;
                 sf::Texture textura_fundo;

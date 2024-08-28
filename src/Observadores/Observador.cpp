@@ -1,21 +1,21 @@
 #include "../../includes/Observadores/Observador.h"
 
-Observador::Observador() {
+Observadores::Observador::Observador() {
     
     this->pGI = pGI->getInstancia(); //cada instância vigia o gerenciador de Inputs
     pGI->addObservadoresVigiando(this); //cada gerenciador de Inputs inscreve o observador
 }
 
-Observador:: ~Observador() {
+Observadores::Observador:: ~Observador() {
     pGI->tiraObservadoresVigiando(this);
 }
 
-void Observador::mudaEstadoAtivo()
+void Observadores::Observador::mudaEstadoAtivo()
 {
     ativo = !ativo; 
 }
 
-bool Observador::getEstadoAtivo()
+bool Observadores::Observador::getEstadoAtivo()
 {
     return ativo;
 }

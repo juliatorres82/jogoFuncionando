@@ -15,6 +15,7 @@ Botao::~Botao()
 {
 
 }
+
 Botao::Botao(const sf::Vector2f &tam, const sf::Vector2f &pos, const string &texto)
 {
     ret.setSize(tam);
@@ -32,6 +33,7 @@ Botao::Botao(const sf::Vector2f &tam, const sf::Vector2f &pos, const string &tex
     ativo = true;
     clicado = false;
 }
+
 void Botao::setPos(const sf::Vector2f &pos)
 {
     ret.setPosition(pos);
@@ -104,4 +106,14 @@ void Botao::executar()
     {
         clicado = true;
     }
+}
+
+bool Botao::getClicado()
+{
+    return clicado;
+}
+
+const string Botao::getTexto() const
+{
+    return texto.getString();
 }

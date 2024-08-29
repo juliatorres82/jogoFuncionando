@@ -16,14 +16,13 @@ class Ente
 {
 	protected:
 		idEntes id;
-		static Gerenciador_Grafico* pGG;
+		static Gerenciadores::Gerenciador_Grafico* pGG;
 
 	public:
-		Ente();
+		Ente(idEntes ID = jogaDor);
 		~Ente();
 		virtual void executar() = 0;
 		virtual void desenhar() = 0;
-		static void setGG(Gerenciador_Grafico* gG);
 		idEntes getId();
 };
 

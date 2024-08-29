@@ -2,13 +2,17 @@
 #include "Estado.h"
 #include "../Fase/Fase.h"
 
-class Jogando : public Estados::Estado
+namespace Estados
 {
-    private:
-        Fases::Fase* fase;
-    public:
-        Jogando();
-        ~Jogando();
-        void exec();
-        void atualizar();
-};
+    class Jogando : public Estados::Estado
+    {
+        private:
+            Fases::Fase* fase;
+        public:
+            Jogando(const std::string& id = "Jogando");
+            ~Jogando();
+            void criaFase(bool coop);
+            void exec();
+            void atualizar();
+    };
+}

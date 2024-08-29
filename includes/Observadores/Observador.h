@@ -1,19 +1,24 @@
 #pragma once
 #include "../Gerenciadores/Gerenciador_Inputs.h"
 
-//Aplicando padrão de projeto Observer
-class Observador {
+namespace Observadores {
+    
+        class Observador {
 
-    private:
-        Gerenciador_Inputs* pGI;
+            protected:
+                static Gerenciadores::Gerenciador_Inputs* pGI;
 
-    public:
-        Observador();
-        ~Observador(); 
-        
-        void notificaTeclaPressionadaJog(sf::Keyboard::Key);
-        void notificaTeclaSoltaJog (sf::Keyboard:: Key);
-        void notificaTeclaPressionadaJan(sf::Keyboard::Key);
-        void notificaTeclaSoltaJan(sf::Keyboard::Key);
+            private:
+                bool ativo;
 
-};
+            public:
+                Observador(bool ativado = true);
+                virtual ~Observador(); 
+                
+                virtual void notificaTeclaPressionada(const sf::Keyboard::Key) = 0;
+                virtual void notificaTeclaSolta(const sf::Keyboard:: Key) = 0;
+              
+                void mudaEstadoAtivo();
+                bool getEstadoAtivo();
+        };
+}

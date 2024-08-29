@@ -18,5 +18,6 @@ namespace Listas
 		void executaLista();
 		void limpar();
 		Lista<Entidade>::Iterador getInicio();
+		Entidade* getPrimeiro();
 	};
 }

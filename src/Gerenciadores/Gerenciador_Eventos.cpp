@@ -1,63 +1,50 @@
 #include "../../includes/Gerenciadores/Gerenciador_Eventos.h"
+#include "../../includes/Gerenciadores/Gerenciador_Inputs.h"
 
-using namespace Gerenciadores;
-
-Gerenciador_Eventos* Gerenciador_Eventos:: pGE (nullptr);
-
-
-Gerenciador_Eventos::Gerenciador_Eventos() : pGG(nullptr){
-    pGG = Gerenciador_Grafico::getInstancia();
-}
-
-
-Gerenciador_Eventos::~Gerenciador_Eventos(){
-
-    if(pGE)
-        delete pGE;
-    pGE = NULL;
-
-}
-
-Gerenciador_Eventos* Gerenciador_Eventos::getGerenciadorEventos(){
-
-    if(pGE == NULL){ // se ainda não instanciado 
-        pGE = new Gerenciador_Eventos();
-    }
-    return pGE;
-
-}
-
-bool Gerenciadores::Gerenciador_Eventos::teclaPressionada(sf::Keyboard::Key tecla)
+namespace Gerenciadores
 {
-	return sf::Keyboard::isKeyPressed(tecla);
-}
+    Gerenciador_Eventos* Gerenciador_Eventos::pGE = nullptr;
+    Gerenciador_Grafico* Gerenciador_Eventos::pGG = nullptr;
+    Gerenciador_Inputs* Gerenciador_Eventos::pGI = nullptr;
 
-
-bool Gerenciadores::Gerenciador_Eventos::teclaSolta(sf::Keyboard::Key tecla)
-{
-    if(evento.type == evento.KeyReleased){
-	    if(evento.key.code == tecla)
-            return true;
+    Gerenciador_Eventos::Gerenciador_Eventos(){
+            pGG = Gerenciador_Grafico::getInstancia();
+            pGI = Gerenciador_Inputs::getInstancia();
     }
-    return false;
-}
 
+    Gerenciador_Eventos::~Gerenciador_Eventos(){
 
-void Gerenciador_Eventos::gerencia(){
+        if(pGE)
+            delete pGE;
+        pGE = nullptr;
 
-    while(pGG->janelaAberta()){
-        if(pGG->getJanela()->pollEvent(evento)){
-            
-            if(evento.type == sf::Event::KeyPressed)
-                pGI->gerenciaTeclasPressionadas();
+    }
 
-            if (evento.type == sf::Event::KeyReleased)
-               pGI->gerenciaTeclasSoltas();
-            
-            if(evento.type == sf::Event::Closed) 
-                pGG->fecharJanela();
+    Gerenciador_Eventos* Gerenciador_Eventos::getGerenciadorEventos(){
+
+        if(pGE == nullptr){ // se ainda não instanciado 
+            pGE = new Gerenciador_Eventos();
         }
+        return pGE;
 
     }
 
+    void Gerenciador_Eventos::gerenciaEventos(){
+
+        if(pGG->getJanela()->isOpen())
+        {    while(pGG->getJanela()->pollEvent(evento)){
+                
+                if(evento.type == sf::Event::KeyPressed)
+                    pGI->gerenciaTeclasPressionadas(evento.key.code);
+
+                else if (evento.type == sf::Event::KeyReleased)
+                    pGI->gerenciaTeclasSoltas(evento.key.code);
+                
+                else if(evento.type == sf::Event::Closed) 
+                    pGG->fecharJanela();
+            }
+        }
+        
+
+    }
 }

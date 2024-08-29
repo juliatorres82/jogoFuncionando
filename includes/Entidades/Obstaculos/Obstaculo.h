@@ -13,6 +13,7 @@ namespace Entidades
 
 			public:
 				Obstaculo(bool daDano = false);
+				Obstaculo(float x, float y);
 				~Obstaculo();
 
 				virtual void executar() = 0;

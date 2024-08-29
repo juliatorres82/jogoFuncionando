@@ -1,15 +1,41 @@
 #include "../../includes/Observadores/Observador.h"
 
-Observador:: Observador() {
-    
-    this->pGI = pGI->getInstancia(); //cada instância vigia o gerenciador de Inputs
-    pGI->addObservadoresVigiando(this); //cada gerenciador de Inputs inscreve o observador
-}
+namespace Observadores{
 
-Observador:: ~Observador() {
-    pGI->tiraObservadoresVigiando(this);
-}
+    Gerenciadores::Gerenciador_Inputs* Observador::pGI = Gerenciadores::Gerenciador_Inputs::getInstancia();
 
-void Observador::notificaTeclaPressionadaJog(sf::Keyboard::Key tecla){
-        
+    Observadores::Observador::Observador(bool ativado):
+    ativo(ativado) 
+    {  
+        if(pGI != nullptr && this != nullptr)
+        {   
+            pGI->addObservadoresVigiando(this); //cada gerenciador de Inputs inscreve o observador
+        }
+
+        if(pGI == nullptr)
+        {
+            std::cerr << "Erro: pGI eh nullptr no construtor de Observador" << std::endl;
+        }
+
+        if(this == nullptr)
+        {
+            std::cerr << "Erro: this eh nullptr no construtor de Observador" << std::endl;
+        }
+    }
+
+    Observadores::Observador:: ~Observador() {
+        pGI->tiraObservadoresVigiando(this);
+        pGI = nullptr;
+    }
+
+    void Observadores::Observador::mudaEstadoAtivo()
+    {
+        ativo = !ativo; 
+    }
+
+    bool Observadores::Observador::getEstadoAtivo()
+    {
+        return ativo;
+    }
+
 }

@@ -42,6 +42,11 @@ void ListaEntidades:: limpar(){
 	listaEnt.limpaLista();
 }
 
+Entidade* ListaEntidades::getPrimeiro(){ ////////////// verificar se fiz certo
+	return *(listaEnt.getInicio());
+}
+
+
 Lista<Entidade>::Iterador ListaEntidades:: getInicio(){
 
 	return listaEnt.getInicio();

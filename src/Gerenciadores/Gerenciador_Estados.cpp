@@ -32,22 +32,39 @@ void Gerenciador_Estados::limpar()
     while (!estados.empty())
     {
         delete estados.begin()->second;
+        estados.erase(estados.begin());
     }
     estados.clear();
 }
+
 void Gerenciador_Estados::criarEstados()
 {
-    Estados::Menu* menu = new Estados::Menu("Menu");
-    if(menu == nullptr)
+    try
     {
-        std::cout << "Erro ao criar estado Menu" << std::endl;
+        Estados::Menu* menu = new Estados::Menu("Menu");
+        adicionarEstado("Menu", menu);
     }
-    Estados::Jogando* jogando = new Estados::Jogando();
-    adicionarEstado("Menu", static_cast<Estados::Estado*>(menu));
-    adicionarEstado("Jogando", static_cast<Estados::Estado*>(jogando));
+    catch (const std::bad_alloc& e)
+    {
+        std::cerr << "Erro ao criar estado Menu: " << e.what() << std::endl;
+        return;
+    }
+
+    try
+    {
+        Estados::Jogando* jogando = new Estados::Jogando("Jogando");
+        adicionarEstado("Jogando", jogando);
+    }
+    catch (const std::bad_alloc& e)
+    {
+        std::cerr << "Erro ao criar estado Jogando: " << e.what() << std::endl;
+        return;
+    }
+
     mudaEstado("Menu");
 }
-void Gerenciador_Estados::adicionarEstado(const std::string &id, Estados::Estado *estado, const bool &substituir)
+
+void Gerenciador_Estados::adicionarEstado(const std::string &id, Estados::Estado *estado)
 {
     estados.insert(std::pair<std::string, Estados::Estado*>(id, estado));
 }
@@ -70,6 +87,11 @@ void Gerenciador_Estados::mudaEstado(const std::string& id)
         {
             return;
         }
+    }
+    if(estados[id] == nullptr)
+    {
+        std::cout << "Erro ao mudar de estado" << std::endl;
+        return;
     }
     estado_atual = estados[id];
 }

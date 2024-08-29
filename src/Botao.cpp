@@ -8,7 +8,7 @@ Botao::Botao()
     selecionado = false;
     ativo = true;
     clicado = false;
-    setGG(Gerenciador_Grafico::getInstancia());
+    pGG = Gerenciador_Grafico::getInstancia();
 }
 
 Botao::~Botao()
@@ -18,12 +18,12 @@ Botao::~Botao()
 
 Botao::Botao(const sf::Vector2f &tam, const sf::Vector2f &pos, const string &texto)
 {
-    ret.setSize(tam);
-    ret.setPosition(pos);
+    setTam(tam);
+    setPos(pos);
     ret.setFillColor(sf::Color::White);
 
-    //fonte.loadFromFile("resources/fonts/arial.ttf");
-    //this->texto.setFont(fonte);
+    fonte.loadFromFile("C:/Users/vinic/Desktop/projetos/JogoSimas/joguinho_lindo/joguinho_lindo/NewAmsterdam-Regular.ttf");
+    this->texto.setFont(fonte);
     this->texto.setString(texto);
     this->texto.setCharacterSize(20);
     this->texto.setFillColor(sf::Color::Black);

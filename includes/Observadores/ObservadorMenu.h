@@ -8,7 +8,7 @@ namespace Observadores
         private:
             Estados::Menu* menu;
         public:
-            ObservadorMenu(Estados::Menu* pmenu);
+            ObservadorMenu(Estados::Menu* pmenu = nullptr);
             ~ObservadorMenu();
             void notificaTeclaPressionada(const sf::Keyboard::Key);
             void notificaTeclaSolta(const sf::Keyboard::Key);

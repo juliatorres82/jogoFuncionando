@@ -1,35 +1,74 @@
 #include "../../includes/Observadores/ObservadorMenu.h"
 #include "../../includes/Gerenciadores/Gerenciador_Estados.h"
+using namespace Observadores;
 
-Estados::Menu::Menu()
+Estados::Menu::Menu():
+Estado("Menu"), Ente(menu)
 {
-}
-
-Estados::Menu::Menu(const std::string &iD):
-Estado(iD), Ente(menu)
-{
-    //pGG = Gerenciadores::Gerenciador_Grafico::getInstancia();
-    //fonte.loadFromFile("C:/Users/vinic/Desktop/projetos/joguinhoNoVSCode/mainJogoFuncionando/jogoFuncionando/fontes/04B_19__.TTF");
-    //titulo.setFont(fonte);
+    pGG = Gerenciadores::Gerenciador_Grafico::getInstancia();
+    fonte.loadFromFile("C:/Users/vinic/Desktop/projetos/JogoSimas/joguinho_lindo/joguinho_lindo/NewAmsterdam-Regular.ttf");
+    titulo.setFont(fonte);
     limpar();
     titulo.setCharacterSize(50);
     titulo.setFillColor(sf::Color::White);
     titulo.setString("Titulo");
     titulo.setPosition(pGG->getTamx()/2, 0);
-    //observadorMenu = new Observadores::ObservadorMenu(this);
-    //observadorMenu->addObservadorVigiando();
+    
+    // Verifique se o ponteiro this é válido
+    if (this == nullptr) {
+        std::cerr << "Erro: this é nullptr no construtor de Menu" << std::endl;
+        return;
+    }
+
+    observadorMenu = new ObservadorMenu(this);
+    if (observadorMenu == nullptr) {
+        std::cerr << "Erro: falha ao alocar memória para ObservadorMenu" << std::endl;
+        return;
+    }
+
     adicionarBotao("Jogar", sf::Vector2f(200, 50), sf::Vector2f(pGG->getTamx()/2, pGG->getTamy()/2));
     adicionarBotao( "Sair", sf::Vector2f(200, 50), sf::Vector2f(pGG->getTamx()/2, pGG->getTamy()/2 + 100));
     it = botoes.begin();
     (*it)->setSelecionado(true);
 }
 
+
+Estados::Menu::Menu(const std::string &iD):
+Estado(iD), Ente(menu)
+{
+    pGG = Gerenciadores::Gerenciador_Grafico::getInstancia();
+    fonte.loadFromFile("C:/Users/vinic/Desktop/projetos/JogoSimas/joguinho_lindo/joguinho_lindo/NewAmsterdam-Regular.ttf");
+    titulo.setFont(fonte);
+    limpar();
+    titulo.setCharacterSize(50);
+    titulo.setFillColor(sf::Color::White);
+    titulo.setString("Titulo");
+    titulo.setPosition(pGG->getTamx()/2, 0);
+    
+    // Verifique se o ponteiro this é válido
+    if (this == nullptr) {
+        std::cerr << "Erro: this é nullptr no construtor de Menu" << std::endl;
+        return;
+    }
+
+    observadorMenu = new ObservadorMenu(this);
+    if (observadorMenu == nullptr) {
+        std::cerr << "Erro: falha ao alocar memória para ObservadorMenu" << std::endl;
+        return;
+    }
+
+    adicionarBotao("Jogar", sf::Vector2f(200, 50), sf::Vector2f(pGG->getTamx()/2, pGG->getTamy()/2));
+    adicionarBotao( "Sair", sf::Vector2f(200, 50), sf::Vector2f(pGG->getTamx()/2, pGG->getTamy()/2 + 100));
+    it = botoes.begin();
+    (*it)->setSelecionado(true);
+}
 Estados::Menu::~Menu()
 {
     if(observadorMenu != nullptr)
     {
         delete observadorMenu;
     }
+    observadorMenu = nullptr;
     limpar();
 }
 
@@ -76,7 +115,7 @@ void Estados::Menu::adicionarBotao(const string &texto, const sf::Vector2f &tam,
     {
         std::cout << "Erro ao criar botao" << std::endl;
     }
-    botao->setFonte("C:/Users/vinic/Desktop/projetos/joguinhoNoVSCode/mainJogoFuncionando/jogoFuncionando/fontes/04B_19__.TTF");
+    botao->setFonte("C:/Users/vinic/Desktop/projetos/joguinhoNoVSCode/mainJogoFuncionando/jogoFuncionando/fontes/NewAmsterdam-Regular.ttf");
     botoes.push_back(botao);
 }
 
@@ -90,7 +129,6 @@ void Estados::Menu::atualizar()
 
 void Estados::Menu::exec()
 {
-    
     desenhar();
     executar();
     atualizar();
@@ -98,7 +136,7 @@ void Estados::Menu::exec()
 
 void Estados::Menu::desenhar()
 {
-    //pGG->desenhar(fundo);
+    pGG->desenhar(fundo);
     pGG->desenhar(titulo);
     
         for(it = botoes.begin(); it != botoes.end(); it++)

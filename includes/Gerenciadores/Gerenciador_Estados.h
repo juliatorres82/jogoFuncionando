@@ -20,7 +20,7 @@ namespace Gerenciadores
             static Gerenciador_Estados* getInstancia();
             void limpar();
             void criarEstados();
-            void adicionarEstado(const std::string& id, Estados::Estado* estado, const bool& substituir = true);
+            void adicionarEstado(const std::string& id, Estados::Estado* estado);
             void removerEstado(const std::string& id);
             Estados::Estado* getEstado(const std::string& id);
             void mudaEstado(const std::string& id);

@@ -4,21 +4,25 @@
 Jogo::Jogo()
 {
     gerenciador_grafico = Gerenciadores::Gerenciador_Grafico::getInstancia();
+    gerenciador_inputs = Gerenciadores::Gerenciador_Inputs::getInstancia();
     gerenciador_eventos = Gerenciadores::Gerenciador_Eventos::getGerenciadorEventos();
     gerenciador_estados = Gerenciadores::Gerenciador_Estados::getInstancia();
     if(gerenciador_grafico == nullptr || gerenciador_eventos == nullptr || gerenciador_estados == nullptr)
     {
         std::cerr << "Erro ao criar os gerenciadores" << '\n';
-        gerenciador_grafico->fecharJanela();
+        return;
     }
     try
     {      
-        //gerenciador_estados->criarEstados();
+        gerenciador_estados->criarEstados();
+
+        if(gerenciador_estados->getEstado("Menu") == nullptr)
+            throw "Erro ao criar os estados";
     }
 
-    catch(...)
+    catch(const char* e)
     {
-        std::cerr << "Erro ao criar os estados" << '\n';
+        std::cerr << e << '\n';
         gerenciador_grafico->fecharJanela();
     }
    /* jogador2 = nullptr;
@@ -109,19 +113,19 @@ void Jogo::Executar()
         plataforma1.executar();
         plataforma2.executar();
         plataforma3.executar();
-        
-        
-        
+         
     }*/
-   while(gerenciador_grafico->janelaAberta())
+
+    while (gerenciador_grafico->janelaAberta())
     {
-        //gerenciador_eventos->gerencia();
+        gerenciador_eventos->gerencia();
 
         gerenciador_grafico->limpaJanela();
         
-        //gerenciador_estados->executar();
+        gerenciador_estados->executar();
         
         gerenciador_grafico->mostrarJanela();
+        
     }
-    
+        
 }

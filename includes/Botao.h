@@ -21,8 +21,8 @@ class Botao: public Ente
         void setFonte(const string& caminho);
         void setCorTexto(const sf::Color& cor);
         void setCorRet(const sf::Color& cor);
-        void setSelecionado(const bool& selec);
-        void setAtivo(const bool& ativo);
+        void setSelecionado(const bool selec);
+        void setAtivo(const bool ativo);
 
         void desenhar();
         void atualizar();

@@ -24,16 +24,16 @@ namespace Gerenciadores {
 
             static Gerenciador_Inputs* gI;
             Gerenciador_Inputs();
-
-        public:
             ~Gerenciador_Inputs();
-            Gerenciador_Inputs* getInstancia();
+        public:
+            static void deletaInstancia();
+            static Gerenciador_Inputs* getInstancia();
+
             void addObservadoresVigiando(Observadores::Observador* obs);
             void tiraObservadoresVigiando(Observadores::Observador* obs);
-            void gerenciaTeclasPressionadas();
-            void gerenciaTeclasSoltas();
+            void gerenciaTeclasPressionadas(sf::Keyboard::Key tecla);
+            void gerenciaTeclasSoltas(sf::Keyboard::Key tecla);
     };
-
 
 
 }

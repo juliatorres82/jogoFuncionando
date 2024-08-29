@@ -1,7 +1,6 @@
 #pragma once
-#include "Obstaculo.h"
 #include "Plataforma.h"
-#include "../Personagens/Jogador.h"
+
 using namespace Entidades::Personagens;
 
 namespace Entidades{

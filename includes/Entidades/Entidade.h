@@ -7,6 +7,7 @@
 enum dinamismo 
 { estatico, dinamico };
 
+
 namespace Entidades
 {
 	class Entidade : public Ente

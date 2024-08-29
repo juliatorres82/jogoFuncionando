@@ -1,6 +1,5 @@
 #pragma once
 #include <cmath>
-#include "Inimigo.h"
 #include "Jogador.h"
 using namespace Entidades;
 using namespace Personagens;

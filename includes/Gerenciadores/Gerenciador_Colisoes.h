@@ -1,13 +1,12 @@
 #pragma once
-
+#include "../Entidades/Obstaculos/Obstaculo.h"
+#include "../Entidades/Entidade.h"
 #include <list>
 #include <vector>
-#include "../Entidades/Entidade.h"
-#include "../Entidades/Personagens/Jogador.h"
-#include "../Entidades/Obstaculos/Obstaculo.h"
 
+//class Entidades::Personagens::Jogador;
+//class Entidades::Obstaculos::Obstaculo;
 using namespace Entidades;
-using namespace Entidades::Personagens;
 using namespace Entidades::Obstaculos;
 
 //class Entidade;

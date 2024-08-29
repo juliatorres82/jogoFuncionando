@@ -46,8 +46,9 @@ void Plataforma::executar()
 	desenhar();
 }
 
-void Plataforma::obstacular()
+/*void Plataforma::obstacular()
 {	
 	cair();
 	empuxo();
 }
+*/

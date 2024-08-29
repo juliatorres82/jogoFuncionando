@@ -3,15 +3,21 @@
 
 namespace Estados
 {
-    class MenuPrincipal: public Menu
+    namespace Menus
     {
+        class MenuPrincipal: public Menu
+        {
         private:
             bool doisJogadores;
         public:
             MenuPrincipal();
             virtual ~MenuPrincipal(); 
-            void exec(); ////
+            void exec(); 
+            void desenhar();
+            void executar();
             void setDoisJogadores();
             const bool HaDoisJogadores();
-    };
+        };
+    }
+    
 }

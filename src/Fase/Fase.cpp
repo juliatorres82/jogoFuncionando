@@ -203,9 +203,9 @@ void Fase:: tratarColisoes() {
     p_GC->tratarColisoes();
 }
 
-
-void Fases::Fase::tratarEventos() {
-    p_GE->gerencia();
+void Fases::Fase::tratarEventos()
+{
+    p_GE->gerenciaEventos();
 }
 
 

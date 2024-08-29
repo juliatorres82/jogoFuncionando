@@ -8,7 +8,7 @@ Botao::Botao()
     selecionado = false;
     ativo = true;
     clicado = false;
-    setGG(Gerenciador_Grafico::getInstancia());
+    pGG = Gerenciador_Grafico::getInstancia();
 }
 
 Botao::~Botao()
@@ -18,15 +18,14 @@ Botao::~Botao()
 
 Botao::Botao(const sf::Vector2f &tam, const sf::Vector2f &pos, const string &texto)
 {
-    ret.setSize(tam);
-    ret.setPosition(pos);
-    ret.setFillColor(sf::Color::White);
+    setTam(tam);
+    setPos(pos);
+    setCorRet(sf::Color::White);
 
-    fonte.loadFromFile("resources/fonts/arial.ttf");
+    fonte.loadFromFile("C:/Users/vinic/Desktop/projetos/JogoSimas/joguinho_lindo/joguinho_lindo/NewAmsterdam-Regular.ttf");
+    setCorTexto(sf::Color::Black);
     this->texto.setFont(fonte);
     this->texto.setString(texto);
-    this->texto.setCharacterSize(20);
-    this->texto.setFillColor(sf::Color::Black);
     this->texto.setPosition(pos.x + 10, pos.y + 10);
 
     selecionado = false;
@@ -43,6 +42,7 @@ void Botao::setPos(const sf::Vector2f &pos)
 void Botao::setTam(const sf::Vector2f &tam)
 {
     ret.setSize(tam);
+    texto.setCharacterSize(tam.y - 20);
 }
 
 void Botao::setTexto(const string &texto)
@@ -66,12 +66,12 @@ void Botao::setCorRet(const sf::Color &cor)
     ret.setFillColor(cor);
 }
 
-void Botao::setSelecionado(const bool &selec)
+void Botao::setSelecionado(const bool selec)
 {
     selecionado = selec;
 }
 
-void Botao::setAtivo(const bool &ativo)
+void Botao::setAtivo(const bool ativo)
 {
     this->ativo = ativo;
 }
@@ -102,7 +102,7 @@ void Botao::atualizar()
 }
 void Botao::executar()
 {
-    if (ativo)
+    if (ativo && selecionado)
     {
         clicado = true;
     }

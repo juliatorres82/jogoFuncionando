@@ -1,32 +1,41 @@
 #include "../../includes/Observadores/ObservadorMenu.h"
-
-Observadores::ObservadorMenu::ObservadorMenu(Estados::Menu* pmenu)
+namespace Observadores
 {
-    this->menu = menu;
-}
-
-Observadores::ObservadorMenu::~ObservadorMenu()
-{
-    this->menu = nullptr;
-}
-
-void Observadores::ObservadorMenu::notificaTeclaPressionada(const sf::Keyboard::Key tecla)
-{
-    if(tecla == sf::Keyboard::Up)
+    Observadores::ObservadorMenu::ObservadorMenu(Estados::Menus::Menu* pmenu):
+    Observador()
     {
-        menu->moverCima();
+        menu = pmenu;
+        if (menu == nullptr) {
+            std::cerr << "Erro: menu é nullptr no construtor de ObservadorMenu" << std::endl;
+            return;
+        }
     }
-    else if(tecla == sf::Keyboard::Down)
-    {
-        menu->moverBaixo();
-    }
-    else if(tecla == sf::Keyboard::Enter)
-    {
-        menu->selecionar();
-    }
-}
 
-void Observadores::ObservadorMenu::notificaTeclaSolta(const sf::Keyboard::Key)
-{
-    
+    Observadores::ObservadorMenu::~ObservadorMenu()
+    {
+        menu = nullptr;
+    }
+
+    void Observadores::ObservadorMenu::notificaTeclaPressionada(const sf::Keyboard::Key tecla)
+    {
+
+        if(tecla == sf::Keyboard::Enter)
+        {
+            menu->selecionar();
+        }
+    }
+
+    void Observadores::ObservadorMenu::notificaTeclaSolta(const sf::Keyboard::Key tecla)
+    {
+        if (tecla == sf::Keyboard::Up)
+        {
+            menu->moverCima();
+
+        }
+        else if(tecla == sf::Keyboard::Down)
+        {
+            menu->moverBaixo();
+        }
+    }
+
 }

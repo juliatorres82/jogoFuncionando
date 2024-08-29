@@ -1,6 +1,5 @@
 #pragma once
 #include "Obstaculo.h"
-#include "../Personagens/Jogador.h"
 
 using namespace Entidades::Obstaculos;
 using namespace Entidades::Personagens;

@@ -1,5 +1,5 @@
 #pragma once
-#include "Estado.h"
+#include "../Estado.h"
 #include "../Botao.h"
 #include <list>
 
@@ -7,14 +7,22 @@ namespace Observadores
 {
     class ObservadorMenu;
 }
+
+namespace Gerenciadores
+{
+    class Gerenciador_Estados;
+}
 namespace Estados
 {
-    class Menu: public Estados::Estado, public Ente
+    namespace Menus
     {
+        class Menu: public Estados::Estado, public Ente
+        {
             protected:
                 list<Botao*> botoes;
                 Observadores::ObservadorMenu* observadorMenu;
                 list<Botao*>::iterator it;
+                list<Botao*>::iterator posAtual;
                 sf::RectangleShape fundo;
                 sf::Texture textura_fundo;
                 sf::Text titulo;
@@ -22,7 +30,7 @@ namespace Estados
                 
             public:
                 Menu();
-                Menu(const std::string& id);
+                Menu(const std::string& iD);
                 void limpar();
                 virtual ~Menu();
                 void setFundo(const string& caminho);
@@ -32,11 +40,13 @@ namespace Estados
                 void setTamTitulo(const unsigned int& tam);
                 void adicionarBotao(const string& texto, const sf::Vector2f& tam, const sf::Vector2f& pos);
                 void atualizar();
-                virtual void exec();
-                virtual void desenhar();
-                void executar();
+                void exec() = 0;
+                virtual void desenhar() = 0 ;
+                void executar() = 0;
                 void moverCima();
                 void moverBaixo();
                 void selecionar();
-    };
+     };
+    }
+    
 }

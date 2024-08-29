@@ -53,7 +53,8 @@ void Gerenciador_Grafico::desenhar(sf::Text texto)
 }
 void Gerenciadores::Gerenciador_Grafico::fecharJanela()
 {
-	janela->close();
+	if(janela->isOpen())
+		janela->close();
 }
 
 sf::RenderWindow *Gerenciador_Grafico::getJanela()

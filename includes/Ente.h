@@ -1,6 +1,6 @@
 #pragma once
 #include "Gerenciadores/Gerenciador_Grafico.h"
-//#include "Gerenciadores/Gerenciador_Colisoes.h"
+#include "Gerenciadores/Gerenciador_Colisoes.h"
 
 using namespace Gerenciadores;
 
@@ -24,11 +24,10 @@ class Ente
 		static Gerenciadores::Gerenciador_Colisoes* pGC;
 
 	public:
-		Ente();
+		Ente(idEntes ID = jogaDor);
 		~Ente();
 		virtual void executar() = 0;
 		virtual void desenhar() = 0;
-		static void setGG(Gerenciadores::Gerenciador_Grafico* gG); //x
 		idEntes getId();
 };
 

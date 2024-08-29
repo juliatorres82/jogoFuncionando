@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/vinic/Desktop/projetos/joguinhoNoVSCode/jogoFuncionando/src/Entidades/Obstaculos",
-      "program": "c:/Users/vinic/Desktop/projetos/joguinhoNoVSCode/jogoFuncionando/src/Entidades/Obstaculos/build/Debug/outDebug",
+      "cwd": "c:/Users/vinic/Desktop/projetos/joguinhoNoVSCode/mainJogoFuncionando/jogoFuncionando/src",
+      "program": "c:/Users/vinic/Desktop/projetos/joguinhoNoVSCode/mainJogoFuncionando/jogoFuncionando/src/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

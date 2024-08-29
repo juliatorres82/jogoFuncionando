@@ -1,12 +1,14 @@
 #include "../../includes/Gerenciadores/Gerenciador_Eventos.h"
+#include "../../includes/Gerenciadores/Gerenciador_Inputs.h"
 
 using namespace Gerenciadores;
 
 Gerenciador_Eventos* Gerenciador_Eventos:: pGE (nullptr);
 
 
-Gerenciador_Eventos::Gerenciador_Eventos() : pGG(nullptr){
+Gerenciador_Eventos::Gerenciador_Eventos(){
     pGG = Gerenciador_Grafico::getInstancia();
+    pGI = pGI->getInstancia();
 }
 
 
@@ -45,19 +47,19 @@ bool Gerenciadores::Gerenciador_Eventos::teclaSolta(sf::Keyboard::Key tecla)
 
 void Gerenciador_Eventos::gerencia(){
 
-    /*while(pGG->janelaAberta()){
+    while(pGG->janelaAberta()){
         if(pGG->getJanela()->pollEvent(evento)){
             
             if(evento.type == sf::Event::KeyPressed)
                 pGI->gerenciaTeclasPressionadas();
 
-            if (evento.type == sf::Event::KeyReleased)
-               pGI->gerenciaTeclasSoltas();
+            else if (evento.type == sf::Event::KeyReleased)
+                pGI->gerenciaTeclasSoltas();
             
-            if(evento.type == sf::Event::Closed) 
+            else if(evento.type == sf::Event::Closed) 
                 pGG->fecharJanela();
         }
 
     }
-*/
+
 }

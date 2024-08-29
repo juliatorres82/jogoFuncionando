@@ -4,7 +4,8 @@ using namespace Fases;
 using namespace Entidades;
 using namespace Obstaculos;
 
-Fase:: Fase() {
+Fase::Fase(bool coop) {
+    ehCoop = coop;
     listaJogadores = new ListaEntidades();
     listaInimigos = new ListaEntidades();
     listaObstaculos = new ListaEntidades();
@@ -18,15 +19,15 @@ Fase::~Fase() {
 
     /* desalocando jogadores*/
     Lista<Entidade>::Iterador it = listaJogadores->getInicio();
-    Entidade* pE = NULL;
+    Entidade* pE = nullptr;
 
     while(!it.isNulo()){
        pE = (*it);
 
-       if(pE != NULL)
+       if(pE != nullptr)
         delete pE;
 
-       pE = NULL;
+       pE = nullptr;
        ++it;
     }
     listaJogadores->limpar();
@@ -38,10 +39,10 @@ Fase::~Fase() {
     while(!it.isNulo()){
        pE = (*it);
 
-       if(pE != NULL)
+       if(pE != nullptr)
         delete pE;
 
-       pE = NULL;
+       pE = nullptr;
        ++it;
     }
     listaInimigos->limpar();
@@ -53,10 +54,10 @@ Fase::~Fase() {
     while(!it.isNulo()){
        pE = (*it);
 
-       if(pE != NULL)
+       if(pE != nullptr)
         delete pE;
 
-       pE = NULL;
+       pE = nullptr;
        ++it;
     }
 
@@ -69,15 +70,31 @@ Fase::~Fase() {
     while(!it.isNulo()){
        pE = (*it);
 
-       if(pE != NULL)
+       if(pE != nullptr)
         delete pE;
 
-       pE = NULL;
+       pE = nullptr;
        ++it;
     }
 
     listaPlataforma->limpar();
 
+}
+
+
+void Fase:: criaJogadores(){
+
+    Jogador* jogador1 = nullptr;
+    jogador1 = new Jogador();
+    listaJogadores->incluir(jogador1);
+    if(ehCoop){
+        Jogador* jogador2 = nullptr;
+        jogador2 = jogador1->getJogador2();
+        jogador2 = new Jogador();
+        listaJogadores->incluir(jogador2);
+        jogador1->setJogador2(jogador2);
+        jogador2->setJogador2(jogador1);
+    }
 }
 
 void Fase:: criarTudo(int posx, int posy, int valor) {
@@ -178,6 +195,9 @@ void Fase:: constroiFase() {
 
 }
 
+void Fases::Fase::criaFundo()
+{
+}
 
 void Fase:: tratarColisoes() {
     p_GC->tratarColisoes();
@@ -198,5 +218,5 @@ void Fase::atualizar() {
 
 void Fase:: desenhar() {
 
-    pGG->desenharEnte(this);
+    //pGG->desenhar(this);
 }

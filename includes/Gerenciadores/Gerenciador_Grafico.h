@@ -27,9 +27,10 @@ namespace Gerenciadores
 		void desenhar(sf::Sprite sprite);
         sf::RenderWindow *getJanela(); 
         const bool janelaAberta() const;
-		float getTamx(); //x
-		float getTamy(); //x
-		void setJanela(sf::RenderWindow* jan); //x
+		float getTamx();
+		float getTamy();
+		void limpaJanela();
+		void mostrarJanela();
 	};
 
 }

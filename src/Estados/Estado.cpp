@@ -5,6 +5,11 @@ Estados::Estado::Estado()
     gerenciador_estados = Gerenciadores::Gerenciador_Estados::getInstancia();
 }
 
+Estados::Estado::Estado(const std::string& id)
+{
+    gerenciador_estados = Gerenciadores::Gerenciador_Estados::getInstancia();
+    setId(id);
+}
 Estados::Estado::~Estado()
 {
     if(gerenciador_estados)

@@ -1,11 +1,11 @@
 #include "../../includes/Estados/Jogando.h"
 
-Jogando::Jogando()
+Estados::Jogando::Jogando(const std::string &id)
 {
-    //fase = new Fases::Fase1();
+    setId(id);
+    fase = nullptr;
 }
-
-Jogando::~Jogando()
+Estados::Jogando::~Jogando()
 {
     /*if(fase)
     {
@@ -14,12 +14,18 @@ Jogando::~Jogando()
     fase = nullptr;*/
 }
 
-void Jogando::exec()
+void Estados::Jogando::criaFase(bool coop)
+{
+    //fase = new Fases::Fase1(coop); 
+    //fase->constroiFase();
+}
+
+void Estados::Jogando::exec()
 {
     fase->executar();
 }
 
-void Jogando::atualizar()
+void Estados::Jogando::atualizar()
 {
     fase->atualizar();
 }

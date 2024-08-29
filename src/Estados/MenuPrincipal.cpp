@@ -1,15 +1,15 @@
 #include "../../includes/Estados/MenuPrincipal.h"
 
-MenuPrincipal :: MenuPrincipal() : doisJogadores(false) {}
+Estados::MenuPrincipal :: MenuPrincipal() : doisJogadores(false) {}
 
-MenuPrincipal :: ~MenuPrincipal() {}
+Estados::MenuPrincipal :: ~MenuPrincipal() {}
 
-const bool MenuPrincipal:: HaDoisJogadores() {
+const bool Estados::MenuPrincipal:: HaDoisJogadores() {
     return doisJogadores;
 }
 
-void MenuPrincipal:: setDoisJogadores(){
+void Estados::MenuPrincipal:: setDoisJogadores(){
     doisJogadores = true;
 }
 
-void MenuPrincipal:: exec() {}
+void Estados::MenuPrincipal:: exec() {}

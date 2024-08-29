@@ -6,7 +6,7 @@ using namespace Entidades::Personagens;
 
 namespace Entidades{
     namespace Obstaculos{
-        class PlataformaGelo: public Plataforma{
+        class PlataformaGelo: public Obstaculo{
 
             private:
                 bool deslizante;

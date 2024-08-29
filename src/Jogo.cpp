@@ -1,19 +1,23 @@
 #include "../includes/Jogo.h"
+// Include the header file for Gerenciador_Estados
 
-Jogo::Jogo():
-plataforma1(sf::Vector2f(200.f, 300.f), 0, sf::Vector2f(200.f, 40.f)),
-plataforma2(sf::Vector2f(0.f, 300.f), 0, sf::Vector2f(200.f, 40.f)),
-plataforma3(sf::Vector2f(400.f, 200.f),0, sf::Vector2f(200.f, 40.f))
+Jogo::Jogo()
 {
-    
     gerenciador_grafico = Gerenciadores::Gerenciador_Grafico::getInstancia();
-    gerenciador_colisoes = Gerenciadores::Gerenciador_Colisoes::getInstancia();
     gerenciador_eventos = Gerenciadores::Gerenciador_Eventos::getGerenciadorEventos();
-    //gerenciador_estados = Gerenciadores::Gerenciador_Estados::getInstancia();
+    gerenciador_estados = Gerenciadores::Gerenciador_Estados::getInstancia();
+    /*try
+    {      
+        gerenciador_estados->criarEstados();
 
-    janela_jogo = gerenciador_grafico->getJanela();
+        throw std::runtime_error("Erro ao criar estados");
+    }
 
-    jogador2 = nullptr;
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }*/
+   /* jogador2 = nullptr;
     jogador1.setGG(gerenciador_grafico);
     
     //inimigo1.setGG(gerenciador_grafico);
@@ -40,21 +44,21 @@ plataforma3(sf::Vector2f(400.f, 200.f),0, sf::Vector2f(200.f, 40.f))
     jogador1.setPosicao(100.f, 100.f);
     //inimigo1.setPosicao(300.f, 100.f);
     fantasma1.setPosicao(200.f, 100.f);
+    */
 }
 
 Jogo::~Jogo()
 {
-    delete jogador2;
-    janela_jogo = nullptr;
+    //delete jogador2;
+    //janela_jogo = nullptr;
 }
 
 void Jogo::Executar()
 {
-    
+    /*
     while (gerenciador_grafico->janelaAberta())
     {
-        sf::Event event;
-        janela_jogo->setKeyRepeatEnabled(false); //testar c true
+        /*sf::Event event;
         while (janela_jogo->pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
@@ -70,9 +74,12 @@ void Jogo::Executar()
                 jogador1.setJogador2(jogador2);
                 jogador2->setJogador2(&jogador1); 
                 
+               jogador2 = new Jogador();
+               //gerenciador_colisoes->incluirJogador(jogador2);
+               jogador1.setJogador2(jogador2);
             }*/
 
-            while (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+/*            while (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
             {
                 janela_jogo->setKeyRepeatEnabled(true);
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
@@ -84,11 +91,11 @@ void Jogo::Executar()
                 janela_jogo->setKeyRepeatEnabled(true);
 
         }
-    
-        gerenciador_colisoes->tratarColisoes();
+        
+        //gerenciador_colisoes->tratarColisoes();
 
         janela_jogo->clear();
-        
+        /*
         //inimigo1.executar();
 
         //fantasma1.executar();
@@ -102,7 +109,18 @@ void Jogo::Executar()
         plataforma2.executar();
         plataforma3.executar();
         
-        janela_jogo->display();
+        
+        
+    }*/
+   while(gerenciador_grafico->janelaAberta())
+    {
+        //gerenciador_eventos->gerencia();
 
+        gerenciador_grafico->limpaJanela();
+        
+        //gerenciador_estados->executar();
+        
+        gerenciador_grafico->mostrarJanela();
     }
+    
 }

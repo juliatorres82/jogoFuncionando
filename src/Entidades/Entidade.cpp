@@ -11,7 +11,7 @@ Entidade::Entidade() :
 	gravidade = 0.0;
 	caiu = false;
 	colidindo = false;
-	velocidade = 4.0;
+	velx = 4.0;
 }
 
 Entidade::~Entidade()

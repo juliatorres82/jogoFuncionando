@@ -29,37 +29,22 @@ namespace Gerenciadores
 
     }
 
-    bool Gerenciadores::Gerenciador_Eventos::teclaPressionada(sf::Keyboard::Key tecla)
-    {
-        return sf::Keyboard::isKeyPressed(tecla);
-    }
+    void Gerenciador_Eventos::gerenciaEventos(){
 
-
-    bool Gerenciadores::Gerenciador_Eventos::teclaSolta(sf::Keyboard::Key tecla)
-    {
-        if(evento.key.code == tecla){
-            return true;
-        }
-        return false;
-    }
-
-
-    void Gerenciador_Eventos::gerencia(){
-
-        while(pGG->janelaAberta()){
-            if(pGG->getJanela()->pollEvent(evento)){
+        if(pGG->getJanela()->isOpen())
+        {    while(pGG->getJanela()->pollEvent(evento)){
                 
                 if(evento.type == sf::Event::KeyPressed)
-                    pGI->gerenciaTeclasPressionadas();
+                    pGI->gerenciaTeclasPressionadas(evento.key.code);
 
                 else if (evento.type == sf::Event::KeyReleased)
-                    pGI->gerenciaTeclasSoltas();
+                    pGI->gerenciaTeclasSoltas(evento.key.code);
                 
                 else if(evento.type == sf::Event::Closed) 
                     pGG->fecharJanela();
             }
-
         }
+        
 
     }
 }

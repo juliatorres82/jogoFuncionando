@@ -10,7 +10,7 @@ Jogo::Jogo()
     if(gerenciador_grafico == nullptr || gerenciador_eventos == nullptr || gerenciador_estados == nullptr)
     {
         std::cerr << "Erro ao criar os gerenciadores" << '\n';
-        return;
+        exit(1);
     }
     try
     {      
@@ -23,7 +23,7 @@ Jogo::Jogo()
     catch(const char* e)
     {
         std::cerr << e << '\n';
-        gerenciador_grafico->fecharJanela();
+        exit(1);
     }
    /* jogador2 = nullptr;
     jogador1.setGG(gerenciador_grafico);
@@ -60,72 +60,17 @@ Jogo::~Jogo()
 }
 void Jogo::Executar()
 {   
-    /*
     while (gerenciador_grafico->janelaAberta())
     {
-        /*sf::Event event;
-        while (janela_jogo->pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                gerenciador_grafico->fecharJanela();
-
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
-                gerenciador_grafico->fecharJanela();
-
-            /*else if (sf::Keyboard::isKeyPressed(sf::Keyboard::C) && !jogador1.doisJogadores())
-            {
-                jogador2 = new Jogador(&jogador1);
-                gerenciador_colisoes->incluirJogador(jogador2);
-                jogador1.setJogador2(jogador2);
-                jogador2->setJogador2(&jogador1); 
-                
-               jogador2 = new Jogador();
-               //gerenciador_colisoes->incluirJogador(jogador2);
-               jogador1.setJogador2(jogador2);
-            }*/
-
-/*            while (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-            {
-                janela_jogo->setKeyRepeatEnabled(true);
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
-                    break;
-                    janela_jogo->close();
-                }
-            }
-
-                janela_jogo->setKeyRepeatEnabled(true);
-
-        }
-        
-        //gerenciador_colisoes->tratarColisoes();
-
-        janela_jogo->clear();
-        /*
-        //inimigo1.executar();
-
-        //fantasma1.executar();
-        jogador1.executar();
-        jogador1.mover();
-        
-		if (jogador1.doisJogadores())
-			jogador2->executar();
-        
-        plataforma1.executar();
-        plataforma2.executar();
-        plataforma3.executar();
-         
-    }*/
-
-    while (gerenciador_grafico->janelaAberta())
-    {
-        gerenciador_eventos->gerencia();
+        gerenciador_eventos->gerenciaEventos();
 
         gerenciador_grafico->limpaJanela();
         
         gerenciador_estados->executar();
         
-        gerenciador_grafico->mostrarJanela();
-        
+        if(gerenciador_grafico->janelaAberta())
+            gerenciador_grafico->mostrarJanela();
+
     }
         
 }

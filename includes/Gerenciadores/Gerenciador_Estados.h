@@ -1,5 +1,6 @@
 #pragma once
-#include "../Estados/Menu.h"
+#include "../Estados/Menus/MenuPrincipal.h"
+#include "../Estados/Menus/MenuPausa.h"
 #include "../Estados/Jogando.h"
 #include <map>
 #include <string>

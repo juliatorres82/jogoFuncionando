@@ -89,53 +89,25 @@ namespace Gerenciadores
     }
 
 
-    void Gerenciador_Inputs::gerenciaTeclasPressionadas(){
+    void Gerenciador_Inputs::gerenciaTeclasPressionadas(sf::Keyboard::Key tecla){
     
-        std::vector<sf::Keyboard::Key>::iterator it = comandosMovimento.begin();
         std::list<Observadores::Observador*>::iterator itObs = observadoresVigiando.begin();
 
-        while(it != comandosMovimento.end()){
-
-            if(pGE->teclaPressionada(*it)) //verifica qual a tecla pressionada
-                for(itObs; itObs != observadoresVigiando.end(); itObs++) //conta para todos os observadores
-                    (*itObs)->notificaTeclaPressionada(*it);
-            it++;
-        }
-
-
-        it = comandosFechamento.begin();
-        while(it != comandosFechamento.end()){
-
-            if(pGE->teclaPressionada(*it))
-                for(itObs; itObs != observadoresVigiando.end(); itObs++)
-                    (*itObs)->notificaTeclaPressionada(*it);
-            it++;
-        }
-    
+        for(itObs; itObs != observadoresVigiando.end(); itObs++) 
+        {   if((*itObs)->getEstadoAtivo())
+                (*itObs)->notificaTeclaPressionada(tecla);
+        }   
+            
     }
 
 
-    void Gerenciador_Inputs::gerenciaTeclasSoltas(){
+    void Gerenciador_Inputs::gerenciaTeclasSoltas(sf::Keyboard::Key tecla){
 
-        std::vector<sf::Keyboard::Key>::iterator it = comandosMovimento.begin();
         std::list<Observadores::Observador*>::iterator itObs = observadoresVigiando.begin();
 
-        while(it != comandosMovimento.end()){
-
-            if(pGE->teclaSolta(*it)) 
-                for(itObs; itObs!=observadoresVigiando.end(); itObs++) 
-                    (*itObs)->notificaTeclaSolta(*it);
-            it++;
-        }
-
-
-        it = comandosFechamento.begin();
-        while(it != comandosFechamento.end()){
-
-            if(pGE->teclaSolta(*it))
-                for(itObs; itObs!=observadoresVigiando.end(); itObs++) 
-                    (*itObs)->notificaTeclaSolta(*it);
-            it++;
+        for(itObs; itObs!=observadoresVigiando.end(); itObs++) 
+        {   if((*itObs)->getEstadoAtivo())
+                (*itObs)->notificaTeclaSolta(tecla);
         }
     
     }

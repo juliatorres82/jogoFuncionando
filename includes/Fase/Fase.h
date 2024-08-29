@@ -7,7 +7,6 @@
 #include "../Entidades/Obstaculos/Gosma.h"
 #include "../Entidades/Personagens/Fantasma.h"
 #include "../Entidades/Personagens/Lagarto.h"
-#include "../Estados/MenuPrincipal.h"
 
 #include <fstream>
 

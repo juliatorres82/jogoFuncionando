@@ -41,7 +41,7 @@ void Gerenciador_Estados::criarEstados()
 {
     try
     {
-        Estados::Menu* menu = new Estados::Menu("Menu");
+        Estados::Menu* menu = new Estados::MenuPrincipal();
         adicionarEstado("Menu", menu);
     }
     catch (const std::bad_alloc& e)
@@ -102,5 +102,10 @@ void Gerenciador_Estados::executar()
     {
         estado_atual->exec();
     }
+
+    else
+    {
+        std::cerr << "Erro ao executar estado" << std::endl;
+    }	
 }
 

@@ -1,7 +1,7 @@
 #include "../../includes/Observadores/ObservadorMenu.h"
 namespace Observadores
 {
-    Observadores::ObservadorMenu::ObservadorMenu(Estados::Menu* pmenu):
+    Observadores::ObservadorMenu::ObservadorMenu(Estados::Menus::Menu* pmenu):
     Observador()
     {
         menu = pmenu;
@@ -18,6 +18,7 @@ namespace Observadores
 
     void Observadores::ObservadorMenu::notificaTeclaPressionada(const sf::Keyboard::Key tecla)
     {
+
         if(tecla == sf::Keyboard::Enter)
         {
             menu->selecionar();
@@ -26,9 +27,10 @@ namespace Observadores
 
     void Observadores::ObservadorMenu::notificaTeclaSolta(const sf::Keyboard::Key tecla)
     {
-        if ((tecla) == sf::Keyboard::Up)
+        if (tecla == sf::Keyboard::Up)
         {
             menu->moverCima();
+
         }
         else if(tecla == sf::Keyboard::Down)
         {

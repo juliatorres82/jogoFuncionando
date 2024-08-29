@@ -229,7 +229,7 @@ void Fase:: tratarColisoes(){
 
 void Fases::Fase::tratarEventos()
 {
-    p_GE->gerencia();
+    p_GE->gerenciaEventos();
 }
 
  void Fases::Fase::executar() {

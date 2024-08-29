@@ -31,8 +31,8 @@ namespace Gerenciadores {
 
             void addObservadoresVigiando(Observadores::Observador* obs);
             void tiraObservadoresVigiando(Observadores::Observador* obs);
-            void gerenciaTeclasPressionadas();
-            void gerenciaTeclasSoltas();
+            void gerenciaTeclasPressionadas(sf::Keyboard::Key tecla);
+            void gerenciaTeclasSoltas(sf::Keyboard::Key tecla);
     };
 
 

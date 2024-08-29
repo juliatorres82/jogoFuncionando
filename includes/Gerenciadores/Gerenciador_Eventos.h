@@ -21,9 +21,7 @@ namespace Gerenciadores{
         public:
             ~Gerenciador_Eventos();
             static Gerenciador_Eventos* getGerenciadorEventos();
-            bool teclaSolta(sf::Keyboard::Key tecla);
-            bool teclaPressionada(sf::Keyboard::Key tecla);
-            void gerencia();
+            void gerenciaEventos();
 
     };
 

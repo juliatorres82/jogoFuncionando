@@ -41,7 +41,7 @@ void Gerenciador_Estados::criarEstados()
 {
     try
     {
-        Estados::Menu* menu = new Estados::MenuPrincipal();
+        Estados::Menus::Menu* menu = new Estados::Menus::MenuPrincipal();
         adicionarEstado("Menu", menu);
     }
     catch (const std::bad_alloc& e)

@@ -1,6 +1,6 @@
 #pragma once
-#include "Estado.h"
-#include "../Botao.h"
+#include "../Estado.h"
+#include "../../Botao.h"
 #include <list>
 
 namespace Observadores

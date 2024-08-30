@@ -1,4 +1,5 @@
 #include "../../../includes/Entidades/Obstaculos/Obstaculo.h"
+
 using namespace Entidades::Obstaculos;
 
 Obstaculo::Obstaculo(bool daDano)
@@ -9,16 +10,13 @@ Obstaculo::Obstaculo(bool daDano)
 }
 
 
-Obstaculo::~Obstaculo()
-{
-}
-
-void Obstaculo::empuxo() //possibilita às plataformas flutuarem
-{
-	corpo.move(sf::Vector2f(0, -gravidade));
-}
+Obstaculo::~Obstaculo(){}
 
 const bool Entidades::Obstaculos::Obstaculo::ehDanoso() const
 {
     return danoso;
+}
+
+void Entidades::Obstaculos::Obstaculo::setJogadoresPDano(Jogador *j1, Jogador *j2){
+
 }

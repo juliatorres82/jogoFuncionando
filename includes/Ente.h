@@ -1,10 +1,9 @@
 #pragma once
 #include "Gerenciadores/Gerenciador_Grafico.h"
-#include "Gerenciadores/Gerenciador_Colisoes.h"
 
-using namespace Gerenciadores;
-
-class Gerenciadores::Gerenciador_Colisoes;
+namespace Gerenciadores {
+	class Gerenciador_Colisoes;
+}
 
 enum idEntes 
 {

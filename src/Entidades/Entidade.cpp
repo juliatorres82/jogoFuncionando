@@ -11,7 +11,7 @@ Entidade::Entidade() :
 	gravidade = 0.0;
 	caiu = false;
 	colidindo = false;
-	velx = 4.0;
+	velox = 4.0;
 }
 
 Entidade::~Entidade()
@@ -103,9 +103,9 @@ void Entidade::setPosicao(float x, float y)
 }
 
 void Entidade:: setVelocidadex(float vel){
-	velx = vel;
+	velox = vel;
 }
 
 float Entidade:: getVelocidadex(){
-	return velx;
+	return velox;
 }

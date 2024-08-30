@@ -31,8 +31,8 @@ namespace Gerenciadores
 
     void Gerenciador_Eventos::gerenciaEventos(){
 
-        if(pGG->getJanela()->isOpen())
-        {    while(pGG->getJanela()->pollEvent(evento)){
+        if(pGG->getJanela()->isOpen()){
+                while(pGG->getJanela()->pollEvent(evento)){
                 
                 if(evento.type == sf::Event::KeyPressed)
                     pGI->gerenciaTeclasPressionadas(evento.key.code);

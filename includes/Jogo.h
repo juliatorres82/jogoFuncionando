@@ -4,6 +4,7 @@
 #include "Gerenciadores/Gerenciador_Grafico.h"
 #include "Gerenciadores/Gerenciador_Estados.h"
 #include "Gerenciadores/Gerenciador_Inputs.h"
+#include "Entidades/Obstaculos/Plataforma.h"
 class Jogo
 {
 	private:
@@ -17,9 +18,9 @@ class Jogo
 		Fantasma fantasma1;
 		Lagarto lagarto1;
 
-		Plataforma plataforma1;
-		Plataforma plataforma2;
-		Plataforma plataforma3;
+		//Plataforma plataforma1;
+		//Plataforma plataforma2;
+		//Plataforma plataforma3;
 
 		PlataformaGelo platGelo;
 		Gosma gosma1;

@@ -1,5 +1,5 @@
 #include "../../includes/Gerenciadores/Gerenciador_Colisoes.h"
-//#include "../../includes/Entidades/Obstaculos/Obstaculo.h"
+
 
 using namespace Gerenciadores;
 

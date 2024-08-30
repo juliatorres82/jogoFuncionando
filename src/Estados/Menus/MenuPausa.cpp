@@ -1,5 +1,4 @@
-#include "../../includes/Estados/Menus/MenuPausa.h"
-#include "MenuPausa.h"
+#include "../../../includes/Estados/Menus/MenuPausa.h"
 
 namespace Estados
 {

@@ -13,7 +13,6 @@ namespace Entidades
 
                 int elasticidade;
                 bool empuxo;
-                //Gerenciador_Grafico* pGG;
 
             public:
                 Plataforma();
@@ -23,7 +22,8 @@ namespace Entidades
                 void setElasticidade(int e);
                 void setTamanho(sf::Vector2f tam);
                 void executar();
-                void obstacular(Jogador* j1);
+                void obstacular();
+                void fazEmpuxo();
         };
     }
 }

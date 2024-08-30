@@ -12,6 +12,8 @@ namespace Entidades
 		{
 			protected:
 				bool danoso;
+				Jogador* jog1; //causam dano em;
+				Jogador* jog2;
 
 			public:
 				Obstaculo(bool daDano = false);
@@ -19,8 +21,8 @@ namespace Entidades
 
 				virtual void executar() = 0;
 				virtual void obstacular(Jogador* jogad) = 0;
-				void empuxo();
 				const bool ehDanoso() const;
+				void setJogadoresPDano(Jogador* j1, Jogador* j2 = NULL);
 
 		};
 	}

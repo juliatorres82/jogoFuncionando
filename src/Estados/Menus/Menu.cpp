@@ -1,7 +1,9 @@
-#include "../../includes/Observadores/ObservadorMenu.h"
-#include "../../includes/Gerenciadores/Gerenciador_Estados.h"
+#include "../../../includes/Observadores/ObservadorMenu.h"
+#include "../../../includes/Gerenciadores/Gerenciador_Estados.h"
+#include "../../../includes/Estados/Menus/Menu.h"
 using namespace Observadores;
-namespace Menus
+
+namespace Estados::Menus
 {
 
     Estados::Menus::Menu::Menu():
@@ -14,7 +16,7 @@ namespace Menus
         titulo.setCharacterSize(50);
         titulo.setFillColor(sf::Color::White);
         titulo.setString("Titulo");
-        titulo.setPosition(pGG->getTamx()/2, 0);
+        titulo.setPosition(Ente::pGG->getTamx()/2, 0);
         
         // Verifique se o ponteiro this é válido
         if (this == nullptr) {
@@ -47,7 +49,7 @@ namespace Menus
         titulo.setCharacterSize(200);
         titulo.setFillColor(sf::Color::Black);
         titulo.setString("Titulo");
-        titulo.setPosition(pGG->getTamx()/2, 0.f);
+        titulo.setPosition(Ente::pGG->getTamx()/2, 0.f);
         
         // Verifique se o ponteiro this é válido
         if (this == nullptr) {
@@ -80,7 +82,7 @@ namespace Menus
     {
         //textura_fundo.loadFromFile(caminho);
         fundo.setSize(sf::Vector2f(pGG->getJanela()->getSize().x, pGG->getJanela()->getSize().y));
-        fundo.setPosition(pGG->getJanela()->getPosition().x, pGG->getJanela()->getPosition().y);
+        fundo.setPosition(Ente::pGG->getJanela()->getPosition().x, pGG->getJanela()->getPosition().y);
         fundo.setFillColor(sf::Color::White);
         //fundo.setTexture(&textura_fundo);
     }

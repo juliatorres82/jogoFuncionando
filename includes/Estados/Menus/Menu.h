@@ -1,6 +1,6 @@
 #pragma once
 #include "../Estado.h"
-#include "../Botao.h"
+#include "../../Botao.h"
 #include <list>
 
 namespace Observadores
@@ -16,7 +16,7 @@ namespace Estados
 {
     namespace Menus
     {
-        class Menu: public Estados::Estado, public Ente
+        class Menu: public Estado, public Ente
         {
             protected:
                 list<Botao*> botoes;
@@ -42,7 +42,7 @@ namespace Estados
                 void atualizar();
                 void exec() = 0;
                 virtual void desenhar() = 0 ;
-                void executar() = 0;
+                virtual void executar() = 0;
                 void moverCima();
                 void moverBaixo();
                 void selecionar();

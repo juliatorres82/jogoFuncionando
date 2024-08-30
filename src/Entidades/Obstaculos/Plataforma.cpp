@@ -1,4 +1,5 @@
 #include "../../../includes/Entidades/Obstaculos/Plataforma.h"
+
 using namespace Entidades::Obstaculos;
 
 Plataforma::Plataforma()
@@ -11,9 +12,9 @@ Plataforma::Plataforma()
 	setTam();
 	setPosicao(0.f, 0.f);
 	danoso = false;
-	//desenhar();
-	//windowEnt->draw(shape);
+
 }
+
 Plataforma::Plataforma(sf::Vector2f posicao, int e, sf::Vector2f tam)
 {
 	pos = posicao;
@@ -40,15 +41,19 @@ void Plataforma::setElasticidade(int e)
 	elasticidade = e;
 }
 
+
 void Plataforma::executar()
 {
 	obstacular();
 	desenhar();
 }
 
-/*void Plataforma::obstacular()
+void Plataforma::obstacular()
 {	
 	cair();
-	empuxo();
+	fazEmpuxo();
 }
-*/
+
+void Entidades::Obstaculos::Plataforma::fazEmpuxo() { //possibilita às plataformas flutuarem
+	corpo.move(sf::Vector2f(0, -gravidade));
+}

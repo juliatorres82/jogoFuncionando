@@ -1,19 +1,17 @@
 #pragma once
 #include "Obstaculo.h"
 
-using namespace Entidades::Obstaculos;
-using namespace Entidades::Personagens;
+namespace Entidades::Obstaculos {
+    class Gosma : public Obstaculo {
 
-class Gosma : public Obstaculo {
-
-    private:
-        bool grudar;
-        Jogador* jog; // Gosma causa dano em (associação simples)
-    
-    public:
-        Gosma();
-        Gosma (int posx, int posy);
-        ~Gosma();
-        void executar();
-        void obstacular(Jogador* joga);
-};
+        private:
+            bool grudar;
+        
+        public:
+            Gosma();
+            Gosma (int posx, int posy);
+            ~Gosma();
+            void executar();
+            void obstacular(Entidades::Personagens::Jogador* joga);
+    };
+}

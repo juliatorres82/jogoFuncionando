@@ -103,16 +103,11 @@ void Fase:: criarTudo(int posx, int posy, int valor) {
         
                     case 0: // Tile vazio
                         break;
-                    case 12: { 
-                        Plataforma* plataforma = new Plataforma(posx, posy);
-                        listaPlataforma->incluir(plataforma);
-                        break;
-                    }
-                    case 23: {
-                        PlataformaGelo* plataformaGelo = new PlataformaGelo(posx, posy);
-                        listaPlataforma->incluir(plataformaGelo);
-                        break;
-                    }
+                    //case 23: {
+                        //PlataformaGelo* plataformaGelo = new PlataformaGelo(posx, posy);
+                        //listaPlataforma->incluir(plataformaGelo);
+                        //break;
+                    //}
                     case 34: {
                         Jogador* jogador = new Jogador(posx, posy);
                         listaJogadores->incluir(jogador);

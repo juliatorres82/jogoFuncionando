@@ -16,10 +16,10 @@ void Personagem::mover()
 	pular(0);
 }
 
-void Personagem::pular(float pulo)
+void Personagem::pular(float puloo)
 {
 	if (colidindo && podePular)
-		corpo.move(sf::Vector2f(0.f, pulo));
+		corpo.move(sf::Vector2f(0.f, puloo));
 }
 
 void Personagem::mudaPodePular(bool flagPodePular)

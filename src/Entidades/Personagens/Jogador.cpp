@@ -49,7 +49,7 @@ void Entidades::Personagens::Jogador::Pular()
 
 void Entidades::Personagens::Jogador::movDir()
 {
-		corpo.move(sf::Vector2f(velx, 0.f));
+	corpo.move(sf::Vector2f(velx, 0.f));
 }
 
 
@@ -68,6 +68,7 @@ bool Entidades::Personagens::Jogador::doisJogadores() {
 		return false;
 	return true;
 }
+
 void Entidades::Personagens::Jogador::setQJog()
 {
 	if(doisJogadores())

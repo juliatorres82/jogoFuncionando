@@ -1,11 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "../Entidades/Entidade.h"
 #include <iostream>
 using namespace std;
-
-//using namespace Entidades;
-//class Entidade;
 
 namespace Gerenciadores
 {

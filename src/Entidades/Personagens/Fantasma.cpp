@@ -1,4 +1,5 @@
 #include "../../../includes/Entidades/Personagens/Fantasma.h"
+#include "../../../includes/Gerenciadores/Gerenciador_Colisoes.h"
 
 Fantasma :: Fantasma() : invisivel(false) {}
 

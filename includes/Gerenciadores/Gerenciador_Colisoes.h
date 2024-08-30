@@ -4,12 +4,8 @@
 #include <list>
 #include <vector>
 
-//class Entidades::Personagens::Jogador;
-//class Entidades::Obstaculos::Obstaculo;
 using namespace Entidades;
 using namespace Entidades::Obstaculos;
-
-//class Entidade;
 
 namespace Gerenciadores
 {

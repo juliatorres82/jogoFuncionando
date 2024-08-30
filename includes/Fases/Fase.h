@@ -50,7 +50,8 @@ class Fase : public Ente {
         virtual void setCaminho(std::string caminhoArq) = 0; 
         virtual void atualizar() = 0;
         virtual void executar() = 0; //setar jogadores em obstaculos e inimigos;
-        virtual void desenhar() = 0;
+        //virtual void desenhar() = 0;
+        //virtual sf::Sprite criaSprites() = 0; //criar sprites de jogadores, inimigos e obstáculos;
 };
 
 }

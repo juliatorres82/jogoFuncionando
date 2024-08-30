@@ -21,6 +21,7 @@ namespace Gerenciadores
 		void fecharJanela();
         void desenhar(sf::Text texto);
 		void desenhar(sf::Sprite sprite);
+		void desenhar(sf::Texture textura);
         sf::RenderWindow *getJanela(); 
         const bool janelaAberta() const;
 		float getTamx();

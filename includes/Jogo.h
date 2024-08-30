@@ -1,10 +1,15 @@
 #pragma once
 #include <iostream>
-#include "Gerenciadores/Gerenciador_Eventos.h" 
+//#include "Gerenciadores/Gerenciador_Eventos.h" 
 #include "Gerenciadores/Gerenciador_Grafico.h"
 #include "Gerenciadores/Gerenciador_Estados.h"
 #include "Gerenciadores/Gerenciador_Inputs.h"
-#include "Entidades/Obstaculos/Plataforma.h"
+//#include "Entidades/Obstaculos/Plataforma.h"
+#include "Fases/Fase1.h"
+
+
+//class Fases::Fase:Fase1;
+
 class Jogo
 {
 	private:
@@ -26,7 +31,7 @@ class Jogo
 		Gosma gosma1;
 		Espinho espinho1;
 
-		//Fase fase1;
+		Fases::Fase1 fase1;
 		sf::RenderWindow* janela_jogo;
 
 	public:

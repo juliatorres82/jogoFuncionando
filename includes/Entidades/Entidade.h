@@ -26,6 +26,7 @@ namespace Entidades
 			Entidade();
 			~Entidade();
 			void desenhar(); 
+			void desenhar(sf::Sprite& sprite);
 			virtual void executar() = 0;
 			void setTam(); 
 			sf::RectangleShape& getCorpo(); 

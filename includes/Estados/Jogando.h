@@ -1,6 +1,6 @@
 #pragma once
 #include "Estado.h"
-#include "../Fase/Fase.h"
+#include "../Fases/Fase.h"
 
 namespace Estados
 {

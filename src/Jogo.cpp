@@ -77,7 +77,7 @@ void Jogo::Executar()
         if(gerenciador_grafico->janelaAberta())
             gerenciador_grafico->mostrarJanela();
         
-        //fase1.desenhar();
+        fase1.desenhar();
 
     }
         

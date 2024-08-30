@@ -23,6 +23,10 @@ void Entidade::desenhar(){
 	pGG->desenhar(corpo);
 }
 
+void Entidade::desenhar(sf::Sprite& sprite){
+	pGG->desenhar(sprite);
+}
+
 void Entidade::setTam()
 {
 	corpo.setSize(dimensoes);

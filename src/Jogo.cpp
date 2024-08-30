@@ -1,5 +1,5 @@
 #include "../includes/Jogo.h"
-#include "../includes/Fases/Fase.h"
+
 // Include the header file for Gerenciador_Estados
 
 Jogo::Jogo()
@@ -55,6 +55,7 @@ Jogo::Jogo()
     //inimigo1.setPosicao(300.f, 100.f);
     fantasma1.setPosicao(200.f, 100.f);
     */
+   //Fases::Fase1 fase1;
 }
 
 Jogo::~Jogo()
@@ -76,7 +77,7 @@ void Jogo::Executar()
         if(gerenciador_grafico->janelaAberta())
             gerenciador_grafico->mostrarJanela();
         
-        //Fases::Fase fase1;
+        //fase1.desenhar();
 
     }
         

@@ -30,6 +30,7 @@ void Lagarto:: mover() {
 void Lagarto:: executar() {
     mover();
     atacar();
+    atualizar();
 }
 
 

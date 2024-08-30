@@ -57,6 +57,13 @@ void Gerenciadores::Gerenciador_Grafico::fecharJanela()
 		janela->close();
 }
 
+void Gerenciador_Grafico::desenhar(sf::Texture textura)
+{
+	sf::Sprite sprite;
+	sprite.setTexture(textura);
+	janela->draw(sprite);
+}
+
 sf::RenderWindow *Gerenciador_Grafico::getJanela()
 {
 	return janela;

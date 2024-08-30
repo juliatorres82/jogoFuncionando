@@ -67,6 +67,7 @@ void Fantasma :: executar() {
     if(!invisivel)
         desenhar();
     atacar();
+    atualizar();
 }
 
 void Fantasma :: atacar() {

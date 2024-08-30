@@ -17,6 +17,16 @@ void ListaEntidades::incluir(Entidade* pEnt)
 	listaEnt.incluir(pEnt);
 }
 
+void ListaEntidades::desenhaLista(sf::Sprite& sprite)
+{
+	Lista<Entidade>::Iterador it = listaEnt.getInicio();
+	while (!it.isNulo())
+	{
+		(*it)->desenhar(sprite);
+		++it;
+	}
+}
+
 void ListaEntidades::desenhaLista()
 {
 	Lista<Entidade>::Iterador it = listaEnt.getInicio();

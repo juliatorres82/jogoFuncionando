@@ -88,6 +88,7 @@ void Entidades::Personagens::Jogador::executar()
 {
 	mover();
 	desenhar();
+	atualizar();
 }
 
 void Entidades::Personagens::Jogador::setJogador2(Jogador* j2)

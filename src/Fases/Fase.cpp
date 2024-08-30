@@ -12,6 +12,7 @@ Fase::Fase(bool coop) {
     listaPlataforma = new ListaEntidades();
 
     pGG = pGG->getInstancia();
+    pGC = pGC->getInstancia();
     //setCaminho(caminho);
     //printf("Fase::Fase() funcionando\n"); ok
 }
@@ -101,30 +102,22 @@ void Fase:: criaJogadores(){
 
 
 void Fase:: criarTudo(int posx, int posy, int valor) {
-   
-    printf("entrou em criartufo\n");
+
        switch (valor) {
 
-                    case 0:{
-                        printf("blz  ");
+                    case 0:
                         break;
-                    }
-        
+
                     case 18: {
-                        //printf(" entrou 1\n");
                         Plataforma* plataforma = new Plataforma(posx, posy);
                         listaPlataforma->incluir(plataforma);
-                        printf(" entrou 1\n");
                         pGC->incluirObstaculos(plataforma);
-                        printf(" saiu 1\n");
                         break;
                     } 
                     case 23: {
                         PlataformaGelo* plataformaGelo = new PlataformaGelo(posx, posy);
-                         printf(" entrou 1\n");
                         listaPlataforma->incluir(plataformaGelo);
                         pGC->incluirObstaculos(plataformaGelo);
-                        printf(" saiu 1\n");
                         break;
                     }
                     case 1: {
@@ -266,4 +259,25 @@ void Fases::Fase::executar(){
     atualizar();
     tratarColisoes();
     //tratarEventos();
+}
+
+void Fases::Fase:: setsJogadores(){
+    Lista<Entidade>::Iterador it = listaJogadores->getInicio();
+    Lista<Entidade>::Iterador it2 = listaInimigos->getInicio();
+
+    while(!it2.isNulo()){
+        Entidade* pE = (*it2);
+        Inimigo* inimigo = dynamic_cast<Inimigo*>(pE);
+        inimigo->setJogador(static_cast<Jogador*>(*it));
+        ++it2;
+    }
+
+    it = listaObstaculos->getInicio();
+
+    while(!it.isNulo()){
+        Entidade* pE = (*it);
+        Obstaculo* obstaculo = dynamic_cast<Obstaculo*>(pE);
+        obstaculo->setJogadorPDano(static_cast<Jogador*>(*it));
+        ++it;
+    }
 }

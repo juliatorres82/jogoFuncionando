@@ -95,11 +95,13 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesInimsObstacs()
 
 void Gerenciador_Colisoes::tratarColisoesJogsObstacs()
 {
+	printf("ate auqi ok  ");
 	for (auto& jog : jogs)
 	{
-		
+		printf("  entrou em ger::tratcoljogsobs\n");
 		if (jog != nullptr)
 		{
+			printf("  entrou no if do ger::tratcoljogsobs\n");
 			sf::FloatRect intersec;
 			jog->mudaColidindo(false);
 			jog->mudaCaiu(false);
@@ -121,9 +123,13 @@ void Gerenciador_Colisoes::tratarColisoesJogsObstacs()
 
 void Gerenciadores::Gerenciador_Colisoes::tratarColisoes()
 {
+	printf("entrou em ger::tratcol\n");
 	tratarColisoesJogsObstacs();
+	printf((" 1  "));
 	tratarColisoesInimsObstacs();
+	printf(" 2 ");
 	tratarColisoesJogsInims();
+	printf(" 3 ");
 }
 
 void Gerenciador_Colisoes::resolverColisao(Entidade* p1, Entidade* p2, sf::FloatRect intersec) {

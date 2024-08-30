@@ -19,7 +19,7 @@ const bool Entidades::Obstaculos::Obstaculo::ehDanoso() const
     return danoso;
 }
 
-void Entidades::Obstaculos::Obstaculo::setJogadoresPDano(Jogador *j1, Jogador *j2){
+void Entidades::Obstaculos::Obstaculo::setJogadorPDano(Jogador *j1){
 	jog1 = j1;
-	jog2 = j2;
+	jog2 = j1->getJogador2();
 }

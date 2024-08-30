@@ -6,6 +6,7 @@ Fases::Fase1::Fase1(bool coop)
     setCaminho(caminho);
     criaFundo();
     constroiFase();
+    desenhar();
 }
 
 Fases::Fase1::~Fase1()
@@ -13,11 +14,16 @@ Fases::Fase1::~Fase1()
 }   
 
 void Fases::Fase1::criaFundo(){
+    cout << "criando fundo" << endl;
     sf::Texture fundo;
 
-    if(!fundo.loadFromFile("../imagens/imagemFundo.jpeg")) {
+    try{
+        fundo.loadFromFile("../imagens/imagemFundo.jpeg");
+    }
+   catch (const std::bad_alloc& e){
         std::cerr << "Erro ao carregar a textura do fundo" << std::endl;
     }
+
     pGG->desenhar(fundo);
 }   
 
@@ -41,11 +47,12 @@ void Fases::Fase1::atualizar(){
 */
 
 void Fases::Fase1::desenhar(){
-
+    cout << "desenhando" << endl;
     listaJogadores->desenhaLista();
     listaInimigos->desenhaLista();
     listaObstaculos->desenhaLista();
-    //listaPlataforma->desenhaLista();
+    listaPlataforma->desenhaLista();
+    cout << "desenhou" << endl;
 }
 
 //sf::Sprite Fases::Fase1::criaSprites(){} //implementar

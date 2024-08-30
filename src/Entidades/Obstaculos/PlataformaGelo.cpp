@@ -8,6 +8,8 @@ PlataformaGelo::PlataformaGelo(){}
 
 
 PlataformaGelo::PlataformaGelo(int posx, int posy) {
+    id = plataForma;
+    //cout <<"PlataformaGelo::PlataformaGelo()"<<endl;
     corpo.setPosition(posx, posy);
     corpo.setFillColor(sf::Color::Yellow);
 }
@@ -15,8 +17,14 @@ PlataformaGelo::PlataformaGelo(int posx, int posy) {
 
 PlataformaGelo:: ~PlataformaGelo() {}
 
+void PlataformaGelo:: fazEmpuxo(){
+    corpo.move(sf::Vector2f(0, -gravidade));
+}
 
-void PlataformaGelo:: executar() {} //implemetar; fiz assim só p compilar
+void PlataformaGelo:: executar() {
+    cair();
+    fazEmpuxo();
+} 
 
 
 void PlataformaGelo:: obstacular(Jogador* j1){

@@ -17,7 +17,7 @@ Jogo::Jogo()
     try
     {      
         gerenciador_estados->criarEstados();
-
+        cout << "criou estados" << endl;
         //if(gerenciador_estados->getEstado("Menu") == nullptr)
             //throw "Erro ao criar os estados";
         if(gerenciador_estados->getEstado("Jogando") == nullptr)

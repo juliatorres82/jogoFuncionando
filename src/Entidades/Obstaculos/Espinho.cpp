@@ -7,7 +7,7 @@ namespace Entidades::Obstaculos {
 
     Espinho:: Espinho(int posx, int posy){
         corpo.setPosition(posx, posy);
-        corpo.setFillColor(sf::Color::Red);
+        corpo.setFillColor(sf::Color::Yellow);
     }
 
     Espinho:: ~Espinho() {}

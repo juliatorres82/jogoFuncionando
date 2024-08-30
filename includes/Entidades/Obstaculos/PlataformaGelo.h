@@ -15,6 +15,7 @@ namespace Entidades{
                 PlataformaGelo(int x, int y);
                 ~PlataformaGelo();
                 void obstacular(Jogador* jogad);
+                void fazEmpuxo();
                 void executar();
         };
     }

@@ -13,7 +13,7 @@ Fase::Fase(bool coop) {
 
     pGG = pGG->getInstancia();
     //setCaminho(caminho);
-    printf("Fase::Fase() funcionando\n");
+    //printf("Fase::Fase() funcionando\n"); ok
 }
 
 Fase::~Fase() {
@@ -99,14 +99,14 @@ void Fase:: criaJogadores(){
     }
 }
 
-/*
-void Fase:: criarTudo(int posx, int posy, int valor) {
 
+void Fase:: criarTudo(int posx, int posy, int valor) {
+    //printf("entrou em criarTudo()\n");
        switch (valor) {
         
                     case 0: // Tile vazio
                         break;
-                    case 14: {
+                    case 18: {
                         Plataforma* plataforma = new Plataforma();
                         listaPlataforma->incluir(plataforma);
                         break;
@@ -121,7 +121,7 @@ void Fase:: criarTudo(int posx, int posy, int valor) {
                         listaJogadores->incluir(jogador);
                         break;
                     }
-                    case 47: {
+                    case 14: {
                         Espinho* espinho = new Espinho(posx, posy);
                         listaObstaculos->incluir(espinho);
                     }
@@ -133,7 +133,7 @@ void Fase:: criarTudo(int posx, int posy, int valor) {
                         Lagarto* lagarto = new Lagarto(posx, posy);
                         listaInimigos->incluir(lagarto);
                     }
-                    case 18: {
+                    case 12: {
                         Gosma* gosma = new Gosma(posx, posy);
                         listaObstaculos->incluir(gosma);
                     }
@@ -143,7 +143,6 @@ void Fase:: criarTudo(int posx, int posy, int valor) {
 }
 
     /* Feito por chatGPT, revisado e verificado pelos autores */
-    /*
 vector<vector<vector<int>>> Fase:: converteJsonParaMatriz(const std::string& caminhoArquivoJson, int numLayers){
     std::ifstream arquivo(caminhoArquivoJson);
     if (!arquivo.is_open()) {
@@ -180,6 +179,7 @@ vector<vector<vector<int>>> Fase:: converteJsonParaMatriz(const std::string& cam
 
         matrizMapa.push_back(matriz);
     }
+    cout << "processou mapa "  <<endl;
     return matrizMapa;
 }
 
@@ -187,21 +187,22 @@ vector<vector<vector<int>>> Fase:: converteJsonParaMatriz(const std::string& cam
 
 void Fase:: constroiFase() {
 
-    
+    cout <<"entrou em constroiFase()"<<endl;
     vector<vector<vector<int>>> matriz = converteJsonParaMatriz(caminho, 1);
 
     for(int i = 0; i < matriz.size(); i++){
 		for(int j = 0; j < matriz[i].size(); j++){
 			for (int k = 0; k < matriz[i][j].size(); k++) {
 				criarTudo(k * 32,  j* 32, matriz[i][j][k]);
+               // printf(" criou obj %d\n", matriz[i][j][k]);
 			}
 		}
 	}
 
 }
 
-*/
-void Fase:: constroiFase(){
+
+/*void Fase:: constroiFase(){
     Plataforma* p = new Plataforma(32,32);
     //Plataforma* p2 = new Plataforma(64,32);
     //Plataforma* p3 = new Plataforma(96,32);
@@ -212,30 +213,33 @@ void Fase:: constroiFase(){
     Jogador* j1 = new Jogador(60, 60);
     Fantasma* f1 = new Fantasma(100, 100);
 
-}
+}*/
 
-void Fases::Fase::criaFundo() {}
 
 void Fase:: tratarColisoes() {
+    cout << "entrou em tratar cols"<<endl;
     p_GC->getInstancia();
     p_GC->tratarColisoes();
+    cout << "saiu de tratar cols"<<endl;
 }
 
-void Fases::Fase::tratarEventos()
-{
+void Fases::Fase::tratarEventos(){
+    p_GE->getGerenciadorEventos();
     p_GE->gerenciaEventos();
 }
 
 
 void Fase::atualizar() {
-
-    tratarEventos();
-    tratarColisoes();
-    desenhar();
+    //cout << "entrou em atualizar"<<endl;
+    //desenhar();
+   // tratarEventos();
+   //tratarColisoes();
 }
 
 void Fases::Fase::executar(){
-    printf("Fase::executar() funcionando\n");   
+    printf("entrou em executarFase\n");  
+    desenhar();
+    atualizar();
     //tratarColisoes();
     //tratarEventos();
 }

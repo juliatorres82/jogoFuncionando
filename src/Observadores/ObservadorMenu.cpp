@@ -1,4 +1,4 @@
-#include "../../includes/Observadores/ObservadorMenu.h"
+#include "../../includes/Estados/Menus/Menu.h"
 namespace Observadores
 {
     Observadores::ObservadorMenu::ObservadorMenu(Estados::Menus::Menu* pmenu):

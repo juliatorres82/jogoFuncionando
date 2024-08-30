@@ -18,15 +18,14 @@ Botao::~Botao()
 
 Botao::Botao(const sf::Vector2f &tam, const sf::Vector2f &pos, const string &texto)
 {
+    fonte.loadFromFile("../fontes/NewAmsterdam-Regular.ttf");
+    this->texto.setFont(fonte);
     setTam(tam);
+    setCorTexto(sf::Color::Black);
+    setTexto(texto);
     setPos(pos);
     setCorRet(sf::Color::White);
-
-    fonte.loadFromFile("C:/Users/vinic/Desktop/projetos/JogoSimas/joguinho_lindo/joguinho_lindo/NewAmsterdam-Regular.ttf");
-    setCorTexto(sf::Color::Black);
-    this->texto.setFont(fonte);
-    this->texto.setString(texto);
-    this->texto.setPosition(pos.x + 10, pos.y + 10);
+  
 
     selecionado = false;
     ativo = true;
@@ -35,8 +34,10 @@ Botao::Botao(const sf::Vector2f &tam, const sf::Vector2f &pos, const string &tex
 
 void Botao::setPos(const sf::Vector2f &pos)
 {
+    ret.setOrigin(ret.getGlobalBounds().width/2, ret.getGlobalBounds().height/2);
+    texto.setOrigin(texto.getGlobalBounds().width/2, texto.getGlobalBounds().height/2);
     ret.setPosition(pos);
-    texto.setPosition(pos.x + 10, pos.y + 10);
+    texto.setPosition(pos.x, pos.y);
 }
 
 void Botao::setTam(const sf::Vector2f &tam)
@@ -48,12 +49,6 @@ void Botao::setTam(const sf::Vector2f &tam)
 void Botao::setTexto(const string &texto)
 {
     this->texto.setString(texto);
-}
-
-void Botao::setFonte(const string &caminho)
-{
-    fonte.loadFromFile(caminho);
-    this->texto.setFont(fonte);
 }
 
 void Botao::setCorTexto(const sf::Color &cor)

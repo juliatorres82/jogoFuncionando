@@ -1,5 +1,5 @@
-#include "../../../includes/Observadores/ObservadorMenu.h"
 #include "../../../includes/Gerenciadores/Gerenciador_Estados.h"
+
 using namespace Observadores;
 
 namespace Estados
@@ -11,13 +11,8 @@ namespace Menus
         Estado("Menu"), Ente(menu)
         {
             pGG = Gerenciadores::Gerenciador_Grafico::getInstancia();
-            fonte.loadFromFile("C:/Users/vinic/Desktop/projetos/JogoSimas/joguinho_lindo/joguinho_lindo/NewAmsterdam-Regular.ttf");
-            titulo.setFont(fonte);
+            fonte.loadFromFile("../fontes/NewAmsterdam-Regular.ttf");
             limpar();
-            titulo.setCharacterSize(50);
-            titulo.setFillColor(sf::Color::White);
-            titulo.setString("Titulo");
-            titulo.setPosition(pGG->getTamx()/2, 0);
             
             // Verifique se o ponteiro this é válido
             if (this == nullptr) {
@@ -30,44 +25,26 @@ namespace Menus
                 std::cerr << "Erro: falha ao alocar memória para ObservadorMenu" << std::endl;
                 return;
             }
-
-            adicionarBotao("Iniciar", sf::Vector2f(200, 50), sf::Vector2f(pGG->getTamx()/2, pGG->getTamy()/2));
-            adicionarBotao( "Sair", sf::Vector2f(200, 50), sf::Vector2f(pGG->getTamx()/2, pGG->getTamy()/2 + 100));
-            it = posAtual = botoes.begin();
-            (*it)->setSelecionado(true);
         }
 
 
         Estados::Menus::Menu::Menu(const std::string &iD):
         Estado(iD), Ente(menu)
         {
-            pGG = Gerenciadores::Gerenciador_Grafico::getInstancia();
-            fonte.loadFromFile("C:/Users/vinic/Desktop/projetos/JogoSimas/joguinho_lindo/joguinho_lindo/NewAmsterdam-Regular.ttf");
-            titulo.setFont(fonte);
-            setFundo("C:/Users/vinic/Desktop/projetos/JogoSimas/joguinho_lindo/joguinho_lindo/imagens/BG-MainMenu.jpeg");
+            try
+            {
+                pGG = Gerenciadores::Gerenciador_Grafico::getInstancia();
+                fonte.loadFromFile("../fontes/NewAmsterdam-Regular.ttf");
+                observadorMenu = new ObservadorMenu(this);
+            }
 
+            catch(const std::bad_alloc& e)
+            {
+                std::cerr << "Erro ao criar Menu: " << e.what() << std::endl;
+                return;
+            }
             limpar();
-            titulo.setCharacterSize(200);
-            titulo.setFillColor(sf::Color::Black);
-            titulo.setString("Titulo");
-            titulo.setPosition(pGG->getTamx()/2, 0.f);
-            
-            // Verifique se o ponteiro this é válido
-            if (this == nullptr) {
-                std::cerr << "Erro: this é nullptr no construtor de Menu" << std::endl;
-                return;
-            }
-
-            observadorMenu = new ObservadorMenu(this);
-            if (observadorMenu == nullptr) {
-                std::cerr << "Erro: falha ao alocar memória para ObservadorMenu" << std::endl;
-                return;
-            }
-
-            adicionarBotao("Jogar", sf::Vector2f(200, 50), sf::Vector2f(pGG->getTamx()/2, pGG->getTamy()/2));
-            adicionarBotao( "Sair", sf::Vector2f(200, 50), sf::Vector2f(pGG->getTamx()/2, pGG->getTamy()/2 + 100));
-            it = posAtual = botoes.begin();
-            (*posAtual)->setSelecionado(true);
+           
         }
         Estados::Menus::Menu::~Menu()
         {
@@ -79,33 +56,27 @@ namespace Menus
             limpar();
         }
 
+        void Menu::inicializar()
+        {
+            try
+            {
+                it = posAtual = botoes.begin();
+                (*posAtual)->setSelecionado(true);
+            }
+            catch(const std::exception& e)
+            {
+                std::cerr << "Erro ao inicializar Menu: " << e.what() << std::endl;
+                return;
+            }
+            
+        }
         void Estados::Menus::Menu::setFundo(const string &caminho)
         {
-            //textura_fundo.loadFromFile(caminho);
+            textura_fundo.loadFromFile(caminho);
             fundo.setSize(sf::Vector2f(pGG->getJanela()->getSize().x, pGG->getJanela()->getSize().y));
             fundo.setPosition(pGG->getJanela()->getPosition().x, pGG->getJanela()->getPosition().y);
             fundo.setFillColor(sf::Color::White);
-            //fundo.setTexture(&textura_fundo);
-        }
-
-        void Estados::Menus::Menu::setTitulo(const string &texto)
-        {
-            titulo.setString(texto);
-        }
-
-        void Estados::Menus::Menu::setPosTitulo(const sf::Vector2f &pos)
-        {
-            titulo.setPosition(pos);
-        }
-
-        void Estados::Menus::Menu::setCorTitulo(const sf::Color &cor)
-        {
-            titulo.setFillColor(cor);
-        }
-
-        void Estados::Menus::Menu::setTamTitulo(const unsigned int &tam)
-        {
-            titulo.setCharacterSize(tam);
+            fundo.setTexture(&textura_fundo);
         }
 
         void Estados::Menus::Menu::limpar()
@@ -124,7 +95,6 @@ namespace Menus
             {
                 std::cout << "Erro ao criar botao" << std::endl;
             }
-            botao->setFonte("C:/Users/vinic/Desktop/projetos/joguinhoNoVSCode/mainJogoFuncionando/jogoFuncionando/fontes/NewAmsterdam-Regular.ttf");
             botoes.push_back(botao);
         }
 

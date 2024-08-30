@@ -1,5 +1,5 @@
 #include "../includes/Jogo.h"
-#include "../includes/Fase/Fase.h"
+#include "../includes/Fases/Fase.h"
 // Include the header file for Gerenciador_Estados
 
 Jogo::Jogo()

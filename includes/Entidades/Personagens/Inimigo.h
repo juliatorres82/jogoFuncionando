@@ -14,10 +14,11 @@ namespace Entidades
 			protected:
 				int nivel_maldade;
 				Jogador* jogador1;
+				Jogador* jogador2;
 
 			public:
 				Inimigo();
-				Inimigo(float x, float y);
+				Inimigo(int x, int y);
 				~Inimigo();
 
 				void setMaldade(int m);

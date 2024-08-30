@@ -13,6 +13,7 @@
 class Jogo
 {
 	private:
+	//da p tirar pq td isso tem na fase e no menu(: ente);
 		Gerenciadores::Gerenciador_Grafico* gerenciador_grafico;
 		Gerenciadores::Gerenciador_Eventos* gerenciador_eventos;
 		Gerenciadores::Gerenciador_Inputs* gerenciador_inputs;

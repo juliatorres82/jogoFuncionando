@@ -18,8 +18,10 @@ Jogo::Jogo()
     {      
         gerenciador_estados->criarEstados();
 
-        if(gerenciador_estados->getEstado("Menu") == nullptr)
-            throw "Erro ao criar os estados";
+        //if(gerenciador_estados->getEstado("Menu") == nullptr)
+            //throw "Erro ao criar os estados";
+        if(gerenciador_estados->getEstado("Jogando") == nullptr)
+            throw "Erro ao criar o estado de jogo";
     }
 
     catch(const char* e)
@@ -77,7 +79,6 @@ void Jogo::Executar()
         if(gerenciador_grafico->janelaAberta())
             gerenciador_grafico->mostrarJanela();
         
-        fase1.desenhar();
 
     }
         

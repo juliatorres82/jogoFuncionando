@@ -91,7 +91,7 @@ namespace Gerenciadores
     void Gerenciador_Inputs::gerenciaTeclasPressionadas(sf::Keyboard::Key tecla){
     
         std::list<Observadores::Observador*>::iterator itObs = observadoresVigiando.begin();
-
+        
         for(itObs; itObs != observadoresVigiando.end(); itObs++) 
         {   if((*itObs)->getEstadoAtivo())
                 (*itObs)->notificaTeclaPressionada(tecla);

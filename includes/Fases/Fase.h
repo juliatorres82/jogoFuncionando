@@ -28,6 +28,7 @@ class Fase : public Ente {
         ListaEntidades* listaObstaculos;
         ListaEntidades* listaPlataforma;
         bool ehCoop;
+        //da p tirar GG e GC o pq Ente ja tem os gerenciadroes
         Gerenciadores::Gerenciador_Grafico* p_GG;
         Gerenciadores::Gerenciador_Eventos* p_GE;
         Gerenciadores::Gerenciador_Colisoes* p_GC;
@@ -48,8 +49,8 @@ class Fase : public Ente {
         void tratarColisoes();
         void tratarEventos(); 
         virtual void setCaminho(std::string caminhoArq) = 0; 
-        virtual void atualizar() = 0;
-        virtual void executar() = 0; //setar jogadores em obstaculos e inimigos;
+        void atualizar();
+        void executar(); 
         //virtual void desenhar() = 0;
         //virtual sf::Sprite criaSprites() = 0; //criar sprites de jogadores, inimigos e obstáculos;
 };

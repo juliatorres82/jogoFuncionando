@@ -13,6 +13,7 @@ Fase::Fase(bool coop) {
 
     pGG = pGG->getInstancia();
     //setCaminho(caminho);
+    printf("Fase::Fase() funcionando\n");
 }
 
 Fase::~Fase() {
@@ -98,6 +99,7 @@ void Fase:: criaJogadores(){
     }
 }
 
+/*
 void Fase:: criarTudo(int posx, int posy, int valor) {
 
        switch (valor) {
@@ -141,6 +143,7 @@ void Fase:: criarTudo(int posx, int posy, int valor) {
 }
 
     /* Feito por chatGPT, revisado e verificado pelos autores */
+    /*
 vector<vector<vector<int>>> Fase:: converteJsonParaMatriz(const std::string& caminhoArquivoJson, int numLayers){
     std::ifstream arquivo(caminhoArquivoJson);
     if (!arquivo.is_open()) {
@@ -184,6 +187,7 @@ vector<vector<vector<int>>> Fase:: converteJsonParaMatriz(const std::string& cam
 
 void Fase:: constroiFase() {
 
+    
     vector<vector<vector<int>>> matriz = converteJsonParaMatriz(caminho, 1);
 
     for(int i = 0; i < matriz.size(); i++){
@@ -196,11 +200,24 @@ void Fase:: constroiFase() {
 
 }
 
-void Fases::Fase::criaFundo()
-{
+*/
+void Fase:: constroiFase(){
+    Plataforma* p = new Plataforma(32,32);
+    //Plataforma* p2 = new Plataforma(64,32);
+    //Plataforma* p3 = new Plataforma(96,32);
+    //Plataforma* p4 = new Plataforma(128,32);
+    //Plataforma* p5 = new Plataforma(100,32);
+    //Plataforma* p6 = new Plataforma(132,32);
+
+    Jogador* j1 = new Jogador(60, 60);
+    Fantasma* f1 = new Fantasma(100, 100);
+
 }
 
+void Fases::Fase::criaFundo() {}
+
 void Fase:: tratarColisoes() {
+    p_GC->getInstancia();
     p_GC->tratarColisoes();
 }
 
@@ -218,6 +235,7 @@ void Fase::atualizar() {
 }
 
 void Fases::Fase::executar(){
-    tratarColisoes();
-    tratarEventos();
+    printf("Fase::executar() funcionando\n");   
+    //tratarColisoes();
+    //tratarEventos();
 }

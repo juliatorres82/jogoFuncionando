@@ -39,7 +39,7 @@ void Gerenciador_Estados::limpar()
 
 void Gerenciador_Estados::criarEstados()
 {
-    try
+    /*try
     {
         Estados::Menus::Menu* menu = new Estados::Menus::MenuPrincipal();
         adicionarEstado("Menu", menu);
@@ -48,12 +48,14 @@ void Gerenciador_Estados::criarEstados()
     {
         std::cerr << "Erro ao criar estado Menu: " << e.what() << std::endl;
         return;
-    }
+    } */
 
     try
     {
         Estados::Jogando* jogando = new Estados::Jogando("Jogando");
+        printf("criou novo estado Jogando\n");
         adicionarEstado("Jogando", jogando);
+        printf("Adicionou novo estado jogando\n");
     }
     catch (const std::bad_alloc& e)
     {
@@ -61,7 +63,19 @@ void Gerenciador_Estados::criarEstados()
         return;
     }
 
-    mudaEstado("Menu");
+    //mudaEstado("Menu");
+    estado_atual = estados["Jogando"];
+    printf("conf jogando como est atual\n");
+    try{
+        //mudaEstado("Jogando");
+        printf("chamou ger.estados p executar\n");
+        executar();
+
+    }
+    catch (const std::bad_alloc& e){
+        std::cerr << "Erro ao mudar de estado" << e.what() << std::endl;
+    }
+
 }
 
 void Gerenciador_Estados::adicionarEstado(const std::string &id, Estados::Estado *estado)
@@ -100,7 +114,8 @@ void Gerenciador_Estados::executar()
 {
     if (estado_atual != nullptr)
     {
-        estado_atual->exec();
+        printf("ger. estado executando\n");  
+        estado_atual->exec(); 
     }
 
     else

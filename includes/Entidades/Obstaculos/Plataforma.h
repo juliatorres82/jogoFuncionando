@@ -6,8 +6,7 @@ namespace Entidades
 {
     namespace Obstaculos
     {
-        class Plataforma :
-            public Obstaculo
+        class Plataforma : public Obstaculo
         {
             private:
 
@@ -17,12 +16,12 @@ namespace Entidades
             public:
                 Plataforma();
                 Plataforma(int x, int y);
-                Plataforma(sf:: Vector2f posicao, int e, sf::Vector2f tam);
+                //Plataforma(sf:: Vector2f posicao, int e, sf::Vector2f tam);
                 ~Plataforma();
                 void setElasticidade(int e);
-                void setTamanho(sf::Vector2f tam);
+                //void setTamanho(sf::Vector2f tam);
                 void executar();
-                void obstacular();
+                void obstacular(Jogador* j1);
                 void fazEmpuxo();
         };
     }

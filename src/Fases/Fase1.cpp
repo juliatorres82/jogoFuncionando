@@ -2,8 +2,10 @@
 
 Fases::Fase1::Fase1(bool coop)
 {
-    caminho = "mapinha.tmj";
+    caminho = "../mapao.tmj";
     setCaminho(caminho);
+    criaFundo();
+    constroiFase();
 }
 
 Fases::Fase1::~Fase1()
@@ -13,7 +15,7 @@ Fases::Fase1::~Fase1()
 void Fases::Fase1::criaFundo(){
     sf::Texture fundo;
 
-    if(!fundo.loadFromFile("imagens/fundo.png")) {
+    if(!fundo.loadFromFile("../imagens/imagemFundo.jpeg")) {
         std::cerr << "Erro ao carregar a textura do fundo" << std::endl;
     }
     pGG->desenhar(fundo);

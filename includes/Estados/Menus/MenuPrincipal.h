@@ -8,7 +8,7 @@ namespace Estados
         class MenuPrincipal: public Menu
         {
             private:
-                sf::Text titulo;
+                 sf::Text titulo;
             public:
                 MenuPrincipal();
                 virtual ~MenuPrincipal(); 

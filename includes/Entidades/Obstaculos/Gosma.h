@@ -6,7 +6,7 @@ using namespace Entidades::Obstaculos;
 class Gosma : public Obstaculo {
 
     private:
-        bool grudar;
+        const float viscosidade;
     
     public:
         Gosma (int posx, int posy);

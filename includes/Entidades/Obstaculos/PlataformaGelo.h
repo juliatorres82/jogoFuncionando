@@ -9,7 +9,7 @@ namespace Entidades{
         class PlataformaGelo: public Plataforma{
 
             private:
-                bool deslizante;
+                const float deslizo;
 
             public:
                 PlataformaGelo(int x, int y);

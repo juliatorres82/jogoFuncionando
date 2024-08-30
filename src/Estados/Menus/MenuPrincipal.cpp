@@ -18,7 +18,9 @@ namespace Estados
                 inicializar();
         }
 
-        MenuPrincipal::~MenuPrincipal() {}
+        MenuPrincipal::~MenuPrincipal() {
+            limpar();
+        }
 
         void MenuPrincipal::setTitulo(const string &texto)
         {

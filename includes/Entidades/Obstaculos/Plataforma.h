@@ -11,7 +11,7 @@ namespace Entidades
         {
             private:
 
-                int elasticidade;
+                const float elasticidade;
                 //Gerenciador_Grafico* pGG;
 
             public:

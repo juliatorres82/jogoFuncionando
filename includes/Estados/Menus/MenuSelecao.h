@@ -11,6 +11,7 @@ namespace Estados
             public:
                 MenuSelecao();
                 virtual ~MenuSelecao(); 
+                void exec();
                 void desenhar();
                 void executar();
                 void setDoisJogadores();

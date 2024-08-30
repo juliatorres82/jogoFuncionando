@@ -6,7 +6,7 @@ using namespace Entidades::Obstaculos;
 class Espinho : public Obstaculo {
 
     private:
-        bool espinhar;
+        const int danoEspinhar;
     
     public:
         Espinho(int posx, int posy);

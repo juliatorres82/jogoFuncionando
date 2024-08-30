@@ -15,7 +15,7 @@ Plataforma::Plataforma()
 
 }
 
-Plataforma::Plataforma(sf::Vector2f posicao, int e, sf::Vector2f tam)
+/*Plataforma::Plataforma(sf::Vector2f posicao, int e, sf::Vector2f tam)
 {
 	pos = posicao;
 	dimensoes = tam;
@@ -24,17 +24,16 @@ Plataforma::Plataforma(sf::Vector2f posicao, int e, sf::Vector2f tam)
 	setElasticidade(e);
 	danoso = false;
 }
+*/
 
-Plataforma:: Plataforma(int x, int y) : elasticidade(0) {
+Plataforma:: Plataforma(int x, int y) : Obstaculo(false), elasticidade(0) {
+	id = plataForma;
 	corpo.setPosition(x, y);
 	corpo.setFillColor(sf::Color::Blue);
 }
 
 
-Plataforma::~Plataforma()
-{
-	pGG = nullptr;
-}
+Plataforma::~Plataforma() {}
 
 void Plataforma::setElasticidade(int e)
 {
@@ -44,15 +43,12 @@ void Plataforma::setElasticidade(int e)
 
 void Plataforma::executar()
 {
-	obstacular();
+	cair();
+	fazEmpuxo();
 	desenhar();
 }
 
-void Plataforma::obstacular()
-{	
-	cair();
-	fazEmpuxo();
-}
+void Plataforma::obstacular(Personagens::Jogador* jogador1) {}
 
 void Entidades::Obstaculos::Plataforma::fazEmpuxo() { //possibilita às plataformas flutuarem
 	corpo.move(sf::Vector2f(0, -gravidade));

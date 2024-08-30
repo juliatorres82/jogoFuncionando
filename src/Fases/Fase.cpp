@@ -104,11 +104,16 @@ void Fase:: criarTudo(int posx, int posy, int valor) {
         
                     case 0: // Tile vazio
                         break;
-                    //case 23: {
-                        //PlataformaGelo* plataformaGelo = new PlataformaGelo(posx, posy);
-                        //listaPlataforma->incluir(plataformaGelo);
-                        //break;
-                    //}
+                    case 14: {
+                        Plataforma* plataforma = new Plataforma();
+                        listaPlataforma->incluir(plataforma);
+                        break;
+                    } 
+                    case 23: {
+                        PlataformaGelo* plataformaGelo = new PlataformaGelo(posx, posy);
+                        listaPlataforma->incluir(plataformaGelo);
+                        break;
+                    }
                     case 34: {
                         Jogador* jogador = new Jogador(posx, posy);
                         listaJogadores->incluir(jogador);
@@ -210,4 +215,9 @@ void Fase::atualizar() {
     tratarEventos();
     tratarColisoes();
     desenhar();
+}
+
+void Fases::Fase::executar(){
+    tratarColisoes();
+    tratarEventos();
 }

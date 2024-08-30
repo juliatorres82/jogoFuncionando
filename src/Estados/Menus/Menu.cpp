@@ -10,7 +10,8 @@ namespace Estados::Menus
     Estado("Menu"), Ente(menu)
     {
         pGG = Gerenciadores::Gerenciador_Grafico::getInstancia();
-        fonte.loadFromFile("C:/Users/vinic/Desktop/projetos/JogoSimas/joguinho_lindo/joguinho_lindo/NewAmsterdam-Regular.ttf");
+        //fonte.loadFromFile("C:/Users/vinic/Desktop/projetos/JogoSimas/joguinho_lindo/joguinho_lindo/NewAmsterdam-Regular.ttf");
+        fonte.loadFromFile("../fontes/NewAmsterdam-Regular.ttf");
         titulo.setFont(fonte);
         limpar();
         titulo.setCharacterSize(50);
@@ -41,9 +42,12 @@ namespace Estados::Menus
     Estado(iD), Ente(menu)
     {
         pGG = Gerenciadores::Gerenciador_Grafico::getInstancia();
-        fonte.loadFromFile("C:/Users/vinic/Desktop/projetos/JogoSimas/joguinho_lindo/joguinho_lindo/NewAmsterdam-Regular.ttf");
+        //fonte.loadFromFile("C:/Users/vinic/Desktop/projetos/JogoSimas/joguinho_lindo/joguinho_lindo/NewAmsterdam-Regular.ttf");
+        fonte.loadFromFile("../fontes/NewAmsterdam-Regular.ttf");
         titulo.setFont(fonte);
-        setFundo("C:/Users/vinic/Desktop/projetos/JogoSimas/joguinho_lindo/joguinho_lindo/imagens/BG-MainMenu.jpeg");
+        //setFundo("C:/Users/vinic/Desktop/projetos/JogoSimas/joguinho_lindo/joguinho_lindo/imagens/BG-MainMenu.jpeg");
+
+        setFundo("../imagens/BG-MainMenu.jpeg"); 
 
         limpar();
         titulo.setCharacterSize(200);
@@ -80,7 +84,7 @@ namespace Estados::Menus
 
     void Estados::Menus::Menu::setFundo(const string &caminho)
     {
-        //textura_fundo.loadFromFile(caminho);
+        textura_fundo.loadFromFile(caminho);
         fundo.setSize(sf::Vector2f(pGG->getJanela()->getSize().x, pGG->getJanela()->getSize().y));
         fundo.setPosition(Ente::pGG->getJanela()->getPosition().x, pGG->getJanela()->getPosition().y);
         fundo.setFillColor(sf::Color::White);
@@ -123,7 +127,8 @@ namespace Estados::Menus
         {
             std::cout << "Erro ao criar botao" << std::endl;
         }
-        botao->setFonte("C:/Users/vinic/Desktop/projetos/joguinhoNoVSCode/mainJogoFuncionando/jogoFuncionando/fontes/NewAmsterdam-Regular.ttf");
+        botao->setFonte("../fontes/NewAmsterdam-Regular.ttf");
+        //botao->setFonte("C:/Users/vinic/Desktop/projetos/joguinhoNoVSCode/mainJogoFuncionando/jogoFuncionando/fontes/NewAmsterdam-Regular.ttf");
         botoes.push_back(botao);
     }
 

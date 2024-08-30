@@ -22,7 +22,12 @@ Botao::Botao(const sf::Vector2f &tam, const sf::Vector2f &pos, const string &tex
     setPos(pos);
     setCorRet(sf::Color::White);
 
-    fonte.loadFromFile("C:/Users/vinic/Desktop/projetos/JogoSimas/joguinho_lindo/joguinho_lindo/NewAmsterdam-Regular.ttf");
+   // fonte.loadFromFile("C:/Users/vinic/Desktop/projetos/JogoSimas/joguinho_lindo/joguinho_lindo/NewAmsterdam-Regular.ttf");
+   sf::Font font;
+    if (!font.loadFromFile("../fontes/NewAmsterdam-Regular.ttf")) {
+    std::cerr << "Erro ao carregar a fonte" << std::endl;
+    }
+    //setFonte("NewAmsterdam-Regular.ttf");
     setCorTexto(sf::Color::Black);
     this->texto.setFont(fonte);
     this->texto.setString(texto);

@@ -7,6 +7,8 @@ using namespace Personagens;
 Inimigo::Inimigo() :
 	nivel_maldade(0), jogador1(nullptr)
 {
+	jogador1 = NULL;
+	jogador2 = NULL;
 	id = idEntes::iniMigo;
 	corpo.setFillColor(sf::Color::Red);
 	pos = sf::Vector2f(100.f, 250.f);
@@ -17,8 +19,10 @@ Inimigo::Inimigo() :
 	vely = puloInimigo;
 }
 
-Inimigo:: Inimigo(float x, float y) {
-	corpo.setPosition(sf::Vector2f(x, y));
+Inimigo:: Inimigo(int x, int y) {
+	jogador1 = NULL;
+	jogador2 = NULL;
+	corpo.setPosition(x, y);
 	id = idEntes::iniMigo;
 	corpo.setFillColor(sf::Color::Red);
 	dimensoes = sf::Vector2f(40.0, 40.0);
@@ -31,6 +35,7 @@ Inimigo:: Inimigo(float x, float y) {
 Inimigo::~Inimigo()
 {
 	jogador1 = nullptr;
+	jogador2 = nullptr;
 }
 
 void Inimigo::setMaldade(int m)
@@ -41,6 +46,9 @@ void Inimigo::setMaldade(int m)
 void Inimigo::setJogador(Jogador *jog1)
 {
 	jogador1 = jog1;
+	if(jog1->doisJogadores()){
+		jogador2 = jogador1->getJogador2();
+	}
 }
 
 Jogador* Inimigo:: getJogador1() {

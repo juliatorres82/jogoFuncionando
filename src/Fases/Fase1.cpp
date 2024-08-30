@@ -30,11 +30,6 @@ void Fases::Fase1::atualizar(){
     //listaPlataforma->executaLista();
 }
 
-void Fases::Fase1::executar(){
-    tratarColisoes();
-    tratarEventos();
-}
-
 /*void Fases::Fase1::desenhar(){ //com sprites:
     listaJogadores->desenhaLista();
     listaInimigos->desenhaLista();

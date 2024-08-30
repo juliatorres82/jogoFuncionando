@@ -7,6 +7,8 @@ Obstaculo::Obstaculo(bool daDano)
 	tipo = estatico;
 	id = idEntes::obsTaculo;
 	danoso = daDano;
+	jog1 = NULL;
+	jog2 = NULL;
 }
 
 
@@ -18,8 +20,6 @@ const bool Entidades::Obstaculos::Obstaculo::ehDanoso() const
 }
 
 void Entidades::Obstaculos::Obstaculo::setJogadoresPDano(Jogador *j1, Jogador *j2){
-	
 	jog1 = j1;
-	if(j2 != NULL)
-		jog2 = j2;
+	jog2 = j2;
 }

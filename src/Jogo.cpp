@@ -1,4 +1,5 @@
 #include "../includes/Jogo.h"
+#include "../includes/Fase/Fase.h"
 // Include the header file for Gerenciador_Estados
 
 Jogo::Jogo()
@@ -7,6 +8,7 @@ Jogo::Jogo()
     gerenciador_inputs = Gerenciadores::Gerenciador_Inputs::getInstancia();
     gerenciador_eventos = Gerenciadores::Gerenciador_Eventos::getGerenciadorEventos();
     gerenciador_estados = Gerenciadores::Gerenciador_Estados::getInstancia();
+    
     if(gerenciador_grafico == nullptr || gerenciador_eventos == nullptr || gerenciador_estados == nullptr)
     {
         std::cerr << "Erro ao criar os gerenciadores" << '\n';
@@ -60,6 +62,7 @@ Jogo::~Jogo()
     //delete jogador2;
     //janela_jogo = nullptr;
 }
+
 void Jogo::Executar()
 {   
     while (gerenciador_grafico->janelaAberta())
@@ -72,6 +75,8 @@ void Jogo::Executar()
         
         if(gerenciador_grafico->janelaAberta())
             gerenciador_grafico->mostrarJanela();
+        
+        //Fases::Fase fase1;
 
     }
         

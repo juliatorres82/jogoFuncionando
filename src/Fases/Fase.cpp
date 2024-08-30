@@ -87,6 +87,7 @@ void Fase:: criaJogadores(){
     Jogador* jogador1 = nullptr;
     jogador1 = new Jogador();
     listaJogadores->incluir(jogador1);
+
     if(ehCoop){
         Jogador* jogador2 = nullptr;
         jogador2 = jogador1->getJogador2();
@@ -209,9 +210,4 @@ void Fase::atualizar() {
     tratarEventos();
     tratarColisoes();
     desenhar();
-}
-
-void Fase:: desenhar() {
-
-    //pGG->desenhar(this);
 }

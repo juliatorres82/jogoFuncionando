@@ -49,7 +49,7 @@ class Fase : public Ente {
         void tratarEventos(); 
         virtual void setCaminho(std::string caminhoArq) = 0; 
         virtual void atualizar() = 0;
-        virtual void executar() = 0; 
+        virtual void executar() = 0; //setar jogadores em obstaculos e inimigos;
         virtual void desenhar() = 0;
 };
 

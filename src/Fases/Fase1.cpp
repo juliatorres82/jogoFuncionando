@@ -35,7 +35,7 @@ void Fases::Fase1::atualizar(){
     listaJogadores->executaLista();
     listaInimigos->executaLista();
     listaObstaculos->executaLista();
-    //listaPlataforma->executaLista();
+    listaPlataforma->executaLista();
 }
 
 /*void Fases::Fase1::desenhar(){ //com sprites:
@@ -47,12 +47,12 @@ void Fases::Fase1::atualizar(){
 */
 
 void Fases::Fase1::desenhar(){
-    cout << "desenhando" << endl;
+    //cout << "desenhando" << endl;
     listaJogadores->desenhaLista();
     listaInimigos->desenhaLista();
     listaObstaculos->desenhaLista();
     listaPlataforma->desenhaLista();
-    cout << "desenhou" << endl;
+    //cout << "desenhou" << endl;
 }
 
 //sf::Sprite Fases::Fase1::criaSprites(){} //implementar

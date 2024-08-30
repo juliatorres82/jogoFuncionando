@@ -3,17 +3,18 @@
 Estados::Jogando::Jogando(const std::string &id)
 {
     setId(id);
-    fase = nullptr;
+    //fase = nullptr;
     printf("constr. jogando funcionando\n"); 
+    fase = new Fases::Fase1(false); 
 }
 
 Estados::Jogando::~Jogando()
 {
-    /*if(fase)
+    if(fase)
     {
         delete fase;
     }
-    fase = nullptr;*/
+    fase = nullptr;
 }
 
 void Estados::Jogando::criaFase(bool coop)
@@ -25,15 +26,7 @@ void Estados::Jogando::criaFase(bool coop)
 
 void Estados::Jogando::exec()
 {
-    printf("estado jogando executado\n"); 
-
-    if(fase){
-        fase->executar();
-    }
-    else
-    {
-        std::cerr << "Erro ao executar fase->exec"<< std::endl;
-    }cd 
+    //printf("estado jogando executado\n"); 
     try{
         fase->executar();
     }

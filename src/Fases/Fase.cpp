@@ -101,41 +101,61 @@ void Fase:: criaJogadores(){
 
 
 void Fase:: criarTudo(int posx, int posy, int valor) {
-    //printf("entrou em criarTudo()\n");
+   
+    printf("entrou em criartufo\n");
        switch (valor) {
-        
-                    case 0: // Tile vazio
+
+                    case 0:{
+                        printf("blz  ");
                         break;
+                    }
+        
                     case 18: {
-                        Plataforma* plataforma = new Plataforma();
+                        //printf(" entrou 1\n");
+                        Plataforma* plataforma = new Plataforma(posx, posy);
                         listaPlataforma->incluir(plataforma);
+                        printf(" entrou 1\n");
+                        pGC->incluirObstaculos(plataforma);
+                        printf(" saiu 1\n");
                         break;
                     } 
                     case 23: {
                         PlataformaGelo* plataformaGelo = new PlataformaGelo(posx, posy);
+                         printf(" entrou 1\n");
                         listaPlataforma->incluir(plataformaGelo);
+                        pGC->incluirObstaculos(plataformaGelo);
+                        printf(" saiu 1\n");
                         break;
                     }
-                    case 34: {
+                    case 1: {
                         Jogador* jogador = new Jogador(posx, posy);
                         listaJogadores->incluir(jogador);
+                        pGC->incluirJogador(jogador);
                         break;
                     }
                     case 14: {
                         Espinho* espinho = new Espinho(posx, posy);
                         listaObstaculos->incluir(espinho);
+                        pGC->incluirObstaculos(espinho);
+                        break;
                     }
                     case 49: {
                         Fantasma* fantasma = new Fantasma(posx, posy);
                         listaInimigos->incluir(fantasma);
+                        pGC->incluirInimigos(fantasma);
+                        break;
                     }
-                    case 29: {
+                    case 43: {
                         Lagarto* lagarto = new Lagarto(posx, posy);
                         listaInimigos->incluir(lagarto);
+                        pGC->incluirInimigos(lagarto);
+                        break;
                     }
                     case 12: {
                         Gosma* gosma = new Gosma(posx, posy);
                         listaObstaculos->incluir(gosma);
+                        pGC->incluirObstaculos(gosma);
+                        break;
                     }
                     default:
                         break;
@@ -198,6 +218,10 @@ void Fase:: constroiFase() {
 			}
 		}
 	}
+    pGC = pGC->getInstancia();
+    //setar jogs em obstacular e inimigos
+    //Listas::Lista<Entidades>::Iterador it = listaObstaculos->getInicio();
+    //listaObstaculos.
 
 }
 
@@ -217,10 +241,10 @@ void Fase:: constroiFase() {
 
 
 void Fase:: tratarColisoes() {
-    cout << "entrou em tratar cols"<<endl;
+    cout << "entrou em fase:::tratar cols"<<endl;
     p_GC->getInstancia();
     p_GC->tratarColisoes();
-    cout << "saiu de tratar cols"<<endl;
+    cout << "saiu de fase::tratar cols"<<endl;
 }
 
 void Fases::Fase::tratarEventos(){
@@ -237,9 +261,9 @@ void Fase::atualizar() {
 }
 
 void Fases::Fase::executar(){
-    printf("entrou em executarFase\n");  
+    //printf("entrou em executarFase\n");  
     desenhar();
     atualizar();
-    //tratarColisoes();
+    tratarColisoes();
     //tratarEventos();
 }

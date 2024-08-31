@@ -9,7 +9,7 @@
 #include "../Entidades/Personagens/Fantasma.h"
 #include "../Entidades/Personagens/Lagarto.h"
 #include <fstream>
-#include <nlohmann/json.hpp> 
+//#include <nlohmann/json.hpp>
 
 
 #include "../../json.hpp" // Inclui a biblioteca JSON
@@ -29,9 +29,7 @@ class Fase : public Ente {
         ListaEntidades* listaPlataforma;
         bool ehCoop;
         //da p tirar GG e GC o pq Ente ja tem os gerenciadroes
-        Gerenciadores::Gerenciador_Grafico* p_GG;
         Gerenciadores::Gerenciador_Eventos* p_GE;
-        Gerenciadores::Gerenciador_Colisoes* p_GC;
 
         std::string caminho; 
 

@@ -235,8 +235,7 @@ void Fase:: constroiFase() {
 
 void Fase:: tratarColisoes() {
     cout << "entrou em fase:::tratar cols"<<endl;
-    p_GC->getInstancia();
-    p_GC->tratarColisoes();
+    pGC->tratarColisoes();
     cout << "saiu de fase::tratar cols"<<endl;
 }
 
@@ -248,9 +247,9 @@ void Fases::Fase::tratarEventos(){
 
 void Fase::atualizar() {
     //cout << "entrou em atualizar"<<endl;
-    //desenhar();
-   // tratarEventos();
-   //tratarColisoes();
+    desenhar();
+    tratarEventos();
+    tratarColisoes();
 }
 
 void Fases::Fase::executar(){
@@ -258,7 +257,7 @@ void Fases::Fase::executar(){
     desenhar();
     atualizar();
     tratarColisoes();
-    //tratarEventos();
+    tratarEventos();
 }
 
 void Fases::Fase:: setsJogadores(){

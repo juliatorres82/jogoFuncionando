@@ -11,8 +11,7 @@ namespace Entidades{
                 const float deslizo;
 
             public:
-                PlataformaGelo(); 
-                PlataformaGelo(int x, int y);
+                PlataformaGelo(int x = 0, int y = 0);
                 ~PlataformaGelo();
                 void obstacular(Jogador* jogad);
                 void fazEmpuxo();

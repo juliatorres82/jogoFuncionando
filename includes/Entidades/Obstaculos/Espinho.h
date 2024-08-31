@@ -9,8 +9,7 @@ namespace Entidades::Obstaculos {
         const int danoEspinhar;
     
     public:
-        Espinho();
-        Espinho(int posx, int posy);
+        Espinho(int posx = 0, int posy = 0);
         ~Espinho();
 
         void executar();

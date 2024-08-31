@@ -8,7 +8,7 @@ namespace Entidades::Obstaculos {
         const float viscosidade;
     
     public:
-        Gosma (int posx, int posy);
+        Gosma (int posx = 0, int posy = 0);
         ~Gosma();
 
         void executar();

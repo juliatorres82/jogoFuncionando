@@ -2,12 +2,10 @@
 
 namespace Entidades::Obstaculos {
 
-    Espinho::Espinho() {}
-
-Espinho:: Espinho(int posx, int posy): danoEspinhar(1){
-    corpo.setPosition(posx, posy);
-    corpo.setFillColor(sf::Color::Yellow);
-}
+    Espinho:: Espinho(int posx, int posy): danoEspinhar(1){
+        corpo.setPosition(posx, posy);
+        corpo.setFillColor(sf::Color::Yellow);
+    }
 
 
     Espinho:: ~Espinho() {}

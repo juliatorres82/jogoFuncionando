@@ -40,7 +40,7 @@ void Gerenciador_Estados::limpar()
 
 void Gerenciador_Estados::criarEstados()
 {
-    /*try
+    try
     {
         Estados::Menus::Menu* menuPrin = new Estados::Menus::MenuPrincipal();
         adicionarEstado("MenuPrincipal", menuPrin);
@@ -49,7 +49,7 @@ void Gerenciador_Estados::criarEstados()
     {
         std::cerr << "Erro ao criar estado Menu: " << e.what() << std::endl;
         return;
-    } */
+    } 
 
     try
     {

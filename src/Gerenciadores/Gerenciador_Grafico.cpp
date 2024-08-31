@@ -53,7 +53,8 @@ void Gerenciador_Grafico::desenhar(sf::Text texto)
 }
 void Gerenciadores::Gerenciador_Grafico::fecharJanela()
 {
-	janela->close();
+	if(janela->isOpen())
+		janela->close();
 }
 
 sf::RenderWindow *Gerenciador_Grafico::getJanela()
@@ -76,7 +77,12 @@ float Gerenciador_Grafico::getTamy()
 	return janela->getSize().y;
 }
 
-void Gerenciador_Grafico::mostrar()
+void Gerenciador_Grafico::limpaJanela()
+{
+	janela->clear();
+}
+
+void Gerenciador_Grafico::mostrarJanela()
 {
 	janela->display();
 }

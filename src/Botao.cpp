@@ -8,50 +8,47 @@ Botao::Botao()
     selecionado = false;
     ativo = true;
     clicado = false;
-    setGG(Gerenciador_Grafico::getInstancia());
+    pGG = Gerenciador_Grafico::getInstancia();
 }
 
 Botao::~Botao()
 {
 
 }
+
 Botao::Botao(const sf::Vector2f &tam, const sf::Vector2f &pos, const string &texto)
 {
-    ret.setSize(tam);
-    ret.setPosition(pos);
-    ret.setFillColor(sf::Color::White);
-
-    fonte.loadFromFile("resources/fonts/arial.ttf");
+    fonte.loadFromFile("../fontes/NewAmsterdam-Regular.ttf");
     this->texto.setFont(fonte);
-    this->texto.setString(texto);
-    this->texto.setCharacterSize(20);
-    this->texto.setFillColor(sf::Color::Black);
-    this->texto.setPosition(pos.x + 10, pos.y + 10);
+    setTam(tam);
+    setCorTexto(sf::Color::Black);
+    setTexto(texto);
+    setPos(pos);
+    setCorRet(sf::Color::White);
+  
 
     selecionado = false;
     ativo = true;
     clicado = false;
 }
+
 void Botao::setPos(const sf::Vector2f &pos)
 {
+    ret.setOrigin(ret.getGlobalBounds().width/2, ret.getGlobalBounds().height/2);
+    texto.setOrigin(texto.getGlobalBounds().width/2, texto.getGlobalBounds().height/2);
     ret.setPosition(pos);
-    texto.setPosition(pos.x + 10, pos.y + 10);
+    texto.setPosition(pos.x, pos.y);
 }
 
 void Botao::setTam(const sf::Vector2f &tam)
 {
     ret.setSize(tam);
+    texto.setCharacterSize(tam.y - 20);
 }
 
 void Botao::setTexto(const string &texto)
 {
     this->texto.setString(texto);
-}
-
-void Botao::setFonte(const string &caminho)
-{
-    fonte.loadFromFile(caminho);
-    this->texto.setFont(fonte);
 }
 
 void Botao::setCorTexto(const sf::Color &cor)
@@ -64,12 +61,12 @@ void Botao::setCorRet(const sf::Color &cor)
     ret.setFillColor(cor);
 }
 
-void Botao::setSelecionado(const bool &selec)
+void Botao::setSelecionado(const bool selec)
 {
     selecionado = selec;
 }
 
-void Botao::setAtivo(const bool &ativo)
+void Botao::setAtivo(const bool ativo)
 {
     this->ativo = ativo;
 }
@@ -100,8 +97,23 @@ void Botao::atualizar()
 }
 void Botao::executar()
 {
-    if (ativo)
+    if (ativo && selecionado)
     {
         clicado = true;
     }
+}
+
+bool Botao::getClicado()
+{
+    return clicado;
+}
+
+const string Botao::getTexto() const
+{
+    return texto.getString();
+}
+
+void Botao::setClicado(bool clicado)
+{
+    this->clicado = clicado;
 }

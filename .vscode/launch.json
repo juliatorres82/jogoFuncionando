@@ -1,6 +1,7 @@
 {
   "version": "0.2.0",
   "configurations": [
+
     {
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
@@ -8,8 +9,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/vinic/Desktop/projetos/joguinhoNoVSCode/jogoFuncionando/src/Entidades/Obstaculos",
-      "program": "c:/Users/vinic/Desktop/projetos/joguinhoNoVSCode/jogoFuncionando/src/Entidades/Obstaculos/build/Debug/outDebug",
+      "cwd": "c:/Users/vinic/Desktop/projetos/joguinhoNoVSCode/mainJogoFuncionando/jogoFuncionando/src",
+      "program": "c:/Users/vinic/Desktop/projetos/joguinhoNoVSCode/mainJogoFuncionando/jogoFuncionando/src/jogo.exe",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

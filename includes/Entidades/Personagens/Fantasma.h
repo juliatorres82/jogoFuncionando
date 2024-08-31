@@ -12,6 +12,7 @@ class Fantasma : public Inimigo {
     public:
 
         Fantasma();
+        Fantasma(float x, float y);
         ~Fantasma();
         void perseguir();
         void ficarInvisivel();

@@ -1,11 +1,14 @@
 #include "../../includes/Estados/Jogando.h"
+#include "../../includes/Gerenciadores/Gerenciador_Estados.h"
+#include "../../includes/Observadores/ObservadorJogador.h"
 
-Jogando::Jogando()
+Estados::Jogando::Jogando(const std::string &id)
 {
+    setId(id);
     fase = nullptr;
+    observadorJogador = new Observadores::ObservadorJogador(this);
 }
-
-Jogando::~Jogando()
+Estados::Jogando::~Jogando()
 {
     if(fase)
     {
@@ -14,22 +17,27 @@ Jogando::~Jogando()
     fase = nullptr;
 }
 
-void Jogando::exec(bool coop)
+void Estados::Jogando::criaFase(bool coop)
 {
-    fase->executar(coop);
+    fase = new Fases::Fase(coop);
+    fase->constroiFase();
 }
 
-void Jogando::atualizar()
+void Estados::Jogando::exec()
+{
+    if(!observadorJogador->getEstadoAtivo())
+    {
+        observadorJogador->mudaEstadoAtivo();
+    }
+    fase->executar();
+}
+
+void Estados::Jogando::atualizar()
 {
     fase->atualizar();
 }
-
-void Jogando::criaFase1()
+void Estados::Jogando::pausar()
 {
-    fase = new Fase1();
-}
-
-void Jogando::criaFase2()
-{
-    fase = 
+    observadorJogador->mudaEstadoAtivo();
+    gerenciador_estados->mudaEstado("MenuPausa");
 }

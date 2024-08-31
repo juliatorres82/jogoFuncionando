@@ -1,25 +1,24 @@
 #pragma once
 #include <iostream>
-#include "Entidades/Obstaculos/Plataforma.h"
 #include "Gerenciadores/Gerenciador_Eventos.h" 
-#include "Gerenciadores/Gerenciador_Colisoes.h"
+#include "Gerenciadores/Gerenciador_Grafico.h"
 #include "Gerenciadores/Gerenciador_Estados.h"
-#include "Entidades/Personagens/Fantasma.h"
-#include "Estados/Menu.h"
-
-using namespace Entidades;
-using namespace Personagens;
-using namespace Obstaculos;
-
+#include "Gerenciadores/Gerenciador_Inputs.h"
 class Jogo
 {
 	private:
-		Gerenciador_Grafico* gerenciador_grafico;
-		Gerenciador_Eventos* gerenciador_eventos;
-		Gerenciador_Colisoes* gerenciador_colisoes; 
+		Gerenciadores::Gerenciador_Grafico* gerenciador_grafico;
+		Gerenciadores::Gerenciador_Eventos* gerenciador_eventos;
+		Gerenciadores::Gerenciador_Inputs* gerenciador_inputs;
 		Gerenciadores::Gerenciador_Estados* gerenciador_estados;
-		
-		sf::RenderWindow* janela_jogo;
+		/*Personagens::Jogador jogador1;
+		Personagens::Jogador* jogador2;
+		Inimigo inimigo1;
+		Fantasma fantasma1;
+		Plataforma plataforma1;
+		Plataforma plataforma2;
+		Plataforma plataforma3;
+		*/
 	public:
 		Jogo();
 		~Jogo();

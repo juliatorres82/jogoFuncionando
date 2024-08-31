@@ -24,6 +24,7 @@ namespace Entidades
 		public:
 			Jogador();
 			Jogador(Jogador* j2);
+			Jogador(float x, float y);
 			~Jogador();
 
 
@@ -36,6 +37,7 @@ namespace Entidades
 			Jogador* getJogador2();
 			bool doisJogadores();
 			void setQJog();
+			const qJogador getQJog() const;
 			void voltar();
 		};
 	}

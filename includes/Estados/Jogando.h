@@ -3,15 +3,23 @@
 #include "../Fase/Fase1.h"
 #include "../Fase/Fase2.h"
 
-class Jogando : public Estados::Estado
+namespace Observadores
 {
-    private:
-        Fases::Fase* fase;
-    public:
-        Jogando();
-        ~Jogando();
-        void exec(bool coop);
-        void atualizar();
-        void criaFase1();
-        void criaFase2();
-};
+    class ObservadorJogador;
+}
+namespace Estados
+{
+    class Jogando : public Estados::Estado
+    {
+        private:
+            Fases::Fase* fase;
+            Observadores::ObservadorJogador* observadorJogador;
+        public:
+            Jogando(const std::string& id = "Jogando");
+            ~Jogando();
+            void criaFase(bool coop);
+            void exec();
+            void atualizar();
+            void pausar();
+    };
+}

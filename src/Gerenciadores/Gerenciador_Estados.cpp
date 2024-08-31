@@ -1,12 +1,14 @@
 #include "../../includes/Gerenciadores/Gerenciador_Estados.h"
 
-Gerenciadores::Gerenciador_Estados* Gerenciadores::Gerenciador_Estados::instancia = nullptr;
+using namespace Gerenciadores;
 
-Gerenciadores::Gerenciador_Estados::Gerenciador_Estados()
+Gerenciador_Estados* Gerenciador_Estados::instancia = nullptr;
+
+Gerenciador_Estados::Gerenciador_Estados()
 {
     estado_atual = nullptr;
 }
-Gerenciadores::Gerenciador_Estados::~Gerenciador_Estados()
+Gerenciador_Estados::~Gerenciador_Estados()
 {
     limpar();
     if(estado_atual != nullptr)
@@ -16,7 +18,7 @@ Gerenciadores::Gerenciador_Estados::~Gerenciador_Estados()
     delete instancia;
 }
 
-Gerenciadores::Gerenciador_Estados* Gerenciadores::Gerenciador_Estados::getInstancia()
+Gerenciador_Estados* Gerenciador_Estados::getInstancia()
 {
     if (instancia == nullptr)
     {
@@ -26,35 +28,71 @@ Gerenciadores::Gerenciador_Estados* Gerenciadores::Gerenciador_Estados::getInsta
     return instancia;
 }
 
-void Gerenciadores::Gerenciador_Estados::limpar()
+void Gerenciador_Estados::limpar()
 {
     while (!estados.empty())
     {
         delete estados.begin()->second;
+        estados.erase(estados.begin());
     }
     estados.clear();
 }
-void Gerenciadores::Gerenciador_Estados::criarEstados()
+
+void Gerenciador_Estados::criarEstados()
 {
-    adicionarEstado("Menu", new Menu());
-    adicionarEstado("Jogando", new Jogando());
+    try
+    {
+        Estados::Menus::Menu* menuPrin = new Estados::Menus::MenuPrincipal();
+        adicionarEstado("MenuPrincipal", menuPrin);
+    }
+    catch (const std::bad_alloc& e)
+    {
+        std::cerr << "Erro ao criar estado Menu: " << e.what() << std::endl;
+        return;
+    }
+
+    try
+    {
+        Estados::Jogando* jogando = new Estados::Jogando("Jogando");
+        adicionarEstado("Jogando", jogando);
+    }
+    catch (const std::bad_alloc& e)
+    {
+        std::cerr << "Erro ao criar estado Jogando: " << e.what() << std::endl;
+        return;
+    }
+
+    try
+    {
+        {
+            Estados::Menus::Menu* menuSelec = new Estados::Menus::MenuSelecao();
+            adicionarEstado("MenuSelecao", menuSelec);
+        }
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    
+    mudaEstado("MenuPrincipal");
 }
-void Gerenciadores::Gerenciador_Estados::adicionarEstado(const std::string &id, Estados::Estado *estado, const bool &substituir)
+
+void Gerenciador_Estados::adicionarEstado(const std::string &id, Estados::Estado *estado)
 {
     estados.insert(std::pair<std::string, Estados::Estado*>(id, estado));
 }
 
-void Gerenciadores::Gerenciador_Estados::removerEstado(const std::string& id)
+void Gerenciador_Estados::removerEstado(const std::string& id)
 {
     estados.erase(id);
 }
 
-Estados::Estado* Gerenciadores::Gerenciador_Estados::getEstado(const std::string& id)
+Estados::Estado* Gerenciador_Estados::getEstado(const std::string& id)
 {
     return estados[id];
 }
 
-void Gerenciadores::Gerenciador_Estados::mudaEstado(const std::string& id)
+void Gerenciador_Estados::mudaEstado(const std::string& id)
 {
     if (estado_atual != nullptr)
     {
@@ -63,14 +101,42 @@ void Gerenciadores::Gerenciador_Estados::mudaEstado(const std::string& id)
             return;
         }
     }
+    if(estados[id] == nullptr)
+    {
+        std::cout << "Erro ao mudar de estado" << std::endl;
+        return;
+    }
     estado_atual = estados[id];
 }
 
-void Gerenciadores::Gerenciador_Estados::executar()
+void Gerenciador_Estados::executar()
 {
     if (estado_atual != nullptr)
     {
         estado_atual->exec();
     }
+
+    else
+    {
+        std::cerr << "Erro ao executar estado" << std::endl;
+    }	
+}
+
+void Gerenciador_Estados::vaiSerCoop(bool coop)
+{
+    if(estado_atual == nullptr || estado_atual->getId() != "Jogando")
+    {
+        return;
+    }
+
+    Estados::Jogando* jogando = dynamic_cast<Estados::Jogando*>(estado_atual);
+
+    if(coop)
+    {
+        jogando->criaFase(true);
+        return;
+    }
+    
+    jogando->criaFase(false);
 }
 

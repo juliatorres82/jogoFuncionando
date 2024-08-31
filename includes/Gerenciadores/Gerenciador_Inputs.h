@@ -4,7 +4,10 @@
 #include "SFML/Graphics.hpp"
 #include "Gerenciador_Grafico.h"
 #include "Gerenciador_Eventos.h"
-#include "../Observadores/Observador.h"
+
+namespace Observadores {
+    class Observador;
+}
 
 using namespace std;
 
@@ -13,24 +16,24 @@ namespace Gerenciadores {
     class Gerenciador_Inputs {
 
         private:
-            static Gerenciador_Inputs* gI;
-            Gerenciador_Inputs();
             std::vector<sf::Keyboard::Key> comandosMovimento;
             std::vector<sf::Keyboard::Key> comandosFechamento;
-            Gerenciador_Grafico* pGG;
-            Gerenciador_Eventos* pGE;
-            std::list<Observador*> observadoresVigiando;
+            static Gerenciador_Grafico* pGG;
+            static Gerenciador_Eventos* pGE;
+            std::list<Observadores::Observador*> observadoresVigiando;
 
-
-        public:
+            static Gerenciador_Inputs* gI;
+            Gerenciador_Inputs();
             ~Gerenciador_Inputs();
-            Gerenciador_Inputs* getInstancia();
-            void addObservadoresVigiando(Observador* obs);
-            void tiraObservadoresVigiando(Observador* obs);
-            void gerenciaTeclasPressionadas();
-            void gerenciaTeclasSoltas();
-    };
+        public:
+            static void deletaInstancia();
+            static Gerenciador_Inputs* getInstancia();
 
+            void addObservadoresVigiando(Observadores::Observador* obs);
+            void tiraObservadoresVigiando(Observadores::Observador* obs);
+            void gerenciaTeclasPressionadas(sf::Keyboard::Key tecla);
+            void gerenciaTeclasSoltas(sf::Keyboard::Key tecla);
+    };
 
 
 }

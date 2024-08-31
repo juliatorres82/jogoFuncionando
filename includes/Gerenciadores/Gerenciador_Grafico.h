@@ -28,6 +28,10 @@ namespace Gerenciadores
         const bool janelaAberta() const;
 		float getTamx();
 		float getTamy();
-        void mostrar();
-    };
+		void limpaJanela();
+		void mostrarJanela();
+	};
+
+
+
 }

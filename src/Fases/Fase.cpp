@@ -235,9 +235,9 @@ void Fase:: constroiFase() {
 
 
 void Fase:: tratarColisoes() {
-    cout << "entrou em fase:::tratar cols"<<endl;
+   
     pGC->tratarColisoes();
-    cout << "saiu de fase::tratar cols"<<endl;
+
 }
 
 void Fases::Fase::tratarEventos(){

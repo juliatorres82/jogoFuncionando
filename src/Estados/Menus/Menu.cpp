@@ -9,7 +9,8 @@ namespace Estados
         Estado("Menu"), Ente(menu)
         {
             pGG = Gerenciadores::Gerenciador_Grafico::getInstancia();
-            fonte.loadFromFile("C:/Users/vinic/Desktop/projetos/JogoSimas/joguinho_lindo/joguinho_lindo/NewAmsterdam-Regular.ttf");
+            //fonte.loadFromFile("C:/Users/vinic/Desktop/projetos/JogoSimas/joguinho_lindo/joguinho_lindo/NewAmsterdam-Regular.ttf");
+            fonte.loadFromFile("../fontes/NewAmsterdam-Regular.ttf");
             
             limpar();
             

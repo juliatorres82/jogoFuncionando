@@ -55,7 +55,6 @@ void Gerenciador_Estados::criarEstados()
     {
         Estados::Jogando* jogando = new Estados::Jogando("Jogando");
         adicionarEstado("Jogando", jogando);
-        cout << "criou estado jogando " << endl;
     }
     catch (const std::bad_alloc& e)
     {
@@ -75,7 +74,7 @@ void Gerenciador_Estados::criarEstados()
         std::cerr << e.what() << '\n';
     }
     
-    mudaEstado("MenuPrincipal");
+    mudaEstado("Jogando");
 }
 
 void Gerenciador_Estados::adicionarEstado(const std::string &id, Estados::Estado *estado)
@@ -114,7 +113,6 @@ void Gerenciador_Estados::executar()
 {
     if (estado_atual != nullptr)
     {
-        printf("ger. estado executando\n");
         estado_atual->exec(); 
     }
 

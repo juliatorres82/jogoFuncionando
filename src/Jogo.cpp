@@ -14,6 +14,7 @@ Jogo::Jogo()
         std::cerr << "Erro ao criar os gerenciadores" << '\n';
         exit(1);
     }
+    
     try
     {      
         gerenciador_estados->criarEstados();
@@ -27,13 +28,12 @@ Jogo::Jogo()
         std::cerr << e << '\n';
         exit(1);
     }
-   /* jogador2 = nullptr;
+/* jogador2 = nullptr;
     jogador1.setGG(gerenciador_grafico);
     
     //inimigo1.setGG(gerenciador_grafico);
     fantasma1.setGG(gerenciador_grafico);
     lagarto1.setGG(gerenciador_grafico); 
-
 
     plataforma1.setGG(gerenciador_grafico);
     plataforma2.setGG(gerenciador_grafico);
@@ -48,13 +48,12 @@ Jogo::Jogo()
 
     //gerenciador_colisoes->incluirInimigos(&inimigo1);
     gerenciador_colisoes->incluirInimigos(&fantasma1);
-
     gerenciador_colisoes->incluirJogador(&jogador1);
     
     jogador1.setPosicao(100.f, 100.f);
     //inimigo1.setPosicao(300.f, 100.f);
     fantasma1.setPosicao(200.f, 100.f);
-    */
+*/
    //Fases::Fase1 fase1;
 }
 
@@ -72,13 +71,12 @@ void Jogo::Executar()
         gerenciador_eventos->gerenciaEventos();
 
         gerenciador_grafico->limpaJanela();
-        
+    
         gerenciador_estados->executar();
         
         if(gerenciador_grafico->janelaAberta())
             gerenciador_grafico->mostrarJanela();
         
-
     }
         
 }

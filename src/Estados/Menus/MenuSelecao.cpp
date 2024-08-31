@@ -38,9 +38,11 @@ namespace Estados
                     (*posAtual)->setSelecionado(true);
                     (*it)->setSelecionado(false);
                     mudaClicaBotao(*it);
+
                     if((*it)->getTexto() == "Fase1: 1 Jogador" || (*it)->getTexto() == "Fase2: 1 Jogador")
                     {
                         doisJogadores = false;
+
                         if((*it)->getTexto() == "Fase1: 1 Jogador")
                         {
                             gerenciador_estados->mudaEstado("Jogando");

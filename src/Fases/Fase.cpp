@@ -1,4 +1,5 @@
 #include "../../includes/Fases/Fase.h"
+#include "Fase.h"
 
 using namespace Fases;
 using namespace Entidades;
@@ -13,6 +14,7 @@ Fase::Fase(bool coop) {
 
     pGG = pGG->getInstancia();
     pGC = pGC->getInstancia();
+    p_GE = p_GE->getGerenciadorEventos();
     //setCaminho(caminho);
     //printf("Fase::Fase() funcionando\n"); ok
 }
@@ -240,22 +242,21 @@ void Fase:: tratarColisoes() {
 }
 
 void Fases::Fase::tratarEventos(){
-    p_GE->getGerenciadorEventos();
     p_GE->gerenciaEventos();
 }
 
 
 void Fase::atualizar() {
     //cout << "entrou em atualizar"<<endl;
-    desenhar();
-    tratarEventos();
-    tratarColisoes();
+    //desenhar();
+    //tratarEventos();
+    //tratarColisoes();
 }
 
 void Fases::Fase::executar(){
     //printf("entrou em executarFase\n");  
     desenhar();
-    atualizar();
+    //atualizar();
     tratarColisoes();
     tratarEventos();
 }
@@ -279,4 +280,8 @@ void Fases::Fase:: setsJogadores(){
         obstaculo->setJogadorPDano(static_cast<Jogador*>(*it));
         ++it;
     }
+}
+
+ListaEntidades* Fase::getListaJogadores(){
+    return listaJogadores;
 }

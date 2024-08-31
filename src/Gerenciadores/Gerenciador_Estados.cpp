@@ -1,4 +1,5 @@
 #include "../../includes/Gerenciadores/Gerenciador_Estados.h"
+
 using namespace Gerenciadores;
 
 Gerenciador_Estados* Gerenciador_Estados::instancia = nullptr;
@@ -41,8 +42,8 @@ void Gerenciador_Estados::criarEstados()
 {
     try
     {
-        Estados::Menus::Menu* menu = new Estados::Menus::MenuPrincipal();
-        adicionarEstado("Menu", menu);
+        Estados::Menus::Menu* menuPrin = new Estados::Menus::MenuPrincipal();
+        adicionarEstado("MenuPrincipal", menuPrin);
     }
     catch (const std::bad_alloc& e)
     {
@@ -61,7 +62,19 @@ void Gerenciador_Estados::criarEstados()
         return;
     }
 
-    mudaEstado("Menu");
+    try
+    {
+        {
+            Estados::Menus::Menu* menuSelec = new Estados::Menus::MenuSelecao();
+            adicionarEstado("MenuSelecao", menuSelec);
+        }
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    
+    mudaEstado("MenuPrincipal");
 }
 
 void Gerenciador_Estados::adicionarEstado(const std::string &id, Estados::Estado *estado)
@@ -107,5 +120,23 @@ void Gerenciador_Estados::executar()
     {
         std::cerr << "Erro ao executar estado" << std::endl;
     }	
+}
+
+void Gerenciador_Estados::vaiSerCoop(bool coop)
+{
+    if(estado_atual == nullptr || estado_atual->getId() != "Jogando")
+    {
+        return;
+    }
+
+    Estados::Jogando* jogando = dynamic_cast<Estados::Jogando*>(estado_atual);
+
+    if(coop)
+    {
+        jogando->criaFase(true);
+        return;
+    }
+    
+    jogando->criaFase(false);
 }
 

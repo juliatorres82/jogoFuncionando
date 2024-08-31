@@ -1,5 +1,12 @@
 #include "Observador.h"
-#include "../Estados/Menus/Menu.h"
+
+namespace Estados
+{
+    namespace Menus
+    {
+        class Menu;
+    }
+}
 
 namespace Observadores
 {

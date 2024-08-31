@@ -5,30 +5,51 @@ namespace Estados
 {
     namespace Menus
     {
-        MenuPrincipal::MenuPrincipal() : doisJogadores(false) {
-            try
-            {
-                
-            }
-            catch (const std::bad_alloc& e)
-            {
-                std::cerr << "Erro ao criar MenuPrincipal: " << e.what() << std::endl;
-                return;
-            }
+        MenuPrincipal::MenuPrincipal() : Menu("MenuPrincipal") {
+            
+                setFundo("../imagens/BG-MainMenu.jpeg");
+                titulo.setFont(fonte);
+                setTamTitulo(200);
+                setCorTitulo(sf::Color::Black);
+                setTitulo("Titulo");
+                setPosTitulo(sf::Vector2f(pGG->getTamx()/2, 0));
+                adicionarBotao("Novo Jogo", sf::Vector2f(200, 50), sf::Vector2f(pGG->getTamx()/2, pGG->getTamy()/2));
+                adicionarBotao( "Sair", sf::Vector2f(200, 50), sf::Vector2f(pGG->getTamx()/2, pGG->getTamy()/2 + 100));
+                inicializar();
         }
 
-        MenuPrincipal::~MenuPrincipal() {}
-
-        const bool MenuPrincipal:: HaDoisJogadores() {
-            return doisJogadores;
+        MenuPrincipal::~MenuPrincipal() {
+            limpar();
         }
 
-        void MenuPrincipal:: setDoisJogadores(){
-            doisJogadores = true;
+        void MenuPrincipal::setTitulo(const string &texto)
+        {
+            titulo.setString(texto);
+        }
+
+        void MenuPrincipal::setPosTitulo(const sf::Vector2f &pos)
+        {
+            titulo.setOrigin(titulo.getGlobalBounds().width/2, titulo.getGlobalBounds().height/2);
+            titulo.setPosition(pos);
+        }
+
+        void MenuPrincipal::setCorTitulo(const sf::Color &cor)
+        {
+            titulo.setFillColor(cor);
+        }
+
+        void MenuPrincipal::setTamTitulo(const unsigned int &tam)
+        {
+            titulo.setCharacterSize(tam);
         }
 
         void MenuPrincipal::exec() 
         {
+            if(!observadorMenu->getEstadoAtivo())
+            {
+                cout << "entrou aqui" << endl;
+                observadorMenu->mudaEstadoAtivo();
+            }
             executar();
             desenhar();
         }
@@ -49,9 +70,16 @@ namespace Estados
             {
                 if((*it)->getClicado())
                 {
+                    mudaClicaBotao(*it);
+                    (*it)->setSelecionado(false);
+
                     if((*it)->getTexto() == "Novo Jogo")
                     {
-                        gerenciador_estados->mudaEstado("Jogando");
+                        posAtual = botoes.begin();
+                        (*posAtual)->setSelecionado(true);
+                        observadorMenu->mudaEstadoAtivo();
+                        atualizar();
+                        gerenciador_estados->mudaEstado("MenuSelecao");
                     }
                     
                     else if((*it)->getTexto() == "Sair")

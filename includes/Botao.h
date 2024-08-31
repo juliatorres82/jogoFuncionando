@@ -18,7 +18,6 @@ class Botao: public Ente
         void setPos(const sf::Vector2f& pos);
         void setTam(const sf::Vector2f& tam);
         void setTexto(const string& texto);
-        void setFonte(const string& caminho);
         void setCorTexto(const sf::Color& cor);
         void setCorRet(const sf::Color& cor);
         void setSelecionado(const bool selec);
@@ -30,4 +29,5 @@ class Botao: public Ente
 
         bool getClicado();
         const string getTexto() const;
+        void setClicado(bool clicado);
 };

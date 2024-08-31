@@ -1,5 +1,4 @@
 #include "../../includes/Fases/Fase.h"
-#include "Fase.h"
 
 using namespace Fases;
 using namespace Entidades;

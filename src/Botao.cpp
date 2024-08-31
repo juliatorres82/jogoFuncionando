@@ -112,3 +112,8 @@ const string Botao::getTexto() const
 {
     return texto.getString();
 }
+
+void Botao::setClicado(bool clicado)
+{
+    this->clicado = clicado;
+}

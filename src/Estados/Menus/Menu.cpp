@@ -21,6 +21,7 @@ namespace Menus
             }
 
             observadorMenu = new ObservadorMenu(this);
+            observadorMenu->mudaEstadoAtivo();
             if (observadorMenu == nullptr) {
                 std::cerr << "Erro: falha ao alocar memória para ObservadorMenu" << std::endl;
                 return;
@@ -139,6 +140,11 @@ namespace Menus
         {
             (*posAtual)->executar();
             atualizar();
+        }
+
+        void Estados::Menus::Menu::mudaClicaBotao(Botao* it)
+        {
+            it->setClicado(false);
         }
     }
 

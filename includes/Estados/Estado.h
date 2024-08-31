@@ -21,6 +21,7 @@ namespace Estados
             virtual ~Estado();
             void setId(const std::string& id);
             const std::string& getId() const;
+            void mudaEstadoAtivo(const std::string& outroEstado);
             virtual void atualizar() = 0;
             virtual void exec() = 0;
     };

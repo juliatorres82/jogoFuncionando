@@ -14,7 +14,6 @@ namespace Estados
                 void exec();
                 void desenhar();
                 void executar();
-                void setDoisJogadores();
                 const bool HaDoisJogadores();
         };
     }

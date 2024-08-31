@@ -28,3 +28,8 @@ const std::string &Estados::Estado::getId() const
 {
     return idEst;
 }
+
+void Estados::Estado::mudaEstadoAtivo(const std::string& outroEstado)
+{
+    gerenciador_estados->mudaEstado(outroEstado);
+}

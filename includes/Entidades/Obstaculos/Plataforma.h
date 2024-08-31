@@ -19,7 +19,6 @@ namespace Entidades
                 Plataforma(float x, float y);
                 Plataforma(sf:: Vector2f posicao, int e, sf::Vector2f tam);
                 ~Plataforma();
-                void setElasticidade(int e);
                 void setTamanho(sf::Vector2f tam);
                 void executar();
                 void obstacular();

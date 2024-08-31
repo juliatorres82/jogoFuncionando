@@ -1,5 +1,4 @@
 #include "../../../includes/Entidades/Obstaculos/PlataformaGelo.h"
-#include "PlataformaGelo.h"
 
 using namespace Entidades;
 using namespace Obstaculos;

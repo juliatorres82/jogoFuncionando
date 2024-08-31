@@ -29,4 +29,5 @@ class Botao: public Ente
 
         bool getClicado();
         const string getTexto() const;
+        void setClicado(bool clicado);
 };

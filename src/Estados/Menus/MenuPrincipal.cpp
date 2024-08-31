@@ -45,6 +45,11 @@ namespace Estados
 
         void MenuPrincipal::exec() 
         {
+            if(!observadorMenu->getEstadoAtivo())
+            {
+                cout << "entrou aqui" << endl;
+                observadorMenu->mudaEstadoAtivo();
+            }
             executar();
             desenhar();
         }
@@ -65,10 +70,16 @@ namespace Estados
             {
                 if((*it)->getClicado())
                 {
+                    mudaClicaBotao(*it);
+                    (*it)->setSelecionado(false);
+
                     if((*it)->getTexto() == "Novo Jogo")
                     {
+                        posAtual = botoes.begin();
+                        (*posAtual)->setSelecionado(true);
                         observadorMenu->mudaEstadoAtivo();
-                        //gerenciador_estados->mudaEstado("MenuSelecao");
+                        atualizar();
+                        gerenciador_estados->mudaEstado("MenuSelecao");
                     }
                     
                     else if((*it)->getTexto() == "Sair")

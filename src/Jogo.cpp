@@ -16,7 +16,7 @@ Jogo::Jogo()
     {      
         gerenciador_estados->criarEstados();
 
-        if(gerenciador_estados->getEstado("Menu") == nullptr)
+        if(gerenciador_estados->getEstado("MenuPrincipal") == nullptr)
             throw "Erro ao criar os estados";
     }
 
@@ -60,6 +60,7 @@ Jogo::~Jogo()
 }
 void Jogo::Executar()
 {   
+    int dt = 100;
     while (gerenciador_grafico->janelaAberta())
     {
         gerenciador_eventos->gerenciaEventos();
@@ -70,6 +71,7 @@ void Jogo::Executar()
         
         if(gerenciador_grafico->janelaAberta())
             gerenciador_grafico->mostrarJanela();
+            
 
     }
         

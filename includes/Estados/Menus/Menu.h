@@ -39,6 +39,8 @@ namespace Estados
                 void moverCima();
                 void moverBaixo();
                 void selecionar();
+
+                void mudaClicaBotao(Botao *it);
      };
     }
     

@@ -1,6 +1,7 @@
 #pragma once
 #include "../Estados/Menus/MenuPrincipal.h"
 #include "../Estados/Menus/MenuPausa.h"
+#include "../Estados/Menus/MenuSelecao.h"
 #include "../Estados/Jogando.h"
 #include <map>
 #include <string>
@@ -26,5 +27,6 @@ namespace Gerenciadores
             Estados::Estado* getEstado(const std::string& id);
             void mudaEstado(const std::string& id);
             void executar();
+            void vaiSerCoop(bool coop);
     };
 }

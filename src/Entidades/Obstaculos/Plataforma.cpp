@@ -2,7 +2,7 @@
 
 using namespace Entidades::Obstaculos;
 
-Plataforma::Plataforma():
+Plataforma::Plataforma(): Obstaculo(false),
 	elasticidade(0.0)
 {
 	id = plataForma;

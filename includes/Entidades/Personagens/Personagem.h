@@ -22,6 +22,7 @@ namespace Entidades
                 void mudaPodePular(bool flagPodePular);
                 virtual void parar();
                 virtual void voltar() = 0;
+                virtual void executar() = 0;
                 float getVelx() { return velx; };
                 float getVely() { return vely; };
         };

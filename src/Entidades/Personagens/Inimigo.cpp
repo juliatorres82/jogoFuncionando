@@ -1,5 +1,6 @@
 //#include "../../../includes/Entidades/Personagens/Inimigo.h"
 #include "../../../includes/Entidades/Personagens/Jogador.h"
+#include "Inimigo.h"
 
 using namespace Entidades;
 using namespace Personagens;
@@ -77,4 +78,9 @@ void Inimigo::voltar()
 {
 	velx = velocidadeInimigo;
 	vely = puloInimigo;
+}
+
+int Inimigo::getMaldade()
+{
+	return nivel_maldade;
 }

@@ -4,7 +4,7 @@
 using namespace Entidades;
 using namespace Obstaculos;
 
-PlataformaGelo::PlataformaGelo(int posx, int posy): deslizo(0.5) {
+PlataformaGelo::PlataformaGelo(int posx, int posy): Obstaculo(false), deslizo(0.5) {
     corpo.setPosition(posx, posy);
     corpo.setFillColor(sf::Color::Yellow);
 }

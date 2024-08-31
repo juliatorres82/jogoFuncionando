@@ -14,7 +14,6 @@ namespace Entidades::Obstaculos {
 
         void executar();
         void obstacular(Entidades::Personagens::Jogador* jogd);
-        void Espinhar(); //da dano se tocar ---- implementar
 };
 
 }

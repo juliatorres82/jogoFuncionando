@@ -94,7 +94,10 @@ namespace Gerenciadores
         
         for(itObs; itObs != observadoresVigiando.end(); itObs++) 
         {   if((*itObs)->getEstadoAtivo())
+            {
                 (*itObs)->notificaTeclaPressionada(tecla);
+                
+            }
         }   
             
     }
@@ -106,7 +109,9 @@ namespace Gerenciadores
 
         for(itObs; itObs!=observadoresVigiando.end(); itObs++) 
         {   if((*itObs)->getEstadoAtivo())
+            {
                 (*itObs)->notificaTeclaSolta(tecla);
+            }
         }
     
     }

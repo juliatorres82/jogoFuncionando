@@ -27,6 +27,6 @@ namespace Gerenciadores
             Estados::Estado* getEstado(const std::string& id);
             void mudaEstado(const std::string& id);
             void executar();
-            void vaiSerCoop(bool coop);
+            void vaiSerCoop();
     };
 }

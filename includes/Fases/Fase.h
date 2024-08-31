@@ -28,7 +28,8 @@ class Fase : public Ente {
         ListaEntidades* listaObstaculos;
         ListaEntidades* listaPlataforma;
         bool ehCoop;
-        
+        sf::RectangleShape fundo;
+        sf::Texture textura_fundo;
         Gerenciadores::Gerenciador_Eventos* p_GE;
 
         std::string caminho; 
@@ -45,13 +46,12 @@ class Fase : public Ente {
         vector<vector<vector<int>>> converteJsonParaMatriz(const std::string& caminhoArquivoJson, int numLayers);
         void criarTudo(int posx, int poxy, int valor);
         void tratarColisoes();
-        void tratarEventos(); 
         virtual void setCaminho(std::string caminhoArq) = 0; 
-        void atualizar();
+        virtual void atualizar();
         ListaEntidades *getListaJogadores();
         void executar();
         void setsJogadores();
-        //virtual void desenhar() = 0;
+        virtual void desenhar() = 0;
         //virtual sf::Sprite criaSprites() = 0; //criar sprites de jogadores, inimigos e obstáculos;
 };
 

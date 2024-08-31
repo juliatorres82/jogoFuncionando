@@ -5,6 +5,7 @@ using namespace Entidades;
 using namespace Obstaculos;
 
 Fase::Fase(bool coop) {
+    fundo.setSize(sf::Vector2f(pGG->getTamx(), pGG->getTamy()));
     ehCoop = coop;
     listaJogadores = new ListaEntidades();
     listaInimigos = new ListaEntidades();
@@ -203,20 +204,18 @@ void Fase:: constroiFase() {
 
     cout <<"entrou em constroiFase()"<<endl;
     vector<vector<vector<int>>> matriz = converteJsonParaMatriz(caminho, 1);
-
+    
     for(int i = 0; i < matriz.size(); i++){
 		for(int j = 0; j < matriz[i].size(); j++){
 			for (int k = 0; k < matriz[i][j].size(); k++) {
 				criarTudo(k * 32,  j* 32, matriz[i][j][k]);
-               // printf(" criou obj %d\n", matriz[i][j][k]);
+                
 			}
 		}
 	}
-    pGC = pGC->getInstancia();
     //setar jogs em obstacular e inimigos
-    //Listas::Lista<Entidades>::Iterador it = listaObstaculos->getInicio();
-    //listaObstaculos.
-
+    setsJogadores();
+    cout << "saiu de constroiFase()"<<endl;
 }
 
 
@@ -235,21 +234,12 @@ void Fase:: constroiFase() {
 
 
 void Fase:: tratarColisoes() {
-    cout << "entrou em fase:::tratar cols"<<endl;
     pGC->tratarColisoes();
-    cout << "saiu de fase::tratar cols"<<endl;
 }
 
-void Fases::Fase::tratarEventos(){
-    p_GE->gerenciaEventos();
-}
+void Fase::atualizar() 
+{
 
-
-void Fase::atualizar() {
-    //cout << "entrou em atualizar"<<endl;
-    //desenhar();
-    //tratarEventos();
-    //tratarColisoes();
 }
 
 void Fases::Fase::executar(){
@@ -257,13 +247,14 @@ void Fases::Fase::executar(){
     desenhar();
     //atualizar();
     tratarColisoes();
-    tratarEventos();
 }
 
 void Fases::Fase:: setsJogadores(){
     Lista<Entidade>::Iterador it = listaJogadores->getInicio();
     Lista<Entidade>::Iterador it2 = listaInimigos->getInicio();
-
+    if(it.isNulo() || it2.isNulo()){
+        return;
+    }
     while(!it2.isNulo()){
         Entidade* pE = (*it2);
         Inimigo* inimigo = dynamic_cast<Inimigo*>(pE);
@@ -271,13 +262,13 @@ void Fases::Fase:: setsJogadores(){
         ++it2;
     }
 
-    it = listaObstaculos->getInicio();
+    it2 = listaObstaculos->getInicio();
 
-    while(!it.isNulo()){
-        Entidade* pE = (*it);
+    while(!it2.isNulo()){
+        Entidade* pE = (*it2);
         Obstaculo* obstaculo = dynamic_cast<Obstaculo*>(pE);
         obstaculo->setJogadorPDano(static_cast<Jogador*>(*it));
-        ++it;
+        ++it2;
     }
 }
 

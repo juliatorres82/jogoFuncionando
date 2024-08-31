@@ -7,12 +7,15 @@ Obstaculo::Obstaculo(bool daDano)
 	tipo = estatico;
 	id = idEntes::obsTaculo;
 	danoso = daDano;
-	jog1 = NULL;
-	jog2 = NULL;
+	jog1 = nullptr;
+	jog2 = nullptr;
 }
 
 
-Obstaculo::~Obstaculo(){}
+Obstaculo::~Obstaculo(){
+	jog1 = nullptr;
+	jog2 = nullptr;
+}
 
 const bool Entidades::Obstaculos::Obstaculo::ehDanoso() const
 {

@@ -8,7 +8,7 @@ namespace Estados
         {
             adicionarBotao("Fase 1: 1 Jogador", sf::Vector2f(200, 50), sf::Vector2f(300, 200));
             adicionarBotao("Fase 1: 2 Jogadores", sf::Vector2f(200, 50), sf::Vector2f(300, 300));
-            adicionarBotao("Fase 2: 1 jogador", sf::Vector2f(200, 50), sf::Vector2f(300, 400));
+            adicionarBotao("Fase 2: 1 Jogador", sf::Vector2f(200, 50), sf::Vector2f(300, 400));
             adicionarBotao("Fase 2: 2 Jogadores", sf::Vector2f(200, 50), sf::Vector2f(300, 500));
             adicionarBotao("Voltar", sf::Vector2f(200, 50), sf::Vector2f(300, 600));
             inicializar();
@@ -38,37 +38,42 @@ namespace Estados
                     (*posAtual)->setSelecionado(true);
                     (*it)->setSelecionado(false);
                     mudaClicaBotao(*it);
-                    if((*it)->getTexto() == "Fase1: 1 Jogador" || (*it)->getTexto() == "Fase2: 1 Jogador")
+                    Botao* bot = *it;
+                    atualizar();
+                    observadorMenu->mudaEstadoAtivo();
+
+                    if((bot)->getTexto() == "Fase 1: 1 Jogador" || (bot)->getTexto() == "Fase 2: 1 Jogador")
                     {
                         doisJogadores = false;
-                        if((*it)->getTexto() == "Fase1: 1 Jogador")
+                        if((bot)->getTexto() == "Fase 1: 1 Jogador")
                         {
                             gerenciador_estados->mudaEstado("Jogando");
                         }
-                        else if((*it)->getTexto() == "Fase2: 1 Jogador")
+                        else if((bot)->getTexto() == "Fase 2: 1 Jogador")
                         {
                             gerenciador_estados->mudaEstado("Jogando");
                         }
                     }
                     
-                    else if((*it)->getTexto() == "Fase1: 2 Jogadores" || (*it)->getTexto() == "Fase2: 2 Jogadores")
+                    else if((bot)->getTexto() == "Fase 1: 2 Jogadores" || (bot)->getTexto() == "Fase 2: 2 Jogadores")
                     {
                         doisJogadores = true;
-                        if((*it)->getTexto() == "Fase1: 2 Jogadores")
+                        if((bot)->getTexto() == "Fase 1: 2 Jogadores")
                         {
                             gerenciador_estados->mudaEstado("Jogando");
                         }
-                        else if((*it)->getTexto() == "Fase2: 2 Jogadores")
+                        else if((bot)->getTexto() == "Fase 2: 2 Jogadores")
                         {
                             gerenciador_estados->mudaEstado("Jogando");
                         }
                     }
-                    else if((*it)->getTexto() == "Voltar")
+                    else if((bot)->getTexto() == "Voltar")
                     {
                         gerenciador_estados->mudaEstado("MenuPrincipal");
                         return;
                     }
-                    gerenciador_estados->vaiSerCoop(doisJogadores);
+                    cout << observadorMenu->getEstadoAtivo() << endl;
+                    gerenciador_estados->vaiSerCoop();
                 }
             }
         }
@@ -84,8 +89,9 @@ namespace Estados
             {
                 observadorMenu->mudaEstadoAtivo();
             }
-            executar();
             desenhar();
+            executar();
+            
         }
     }
 

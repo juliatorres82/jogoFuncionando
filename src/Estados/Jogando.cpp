@@ -5,7 +5,8 @@
 Estados::Jogando::Jogando(const std::string &id)
 {
     setId(id);
-    fase = new Fases::Fase1(false);
+    fase = nullptr;
+    //fase = new Fases::Fase1(false);
     observadorJogador = new Observadores::ObservadorJogador(this);
 }
 
@@ -21,16 +22,15 @@ Estados::Jogando::~Jogando()
 void Estados::Jogando::criaFase(bool coop)
 {
     fase = new Fases::Fase1(coop); 
-    fase->constroiFase();
-    cout <<"construiu fase" <<endl;
 }
 
 void Estados::Jogando::exec()
-{
+{   
     if(!observadorJogador->getEstadoAtivo())
     {
         observadorJogador->mudaEstadoAtivo();
     }
+
     fase->executar();
 }
 
@@ -41,5 +41,5 @@ void Estados::Jogando::atualizar()
 void Estados::Jogando::pausar()
 {
     observadorJogador->mudaEstadoAtivo();
-    gerenciador_estados->mudaEstado("MenuPausa");
+    gerenciador_estados->mudaEstado("MenuSelecao");
 }

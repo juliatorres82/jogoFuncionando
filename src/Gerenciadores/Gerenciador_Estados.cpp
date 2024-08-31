@@ -44,22 +44,31 @@ void Gerenciador_Estados::criarEstados()
     {
         Estados::Menus::Menu* menuPrin = new Estados::Menus::MenuPrincipal();
         adicionarEstado("MenuPrincipal", menuPrin);
+        if (menuPrin == nullptr)
+        {
+            throw "Erro ao criar estado MenuPrincipal";
+        }
+        
     }
-    catch (const std::bad_alloc& e)
+    catch (const char* e)
     {
-        std::cerr << "Erro ao criar estado Menu: " << e.what() << std::endl;
+        std::cerr << e << '\n';
         return;
     } 
-
+    
     try
     {
         Estados::Jogando* jogando = new Estados::Jogando("Jogando");
         adicionarEstado("Jogando", jogando);
-        cout << "criou estado jogando " << endl;
+        if(jogando == nullptr)
+        {
+            throw "Erro ao criar estado Jogando";
+        }
+
     }
-    catch (const std::bad_alloc& e)
+    catch (const char* e)
     {
-        std::cerr << "Erro ao criar estado Jogando: " << e.what() << std::endl;
+        std::cerr << e << '\n';
         return;
     }
 
@@ -108,13 +117,13 @@ void Gerenciador_Estados::mudaEstado(const std::string& id)
         return;
     }
     estado_atual = estados[id];
+    cout << "Mudou de estado e agora eh: " << estado_atual->getId() << endl;    
 }
 
 void Gerenciador_Estados::executar()
 {
     if (estado_atual != nullptr)
     {
-        printf("ger. estado executando\n");
         estado_atual->exec(); 
     }
 
@@ -124,16 +133,18 @@ void Gerenciador_Estados::executar()
     }	
 }
 
-void Gerenciador_Estados::vaiSerCoop(bool coop)
+void Gerenciador_Estados::vaiSerCoop()
 {
-    if(estado_atual == nullptr || estado_atual->getId() != "Jogando")
+    
+    Estados::Jogando* jogando = dynamic_cast<Estados::Jogando*>(getEstado("Jogando"));
+    Estados::Menus::MenuSelecao* menuSel = dynamic_cast<Estados::Menus::MenuSelecao*>(getEstado("MenuSelecao"));
+    
+    if(jogando == nullptr || menuSel == nullptr)
     {
+        std::cerr << "Erro ao mudar de estado" << std::endl;
         return;
     }
-
-    Estados::Jogando* jogando = dynamic_cast<Estados::Jogando*>(estado_atual);
-
-    if(coop)
+    if(menuSel->HaDoisJogadores())
     {
         jogando->criaFase(true);
         return;

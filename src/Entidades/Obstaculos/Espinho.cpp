@@ -2,13 +2,16 @@
 
 namespace Entidades::Obstaculos {
 
-    Espinho:: Espinho(int posx, int posy): danoEspinhar(1){
+    Espinho:: Espinho(int posx, int posy): Obstaculo(true), danoEspinhar(1){
         corpo.setPosition(posx, posy);
         corpo.setFillColor(sf::Color::Yellow);
     }
 
 
-    Espinho:: ~Espinho() {}
+    Espinho:: ~Espinho() {
+        jog1 = nullptr;
+        jog2 = nullptr;
+    }
 
 
     void Espinho:: obstacular(Entidades::Personagens::Jogador* j1){

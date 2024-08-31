@@ -23,12 +23,15 @@ namespace Entidades
 
 				void setMaldade(int m);
 				void setJogador(Jogador* jog1);
+
+				int getMaldade();
 				Jogador* getJogador1();
 				virtual void executar();
 				virtual void mover();
 				void voltar();
-		};
-	}
+                
+        };
+    }
 }
 
 	

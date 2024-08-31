@@ -9,7 +9,7 @@ namespace Estados
         Estado("Menu"), Ente(menu)
         {
             pGG = Gerenciadores::Gerenciador_Grafico::getInstancia();
-            fonte.loadFromFile("C:/Users/vinic/Desktop/projetos/JogoSimas/joguinho_lindo/joguinho_lindo/NewAmsterdam-Regular.ttf");
+            fonte.loadFromFile("../fontes/NewAmsterdam-Regular.ttf");
             
             limpar();
             
@@ -20,7 +20,6 @@ namespace Estados
             }
 
                 observadorMenu = new ObservadorMenu(this);
-                observadorMenu->mudaEstadoAtivo();
                 if (observadorMenu == nullptr) {
                     std::cerr << "Erro: falha ao alocar memória para ObservadorMenu" << std::endl;
                     return;
@@ -31,7 +30,7 @@ namespace Estados
         Menu::Menu(const std::string &iD):
         Estado(iD), Ente(menu)
         {
-                        try
+            try
             {
                 pGG = Gerenciadores::Gerenciador_Grafico::getInstancia();
                 fonte.loadFromFile("../fontes/NewAmsterdam-Regular.ttf");
@@ -59,11 +58,11 @@ namespace Estados
 
         void Menu::setFundo(const string &caminho)
         {
-            //textura_fundo.loadFromFile(caminho);
+            textura_fundo.loadFromFile(caminho);
             fundo.setSize(sf::Vector2f(pGG->getJanela()->getSize().x, pGG->getJanela()->getSize().y));
             fundo.setPosition(pGG->getJanela()->getPosition().x, pGG->getJanela()->getPosition().y);
             fundo.setFillColor(sf::Color::White);
-            //fundo.setTexture(&textura_fundo);
+            fundo.setTexture(&textura_fundo);
         }
 
                 void Menu::inicializar()

@@ -6,7 +6,7 @@ Fases::Fase1::Fase1(bool coop)
     setCaminho(caminho);
     criaFundo();
     constroiFase();
-    desenhar();
+    //desenhar();
 }
 
 Fases::Fase1::~Fase1()
@@ -14,17 +14,17 @@ Fases::Fase1::~Fase1()
 }   
 
 void Fases::Fase1::criaFundo(){
-    cout << "criando fundo" << endl;
-    sf::Texture fundo;
-
     try{
-        fundo.loadFromFile("../imagens/imagemFundo.jpeg");
+        textura_fundo.loadFromFile("../imagens/imagemFundo.jpeg");
+        if(!textura_fundo.loadFromFile("../imagens/imagemFundo.jpeg")){
+            throw std::bad_alloc();
+        }
     }
    catch (const std::bad_alloc& e){
         std::cerr << "Erro ao carregar a textura do fundo" << std::endl;
     }
 
-    pGG->desenhar(fundo);
+    fundo.setTexture(&textura_fundo);
 }   
 
 void Fases::Fase1::setCaminho(std::string caminhoArq){ //arquivo json do mapa
@@ -48,6 +48,7 @@ void Fases::Fase1::atualizar(){
 
 void Fases::Fase1::desenhar(){
     //cout << "desenhando" << endl;
+    pGG->desenhar(fundo);
     listaJogadores->desenhaLista();
     listaInimigos->desenhaLista();
     listaObstaculos->desenhaLista();

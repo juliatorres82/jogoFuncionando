@@ -1,7 +1,12 @@
 #include "../../includes/Observadores/ObservadorJogador.h"
 
-Observadores::ObservadorJogador::ObservadorJogador(Estados::Jogando* pJog): Observador(), pJogando(pJog)
+Observadores::ObservadorJogador::ObservadorJogador(Estados::Jogando* pJog): Observador()
 {
+    pJogando = pJog;
+    if (pJogando == nullptr) {
+        std::cerr << "Erro: menu é nullptr no construtor de ObservadorMenu" << std::endl;
+        return;
+    }
     pjogador1 = nullptr;
     pjogador2 = nullptr;
 }
@@ -37,7 +42,7 @@ void Observadores::ObservadorJogador::setJogadores(Entidades::Personagens::Jogad
 
 void Observadores::ObservadorJogador::notificaTeclaPressionada(const sf::Keyboard::Key k)
 {
-     
+    /*
         switch (k)
         {
             case (sf::Keyboard::Up):
@@ -67,6 +72,7 @@ void Observadores::ObservadorJogador::notificaTeclaPressionada(const sf::Keyboar
             default:
                 break;
         }
+    */
     
 }
 

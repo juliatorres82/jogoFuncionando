@@ -1,9 +1,8 @@
 #pragma once
 #include "Obstaculo.h"
 
-using namespace Entidades::Obstaculos;
-
-class Gosma : public Obstaculo {
+namespace Entidades::Obstaculos {
+    class Gosma : public Obstaculo {
 
     private:
         const float viscosidade;
@@ -11,6 +10,11 @@ class Gosma : public Obstaculo {
     public:
         Gosma (int posx, int posy);
         ~Gosma();
+
+        void executar();
+        void obstacular(Entidades::Personagens::Jogador* jogd);
         void gruda(); //implementar
 
 };
+
+}

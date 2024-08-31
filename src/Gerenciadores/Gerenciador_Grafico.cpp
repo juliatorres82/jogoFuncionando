@@ -1,5 +1,5 @@
 #include "../../includes/Gerenciadores/Gerenciador_Grafico.h"
-#include "../../includes/Ente.h"
+//#include "../../includes/Entidades/Entidade.h"
 
 using namespace Gerenciadores;
 
@@ -31,10 +31,11 @@ Gerenciador_Grafico* Gerenciador_Grafico::getInstancia()
 	return instancia;
 }
 
-void Gerenciador_Grafico::desenharEnte(Ente* pEnte)
+/*void Gerenciador_Grafico::desenharEntidade(Entidades::Entidade* pEntidade)
 {
-	pEnte->desenhar();
-}
+	janela->draw(pEntidade->getCorpo());
+
+}*/
 
 void Gerenciador_Grafico::desenhar(sf::RectangleShape ret)
 {
@@ -54,6 +55,13 @@ void Gerenciadores::Gerenciador_Grafico::fecharJanela()
 {
 	if(janela->isOpen())
 		janela->close();
+}
+
+void Gerenciador_Grafico::desenhar(sf::Texture textura)
+{
+	sf::Sprite sprite;
+	sprite.setTexture(textura);
+	janela->draw(sprite);
 }
 
 sf::RenderWindow *Gerenciador_Grafico::getJanela()

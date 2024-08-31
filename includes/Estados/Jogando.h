@@ -1,6 +1,6 @@
 #pragma once
 #include "Estado.h"
-#include "../Fase/Fase.h"
+#include "../Fases/Fase1.h"
 
 namespace Observadores
 {
@@ -13,6 +13,7 @@ namespace Estados
         private:
             Fases::Fase* fase;
             Observadores::ObservadorJogador* observadorJogador;
+            
         public:
             Jogando(const std::string& id = "Jogando");
             ~Jogando();

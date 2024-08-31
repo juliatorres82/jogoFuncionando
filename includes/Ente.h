@@ -1,6 +1,9 @@
 #pragma once
 #include "Gerenciadores/Gerenciador_Grafico.h"
-using namespace Gerenciadores;
+
+namespace Gerenciadores {
+	class Gerenciador_Colisoes;
+}
 
 enum idEntes 
 {
@@ -17,6 +20,7 @@ class Ente
 	protected:
 		idEntes id;
 		static Gerenciadores::Gerenciador_Grafico* pGG;
+		static Gerenciadores::Gerenciador_Colisoes* pGC;
 
 	public:
 		Ente(idEntes ID = jogaDor);

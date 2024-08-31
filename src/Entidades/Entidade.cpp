@@ -11,15 +11,20 @@ Entidade::Entidade() :
 	gravidade = 0.0;
 	caiu = false;
 	colidindo = false;
+	velox = 4.0;
 }
 
 Entidade::~Entidade()
 {
+
 }
 
-void Entidade::desenhar()
-{
+void Entidade::desenhar(){
 	pGG->desenhar(corpo);
+}
+
+void Entidade::desenhar(sf::Sprite& sprite){
+	pGG->desenhar(sprite);
 }
 
 void Entidade::setTam()
@@ -99,4 +104,12 @@ void Entidade::setPosicao(float x, float y)
 	pos.y = y;
 
 	corpo.setPosition(pos);
+}
+
+void Entidade:: setVelocidadex(float vel){
+	velox = vel;
+}
+
+float Entidade:: getVelocidadex(){
+	return velox;
 }

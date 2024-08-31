@@ -23,6 +23,12 @@ namespace Observadores
         {
             menu->selecionar();
         }
+
+        if(tecla == sf::Keyboard::Escape)
+        {
+           // menu->sairJogo();
+           
+        }
     }
 
     void Observadores::ObservadorMenu::notificaTeclaSolta(const sf::Keyboard::Key tecla)

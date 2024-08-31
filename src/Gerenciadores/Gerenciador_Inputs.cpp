@@ -41,10 +41,8 @@ namespace Gerenciadores
         }
     }
 
-    Gerenciador_Inputs* Gerenciador_Inputs::getInstancia(){
-
-        if (gI == nullptr)
-        {
+    Gerenciador_Inputs* Gerenciador_Inputs::getInstancia() {
+        if (gI == nullptr) {
             gI = new Gerenciador_Inputs();
         }
         return gI;
@@ -57,6 +55,7 @@ namespace Gerenciadores
             gI = nullptr;
         }
     }
+
     void Gerenciador_Inputs::addObservadoresVigiando(Observadores::Observador* obs){
         
         if(obs != nullptr)
@@ -92,7 +91,7 @@ namespace Gerenciadores
     void Gerenciador_Inputs::gerenciaTeclasPressionadas(sf::Keyboard::Key tecla){
     
         std::list<Observadores::Observador*>::iterator itObs = observadoresVigiando.begin();
-
+        
         for(itObs; itObs != observadoresVigiando.end(); itObs++) 
         {   if((*itObs)->getEstadoAtivo())
                 (*itObs)->notificaTeclaPressionada(tecla);

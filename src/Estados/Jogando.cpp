@@ -5,9 +5,10 @@
 Estados::Jogando::Jogando(const std::string &id)
 {
     setId(id);
-    fase = nullptr;
+    fase = new Fases::Fase1(false);
     observadorJogador = new Observadores::ObservadorJogador(this);
 }
+
 Estados::Jogando::~Jogando()
 {
     if(fase)
@@ -19,8 +20,9 @@ Estados::Jogando::~Jogando()
 
 void Estados::Jogando::criaFase(bool coop)
 {
-    fase = new Fases::Fase(coop);
+    fase = new Fases::Fase1(coop); 
     fase->constroiFase();
+    cout <<"construiu fase" <<endl;
 }
 
 void Estados::Jogando::exec()

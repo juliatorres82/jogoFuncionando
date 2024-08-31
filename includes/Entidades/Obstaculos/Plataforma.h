@@ -6,22 +6,24 @@ namespace Entidades
 {
     namespace Obstaculos
     {
-        class Plataforma :
-            public Obstaculo
+        class Plataforma : public Obstaculo
         {
             private:
 
                 const float elasticidade;
-                //Gerenciador_Grafico* pGG;
+                bool empuxo;
 
             public:
                 Plataforma();
-                Plataforma(float x, float y);
-                Plataforma(sf:: Vector2f posicao, int e, sf::Vector2f tam);
+                Plataforma(int x = 0, int y = 0, float e = 0.5);
+                //Plataforma(sf:: Vector2f posicao, int e, sf::Vector2f tam);
                 ~Plataforma();
-                void setTamanho(sf::Vector2f tam);
+                void setElasticidade(float e);
+                //void setTamanho(sf::Vector2f tam);
+                
                 void executar();
-                void obstacular();
+                void obstacular(Jogador* j1);
+                void fazEmpuxo();
         };
     }
 }

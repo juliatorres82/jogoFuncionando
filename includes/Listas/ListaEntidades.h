@@ -14,7 +14,8 @@ namespace Listas
 		ListaEntidades();
 		~ListaEntidades();
 		void incluir(Entidade* pEnt);
-		void desenhaLista();
+		void desenhaLista(sf::Sprite& sprite);
+		void desenhaLista(); //so p teste
 		void executaLista();
 		void limpar();
 		Lista<Entidade>::Iterador getInicio();

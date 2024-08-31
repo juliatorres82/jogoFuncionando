@@ -25,7 +25,7 @@ Botao::Botao(const sf::Vector2f &tam, const sf::Vector2f &pos, const string &tex
     setTexto(texto);
     setPos(pos);
     setCorRet(sf::Color::White);
-  
+
 
     selecionado = false;
     ativo = true;

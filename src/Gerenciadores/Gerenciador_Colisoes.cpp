@@ -1,5 +1,6 @@
 #include "../../includes/Gerenciadores/Gerenciador_Colisoes.h"
 
+
 using namespace Gerenciadores;
 
 Gerenciador_Colisoes* Gerenciador_Colisoes::instancia = nullptr;
@@ -94,20 +95,23 @@ void Gerenciadores::Gerenciador_Colisoes::tratarColisoesInimsObstacs()
 
 void Gerenciador_Colisoes::tratarColisoesJogsObstacs()
 {
+	printf("ate auqi ok  ");
 	for (auto& jog : jogs)
 	{
-		
+		printf("  entrou em ger::tratcoljogsobs\n");
 		if (jog != nullptr)
 		{
+			printf("  entrou no if do ger::tratcoljogsobs\n");
 			sf::FloatRect intersec;
 			jog->mudaColidindo(false);
 			jog->mudaCaiu(false);
 			for (auto& obstaculo : lOS)
 			{
-				if ((jog->getCorpo().getGlobalBounds().intersects(obstaculo->getCorpo().getGlobalBounds(), intersec)))
+				if ((jog->getCorpo().getGlobalBounds().intersects(obstaculo->getCorpo().getGlobalBounds(), intersec))) //se há interseção
 				{
 					jog->mudaColidindo(true);
 					jog->parar();
+					obstaculo->obstacular(jog); 
 					resolverColisao(static_cast<Entidade*>(jog), static_cast<Entidade*>(obstaculo), intersec);
 					jog->voltar();
 				}
@@ -119,9 +123,13 @@ void Gerenciador_Colisoes::tratarColisoesJogsObstacs()
 
 void Gerenciadores::Gerenciador_Colisoes::tratarColisoes()
 {
+	printf("entrou em ger::tratcol\n");
 	tratarColisoesJogsObstacs();
+	printf((" 1  "));
 	tratarColisoesInimsObstacs();
+	printf(" 2 ");
 	tratarColisoesJogsInims();
+	printf(" 3 ");
 }
 
 void Gerenciador_Colisoes::resolverColisao(Entidade* p1, Entidade* p2, sf::FloatRect intersec) {
@@ -194,4 +202,8 @@ void Gerenciadores::Gerenciador_Colisoes::resolverColisaoComEstat(Entidade* p1, 
 		}
 		p1->getCorpo().move(0.f, deCima ? tamVertical : -tamVertical);
 	}
+}
+
+bool Gerenciadores::Gerenciador_Colisoes:: haColisao(Entidade* p1, Entidade* p2) {
+	return p1->getContorno().intersects(p2->getContorno());
 }

@@ -1,17 +1,16 @@
 #include "../../../includes/Gerenciadores/Gerenciador_Estados.h"
 
 using namespace Observadores;
-
 namespace Estados
 {
-namespace Menus
-{
-
+    namespace Menus
+    {
         Menu::Menu():
         Estado("Menu"), Ente(menu)
         {
             pGG = Gerenciadores::Gerenciador_Grafico::getInstancia();
-            fonte.loadFromFile("../fontes/NewAmsterdam-Regular.ttf");
+            fonte.loadFromFile("C:/Users/vinic/Desktop/projetos/JogoSimas/joguinho_lindo/joguinho_lindo/NewAmsterdam-Regular.ttf");
+            
             limpar();
             
             // Verifique se o ponteiro this é válido
@@ -20,19 +19,19 @@ namespace Menus
                 return;
             }
 
-            observadorMenu = new ObservadorMenu(this);
-            observadorMenu->mudaEstadoAtivo();
-            if (observadorMenu == nullptr) {
-                std::cerr << "Erro: falha ao alocar memória para ObservadorMenu" << std::endl;
-                return;
-            }
+                observadorMenu = new ObservadorMenu(this);
+                observadorMenu->mudaEstadoAtivo();
+                if (observadorMenu == nullptr) {
+                    std::cerr << "Erro: falha ao alocar memória para ObservadorMenu" << std::endl;
+                    return;
+                }
         }
 
 
-        Estados::Menus::Menu::Menu(const std::string &iD):
+        Menu::Menu(const std::string &iD):
         Estado(iD), Ente(menu)
         {
-            try
+                        try
             {
                 pGG = Gerenciadores::Gerenciador_Grafico::getInstancia();
                 fonte.loadFromFile("../fontes/NewAmsterdam-Regular.ttf");
@@ -45,9 +44,10 @@ namespace Menus
                 return;
             }
             limpar();
-           
+            
         }
-        Estados::Menus::Menu::~Menu()
+        
+        Menu::~Menu()
         {
             if(observadorMenu != nullptr)
             {
@@ -57,7 +57,16 @@ namespace Menus
             limpar();
         }
 
-        void Menu::inicializar()
+        void Menu::setFundo(const string &caminho)
+        {
+            //textura_fundo.loadFromFile(caminho);
+            fundo.setSize(sf::Vector2f(pGG->getJanela()->getSize().x, pGG->getJanela()->getSize().y));
+            fundo.setPosition(pGG->getJanela()->getPosition().x, pGG->getJanela()->getPosition().y);
+            fundo.setFillColor(sf::Color::White);
+            //fundo.setTexture(&textura_fundo);
+        }
+
+                void Menu::inicializar()
         {
             try
             {
@@ -71,21 +80,13 @@ namespace Menus
             }
             
         }
-        void Estados::Menus::Menu::setFundo(const string &caminho)
-        {
-            textura_fundo.loadFromFile(caminho);
-            fundo.setSize(sf::Vector2f(pGG->getJanela()->getSize().x, pGG->getJanela()->getSize().y));
-            fundo.setPosition(pGG->getJanela()->getPosition().x, pGG->getJanela()->getPosition().y);
-            fundo.setFillColor(sf::Color::White);
-            fundo.setTexture(&textura_fundo);
-        }
 
-        void Estados::Menus::Menu::limpar()
+        void Menu::limpar()
         {
-            for(it = botoes.begin(); it != botoes.end(); it++)
-            {
-                delete *it;
-            }
+        for(it = botoes.begin(); it != botoes.end(); it++)
+        {
+            delete *it;
+        }
             botoes.clear();
         }
 
@@ -96,56 +97,57 @@ namespace Menus
             {
                 std::cout << "Erro ao criar botao" << std::endl;
             }
+            
             botoes.push_back(botao);
         }
 
-        void Estados::Menus::Menu::atualizar()
-        {
-            for(it = botoes.begin(); it != botoes.end(); it++)
+            void Estados::Menus::Menu::atualizar()
             {
-                (*it)->atualizar();
+                for(it = botoes.begin(); it != botoes.end(); it++)
+                {
+                    (*it)->atualizar();
+                }
             }
-        }
 
-        void Estados::Menus::Menu::moverCima()
-        {
-            Botao* botao = (*posAtual);
-            botao->setSelecionado(false);
+            void Estados::Menus::Menu::moverCima()
+            {
+                Botao* botao = (*posAtual);
+                botao->setSelecionado(false);
 
-            if (posAtual == botoes.begin()) {
-                posAtual = botoes.end();
+                if (posAtual == botoes.begin()) {
+                    posAtual = botoes.end();
+                }
+                posAtual--;
+
+                botao = (*posAtual);
+                botao->setSelecionado(true);
+
+                atualizar();
             }
-            posAtual--;
 
-            botao = (*posAtual);
-            botao->setSelecionado(true);
-
-            atualizar();
-        }
-
-        void Estados::Menus::Menu::moverBaixo()
-        {
-            (*posAtual)->setSelecionado(false);
-            posAtual++;
-            if(posAtual == botoes.end())
-            {   
-                posAtual = botoes.begin();
+            void Estados::Menus::Menu::moverBaixo()
+            {
+                (*posAtual)->setSelecionado(false);
+                posAtual++;
+                if(posAtual == botoes.end())
+                {   
+                    posAtual = botoes.begin();
+                }
+                (*posAtual)->setSelecionado(true);
+                
+                atualizar();
             }
-            (*posAtual)->setSelecionado(true);
-            
-            atualizar();
-        }
 
-        void Estados::Menus::Menu::selecionar()
-        {
-            (*posAtual)->executar();
-            atualizar();
-        }
+            void Estados::Menus::Menu::selecionar()
+            {
+                (*posAtual)->executar();
+                atualizar();
+            }
 
-        void Estados::Menus::Menu::mudaClicaBotao(Botao* it)
-        {
-            it->setClicado(false);
-        }
+            void Estados::Menus::Menu::mudaClicaBotao(Botao* it)
+            {
+                it->setClicado(false);
+            }
     }
-
 }
+

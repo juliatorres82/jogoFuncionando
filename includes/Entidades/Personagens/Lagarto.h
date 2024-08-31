@@ -1,5 +1,5 @@
 #pragma once
-#include "Inimigo.h"
+#include <cmath>
 #include "Jogador.h"
 using namespace Entidades;
 using namespace Personagens;
@@ -7,16 +7,16 @@ using namespace Personagens;
 class Lagarto : public Inimigo {
 
     private:
-        bool perseguidor;
-        Jogador* jog1;
+        float frequencia;
+        float amplitude;
 
     public:
         Lagarto();
         Lagarto(float x, float y);
         ~Lagarto();
-        void perseguir(); 
         void mover();
         void executar(); //
+        void atacar();
 
 
 

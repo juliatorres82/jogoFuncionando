@@ -3,9 +3,6 @@
 #include <iostream>
 using namespace std;
 
-
-class Ente;
-
 namespace Gerenciadores
 {
 	class Gerenciador_Grafico
@@ -19,19 +16,18 @@ namespace Gerenciadores
 
 		~Gerenciador_Grafico();
 		static Gerenciador_Grafico* getInstancia();
-		void desenharEnte(Ente* pEnte);
-		void desenhar(sf::RectangleShape ret);
+		//void desenharEntidade(Entidades::Entidade* pEntidade); //x
+		void desenhar(sf::RectangleShape ret); 
 		void fecharJanela();
         void desenhar(sf::Text texto);
 		void desenhar(sf::Sprite sprite);
-        sf::RenderWindow *getJanela();
+		void desenhar(sf::Texture textura);
+        sf::RenderWindow *getJanela(); 
         const bool janelaAberta() const;
 		float getTamx();
 		float getTamy();
 		void limpaJanela();
 		void mostrarJanela();
 	};
-
-
 
 }

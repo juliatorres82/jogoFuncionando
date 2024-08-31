@@ -6,10 +6,10 @@ namespace Estados
         MenuSelecao::MenuSelecao():
         Menu("MenuSelecao"), doisJogadores(false)
         {
-            adicionarBotao("Fase 1: Um Jogador", sf::Vector2f(200, 50), sf::Vector2f(300, 200));
-            adicionarBotao("Fase 1: Dois Jogadores", sf::Vector2f(200, 50), sf::Vector2f(300, 300));
-            adicionarBotao("Fase 2: Um jogador", sf::Vector2f(200, 50), sf::Vector2f(300, 400));
-            adicionarBotao("Fase 2: Dois Jogadores", sf::Vector2f(200, 50), sf::Vector2f(300, 500));
+            adicionarBotao("Fase 1: 1 Jogador", sf::Vector2f(200, 50), sf::Vector2f(300, 200));
+            adicionarBotao("Fase 1: 2 Jogadores", sf::Vector2f(200, 50), sf::Vector2f(300, 300));
+            adicionarBotao("Fase 2: 1 jogador", sf::Vector2f(200, 50), sf::Vector2f(300, 400));
+            adicionarBotao("Fase 2: 2 Jogadores", sf::Vector2f(200, 50), sf::Vector2f(300, 500));
             adicionarBotao("Voltar", sf::Vector2f(200, 50), sf::Vector2f(300, 600));
             inicializar();
         }
@@ -38,27 +38,27 @@ namespace Estados
                     (*posAtual)->setSelecionado(true);
                     (*it)->setSelecionado(false);
                     mudaClicaBotao(*it);
-                    if((*it)->getTexto() == "Fase1: Um Jogador" || (*it)->getTexto() == "Fase2: Um Jogador")
+                    if((*it)->getTexto() == "Fase1: 1 Jogador" || (*it)->getTexto() == "Fase2: 1 Jogador")
                     {
                         doisJogadores = false;
-                        if((*it)->getTexto() == "Fase1: Um Jogador")
+                        if((*it)->getTexto() == "Fase1: 1 Jogador")
                         {
                             gerenciador_estados->mudaEstado("Jogando");
                         }
-                        else if((*it)->getTexto() == "Fase2: Um Jogador")
+                        else if((*it)->getTexto() == "Fase2: 1 Jogador")
                         {
                             gerenciador_estados->mudaEstado("Jogando");
                         }
                     }
                     
-                    else if((*it)->getTexto() == "Fase1: Dois Jogadores" || (*it)->getTexto() == "Fase2: Dois Jogadores")
+                    else if((*it)->getTexto() == "Fase1: 2 Jogadores" || (*it)->getTexto() == "Fase2: 2 Jogadores")
                     {
                         doisJogadores = true;
-                        if((*it)->getTexto() == "Fase1: Dois Jogadores")
+                        if((*it)->getTexto() == "Fase1: 2 Jogadores")
                         {
                             gerenciador_estados->mudaEstado("Jogando");
                         }
-                        else if((*it)->getTexto() == "Fase2: Dois Jogadores")
+                        else if((*it)->getTexto() == "Fase2: 2 Jogadores")
                         {
                             gerenciador_estados->mudaEstado("Jogando");
                         }

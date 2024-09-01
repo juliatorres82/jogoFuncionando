@@ -1,5 +1,4 @@
 #include "../../../includes/Entidades/Personagens/Jogador.h"
-#include "Jogador.h"
 
 using namespace Entidades::Personagens;
 

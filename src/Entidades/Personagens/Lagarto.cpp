@@ -5,7 +5,7 @@ Lagarto:: Lagarto() : amplitude(10.0f){
 }
 
 
-Lagarto:: Lagarto(float x, float y) : amplitude(10.0f){
+Lagarto:: Lagarto(float x, float y) : amplitude(50.0f){
     corpo.setPosition(sf::Vector2f(x, y));
     setVelocidadex(2.0f);
 }
@@ -22,8 +22,10 @@ void Lagarto:: mover() {
     float dx = 0.0;
         dx = getPosicaox();
         corpo.move(getVelocidadex(), 0);
-        if(dx == amplitude || dx == -amplitude)
+        if(dx >= amplitude || dx <= -amplitude)
             setVelocidadex(-getVelocidadex()); 
+    
+    cair();
 }
 
 

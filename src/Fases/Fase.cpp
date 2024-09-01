@@ -25,7 +25,7 @@ Fase::~Fase() {
     /* desalocando jogadores*/
     Lista<Entidade>::Iterador it = listaJogadores->getInicio();
     Entidade* pE = nullptr;
-
+    pGC->limpar();
     while(!it.isNulo()){
        pE = (*it);
 
@@ -36,7 +36,6 @@ Fase::~Fase() {
        ++it;
     }
     listaJogadores->limpar();
-    pGC->limpar();
 
    /* desalocando inimigos*/
     it = listaInimigos->getInicio();

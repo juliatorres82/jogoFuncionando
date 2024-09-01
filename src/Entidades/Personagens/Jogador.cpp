@@ -43,6 +43,9 @@ Entidades::Personagens::Jogador:: Jogador(float x, float y): vidas(10){
 Entidades::Personagens::Jogador::~Jogador()
 {
 	jogador2 = nullptr;
+	if(observadorJog != nullptr)
+		delete observadorJog;
+	observadorJog = nullptr;
 }
 
 void Entidades::Personagens::Jogador::Pular()

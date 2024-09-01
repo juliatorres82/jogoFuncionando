@@ -1,6 +1,7 @@
 #pragma once
 #include "Jogador.h"
-#include "Projetil.h"
+#include "../Projetil.h"
+#include "../../../includes/Gerenciadores/Gerenciador_Colisoes.h"
 
 using namespace Entidades::Personagens;
 

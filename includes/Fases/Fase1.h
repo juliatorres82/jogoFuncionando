@@ -12,8 +12,8 @@ namespace Fases {
 
             void criaFundo();
             void setCaminho(std::string caminhoArq);
-            void atualizar();
             void desenhar();
+            void executar();
             //sf::Sprite criaSprites(); //implementar
     };  
 }

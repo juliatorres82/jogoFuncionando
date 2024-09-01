@@ -1,5 +1,5 @@
-#include "../../includes/Entidades/Personagens/Chefao.h"
-#include "../../includes/Gerenciadores/Gerenciador_Colisoes.h" 
+#include "../../../includes/Entidades/Personagens/Chefao.h"
+//#include "../../../includes/Gerenciadores/Gerenciador_Colisoes.h" 
 
 Chefao::Chefao(float x, float y) : Inimigo(x,y) {
     atirar = false;

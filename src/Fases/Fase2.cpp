@@ -16,11 +16,16 @@ void Fase2::setCaminho(std::string caminhoArq) {
     caminho = caminhoArq;
 }
 
-void Fase2::atualizar() {
+void Fase2::executar() {
+
+    cout << " entrou no executar f2" << endl;
+
     listaJogadores->executaLista();
     listaInimigos->executaLista();
     listaObstaculos->executaLista();
     listaPlataforma->executaLista();
+
+    cout << " executou f2" << endl;
 }
 
 void Fase2::desenhar() {

@@ -145,6 +145,12 @@ void Fase:: criarTudo(int posx, int posy, int valor) {
                         pGC->incluirObstaculos(gosma);
                         break;
                     }
+                    case 16: {
+                        Chefao* chefao = new Chefao(posx, posy);
+                        listaInimigos->incluir(chefao);
+                        pGC->incluirInimigos(chefao);
+                        break;
+                    }
 
                     default:
                         break;
@@ -208,6 +214,7 @@ void Fase:: constroiFase() {
 	}
     //setar jogs em obstacular e inimigos
     setsJogadores();
+    cout << " construiu fase " << endl;
 }
 
 /*void Fase:: constroiFase(){
@@ -227,17 +234,6 @@ void Fase:: tratarColisoes() {
     pGC->tratarColisoes();
 }
 
-void Fase::atualizar() 
-{
-
-}
-
-void Fases::Fase::executar(){
-     
-    desenhar();
-    atualizar();
-    tratarColisoes();
-}
 
 void Fases::Fase:: setsJogadores(){
     Lista<Entidade>::Iterador it = listaJogadores->getInicio();

@@ -8,6 +8,7 @@
 #include "../Entidades/Obstaculos/Gosma.h"
 #include "../Entidades/Personagens/Fantasma.h"
 #include "../Entidades/Personagens/Lagarto.h"
+#include "../Entidades/Personagens/Chefao.h"
 #include <fstream>
 //#include <nlohmann/json.hpp>
 
@@ -47,9 +48,8 @@ class Fase : public Ente {
         void criarTudo(int posx, int poxy, int valor);
         void tratarColisoes();
         virtual void setCaminho(std::string caminhoArq) = 0; 
-        virtual void atualizar();
         ListaEntidades *getListaJogadores();
-        void executar();
+        virtual void executar() = 0;
         void setsJogadores();
         virtual void desenhar() = 0;
         //virtual sf::Sprite criaSprites() = 0; //criar sprites de jogadores, inimigos e obstáculos;

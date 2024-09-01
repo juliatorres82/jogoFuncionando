@@ -32,13 +32,15 @@ void Fases::Fase1::criaFundo(){
     fundo.setTexture(&textura_fundo);
 }   
 
-void Fases::Fase1::atualizar(){
+void Fases::Fase1::executar(){
 
+    cout << " entrou no executar " << endl;
     listaJogadores->executaLista();
     listaInimigos->executaLista();
     listaObstaculos->executaLista();
     listaPlataforma->executaLista();
 }
+
 /*
 void Fases::Fase1::desenhar(){ //com sprites:
     listaJogadores->desenhaLista();

@@ -22,7 +22,7 @@ Estados::Jogando::~Jogando()
 
 void Estados::Jogando::criaFase(bool coop)
 {
-    fase = new Fases::Fase1(coop); 
+    fase = new Fases::Fase2(coop); 
 }
 
 void Estados::Jogando::exec()
@@ -37,7 +37,7 @@ void Estados::Jogando::exec()
 
 void Estados::Jogando::atualizar()
 {
-    fase->atualizar();
+    fase->executar();
 }
 void Estados::Jogando::pausar()
 {

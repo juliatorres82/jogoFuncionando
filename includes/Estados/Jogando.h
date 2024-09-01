@@ -1,6 +1,7 @@
 #pragma once
 #include "Estado.h"
 #include "../Fases/Fase1.h"
+#include "../Fases/Fase2.h" 
 
 namespace Observadores
 {

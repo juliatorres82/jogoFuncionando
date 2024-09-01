@@ -21,6 +21,11 @@ Estados::Jogando::~Jogando()
 
 void Estados::Jogando::criaFase(bool coop)
 {
+    if(fase != nullptr)
+    {
+        delete fase;
+    }
+    fase = nullptr;
     fase = new Fases::Fase1(coop); 
 }
 
@@ -30,7 +35,11 @@ void Estados::Jogando::exec()
     {
         observadorJog->mudaEstadoAtivo();
     }
-
+    if(fase == nullptr)
+    {
+        std::cerr << "Erro: fase eh nullptr" << std::endl;
+        return;
+    }
     fase->executar();
 }
 
@@ -49,5 +58,10 @@ void Estados::Jogando::pausar()
 
 Fases::Fase* Estados::Jogando::getFase()
 {
+    if(fase == nullptr)
+    {
+        std::cerr << "Erro: fase eh nullptr" << std::endl;
+        return nullptr;
+    }
     return fase;
 }

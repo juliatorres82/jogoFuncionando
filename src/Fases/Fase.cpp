@@ -21,6 +21,7 @@ Fase::Fase(bool coop) {
 
 Fase::~Fase() {
 
+    cout << "Fase::~Fase()" << endl;
     /* desalocando jogadores*/
     Lista<Entidade>::Iterador it = listaJogadores->getInicio();
     Entidade* pE = nullptr;
@@ -82,6 +83,7 @@ Fase::~Fase() {
     }
 
     listaPlataforma->limpar();
+    pGC->limpar();
 
 }
 
@@ -245,10 +247,13 @@ void Fase::atualizar()
 
 void Fases::Fase::executar(){
     //printf("entrou em executarFase\n"); 
-
+    cout << "chegou até aqui" << endl;
     desenhar();
+    cout << "desenhou" << endl;
     atualizar();
+    cout << "atualizou" << endl;
     tratarColisoes();
+    cout << "tratou colisões" << endl;
 }
 
 void Fases::Fase:: setsJogadores(){

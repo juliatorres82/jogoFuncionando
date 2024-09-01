@@ -34,11 +34,11 @@ namespace Estados
             {
                 if((*it)->getClicado())
                 {
-                    posAtual = botoes.begin();
-                    (*posAtual)->setSelecionado(true);
                     (*it)->setSelecionado(false);
                     mudaClicaBotao(*it);
                     Botao* bot = *it;
+                    posAtual = botoes.begin();
+                    (*posAtual)->setSelecionado(true);
                     atualizar();
                     observadorMenu->mudaEstadoAtivo();
 
@@ -91,7 +91,6 @@ namespace Estados
             }
             desenhar();
             executar();
-            
         }
     }
 

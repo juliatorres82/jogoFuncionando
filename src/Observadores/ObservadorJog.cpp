@@ -28,7 +28,7 @@ Observadores::ObservadorJog::ObservadorJog(Entidades::Personagens::Jogador *pjog
     }
 }
 
-Observadores::ObservadorJog::~ObservadorJog()
+Observadores::ObservadorJog::~ObservadorJog()	
 {
     if(pJogando)
     {
@@ -41,6 +41,7 @@ Observadores::ObservadorJog::~ObservadorJog()
         delete pjogador;
     }
     pjogador = nullptr;
+    Observadores::Observador::~Observador();
 }
 
 

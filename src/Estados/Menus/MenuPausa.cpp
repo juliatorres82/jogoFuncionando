@@ -6,6 +6,7 @@ namespace Estados
     {
         MenuPausa::MenuPausa(): Menu("MenuPausa")
         {
+            fase = nullptr;
             fundo.setSize(sf::Vector2f(pGG->getTamx()/5, pGG->getTamy()));
             fundo.setFillColor(sf::Color::White);
             fundo.setPosition(pGG->getTamx()/2 - fundo.getSize().x/2, 0);
@@ -17,12 +18,18 @@ namespace Estados
 
         MenuPausa::~MenuPausa()
         {
+            fase = nullptr;
             limpar();
         }
 
         void MenuPausa::setFase(Fases::Fase* f)
         {
+            if(fase != nullptr)
+            {
+                fase = nullptr;
+            }
             fase = f;
+            cout << "fase setada" << endl;
         }
 
         void MenuPausa::exec()
@@ -31,8 +38,8 @@ namespace Estados
             {
                 observadorMenu->mudaEstadoAtivo();
             }
-            executar();
             desenhar();
+            executar();
         }
         
         void MenuPausa::executar()
@@ -49,6 +56,7 @@ namespace Estados
                         if((*it)->getTexto() == "Sair")
                         {
                             gerenciador_estados->mudaEstado("MenuPrincipal");
+                            fase = nullptr;
                         }
                         else
                         {

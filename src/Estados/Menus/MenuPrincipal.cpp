@@ -10,11 +10,13 @@ namespace Estados
                 setFundo("../imagens/BG-MainMenu.jpeg");
                 titulo.setFont(fonte);
                 setTamTitulo(tamTitulo);
-                setCorTitulo(sf::Color::Black);
-                setTitulo("Titulo");
-                setPosTitulo(sf::Vector2f(pGG->getTamx()/2, pGG->getTamy()/4));
-                adicionarBotao("Novo Jogo",sf::Vector2f(pGG->getTamx()/2, pGG->getTamy()/2));
-                adicionarBotao( "Sair", sf::Vector2f(pGG->getTamx()/2, pGG->getTamy()/2 + espacoBotao));
+                setCorTitulo(sf::Color::Blue);
+                setTitulo("Joguindo Tenebroso");
+                setPosTitulo(sf::Vector2f(pGG->getTamx()/2, 0));
+                adicionarBotao("Novo Jogo",sf::Vector2f(pGG->getTamx()/2, pGG->getTamy()/3));
+                adicionarBotao("Carregar Jogo", sf::Vector2f(pGG->getTamx()/2, pGG->getTamy()/3 + espacoBotao));
+                adicionarBotao("Rank", sf::Vector2f(pGG->getTamx()/2, pGG->getTamy()/3 + 2*espacoBotao));
+                adicionarBotao( "Sair", sf::Vector2f(pGG->getTamx()/2, pGG->getTamy()/3 + 3*espacoBotao));
                 inicializar();
         }
 

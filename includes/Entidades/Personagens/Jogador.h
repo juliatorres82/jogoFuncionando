@@ -8,6 +8,11 @@ enum qJogador
 	jg1, jg2
 };
 
+namespace Observadores
+{
+    class ObservadorJog;
+}
+
 namespace Entidades
 {
 	namespace Personagens
@@ -19,7 +24,7 @@ namespace Entidades
 			int pontos;
 			Jogador* jogador2;
 			qJogador qJog;
-
+			Observadores::ObservadorJog* observadorJog;
 
 		public:
 			Jogador();
@@ -43,6 +48,7 @@ namespace Entidades
 			void setVidas(int vidaNova);
 			int getVidas();
             void resetaVelocidade();
+            void mudaAtivo();
         };
     }
 }

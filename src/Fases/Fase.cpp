@@ -244,7 +244,8 @@ void Fase::atualizar()
 }
 
 void Fases::Fase::executar(){
-    //printf("entrou em executarFase\n");  
+    //printf("entrou em executarFase\n"); 
+
     desenhar();
     atualizar();
     tratarColisoes();
@@ -276,4 +277,26 @@ void Fases::Fase:: setsJogadores(){
 
 ListaEntidades* Fase::getListaJogadores(){
     return listaJogadores;
+}
+
+Jogador* Fase::getJogador1(){
+    if(listaJogadores->getPrimeiro() == nullptr){
+        cout << "Jogador 1 não encontrado" << endl;
+        return nullptr;
+    }
+    return static_cast<Jogador*>(listaJogadores->getPrimeiro());
+}
+
+Jogador *Fases::Fase::getJogador2()
+{
+    if(ehCoop){
+        Lista<Entidade>::Iterador it = listaJogadores->getInicio();
+        it.operator++();
+        if(it.isNulo()){
+            cout << "Jogador 2 não encontrado" << endl;
+            return nullptr;
+        }
+        return static_cast<Jogador*>(*it);
+    }
+    return nullptr;
 }

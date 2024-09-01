@@ -45,12 +45,16 @@ class Fase : public Ente {
         virtual void criaFundo() = 0; 
         vector<vector<vector<int>>> converteJsonParaMatriz(const std::string& caminhoArquivoJson, int numLayers);
         void criarTudo(int posx, int poxy, int valor);
-        void tratarColisoes();
-        virtual void setCaminho(std::string caminhoArq) = 0; 
-        virtual void atualizar();
-        ListaEntidades *getListaJogadores();
-        void executar();
         void setsJogadores();
+        virtual void setCaminho(std::string caminhoArq) = 0; 
+
+        ListaEntidades *getListaJogadores();
+        Jogador *getJogador1();
+        Jogador *getJogador2();
+
+        void executar();
+        virtual void atualizar();
+        void tratarColisoes();
         virtual void desenhar() = 0;
         //virtual sf::Sprite criaSprites() = 0; //criar sprites de jogadores, inimigos e obstáculos;
 };

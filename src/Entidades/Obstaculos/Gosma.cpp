@@ -15,8 +15,14 @@ Gosma:: Gosma (int posx, int posy): Obstaculo(false), viscosidade(0.5){
     }
 
     void Gosma::obstacular(Entidades::Personagens::Jogador *j1) {
-        while(pGC->haColisao(this, j1))
-            j1->setVelocidadex(j1->getVelocidadex()-1.5);
+        if(pGC->haColisao(this, j1))
+        {   
+            if(j1->getVelocidadex() > 0)
+                j1->setVelocidadex(j1->getVelocidadex()-viscosidade);
+            else
+                j1->setVelocidadex(j1->getVelocidadex()+viscosidade);
+        }
+        j1->resetaVelocidade();
     }
 
     void Gosma::executar(){

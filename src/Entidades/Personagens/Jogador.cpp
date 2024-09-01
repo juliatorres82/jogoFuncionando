@@ -1,4 +1,5 @@
 #include "../../../includes/Entidades/Personagens/Jogador.h"
+#include "Jogador.h"
 
 using namespace Entidades::Personagens;
 
@@ -109,4 +110,9 @@ void Entidades::Personagens::Jogador::setVidas(int vidaNova){
 
 int Entidades::Personagens::Jogador::getVidas(){
 	return vidas;
+}
+
+void Entidades::Personagens::Jogador::resetaVelocidade()
+{
+	velx = velocidadeJogador;
 }

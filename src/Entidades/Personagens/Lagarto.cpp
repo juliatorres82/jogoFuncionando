@@ -20,13 +20,10 @@ Lagarto:: ~Lagarto() {
 void Lagarto:: mover() {
 
     float dx = 0.0;
-
-    while(pGG->janelaAberta()){ //----testar
         dx = getPosicaox();
         corpo.move(getVelocidadex(), 0);
         if(dx == amplitude || dx == -amplitude)
             setVelocidadex(-getVelocidadex()); 
-    } 
 }
 
 

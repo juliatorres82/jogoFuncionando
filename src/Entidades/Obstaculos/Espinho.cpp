@@ -15,7 +15,7 @@ namespace Entidades::Obstaculos {
 
 
     void Espinho:: obstacular(Entidades::Personagens::Jogador* j1){
-        j1->setVidas(j1->getVidas()-1);
+        //j1->setVidas(j1->getVidas()-1);
     }
 
     void Espinho::executar(){

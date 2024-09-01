@@ -33,8 +33,8 @@ void Fases::Fase1::setCaminho(std::string caminhoArq){ //arquivo json do mapa
 void Fases::Fase1::atualizar(){
 
     listaJogadores->executaLista();
-    //listaInimigos->executaLista();
-    //listaObstaculos->executaLista();
+    listaInimigos->executaLista();
+    listaObstaculos->executaLista();
     listaPlataforma->executaLista();
 }
 /*

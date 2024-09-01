@@ -42,8 +42,9 @@ namespace Entidades
 			void voltar();
 			void setVidas(int vidaNova);
 			int getVidas();
-		};
-	}
+            void resetaVelocidade();
+        };
+    }
 }
 
 

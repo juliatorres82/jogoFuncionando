@@ -1,6 +1,6 @@
 #include "../../../includes/Estados/Menus/MenuPrincipal.h"
 #include "../../../includes/Gerenciadores/Gerenciador_Estados.h"
-
+#define tamTitulo 100
 namespace Estados
 {
     namespace Menus
@@ -9,12 +9,12 @@ namespace Estados
             
                 setFundo("../imagens/BG-MainMenu.jpeg");
                 titulo.setFont(fonte);
-                setTamTitulo(200);
+                setTamTitulo(tamTitulo);
                 setCorTitulo(sf::Color::Black);
                 setTitulo("Titulo");
-                setPosTitulo(sf::Vector2f(pGG->getTamx()/2, 0));
-                adicionarBotao("Novo Jogo", sf::Vector2f(200, 50), sf::Vector2f(pGG->getTamx()/2, pGG->getTamy()/2));
-                adicionarBotao( "Sair", sf::Vector2f(200, 50), sf::Vector2f(pGG->getTamx()/2, pGG->getTamy()/2 + 100));
+                setPosTitulo(sf::Vector2f(pGG->getTamx()/2, pGG->getTamy()/4));
+                adicionarBotao("Novo Jogo",sf::Vector2f(pGG->getTamx()/2, pGG->getTamy()/2));
+                adicionarBotao( "Sair", sf::Vector2f(pGG->getTamx()/2, pGG->getTamy()/2 + espacoBotao));
                 inicializar();
         }
 

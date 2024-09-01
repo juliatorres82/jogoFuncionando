@@ -60,7 +60,7 @@ namespace Estados
         {
             textura_fundo.loadFromFile(caminho);
             fundo.setSize(sf::Vector2f(pGG->getJanela()->getSize().x, pGG->getJanela()->getSize().y));
-            fundo.setPosition(pGG->getJanela()->getPosition().x, pGG->getJanela()->getPosition().y);
+            //fundo.setPosition(pGG->getJanela()->getPosition().x, pGG->getJanela()->getPosition().y);
             fundo.setFillColor(sf::Color::White);
             fundo.setTexture(&textura_fundo);
         }
@@ -89,9 +89,9 @@ namespace Estados
             botoes.clear();
         }
 
-        void Estados::Menus::Menu::adicionarBotao(const string &texto, const sf::Vector2f &tam, const sf::Vector2f &pos)
+        void Estados::Menus::Menu::adicionarBotao(const string &texto, const sf::Vector2f &pos)
         {
-            Botao *botao = new Botao(tam, pos, texto);
+            Botao *botao = new Botao(pos, texto);
             if(botao == nullptr)
             {
                 std::cout << "Erro ao criar botao" << std::endl;

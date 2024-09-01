@@ -6,11 +6,11 @@ namespace Estados
         MenuSelecao::MenuSelecao():
         Menu("MenuSelecao"), doisJogadores(false)
         {
-            adicionarBotao("Fase 1: 1 Jogador", sf::Vector2f(200, 50), sf::Vector2f(300, 200));
-            adicionarBotao("Fase 1: 2 Jogadores", sf::Vector2f(200, 50), sf::Vector2f(300, 300));
-            adicionarBotao("Fase 2: 1 Jogador", sf::Vector2f(200, 50), sf::Vector2f(300, 400));
-            adicionarBotao("Fase 2: 2 Jogadores", sf::Vector2f(200, 50), sf::Vector2f(300, 500));
-            adicionarBotao("Voltar", sf::Vector2f(200, 50), sf::Vector2f(300, 600));
+            adicionarBotao("Fase 1: Solo", sf::Vector2f(pGG->getTamx()/2, 100));
+            adicionarBotao("Fase 1: Coop", sf::Vector2f(pGG->getTamx()/2, 100 + espacoBotao));
+            adicionarBotao("Fase 2: Solo", sf::Vector2f(pGG->getTamx()/2, 100 + 2*espacoBotao));
+            adicionarBotao("Fase 2: Coop", sf::Vector2f(pGG->getTamx()/2, 100 + 3*espacoBotao));
+            adicionarBotao("Voltar", sf::Vector2f(pGG->getTamx()/2, 100 + 4*espacoBotao));
             inicializar();
         }
 
@@ -42,27 +42,27 @@ namespace Estados
                     atualizar();
                     observadorMenu->mudaEstadoAtivo();
 
-                    if((bot)->getTexto() == "Fase 1: 1 Jogador" || (bot)->getTexto() == "Fase 2: 1 Jogador")
+                    if((bot)->getTexto() == "Fase 1: Solo" || (bot)->getTexto() == "Fase 2: Solo")
                     {
                         doisJogadores = false;
-                        if((bot)->getTexto() == "Fase 1: 1 Jogador")
+                        if((bot)->getTexto() == "Fase 1: Solo")
                         {
                             gerenciador_estados->mudaEstado("Jogando");
                         }
-                        else if((bot)->getTexto() == "Fase 2: 1 Jogador")
+                        else if((bot)->getTexto() == "Fase 2: Solo")
                         {
                             gerenciador_estados->mudaEstado("Jogando");
                         }
                     }
                     
-                    else if((bot)->getTexto() == "Fase 1: 2 Jogadores" || (bot)->getTexto() == "Fase 2: 2 Jogadores")
+                    else if((bot)->getTexto() == "Fase 1: Coop" || (bot)->getTexto() == "Fase 2: Coop")
                     {
                         doisJogadores = true;
-                        if((bot)->getTexto() == "Fase 1: 2 Jogadores")
+                        if((bot)->getTexto() == "Fase 1: Coop")
                         {
                             gerenciador_estados->mudaEstado("Jogando");
                         }
-                        else if((bot)->getTexto() == "Fase 2: 2 Jogadores")
+                        else if((bot)->getTexto() == "Fase 2: Coop")
                         {
                             gerenciador_estados->mudaEstado("Jogando");
                         }

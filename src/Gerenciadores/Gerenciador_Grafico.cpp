@@ -1,5 +1,4 @@
 #include "../../includes/Gerenciadores/Gerenciador_Grafico.h"
-//#include "../../includes/Entidades/Entidade.h"
 
 using namespace Gerenciadores;
 
@@ -8,7 +7,7 @@ Gerenciador_Grafico* Gerenciador_Grafico::instancia = nullptr;
 
 Gerenciador_Grafico::Gerenciador_Grafico()
 {
-	janela = new sf::RenderWindow(sf::VideoMode::getDesktopMode(), "Jogo", sf::Style::Fullscreen);
+	janela = new sf::RenderWindow(sf::VideoMode(960, 640), "Jogo", sf::Style::Default);
 	janela->setFramerateLimit(60);	
 }
 

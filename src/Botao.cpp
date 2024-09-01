@@ -1,7 +1,7 @@
 #include "../includes/Botao.h"
 
 using namespace Gerenciadores;
-
+#define tamBotao sf::Vector2f(200, 50)
 Botao::Botao()
 {
     id = botao;
@@ -16,11 +16,11 @@ Botao::~Botao()
 
 }
 
-Botao::Botao(const sf::Vector2f &tam, const sf::Vector2f &pos, const string &texto)
+Botao::Botao(const sf::Vector2f &pos, const string &texto)
 {
     fonte.loadFromFile("../fontes/NewAmsterdam-Regular.ttf");
     this->texto.setFont(fonte);
-    setTam(tam);
+    setTam(tamBotao);
     setCorTexto(sf::Color::Black);
     setTexto(texto);
     setPos(pos);

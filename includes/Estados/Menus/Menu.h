@@ -12,6 +12,7 @@ namespace Estados
 {
     namespace Menus
     {
+        #define espacoBotao 100
         class Menu: public Estado, public Ente
         {
             protected:
@@ -31,7 +32,7 @@ namespace Estados
                 void limpar();
                 virtual ~Menu();
                 void setFundo(const string& caminho);
-                void adicionarBotao(const string& texto, const sf::Vector2f& tam, const sf::Vector2f& pos);
+                void adicionarBotao(const string& texto, const sf::Vector2f& pos);
                 void atualizar();
                 void exec() = 0;
                 virtual void desenhar() = 0 ;

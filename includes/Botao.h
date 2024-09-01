@@ -12,7 +12,7 @@ class Botao: public Ente
         bool clicado;
     public:
         Botao();
-        Botao(const sf::Vector2f& tam, const sf::Vector2f& pos, const string& texto);
+        Botao(const sf::Vector2f& pos, const string& texto);
         ~Botao();
 
         void setPos(const sf::Vector2f& pos);

@@ -22,7 +22,6 @@ namespace Estados
                 list<Botao*>::iterator posAtual;
                 sf::RectangleShape fundo;
                 sf::Texture textura_fundo;
-                sf::Text titulo;
                 sf::Font fonte;
                 
             public:

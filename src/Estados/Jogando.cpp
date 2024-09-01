@@ -41,5 +41,10 @@ void Estados::Jogando::atualizar()
 void Estados::Jogando::pausar()
 {
     observadorJogador->mudaEstadoAtivo();
-    gerenciador_estados->mudaEstado("MenuSelecao");
+    gerenciador_estados->mudaEstado("MenuPausa");
+}
+
+Fases::Fase* Estados::Jogando::getFase()
+{
+    return fase;
 }

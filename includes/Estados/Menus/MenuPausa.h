@@ -12,7 +12,9 @@ namespace Estados
                 
             public:
                 MenuPausa();
-                ~MenuPausa(); 
+                ~MenuPausa();
+                void setFase(Fases::Fase *f);
+                void exec();
                 void executar(); 
                 void desenhar();
         };

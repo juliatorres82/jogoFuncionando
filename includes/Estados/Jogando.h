@@ -21,5 +21,6 @@ namespace Estados
             void exec();
             void atualizar();
             void pausar();
+            Fases::Fase *getFase();
     };
 }

@@ -83,6 +83,17 @@ void Gerenciador_Estados::criarEstados()
     {
         std::cerr << e.what() << '\n';
     }
+
+    try
+    {
+        Estados::Menus::Menu* menuPausa = new Estados::Menus::MenuPausa();
+        adicionarEstado("MenuPausa", menuPausa);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    
     
     mudaEstado("MenuPrincipal");
 }
@@ -138,6 +149,7 @@ void Gerenciador_Estados::vaiSerCoop()
     
     Estados::Jogando* jogando = dynamic_cast<Estados::Jogando*>(getEstado("Jogando"));
     Estados::Menus::MenuSelecao* menuSel = dynamic_cast<Estados::Menus::MenuSelecao*>(getEstado("MenuSelecao"));
+    Estados::Menus::MenuPausa* menuPausa = dynamic_cast<Estados::Menus::MenuPausa*>(getEstado("MenuPausa"));
     
     if(jogando == nullptr || menuSel == nullptr)
     {
@@ -151,5 +163,7 @@ void Gerenciador_Estados::vaiSerCoop()
     }
     
     jogando->criaFase(false);
+
+    menuPausa->setFase(jogando->getFase());
 }
 

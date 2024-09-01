@@ -71,6 +71,7 @@ namespace Estados
             {
                 it = posAtual = botoes.begin();
                 (*posAtual)->setSelecionado(true);
+                atualizar();
             }
             catch(const std::exception& e)
             {

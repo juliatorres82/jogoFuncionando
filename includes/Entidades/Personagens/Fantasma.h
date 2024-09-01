@@ -21,4 +21,5 @@ class Fantasma : public Inimigo {
         void mover();
         void executar();
         void atacar();
+        void desenhar();
 };

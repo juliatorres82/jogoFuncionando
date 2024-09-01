@@ -36,7 +36,7 @@ Fase::~Fase() {
        ++it;
     }
     listaJogadores->limpar();
-
+    pGC->limpar();
 
    /* desalocando inimigos*/
     it = listaInimigos->getInicio();
@@ -83,7 +83,6 @@ Fase::~Fase() {
     }
 
     listaPlataforma->limpar();
-    pGC->limpar();
 
 }
 
@@ -240,20 +239,15 @@ void Fase:: tratarColisoes() {
     pGC->tratarColisoes();
 }
 
-void Fase::atualizar() 
-{
-
-}
-
 void Fases::Fase::executar(){
     //printf("entrou em executarFase\n"); 
-    cout << "chegou até aqui" << endl;
+    
     desenhar();
-    cout << "desenhou" << endl;
+ 
     atualizar();
-    cout << "atualizou" << endl;
+    
     tratarColisoes();
-    cout << "tratou colisões" << endl;
+ 
 }
 
 void Fases::Fase:: setsJogadores(){

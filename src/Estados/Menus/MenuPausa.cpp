@@ -29,7 +29,7 @@ namespace Estados
                 fase = nullptr;
             }
             fase = f;
-            cout << "fase setada" << endl;
+
         }
 
         void MenuPausa::exec()

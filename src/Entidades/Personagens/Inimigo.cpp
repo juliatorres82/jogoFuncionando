@@ -68,7 +68,6 @@ void Inimigo::mover()
 void Inimigo::executar()
 {
 	mover();
-	desenhar();
 	atualizar();
 }
 

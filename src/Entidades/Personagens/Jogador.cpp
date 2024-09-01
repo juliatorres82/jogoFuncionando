@@ -101,8 +101,7 @@ void Entidades::Personagens::Jogador::executar()
 		observadorJog->mudaEstadoAtivo();
 	}
 
-	mover();
-	desenhar();
+	//mover();
 }
 
 void Entidades::Personagens::Jogador::setJogador2(Jogador* j2)

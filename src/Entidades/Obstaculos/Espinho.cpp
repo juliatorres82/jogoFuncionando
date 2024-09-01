@@ -23,6 +23,5 @@ namespace Entidades::Obstaculos {
             obstacular(jog1);
         if(jog2 != nullptr)
             obstacular(jog2);
-        desenhar();
     }
 }

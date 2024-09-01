@@ -49,10 +49,12 @@ void Fases::Fase1::desenhar(){ //com sprites:
 void Fases::Fase1::desenhar(){
     //cout << "desenhando" << endl;
     pGG->desenhar(fundo);
+    
     listaJogadores->desenhaLista();
     listaInimigos->desenhaLista();
     listaObstaculos->desenhaLista();
     listaPlataforma->desenhaLista();
+    
     //cout << "desenhou" << endl;
 }
 

@@ -30,7 +30,6 @@ void Plataforma::executar()
 {
 	cair();
 	fazEmpuxo();
-	desenhar();
 }
 
 void Plataforma::obstacular(Personagens::Jogador* jogador1) {}

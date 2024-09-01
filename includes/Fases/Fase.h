@@ -53,7 +53,7 @@ class Fase : public Ente {
         Jogador *getJogador2();
 
         void executar();
-        virtual void atualizar();
+        virtual void atualizar() = 0;
         void tratarColisoes();
         virtual void desenhar() = 0;
         //virtual sf::Sprite criaSprites() = 0; //criar sprites de jogadores, inimigos e obstáculos;

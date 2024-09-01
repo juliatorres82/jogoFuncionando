@@ -18,7 +18,6 @@ void PlataformaGelo::fazEmpuxo() {
 void PlataformaGelo:: executar() {
     cair();
     fazEmpuxo();
-    desenhar();
 } 
 
 

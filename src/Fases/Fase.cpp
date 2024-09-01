@@ -85,7 +85,6 @@ Fase::~Fase() {
 
 }
 
-
 void Fase:: criaJogadores(){
 
     Jogador* jogador1 = nullptr;
@@ -102,7 +101,6 @@ void Fase:: criaJogadores(){
     }
 }
 
-
 void Fase:: criarTudo(int posx, int posy, int valor) {
 
        switch (valor) {
@@ -111,42 +109,49 @@ void Fase:: criarTudo(int posx, int posy, int valor) {
                         break;
 
                     case 18: {
+                        cout << "criou plataforma" << endl;
                         Plataforma* plataforma = new Plataforma(posx, posy);
                         listaPlataforma->incluir(plataforma);
                         pGC->incluirObstaculos(plataforma);
                         break;
                     } 
                     case 23: {
+                        cout << "criou plataforma de gelo" << endl;
                         PlataformaGelo* plataformaGelo = new PlataformaGelo(posx, posy);
                         listaPlataforma->incluir(plataformaGelo);
                         pGC->incluirObstaculos(plataformaGelo);
                         break;
                     }
                     case 1: {
+                        cout << "criou jogador" << endl;
                         Jogador* jogador = new Jogador(posx, posy);
                         listaJogadores->incluir(jogador);
                         pGC->incluirJogador(jogador);
                         break;
                     }
                     case 14: {
+                        cout << "criou espinho" << endl;
                         Espinho* espinho = new Espinho(posx, posy);
                         listaObstaculos->incluir(espinho);
                         pGC->incluirObstaculos(espinho);
                         break;
                     }
                     case 49: {
+                        cout << "criou fantasma" << endl;
                         Fantasma* fantasma = new Fantasma(posx, posy);
                         listaInimigos->incluir(fantasma);
                         pGC->incluirInimigos(fantasma);
                         break;
                     }
                     case 43: {
+                        cout << "criou lagarto" << endl;
                         Lagarto* lagarto = new Lagarto(posx, posy);
                         listaInimigos->incluir(lagarto);
                         pGC->incluirInimigos(lagarto);
                         break;
                     }
                     case 12: {
+                        cout << "criou gosma" << endl;
                         Gosma* gosma = new Gosma(posx, posy);
                         listaObstaculos->incluir(gosma);
                         pGC->incluirObstaculos(gosma);
@@ -198,8 +203,6 @@ vector<vector<vector<int>>> Fase:: converteJsonParaMatriz(const std::string& cam
     return matrizMapa;
 }
 
-
-
 void Fase:: constroiFase() {
 
     cout <<"entrou em constroiFase()"<<endl;
@@ -218,7 +221,6 @@ void Fase:: constroiFase() {
     cout << "saiu de constroiFase()"<<endl;
 }
 
-
 /*void Fase:: constroiFase(){
     Plataforma* p = new Plataforma(32,32);
     //Plataforma* p2 = new Plataforma(64,32);
@@ -232,7 +234,6 @@ void Fase:: constroiFase() {
 
 }*/
 
-
 void Fase:: tratarColisoes() {
     pGC->tratarColisoes();
 }
@@ -245,14 +246,15 @@ void Fase::atualizar()
 void Fases::Fase::executar(){
     //printf("entrou em executarFase\n");  
     desenhar();
-    //atualizar();
+    atualizar();
     tratarColisoes();
 }
 
 void Fases::Fase:: setsJogadores(){
     Lista<Entidade>::Iterador it = listaJogadores->getInicio();
     Lista<Entidade>::Iterador it2 = listaInimigos->getInicio();
-    if(it.isNulo() || it2.isNulo()){
+    if(it.isNulo()){
+        cout << "Lista de jogadores vazia" << endl;
         return;
     }
     while(!it2.isNulo()){

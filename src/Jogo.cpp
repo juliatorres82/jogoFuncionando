@@ -8,7 +8,8 @@ Jogo::Jogo()
     gerenciador_inputs = Gerenciadores::Gerenciador_Inputs::getInstancia();
     gerenciador_eventos = Gerenciadores::Gerenciador_Eventos::getGerenciadorEventos();
     gerenciador_estados = Gerenciadores::Gerenciador_Estados::getInstancia();
-    
+    cout << gerenciador_grafico->getJanela()->getSize().x << endl;
+    cout << gerenciador_grafico->getJanela()->getSize().y << endl;
     if(gerenciador_grafico == nullptr || gerenciador_eventos == nullptr || gerenciador_estados == nullptr || gerenciador_inputs == nullptr)
     {
         std::cerr << "Erro ao criar os gerenciadores" << '\n';

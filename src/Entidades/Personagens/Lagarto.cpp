@@ -11,7 +11,10 @@ Lagarto:: Lagarto(float x, float y) : amplitude(10.0f){
 }
 
 
-Lagarto:: ~Lagarto() {}
+Lagarto:: ~Lagarto() {
+    jogador1 = nullptr;
+    jogador2 = nullptr;
+}
 
 
 void Lagarto:: mover() {
@@ -29,7 +32,7 @@ void Lagarto:: mover() {
 
 void Lagarto:: executar() {
     mover();
-    atacar();
+    //atacar();
     atualizar();
 }
 

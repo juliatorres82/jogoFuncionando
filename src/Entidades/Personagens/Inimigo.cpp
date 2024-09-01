@@ -1,6 +1,4 @@
-//#include "../../../includes/Entidades/Personagens/Inimigo.h"
 #include "../../../includes/Entidades/Personagens/Jogador.h"
-#include "Inimigo.h"
 
 using namespace Entidades;
 using namespace Personagens;

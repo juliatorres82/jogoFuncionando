@@ -19,9 +19,10 @@ namespace Entidades::Obstaculos {
     }
 
     void Espinho::executar(){
-
-        obstacular(jog1);
-        if(jog2 != NULL)
+        if(jog1 != nullptr)
+            obstacular(jog1);
+        if(jog2 != nullptr)
             obstacular(jog2);
+        desenhar();
     }
 }

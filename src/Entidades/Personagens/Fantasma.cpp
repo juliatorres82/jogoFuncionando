@@ -8,7 +8,10 @@ Fantasma :: Fantasma(float x, float y) {
     corpo.setPosition(sf::Vector2f(x, y));
 } 
 
-Fantasma :: ~Fantasma() {}
+Fantasma :: ~Fantasma() {
+    jogador1 = nullptr;
+    jogador2 = nullptr;
+}
 
 
 void Fantasma:: perseguir() {
@@ -58,7 +61,8 @@ bool Fantasma :: isInvisivel() {
 }
 
 void Fantasma :: mover() {
-    perseguir();
+    if(jogador1 != nullptr)
+        perseguir();
 }
 
 void Fantasma :: executar() {
@@ -66,7 +70,7 @@ void Fantasma :: executar() {
     mover();
     if(!invisivel)
         desenhar();
-    atacar();
+    //atacar();
     atualizar();
 }
 

@@ -35,6 +35,7 @@ void Fases::Fase1::criaFundo(){
 void Fases::Fase1::executar(){
 
     cout << " entrou no executar " << endl;
+    tratarColisoes();
     listaJogadores->executaLista();
     listaInimigos->executaLista();
     listaObstaculos->executaLista();

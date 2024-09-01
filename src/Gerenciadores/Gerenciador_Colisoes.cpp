@@ -247,3 +247,14 @@ void Gerenciadores::Gerenciador_Colisoes::resolverColisaoComEstat(Entidade* p1, 
 bool Gerenciadores::Gerenciador_Colisoes:: haColisao(Entidade* p1, Entidade* p2) {
 	return p1->getContorno().intersects(p2->getContorno());
 }
+
+void Gerenciadores::Gerenciador_Colisoes::retiraProjetil (Projetil* proj){
+
+	for(int i = 0; i < projeteis.size(); i++){
+		if(projeteis[i] == proj){
+			projeteis.erase(projeteis.begin() + i);
+			return;
+		}
+	}
+
+}

@@ -26,7 +26,7 @@ Gosma:: Gosma (int posx, int posy): Obstaculo(false), viscosidade(0.5){
     }
 
     void Gosma::executar(){
-        
+        //cout << "executou a gosma " << endl;
         if(jog1 != nullptr)
             obstacular(jog1);
         if(jog2 != nullptr)

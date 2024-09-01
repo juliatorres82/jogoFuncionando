@@ -20,7 +20,7 @@ namespace Gerenciadores
 
     }
 
-    Gerenciador_Eventos* Gerenciador_Eventos::getGerenciadorEventos(){
+    Gerenciador_Eventos* Gerenciador_Eventos::getInstancia(){
 
         if(pGE == nullptr){ // se ainda não instanciado 
             pGE = new Gerenciador_Eventos();

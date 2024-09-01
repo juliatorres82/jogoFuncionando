@@ -12,12 +12,14 @@ class Projetil : public Entidade {
         bool colidindo;
 
     public:
-        Projetil(sf::Vector2f pos, sf::Vector2f dir, float vel);
+        Projetil(sf::Vector2f pos, float vel);
         ~Projetil();
         void mover();
         void executar();
         void desenhar();
         int causarDano();
+        sf::Vector2f getPosicao();
+        void setDirecao(sf::Vector2f dir);
         void parar();
 
 };

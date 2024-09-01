@@ -6,7 +6,7 @@ Jogo::Jogo()
 {
     gerenciador_grafico = Gerenciadores::Gerenciador_Grafico::getInstancia();
     gerenciador_inputs = Gerenciadores::Gerenciador_Inputs::getInstancia();
-    gerenciador_eventos = Gerenciadores::Gerenciador_Eventos::getGerenciadorEventos();
+    gerenciador_eventos = Gerenciadores::Gerenciador_Eventos::getInstancia();
     gerenciador_estados = Gerenciadores::Gerenciador_Estados::getInstancia();
     cout << gerenciador_grafico->getJanela()->getSize().x << endl;
     cout << gerenciador_grafico->getJanela()->getSize().y << endl;

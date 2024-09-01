@@ -14,7 +14,7 @@ Fase::Fase(bool coop) : Ente() {
 
     pGG = pGG->getInstancia();
     pGC = pGC->getInstancia();
-    p_GE = p_GE->getGerenciadorEventos();
+    p_GE = p_GE->getInstancia();
     //setCaminho(caminho);
     //printf("Fase::Fase() funcionando\n"); ok
 }
@@ -139,7 +139,7 @@ void Fase:: criarTudo(int posx, int posy, int valor) {
                         pGC->incluirInimigos(lagarto);
                         break;
                     }
-                    case 29: { //ver na fase 2 para saber o valor do tile 
+                   case 29: { //ver na fase 2 para saber o valor do tile 
                         Gosma* gosma = new Gosma(posx, posy);
                         listaObstaculos->incluir(gosma);
                         pGC->incluirObstaculos(gosma);
@@ -258,6 +258,7 @@ void Fases::Fase:: setsJogadores(){
         ++it2;
     }
 }
+
 
 ListaEntidades* Fase::getListaJogadores(){
     return listaJogadores;

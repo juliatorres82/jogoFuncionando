@@ -19,16 +19,21 @@ void Fase2::setCaminho(std::string caminhoArq) {
 void Fase2::executar() {
 
     cout << " entrou no executar f2" << endl;
-
+    tratarColisoes();
+    cout << " ger cooool " << endl;
     listaJogadores->executaLista();
-    listaInimigos->executaLista();
+    cout << " aaaqui " << endl;
+    listaInimigos->executaLista(); //erro aqui no chefao
+    cout << " aaaqui 2" << endl;
     listaObstaculos->executaLista();
+    cout << " aaaqui 3" << endl;
     listaPlataforma->executaLista();
 
     cout << " executou f2" << endl;
 }
 
 void Fase2::desenhar() {
+
     pGG->desenhar(fundo);
     listaJogadores->desenhaLista();
     listaInimigos->desenhaLista();
@@ -39,8 +44,8 @@ void Fase2::desenhar() {
 void Fase2::criaFundo() {
 
     try{
-        textura_fundo.loadFromFile("../imagens/imagemFundo.jpeg");
-        if(!textura_fundo.loadFromFile("../imagens/imagemFundo.jpeg")){
+        textura_fundo.loadFromFile("../../imagens/imagemFundo.jpeg");
+        if(!textura_fundo.loadFromFile("../../imagens/imagemFundo.jpeg")){
             throw std::bad_alloc();
         }
     }

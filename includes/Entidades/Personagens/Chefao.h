@@ -17,4 +17,5 @@ class Chefao : public Inimigo {
             ~Chefao();
             void atacar();
             void executar();
+            void lancarProjetil();
 };

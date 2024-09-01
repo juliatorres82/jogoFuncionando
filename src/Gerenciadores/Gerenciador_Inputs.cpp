@@ -5,7 +5,7 @@ namespace Gerenciadores
 {
     Gerenciador_Inputs* Gerenciador_Inputs:: gI = nullptr;
     Gerenciador_Grafico* Gerenciador_Inputs:: pGG = Gerenciador_Grafico::getInstancia();
-    Gerenciador_Eventos* Gerenciador_Inputs:: pGE = Gerenciador_Eventos::getGerenciadorEventos();
+    Gerenciador_Eventos* Gerenciador_Inputs:: pGE = Gerenciador_Eventos::getInstancia();
 
     Gerenciador_Inputs::Gerenciador_Inputs(){
     

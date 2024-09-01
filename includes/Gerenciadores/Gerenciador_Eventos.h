@@ -20,7 +20,7 @@ namespace Gerenciadores{
            
         public:
             ~Gerenciador_Eventos();
-            static Gerenciador_Eventos* getGerenciadorEventos();
+            static Gerenciador_Eventos* getInstancia();
             void gerenciaEventos();
 
     };

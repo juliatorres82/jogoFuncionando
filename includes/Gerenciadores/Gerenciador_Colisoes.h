@@ -37,5 +37,6 @@ namespace Gerenciadores
 		void resolverColisaoComDin(Entidade* p1, Entidade* p2, sf::FloatRect intersec);
 		void resolverColisaoComEstat(Entidade* p1, Entidade* p2, sf::FloatRect intersec);
 		bool haColisao (Entidade* p1, Entidade* p2);
+		void retiraProjetil(Projetil* proj);
 	};
 }

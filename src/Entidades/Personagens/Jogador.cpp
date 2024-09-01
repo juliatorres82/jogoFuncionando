@@ -48,21 +48,18 @@ Entidades::Personagens::Jogador::~Jogador()
 void Entidades::Personagens::Jogador::Pular()
 {
 	pular(vely);
-	cout << "pulou" << endl;
 }
 
 
 void Entidades::Personagens::Jogador::movDir()
 {
 	corpo.move(sf::Vector2f(velx, 0.f));
-	cout << "moveu" << endl;
 }
 
 
 void Entidades::Personagens::Jogador::movEsq()
 {
 	corpo.move(sf::Vector2f((-1) * velx, 0.f));
-	cout << "moveu" << endl;
 }
 
 Entidades::Personagens::Jogador* Entidades::Personagens::Jogador::getJogador2()
@@ -102,8 +99,6 @@ void Entidades::Personagens::Jogador::executar()
 	else if(!observadorJog->getEstadoAtivo())
 	{
 		observadorJog->mudaEstadoAtivo();
-		cout << "Jogador executando" << endl;
-		cout << observadorJog->getEstadoAtivo() << endl;
 	}
 
 	mover();

@@ -18,7 +18,7 @@ namespace Entidades
 
 			public:
 				Inimigo();
-				Inimigo(int x, int y);
+				Inimigo(float x, float y);
 				~Inimigo();
 
 				void setMaldade(int m);

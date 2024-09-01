@@ -31,6 +31,20 @@ void Fase2::desenhar() {
     listaPlataforma->desenhaLista();
 }
 
+void Fase2::criaFundo() {
+
+    try{
+        textura_fundo.loadFromFile("../imagens/imagemFundo.jpeg");
+        if(!textura_fundo.loadFromFile("../imagens/imagemFundo.jpeg")){
+            throw std::bad_alloc();
+        }
+    }
+   catch (const std::bad_alloc& e){
+        std::cerr << "Erro ao carregar a textura do fundo" << std::endl;
+    }
+
+    fundo.setTexture(&textura_fundo);
+}
 /*
 void Fases::Fase1::desenhar(){ //com sprites:
     listaJogadores->desenhaLista();

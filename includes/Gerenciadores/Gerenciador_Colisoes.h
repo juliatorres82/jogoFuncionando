@@ -1,6 +1,6 @@
 #pragma once
 #include "../Entidades/Obstaculos/Obstaculo.h"
-#include "../Entidades/Entidade.h"
+#include "../Entidades/Projetil.h"
 #include <list>
 #include <vector>
 
@@ -16,6 +16,7 @@ namespace Gerenciadores
 		vector<Inimigo*> lIs;
 		list<Entidades::Obstaculos::Obstaculo*> lOS;
 		vector<Jogador*> jogs;
+		vector<Projetil*> projeteis;
 
 		Gerenciador_Colisoes();
 		static Gerenciador_Colisoes* instancia;
@@ -25,9 +26,12 @@ namespace Gerenciadores
 		void incluirObstaculos(Obstaculo* pO);
 		void incluirInimigos(Inimigo* pI);
 		void incluirJogador(Jogador* pJ);
+		void incluirProjeteis(Projetil* pP);
+		void tratarColisoesInimsInims();
 		void tratarColisoesJogsObstacs();
 		void tratarColisoesJogsInims();
 		void tratarColisoesInimsObstacs();
+		void tratarColisoesProjeteisJogs();
 		void tratarColisoes();
 		void resolverColisao(Entidade* p1, Entidade* p2, sf::FloatRect intersec);
 		void resolverColisaoComDin(Entidade* p1, Entidade* p2, sf::FloatRect intersec);

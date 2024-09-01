@@ -9,6 +9,7 @@ class Lagarto : public Inimigo {
     private:
         float frequencia;
         float amplitude;
+        float posInicialx;
 
     public:
         Lagarto();

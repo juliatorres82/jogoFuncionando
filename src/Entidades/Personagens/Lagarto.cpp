@@ -34,6 +34,9 @@ void Lagarto:: mover() {
 
     if (deslocamentoRelativo >= amplitude || deslocamentoRelativo <= -amplitude) {
         setVelocidadex(-getVelocidadex()); 
+        if(colidindo){
+            setVelocidadex(-getVelocidadex());
+        }
     }
 
     corpo.move(getVelocidadex(), 0);

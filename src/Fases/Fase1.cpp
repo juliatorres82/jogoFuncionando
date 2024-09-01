@@ -2,7 +2,7 @@
 
 Fases::Fase1::Fase1(bool coop)
 {
-    caminho = "../mapao.tmj";
+    caminho = "../mapareal.tmj";
     setCaminho(caminho);
     criaFundo();
     constroiFase();
@@ -14,8 +14,8 @@ Fases::Fase1::~Fase1()
 
 void Fases::Fase1::criaFundo(){
     try{
-        textura_fundo.loadFromFile("../imagens/imagemFundo.jpeg");
-        if(!textura_fundo.loadFromFile("../imagens/imagemFundo.jpeg")){
+        textura_fundo.loadFromFile("../imagens/fundodase1.jpeg");
+        if(!textura_fundo.loadFromFile("../imagens/fundofase1.jpeg")){
             throw std::bad_alloc();
         }
     }

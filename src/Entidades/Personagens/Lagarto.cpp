@@ -1,13 +1,15 @@
 #include "../../../includes/Entidades/Personagens/Lagarto.h"
 #include "../../../includes/Gerenciadores/Gerenciador_Colisoes.h"
-Lagarto:: Lagarto() : amplitude(10.0f){
+Lagarto:: Lagarto() : amplitude(200.0f){
     setVelocidadex(2.0f);
+    //amplitude = 100.0f;
 }
 
 
-Lagarto:: Lagarto(float x, float y) : amplitude(50.0f){
+Lagarto:: Lagarto(float x, float y) : amplitude(200.0f){
     corpo.setPosition(sf::Vector2f(x, y));
     setVelocidadex(2.0f);
+    posInicialx = x;
 }
 
 
@@ -19,12 +21,23 @@ Lagarto:: ~Lagarto() {
 
 void Lagarto:: mover() {
 
-    float dx = 0.0;
+    /*float dx = 0.0;
         dx = getPosicaox();
         corpo.move(getVelocidadex(), 0);
-        if(dx >= amplitude || dx <= -amplitude)
+        if(dx >= amplitude || dx <= -amplitude){
             setVelocidadex(-getVelocidadex()); 
-    
+            cout << "mudou direcao" << endl;
+        }
+    */
+   
+    float deslocamentoRelativo = getPosicaox() - posInicialx;
+
+    if (deslocamentoRelativo >= amplitude || deslocamentoRelativo <= -amplitude) {
+        setVelocidadex(-getVelocidadex()); 
+    }
+
+    corpo.move(getVelocidadex(), 0);
+
     cair();
 }
 

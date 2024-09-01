@@ -4,7 +4,7 @@ using namespace Fases;
 using namespace Entidades;
 using namespace Obstaculos;
 
-Fase::Fase(bool coop) {
+Fase::Fase(bool coop) : Ente() {
     fundo.setSize(sf::Vector2f(pGG->getTamx(), pGG->getTamy()));
     ehCoop = coop;
     listaJogadores = new ListaEntidades();
@@ -94,7 +94,7 @@ void Fase:: criaJogadores(){
     if(ehCoop){
         Jogador* jogador2 = nullptr;
         jogador2 = jogador1->getJogador2();
-        jogador2 = new Jogador();
+        jogador2 = new Jogador(68,68);
         listaJogadores->incluir(jogador2);
         jogador1->setJogador2(jogador2);
         jogador2->setJogador2(jogador1);
@@ -139,7 +139,7 @@ void Fase:: criarTudo(int posx, int posy, int valor) {
                         pGC->incluirInimigos(lagarto);
                         break;
                     }
-                    case 10: { //ver na fase 2 para saber o valor do tile 
+                    case 29: { //ver na fase 2 para saber o valor do tile 
                         Gosma* gosma = new Gosma(posx, posy);
                         listaObstaculos->incluir(gosma);
                         pGC->incluirObstaculos(gosma);
@@ -188,13 +188,14 @@ vector<vector<vector<int>>> Fase:: converteJsonParaMatriz(const std::string& cam
 
         matrizMapa.push_back(matriz);
     }
+    cout << "processou mapa "  <<endl;
     return matrizMapa;
 }
 
 void Fase:: constroiFase() {
 
     criaJogadores();
-   
+    
     vector<vector<vector<int>>> matriz = converteJsonParaMatriz(caminho, 1);
     
     for(int i = 0; i < matriz.size(); i++){
@@ -232,7 +233,7 @@ void Fase::atualizar()
 }
 
 void Fases::Fase::executar(){
-    //printf("entrou em executarFase\n");  
+     
     desenhar();
     atualizar();
     tratarColisoes();

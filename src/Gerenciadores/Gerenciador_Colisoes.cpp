@@ -10,6 +10,7 @@ Gerenciador_Colisoes::Gerenciador_Colisoes()
 	lIs.clear();
 	lOS.clear();
 	jogs.clear();
+	projeteis.clear();
 
 }
 
@@ -18,6 +19,7 @@ Gerenciador_Colisoes::~Gerenciador_Colisoes()
 	lIs.clear();
 	lOS.clear();
 	jogs.clear();
+	projeteis.clear();
 }
 
 Gerenciador_Colisoes* Gerenciador_Colisoes::getInstancia()
@@ -44,6 +46,11 @@ void Gerenciador_Colisoes::incluirObstaculos(Entidades::Obstaculos::Obstaculo* p
 void Gerenciador_Colisoes::incluirInimigos(Entidades::Personagens::Inimigo* pI)
 {
 	lIs.push_back(pI);
+}
+
+void Gerenciador_Colisoes::incluirProjeteis(Projetil* pP)
+{
+	projeteis.push_back(pP);
 }
 
 void Gerenciador_Colisoes::tratarColisoesJogsInims()
@@ -117,12 +124,52 @@ void Gerenciador_Colisoes::tratarColisoesJogsObstacs()
 	}
 }
 
+void Gerenciadores::Gerenciador_Colisoes::tratarColisoesInimsInims(){
+    for (auto& inimigo1 : lIs)
+    {
+        sf::FloatRect intersec;
+        for (auto& inimigo2 : lIs)
+        {
+            
+            if (inimigo1 != inimigo2 && inimigo1->getCorpo().getGlobalBounds().intersects(inimigo2->getCorpo().getGlobalBounds(), intersec))
+            {
+                inimigo1->mudaColidindo(true);
+                inimigo2->mudaColidindo(true);
+                inimigo1->parar();
+                inimigo2->parar();
+                resolverColisaoComDin(static_cast<Entidade*>(inimigo1), static_cast<Entidade*>(inimigo2), intersec);
+                inimigo1->voltar();
+                inimigo2->voltar();
+            }
+        }
+    }
+}
+
+void Gerenciadores::Gerenciador_Colisoes::tratarColisoesProjeteisJogs(){
+
+	for(auto& proj : projeteis){
+		sf::FloatRect intersec;
+		for (auto& jog : jogs)
+		{
+			if (jog->getCorpo().getGlobalBounds().intersects(proj->getCorpo().getGlobalBounds(), intersec))
+			{ 
+				jog->mudaColidindo(true);
+				proj->mudaColidindo(true);
+				jog->setVidas(jog->getVidas()-proj->causarDano());
+				proj->parar();
+				resolverColisao(static_cast<Entidade*>(jog), static_cast<Entidade*>(proj), intersec);
+		    }
+	     }
+    }
+}
 
 void Gerenciadores::Gerenciador_Colisoes::tratarColisoes()
 {
 	tratarColisoesJogsObstacs();
 	tratarColisoesInimsObstacs();
 	tratarColisoesJogsInims();
+	tratarColisoesInimsInims();
+	tratarColisoesProjeteisJogs();
 }
 
 void Gerenciador_Colisoes::resolverColisao(Entidade* p1, Entidade* p2, sf::FloatRect intersec) {
@@ -139,33 +186,33 @@ void Gerenciador_Colisoes::resolverColisao(Entidade* p1, Entidade* p2, sf::Float
 }
 
 void Gerenciadores::Gerenciador_Colisoes::resolverColisaoComDin(Entidade* p1, Entidade* p2, sf::FloatRect intersec)
-//caso em que p1 e p2 estão em movimento
 {
-	sf::FloatRect ret1 = p1->getCorpo().getGlobalBounds();	
-	sf::FloatRect ret2 = p2->getCorpo().getGlobalBounds();
+    sf::FloatRect ret1 = p1->getCorpo().getGlobalBounds();
+    sf::FloatRect ret2 = p2->getCorpo().getGlobalBounds();
 
-	float tamHorizontal = intersec.width;
-	float tamVertical = intersec.height;
-	bool pelaEsquerda = ret1.left < ret2.left; //p1 colide à esquerda de p2
-	bool deCima = ret1.top > ret2.top; //p1 colide acima de p2
+    float tamHorizontal = intersec.width;
+    float tamVertical = intersec.height;
+    bool pelaEsquerda = ret1.left < ret2.left;  // p1 colide à esquerda de p2
+    bool deCima = ret1.top < ret2.top;          // p1 colide acima de p2
 
-	if (tamHorizontal < tamVertical) { //se for colisão horizontal, cada um vai para trás
-		p1->getCorpo().move(pelaEsquerda ? -tamHorizontal : tamHorizontal, 0.f);
-		p2->getCorpo().move(pelaEsquerda ? tamHorizontal : -tamHorizontal, 0.f);
-	}
-	else //colisão vertical
-	{	
-		Personagem* aux = nullptr;
-		Personagem* aux2 = nullptr;
-		//se a colisão foi de p1 por cima de p2, então: aux1 = p2, aux2 = p1;
-		deCima ? aux = static_cast<Personagem*>(p2),aux2 = static_cast<Personagem*>(p1): aux = static_cast<Personagem*>(p1), aux2 = static_cast<Personagem*>(p2);
-		aux->mudaPodePular(true);
-		aux->mudaCaiu(true);
-		aux2->mudaCaiu(true);
-
-		p1->getCorpo().move(0.f, deCima ? tamVertical : -tamVertical); //move verticalmente o mesmo tamanho da intersecção vertical
-		aux = nullptr;
-	}
+    if (tamHorizontal < tamVertical) { 
+        // Se for colisão horizontal, move ambos para fora da colisão
+        p1->getCorpo().move(pelaEsquerda ? -tamHorizontal : tamHorizontal, 0.f);
+        p2->getCorpo().move(pelaEsquerda ? tamHorizontal : -tamHorizontal, 0.f);
+    } else { 
+        // Se for colisão vertical, ajusta a posição dos inimigos
+        if (deCima) {
+            p1->mudaCaiu(true);
+            p1->getCorpo().move(0.f, -tamVertical); // Move p1 para cima
+            static_cast<Personagem*>(p2)->mudaPodePular(true);
+            p2->mudaCaiu(true);
+        } else {
+            p2->mudaCaiu(true);
+            p2->getCorpo().move(0.f, tamVertical); // Move p2 para baixo
+            static_cast<Personagem*>(p1)->mudaPodePular(true);
+            p1->mudaCaiu(true);
+        }
+    }
 }
 
 void Gerenciadores::Gerenciador_Colisoes::resolverColisaoComEstat(Entidade* p1, Entidade* p2, sf::FloatRect intersec) 

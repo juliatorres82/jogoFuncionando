@@ -18,7 +18,7 @@ Inimigo::Inimigo() :
 	vely = puloInimigo;
 }
 
-Inimigo:: Inimigo(int x, int y) {
+Inimigo:: Inimigo(float x, float y) {
 	jogador1 = NULL;
 	jogador2 = NULL;
 	corpo.setPosition(x, y);

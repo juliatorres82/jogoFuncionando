@@ -21,24 +21,16 @@ Lagarto:: ~Lagarto() {
 
 void Lagarto:: mover() {
 
-    /*float dx = 0.0;
-        dx = getPosicaox();
-        corpo.move(getVelocidadex(), 0);
-        if(dx >= amplitude || dx <= -amplitude){
-            setVelocidadex(-getVelocidadex()); 
-            cout << "mudou direcao" << endl;
-        }
-    */
-   
     float deslocamentoRelativo = getPosicaox() - posInicialx;
 
     if (deslocamentoRelativo >= amplitude || deslocamentoRelativo <= -amplitude) {
+
         setVelocidadex(-getVelocidadex()); 
+        
         if(colidindo){
-            setVelocidadex(-getVelocidadex());
+           setVelocidadex(-getVelocidadex());
         }
     }
-
     corpo.move(getVelocidadex(), 0);
 
     cair();

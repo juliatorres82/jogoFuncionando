@@ -1,21 +1,27 @@
 #include "../../includes/Fases/Fase1.h"
 
-Fases::Fase1::Fase1(bool coop)
+Fases::Fase1::Fase1(bool coop) : Fase(coop)
 {
     caminho = "../mapareal.tmj";
     setCaminho(caminho);
     criaFundo();
     constroiFase();
+    
 }
 
 Fases::Fase1::~Fase1()
 {
 }   
 
+void Fases::Fase1::setCaminho(std::string caminhoArq){ //arquivo json do mapa
+    caminho = caminhoArq;
+}
+
+
 void Fases::Fase1::criaFundo(){
     try{
-        textura_fundo.loadFromFile("../imagens/fundodase1.jpeg");
-        if(!textura_fundo.loadFromFile("../imagens/fundofase1.jpeg")){
+        textura_fundo.loadFromFile("../imagens/fundofase1.png");
+        if(!textura_fundo.loadFromFile("../imagens/fundofase1.png")){
             throw std::bad_alloc();
         }
     }
@@ -25,10 +31,6 @@ void Fases::Fase1::criaFundo(){
 
     fundo.setTexture(&textura_fundo);
 }   
-
-void Fases::Fase1::setCaminho(std::string caminhoArq){ //arquivo json do mapa
-    caminho = caminhoArq;
-}
 
 void Fases::Fase1::atualizar(){
 

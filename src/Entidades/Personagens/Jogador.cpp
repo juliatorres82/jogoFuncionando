@@ -3,34 +3,8 @@
 
 using namespace Entidades::Personagens;
 
-Entidades::Personagens::Jogador::Jogador(Jogador* j2) :
-	pontos(0), jogador2(j2), vidas(10)
-{
-	id = idEntes::jogaDor;
-	velx = velocidadeJogador;
-	vely = pulo;
-	pos = sf::Vector2f(200.f, 100.f);
-	setPosicao();
-	corpo.setFillColor(sf::Color::Green);
-	dimensoes = sf::Vector2f(40.f, 40.f);
-	setTam();
-	setQJog();
-	observadorJog = new Observadores::ObservadorJog(this);
-}
 
-Entidades::Personagens::Jogador::Jogador() :
-	pontos(0), jogador2(nullptr), vidas(10)
-{
-	setQJog();
-	id = idEntes::jogaDor;
-	velx = velocidadeJogador;
-	vely = pulo;
-	corpo.setPosition(sf::Vector2f(200.f, 100.f));
-	corpo.setFillColor(sf::Color::Green);
-	observadorJog = new Observadores::ObservadorJog(this);
-}
-
-Entidades::Personagens::Jogador:: Jogador(float x, float y): vidas(10){
+Entidades::Personagens::Jogador:: Jogador(float x, float y): pontos(0),vidas(10){
 	jogador2 = nullptr;
 	corpo.setPosition(sf::Vector2f(x, y));
 	setQJog();
@@ -39,7 +13,6 @@ Entidades::Personagens::Jogador:: Jogador(float x, float y): vidas(10){
 	vely = pulo;
 	corpo.setFillColor(sf::Color::Green);
 	observadorJog = new Observadores::ObservadorJog(this);
-	cout << "Jogador::Jogador() - criou observador" << endl;
 }
 
 Entidades::Personagens::Jogador::~Jogador()
@@ -48,8 +21,6 @@ Entidades::Personagens::Jogador::~Jogador()
 	if(observadorJog != nullptr)
 		delete observadorJog;
 	observadorJog = nullptr;
-
-	cout << "Jogador::~Jogador() - deletou jogador" << endl;
 }
 
 void Entidades::Personagens::Jogador::Pular()

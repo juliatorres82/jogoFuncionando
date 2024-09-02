@@ -28,11 +28,8 @@ void Estados::Jogando::criaFase(bool coop)
     }
     fase = nullptr;
 
-    cout << "cria fase" << endl;
-
     fase = new Fases::Fase2(coop);
 
-    cout << "criou fase" << endl;
 }
 
 void Estados::Jogando::exec()

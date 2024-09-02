@@ -12,12 +12,12 @@ Estados::Jogando::Jogando(const std::string &id)
 
 Estados::Jogando::~Jogando()
 {
-    /*if(fase)
+    if(fase)
     {
         delete fase;
     }
     fase = nullptr;
-    */
+    
 }
 
 void Estados::Jogando::criaFase(bool coop)
@@ -27,7 +27,12 @@ void Estados::Jogando::criaFase(bool coop)
         delete fase;
     }
     fase = nullptr;
-    fase = new Fases::Fase2(coop); 
+
+    cout << "cria fase" << endl;
+
+    fase = new Fases::Fase2(coop);
+
+    cout << "criou fase" << endl;
 }
 
 void Estados::Jogando::exec()

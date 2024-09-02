@@ -6,9 +6,9 @@ using namespace Entidades;
 Projetil:: Projetil(sf::Vector2f pos, float vel) : Entidade(), colidindo(false), direcao(0,0){
     velocidade = vel;
     pGC = pGC->getInstancia();
+    pGG = pGG->getInstancia();
     pGC->incluirProjeteis(this);
     corpo.setSize(sf::Vector2f(3.0,2.0));
-
 }
 
 void Projetil:: setDirecao(sf::Vector2f dir){
@@ -16,8 +16,8 @@ void Projetil:: setDirecao(sf::Vector2f dir){
 }
 
 Projetil::~Projetil(){
-    pGC = pGC->getInstancia();
-    pGC->retiraProjetil(this);
+    pGC = nullptr;
+    pGG = nullptr;
 }
 
 sf::Vector2f Projetil:: getPosicao(){

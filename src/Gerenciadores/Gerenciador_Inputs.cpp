@@ -16,28 +16,22 @@ namespace Gerenciadores
             it++;
         
         }
-        comandosMovimento.push_back(sf::Keyboard::A);
-        comandosMovimento.push_back(sf::Keyboard::D);
-        comandosMovimento.push_back(sf::Keyboard::Space);
-        comandosMovimento.push_back(sf::Keyboard::Up);
-        comandosMovimento.push_back(sf::Keyboard::Left);
-        comandosMovimento.push_back(sf::Keyboard::Right);
-        
-
-        comandosFechamento.push_back(sf::Keyboard::Escape);
-        comandosFechamento.push_back(sf::Keyboard::BackSpace);
 
     }
 
     Gerenciador_Inputs::~Gerenciador_Inputs() {
-        comandosMovimento.clear();
-        comandosFechamento.clear();
         
         list<Observadores::Observador*>::iterator it = observadoresVigiando.begin();
         while(it != observadoresVigiando.end())
         {
             observadoresVigiando.erase(it);
             it++;
+        }
+
+        if(gI != nullptr)
+        {
+            delete gI;
+            gI = nullptr;
         }
     }
 
@@ -71,10 +65,14 @@ namespace Gerenciadores
 
 
     void Gerenciador_Inputs::tiraObservadoresVigiando(Observadores::Observador* obs){
-        
+   
         if(obs != nullptr)
         {
             list<Observadores::Observador*>::iterator it = observadoresVigiando.begin();
+            if(it == observadoresVigiando.end() || observadoresVigiando.empty())
+            {
+                return;
+            }
             while(it != observadoresVigiando.end())
             {
                 if(*it == obs)

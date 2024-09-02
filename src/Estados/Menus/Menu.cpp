@@ -85,7 +85,8 @@ namespace Estados
         {
         for(it = botoes.begin(); it != botoes.end(); it++)
         {
-            delete *it;
+            if(*it != nullptr)
+                delete *it;
         }
             botoes.clear();
         }

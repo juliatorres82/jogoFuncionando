@@ -3,9 +3,12 @@
 using namespace Fases;
 
 Fase2::Fase2(bool coop) : Fase(coop) {
+    cout << "entrou no f2" << endl; 
     caminho = "../elGrandeMapo.tmj";
     setCaminho(caminho);
+    cout << "cria fundo" << endl;
     criaFundo();
+    cout << "constroi fase" << endl;
     constroiFase();
 }
 
@@ -16,21 +19,6 @@ void Fase2::setCaminho(std::string caminhoArq) {
     caminho = caminhoArq;
 }
 
-void Fase2::executar() {
-
-    cout << " entrou no executar f2" << endl;
-    tratarColisoes();
-    cout << " ger cooool " << endl;
-    listaJogadores->executaLista();
-    cout << " aaaqui " << endl;
-    listaInimigos->executaLista(); //erro aqui no chefao
-    cout << " aaaqui 2" << endl;
-    listaObstaculos->executaLista();
-    cout << " aaaqui 3" << endl;
-    listaPlataforma->executaLista();
-
-    cout << " executou f2" << endl;
-}
 
 void Fase2::desenhar() {
 
@@ -44,8 +32,8 @@ void Fase2::desenhar() {
 void Fase2::criaFundo() {
 
     try{
-        textura_fundo.loadFromFile("../../imagens/imagemFundo.jpeg");
-        if(!textura_fundo.loadFromFile("../../imagens/imagemFundo.jpeg")){
+        textura_fundo.loadFromFile("../imagens/imagemFundo.jpeg");
+        if(!textura_fundo.loadFromFile("../imagens/imagemFundo.jpeg")){
             throw std::bad_alloc();
         }
     }

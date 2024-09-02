@@ -28,6 +28,12 @@ namespace Estados
             {
                 fase = nullptr;
             }
+            if (f == nullptr)
+            {
+                cout << "Erro: Fase nula" << endl;
+                exit(1);
+            }
+            
             fase = f;
 
         }

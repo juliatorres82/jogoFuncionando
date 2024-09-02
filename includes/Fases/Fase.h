@@ -8,8 +8,9 @@
 #include "../Entidades/Obstaculos/Gosma.h"
 #include "../Entidades/Personagens/Fantasma.h"
 #include "../Entidades/Personagens/Lagarto.h"
+#include "../Entidades/Personagens/Chefao.h"
 #include <fstream>
-#include <nlohmann/json.hpp>
+//#include <nlohmann/json.hpp>
 
 
 #include "../../json.hpp" // Inclui a biblioteca JSON
@@ -30,13 +31,12 @@ class Fase : public Ente {
         bool ehCoop;
         sf::RectangleShape fundo;
         sf::Texture textura_fundo;
-        Gerenciadores::Gerenciador_Eventos* p_GE;
 
         std::string caminho; 
 
     public:
 
-        Fase(bool coop = 0); //
+        Fase(bool coop = false); //
         ~Fase();
 
         void criaJogadores();
@@ -53,9 +53,9 @@ class Fase : public Ente {
         Jogador *getJogador2();
 
         void executar();
-        virtual void atualizar() = 0;
+        virtual void atualizar();
         void tratarColisoes();
-        virtual void desenhar() = 0;
+        virtual void desenhar();
         //virtual sf::Sprite criaSprites() = 0; //criar sprites de jogadores, inimigos e obstáculos;
 };
 

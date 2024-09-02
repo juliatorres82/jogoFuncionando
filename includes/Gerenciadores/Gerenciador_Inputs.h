@@ -16,8 +16,6 @@ namespace Gerenciadores {
     class Gerenciador_Inputs {
 
         private:
-            std::vector<sf::Keyboard::Key> comandosMovimento;
-            std::vector<sf::Keyboard::Key> comandosFechamento;
             static Gerenciador_Grafico* pGG;
             static Gerenciador_Eventos* pGE;
             std::list<Observadores::Observador*> observadoresVigiando;

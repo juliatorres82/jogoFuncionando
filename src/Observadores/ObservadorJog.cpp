@@ -30,8 +30,10 @@ Observadores::ObservadorJog::ObservadorJog(Entidades::Personagens::Jogador *pjog
 
 Observadores::ObservadorJog::~ObservadorJog()	
 {
+    cout << "destrutor observadorjog" << endl;
         pJogando = nullptr;
         pjogador = nullptr;
+    cout << "destruiu observadorjog" << endl;
 }
 
 
@@ -39,6 +41,7 @@ void Observadores::ObservadorJog::notificaTeclaPressionada(const sf::Keyboard::K
 {
     if(pJogando == nullptr)
     {
+        cout << "notifica tecla pressionada" << endl;
         cout << "notifica tecla pressionada" << endl;
         if(pjogador!= nullptr)
         {

@@ -4,17 +4,16 @@ using namespace Fases;
 using namespace Entidades;
 using namespace Obstaculos;
 
-Fase::Fase(bool coop) : Ente() {
+Fase::Fase(bool coop) : Ente(fase) {
+    cout << "Fase::Fase() funcionando" << endl;
     fundo.setSize(sf::Vector2f(pGG->getTamx(), pGG->getTamy()));
     ehCoop = coop;
+    cout << "Fase::Fase() funcionando" << endl;
     listaJogadores = new ListaEntidades();
     listaInimigos = new ListaEntidades();
     listaObstaculos = new ListaEntidades();
     listaPlataforma = new ListaEntidades();
-
-    pGG = pGG->getInstancia();
-    pGC = pGC->getInstancia();
-    p_GE = p_GE->getInstancia();
+    cout << "Fase::Fase() funcionando" << endl;
     //setCaminho(caminho);
     //printf("Fase::Fase() funcionando\n"); ok
 }
@@ -22,24 +21,25 @@ Fase::Fase(bool coop) : Ente() {
 Fase::~Fase() {
 
     cout << "Fase::~Fase()" << endl;
+    pGC->limpar();
     /* desalocando jogadores*/
     Lista<Entidade>::Iterador it = listaJogadores->getInicio();
     Entidade* pE = nullptr;
-    pGC->limpar();
+    cout << "Fase::~Fase() - desalocando jogadores" << endl;
     while(!it.isNulo()){
        pE = (*it);
-
+        cout << "Fase::~Fase() - desalocando jogadores" << endl;
        if(pE != nullptr)
         delete pE;
-
+        cout << "Fase::~Fase() - desalocando jogadores" << endl;
        pE = nullptr;
        ++it;
     }
     listaJogadores->limpar();
-
+    cout << "Fase::~Fase() - desalocou jogadores" << endl;
    /* desalocando inimigos*/
     it = listaInimigos->getInicio();
-
+    cout << "Fase::~Fase() - desalocando inimigos" << endl;
     while(!it.isNulo()){
        pE = (*it);
 
@@ -50,8 +50,9 @@ Fase::~Fase() {
        ++it;
     }
     listaInimigos->limpar();
+    cout << "Fase::~Fase() - desalocou inimigos" << endl;
 
-
+    cout << "Fase::~Fase() - desalocando obstaculos" << endl;
     /* desalocando obstaculos*/
     it = listaObstaculos->getInicio();
 
@@ -67,7 +68,7 @@ Fase::~Fase() {
 
     listaObstaculos->limpar();
 
-
+    cout << "Fase::~Fase() - desalocando plataformas" << endl;
      /* desalocando plataformas*/
     it = listaPlataforma->getInicio();
 
@@ -80,9 +81,8 @@ Fase::~Fase() {
        pE = nullptr;
        ++it;
     }
-
     listaPlataforma->limpar();
-
+    
 }
 
 void Fase:: criaJogadores(){
@@ -90,15 +90,18 @@ void Fase:: criaJogadores(){
     Jogador* jogador1 = nullptr;
     jogador1 = new Jogador(64,64);
     listaJogadores->incluir(jogador1);
-
+    pGC->incluirJogador(jogador1);
+    cout << jogador1->doisJogadores() << endl;
     if(ehCoop){
         Jogador* jogador2 = nullptr;
-        jogador2 = jogador1->getJogador2();
         jogador2 = new Jogador(68,68);
         listaJogadores->incluir(jogador2);
         jogador1->setJogador2(jogador2);
         jogador2->setJogador2(jogador1);
+        jogador2->setQJog();
+        pGC->incluirJogador(jogador2);
     }
+    cout << jogador1->doisJogadores() << endl;
 }
 
 
@@ -195,7 +198,7 @@ vector<vector<vector<int>>> Fase:: converteJsonParaMatriz(const std::string& cam
 
         matrizMapa.push_back(matriz);
     }
-    cout << "processou mapa "  <<endl;
+    
     return matrizMapa;
 }
 
@@ -215,33 +218,32 @@ void Fase:: constroiFase() {
 	}
     //setar jogs em obstacular e inimigos
     setsJogadores();
-    cout << " construiu fase " << endl;
+    
 }
 
-/*void Fase:: constroiFase(){
-    Plataforma* p = new Plataforma(32,32);
-    //Plataforma* p2 = new Plataforma(64,32);
-    //Plataforma* p3 = new Plataforma(96,32);
-    //Plataforma* p4 = new Plataforma(128,32);
-    //Plataforma* p5 = new Plataforma(100,32);
-    //Plataforma* p6 = new Plataforma(132,32);
-
-    Jogador* j1 = new Jogador(60, 60);
-    Fantasma* f1 = new Fantasma(100, 100);
-
-}*/
 
 void Fase:: tratarColisoes() {
     pGC->tratarColisoes();
 }
 
 void Fases::Fase::executar(){
+
     desenhar();
+   
     atualizar();
+
     tratarColisoes();
 }
 
-void Fases::Fase:: setsJogadores(){
+void Fases::Fase::atualizar()
+{
+    listaJogadores->executaLista();
+    listaInimigos->executaLista();
+    listaObstaculos->executaLista();
+    listaPlataforma->executaLista();
+}
+void Fases::Fase::setsJogadores()
+{
     Lista<Entidade>::Iterador it = listaJogadores->getInicio();
     Lista<Entidade>::Iterador it2 = listaInimigos->getInicio();
     if(it.isNulo()){
@@ -290,3 +292,10 @@ Jogador *Fases::Fase::getJogador2()
     }
     return nullptr;
 }
+ void Fases::Fase::desenhar(){
+    pGG->desenhar(fundo);
+    listaJogadores->desenhaLista();
+    listaInimigos->desenhaLista();
+    listaObstaculos->desenhaLista();
+    listaPlataforma->desenhaLista();
+ }

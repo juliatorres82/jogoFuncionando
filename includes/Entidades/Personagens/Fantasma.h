@@ -14,7 +14,7 @@ class Fantasma : public Inimigo {
         Fantasma();
         Fantasma(float x, float y);
         ~Fantasma();
-        void perseguir();
+        void assustar();
         void ficarInvisivel();
         void ficarVisivel();
         bool isInvisivel();
@@ -22,4 +22,5 @@ class Fantasma : public Inimigo {
         void executar();
         void atacar();
         void desenhar();
+        void flutuacao();
 };

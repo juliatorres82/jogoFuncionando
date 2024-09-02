@@ -19,7 +19,7 @@ namespace Entidades
 			public:
 				Inimigo();
 				Inimigo(float x, float y);
-				~Inimigo();
+				virtual ~Inimigo();
 
 				void setMaldade(int m);
 				void setJogador(Jogador* jog1);

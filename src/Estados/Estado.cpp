@@ -12,11 +12,7 @@ Estados::Estado::Estado(const std::string& id)
 }
 Estados::Estado::~Estado()
 {
-    if(gerenciador_estados)
-    {
-        delete gerenciador_estados;
-    }
-    gerenciador_estados = nullptr;
+
 }
 
 void Estados::Estado::setId(const std::string& id)

@@ -72,7 +72,6 @@ namespace Estados
                         gerenciador_estados->mudaEstado("MenuPrincipal");
                         return;
                     }
-                    cout << observadorMenu->getEstadoAtivo() << endl;
                     gerenciador_estados->vaiSerCoop();
                 }
             }

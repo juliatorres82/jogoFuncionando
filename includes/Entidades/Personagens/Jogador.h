@@ -1,7 +1,7 @@
 #pragma once
 #include "Inimigo.h"
-#define velocidadeJogador 5.0f
-#define pulo -20.0f
+#define velocidadeJogador 10.0f
+#define pulo -100.0f
 
 enum qJogador
 {

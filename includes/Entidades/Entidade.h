@@ -24,7 +24,7 @@ namespace Entidades
 
 		public:
 			Entidade();
-			~Entidade();
+			virtual ~Entidade();
 			virtual void desenhar(); 
 			virtual void desenhar(sf::Sprite& sprite);
 			virtual void executar() = 0;

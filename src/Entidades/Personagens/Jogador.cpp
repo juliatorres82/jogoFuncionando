@@ -31,6 +31,7 @@ Entidades::Personagens::Jogador::Jogador() :
 }
 
 Entidades::Personagens::Jogador:: Jogador(float x, float y): vidas(10){
+	jogador2 = nullptr;
 	corpo.setPosition(sf::Vector2f(x, y));
 	setQJog();
 	id = idEntes::jogaDor;
@@ -38,6 +39,7 @@ Entidades::Personagens::Jogador:: Jogador(float x, float y): vidas(10){
 	vely = pulo;
 	corpo.setFillColor(sf::Color::Green);
 	observadorJog = new Observadores::ObservadorJog(this);
+	cout << "Jogador::Jogador() - criou observador" << endl;
 }
 
 Entidades::Personagens::Jogador::~Jogador()
@@ -46,6 +48,8 @@ Entidades::Personagens::Jogador::~Jogador()
 	if(observadorJog != nullptr)
 		delete observadorJog;
 	observadorJog = nullptr;
+
+	cout << "Jogador::~Jogador() - deletou jogador" << endl;
 }
 
 void Entidades::Personagens::Jogador::Pular()
@@ -80,6 +84,9 @@ void Entidades::Personagens::Jogador::setQJog()
 {
 	if(doisJogadores())
 		qJog = jg2;
+
+	else
+		qJog = jg1;
 }
 
 const qJogador Entidades::Personagens::Jogador::getQJog() const
@@ -104,7 +111,7 @@ void Entidades::Personagens::Jogador::executar()
 		observadorJog->mudaEstadoAtivo();
 	}
 
-	//mover();
+	mover();
 }
 
 void Entidades::Personagens::Jogador::setJogador2(Jogador* j2)

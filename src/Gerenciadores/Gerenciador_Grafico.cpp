@@ -18,6 +18,12 @@ Gerenciador_Grafico::~Gerenciador_Grafico()
 		delete janela;
 		janela = nullptr;
 	}	
+
+	if(instancia != nullptr)
+	{
+		delete instancia;
+		instancia = nullptr;
+	}
 }
 
 Gerenciador_Grafico* Gerenciador_Grafico::getInstancia()

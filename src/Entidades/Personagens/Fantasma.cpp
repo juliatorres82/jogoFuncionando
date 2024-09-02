@@ -14,29 +14,21 @@ Fantasma :: ~Fantasma() {
 }
 
 
-void Fantasma:: perseguir() {
+void Fantasma:: assustar() {
     
     Jogador* jog1 = getJogador1(); 
 
     if(jog1){
 
-        if(jog1->getPosicaox() - getPosicaox() < 2*jog1->getCorpo().getSize().x && jog1->getPosicaoy() - getPosicaoy() < 10.0){
+        if(jog1->getPosicaox() - getPosicaox() < 2*jog1->getCorpo().getSize().x && jog1->getPosicaoy() - getPosicaoy() < 2*jog1->getCorpo().getSize().y){
             ficarVisivel();
         }
         else
             ficarInvisivel();
-        if(jog1->getPosicaox() - getPosicaox() > 0.0 ){ //jogador à frente do inimigo em x;
-            corpo.move(velx, 0.0); 
-        }
-
-        else if (jog1->getPosicaox() - getPosicaox() < 0.0 )
-            corpo.move(-velx, 0.0);
-
-        if(jog1->getPosicaoy() - getPosicaoy() > 0.0 ) //jogador acima do inimigo;
-            corpo.move(0.0, -vely);
-
-        else if(jog1->getPosicaoy() - getPosicaoy() < 0.0 )
-            corpo.move(0.0, vely);
+        if(getPosicaoy() > 0 && !colidindo)
+            corpo.move(sf::Vector2f(0.f, vely));
+        else if(!colidindo)
+            corpo.move(sf::Vector2f(vely, 0.f));
     }
 
     else 
@@ -62,13 +54,13 @@ bool Fantasma :: isInvisivel() {
 
 void Fantasma :: mover() {
     if(jogador1 != nullptr)
-        perseguir();
+        assustar();
 }
 
 void Fantasma :: executar() {
 
     mover();
-    //atacar();
+    atacar();
     atualizar();
 }
 
@@ -81,4 +73,9 @@ void Fantasma::desenhar()
 {
     if(!invisivel)
         pGG->desenhar(corpo);
+}
+
+void Fantasma::flutuacao()
+{
+    corpo.move(0.f, -gravidade);
 }

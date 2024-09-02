@@ -12,7 +12,8 @@ enum idEntes
 	obsTaculo,
 	plataForma,
 	botao,
-	menu
+	menu, 
+	fase
 };
 
 class Ente

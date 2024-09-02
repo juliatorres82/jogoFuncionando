@@ -19,6 +19,12 @@ Gerenciador_Colisoes::~Gerenciador_Colisoes()
 	lOS.clear();
 	jogs.clear();
 	projeteis.clear();
+
+	if(instancia != nullptr)
+	{
+		delete instancia;
+		instancia = nullptr;
+	}
 }
 
 Gerenciador_Colisoes* Gerenciador_Colisoes::getInstancia()
@@ -252,6 +258,7 @@ void Gerenciadores::Gerenciador_Colisoes::limpar()
 	lIs.clear();
 	lOS.clear();
 	jogs.clear();
+	projeteis.clear();
 }
 
 void Gerenciadores::Gerenciador_Colisoes::retiraProjetil (Projetil* proj){

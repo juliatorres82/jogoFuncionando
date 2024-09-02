@@ -15,7 +15,11 @@ Gerenciador_Estados::~Gerenciador_Estados()
     {
         delete estado_atual;
     }
-    delete instancia;
+    
+    if(instancia != nullptr)
+    {
+        delete instancia;
+    }
 }
 
 Gerenciador_Estados* Gerenciador_Estados::getInstancia()
@@ -94,7 +98,6 @@ void Gerenciador_Estados::criarEstados()
         std::cerr << e.what() << '\n';
     }
     
-    
     mudaEstado("MenuPrincipal");
 }
 
@@ -128,7 +131,6 @@ void Gerenciador_Estados::mudaEstado(const std::string& id)
         return;
     }
     estado_atual = estados[id];
-    cout << "Mudou de estado e agora eh: " << estado_atual->getId() << endl;    
 }
 
 void Gerenciador_Estados::executar()
@@ -162,7 +164,7 @@ void Gerenciador_Estados::vaiSerCoop()
     }
     else 
         jogando->criaFase(false);
-    
+
     menuPausa->setFase(jogando->getFase());
 }
 

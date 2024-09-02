@@ -23,7 +23,8 @@ Plataforma::Plataforma(int x, int y, float e): Obstaculo(false), elasticidade(e)
 
 Plataforma::~Plataforma()
 {
-	pGG = nullptr;
+	jog1 = nullptr;
+	jog2 = nullptr;
 }
 
 void Plataforma::executar()

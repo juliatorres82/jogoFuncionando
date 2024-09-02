@@ -8,7 +8,7 @@ namespace Observadores{
     ativo(ativado) 
     {  
         if(pGI != nullptr && this != nullptr)
-        {   
+        {   cout << "adicionou observador" << endl;
             pGI->addObservadoresVigiando(this); //cada gerenciador de Inputs inscreve o observador
         }
 
@@ -25,7 +25,8 @@ namespace Observadores{
 
     Observadores::Observador:: ~Observador() {
         pGI->tiraObservadoresVigiando(this);
-        pGI = nullptr;
+        cout << "destruiu observador" << endl;
+        cout << "deletou observador" << endl;
     }
 
     void Observadores::Observador::mudaEstadoAtivo()

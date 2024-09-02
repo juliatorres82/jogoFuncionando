@@ -2,7 +2,7 @@
 
 using namespace Entidades::Obstaculos;
 
-Obstaculo::Obstaculo(bool daDano)
+Obstaculo::Obstaculo(bool daDano) : Entidade()
 {
 	tipo = estatico;
 	id = idEntes::obsTaculo;

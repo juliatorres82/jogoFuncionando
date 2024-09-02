@@ -7,12 +7,11 @@ namespace Fases {
 
         public:
 
-            Fase2(bool coop = 0); //setar jogadores em obstaculos e inimigos;
+            Fase2(bool coop = false); //setar jogadores em obstaculos e inimigos;
             ~Fase2();
 
             void criaFundo();
             void setCaminho(std::string caminhoArq);
-            void executar();
             void desenhar();
             //sf::Sprite criaSprites(); //implementar
     };

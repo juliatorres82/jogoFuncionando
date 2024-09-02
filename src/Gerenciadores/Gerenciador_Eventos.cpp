@@ -38,7 +38,7 @@ namespace Gerenciadores
                         if(evento.type == sf::Event::KeyPressed) //trocar depois apenas por if; excluir de cima
                             pGI->gerenciaTeclasPressionadas(evento.key.code);
 
-                        else if (evento.type == sf::Event::KeyReleased)
+                        if (evento.type == sf::Event::KeyReleased)
                             pGI->gerenciaTeclasSoltas(evento.key.code);
                         
                         else if(evento.type == sf::Event::Closed) 

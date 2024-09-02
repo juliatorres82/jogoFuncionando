@@ -116,12 +116,14 @@ void Fase:: criarTudo(int posx, int posy, int valor) {
                         Plataforma* plataforma = new Plataforma(posx, posy);
                         listaPlataforma->incluir(plataforma);
                         pGC->incluirObstaculos(plataforma);
+                        cout << "Plataforma criada" << endl;
                         break;
                     } 
                     case 47: {
                         PlataformaGelo* plataformaGelo = new PlataformaGelo(posx, posy);
                         listaPlataforma->incluir(plataformaGelo);
                         pGC->incluirObstaculos(plataformaGelo);
+                        cout << "Plataforma de gelo criada" << endl;
                         break;
                     }
             
@@ -129,30 +131,35 @@ void Fase:: criarTudo(int posx, int posy, int valor) {
                         Espinho* espinho = new Espinho(posx, posy);
                         listaObstaculos->incluir(espinho);
                         pGC->incluirObstaculos(espinho);
+                        cout << "Espinho criado" << endl;
                         break;
                     }
                     case 43: {
                         Fantasma* fantasma = new Fantasma(posx, posy);
                         listaInimigos->incluir(fantasma);
                         pGC->incluirInimigos(fantasma);
+                        cout << "Fantasma criado" << endl;
                         break;
                     }
                     case 25: {
                         Lagarto* lagarto = new Lagarto(posx, posy);
                         listaInimigos->incluir(lagarto);
                         pGC->incluirInimigos(lagarto);
+                        cout << "Lagarto criado" << endl;
                         break;
                     }
                     case 29: {
                         Gosma* gosma = new Gosma(posx, posy);
                         listaObstaculos->incluir(gosma);
                         pGC->incluirObstaculos(gosma);
+                        cout << "Gosma criada" << endl;
                         break;
                     }
                     case 16: {
                         Chefao* chefao = new Chefao(posx, posy);
                         listaInimigos->incluir(chefao);
                         pGC->incluirInimigos(chefao);
+                        cout << "Chefao criado" << endl;
                         break;
                     }
 
@@ -233,6 +240,7 @@ void Fases::Fase::executar(){
     atualizar();
 
     tratarColisoes();
+
 }
 
 void Fases::Fase::atualizar()

@@ -25,9 +25,9 @@ void Fantasma:: assustar() {
         }
         else
             ficarInvisivel();
-        if(getPosicaoy() > 0 && !colidindo)
+        if(getPosicaoy() > jog1->getPosicaoy())
             corpo.move(sf::Vector2f(0.f, vely));
-        else if(!colidindo)
+        else 
             corpo.move(sf::Vector2f(vely, 0.f));
     }
 

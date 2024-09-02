@@ -32,10 +32,12 @@ void Fases::Fase1::criaFundo(){
     fundo.setTexture(&textura_fundo);
 }   
 
-void Fases::Fase1::executar(){
+void Fases::Fase1::setCaminho(std::string caminhoArq){ //arquivo json do mapa
+    caminho = caminhoArq;
+}
 
-    cout << " entrou no executar " << endl;
-    tratarColisoes();
+void Fases::Fase1::atualizar(){
+
     listaJogadores->executaLista();
     listaInimigos->executaLista();
     listaObstaculos->executaLista();
@@ -54,10 +56,12 @@ void Fases::Fase1::desenhar(){ //com sprites:
 void Fases::Fase1::desenhar(){
     //cout << "desenhando" << endl;
     pGG->desenhar(fundo);
+    
     listaJogadores->desenhaLista();
     listaInimigos->desenhaLista();
     listaObstaculos->desenhaLista();
     listaPlataforma->desenhaLista();
+    
     //cout << "desenhou" << endl;
 }
 

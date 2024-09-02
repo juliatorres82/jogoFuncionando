@@ -68,8 +68,6 @@ void Fantasma :: mover() {
 void Fantasma :: executar() {
 
     mover();
-    if(!invisivel)
-        desenhar();
     //atacar();
     atualizar();
 }
@@ -77,4 +75,10 @@ void Fantasma :: executar() {
 void Fantasma :: atacar() {
     if(pGC->haColisao(this, getJogador1()))
         getJogador1()->setVidas(getJogador1()->getVidas()-1);
+}
+
+void Fantasma::desenhar()
+{
+    if(!invisivel)
+        pGG->desenhar(corpo);
 }

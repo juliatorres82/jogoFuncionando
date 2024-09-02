@@ -1,6 +1,5 @@
 #include "../../includes/Gerenciadores/Gerenciador_Colisoes.h"
 
-
 using namespace Gerenciadores;
 
 Gerenciador_Colisoes* Gerenciador_Colisoes::instancia = nullptr;
@@ -246,6 +245,13 @@ void Gerenciadores::Gerenciador_Colisoes::resolverColisaoComEstat(Entidade* p1, 
 
 bool Gerenciadores::Gerenciador_Colisoes:: haColisao(Entidade* p1, Entidade* p2) {
 	return p1->getContorno().intersects(p2->getContorno());
+}
+
+void Gerenciadores::Gerenciador_Colisoes::limpar()
+{
+	lIs.clear();
+	lOS.clear();
+	jogs.clear();
 }
 
 void Gerenciadores::Gerenciador_Colisoes::retiraProjetil (Projetil* proj){

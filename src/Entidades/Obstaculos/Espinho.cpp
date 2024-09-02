@@ -1,6 +1,6 @@
 #include "../../../includes/Entidades/Obstaculos/Espinho.h"
 
-namespace Entidades::Obstaculos {
+namespace Entidades::Obstaculos  {
 
     Espinho:: Espinho(int posx, int posy): Obstaculo(true), danoEspinhar(1){
         corpo.setPosition(posx, posy);
@@ -23,6 +23,5 @@ namespace Entidades::Obstaculos {
             obstacular(jog1);
         if(jog2 != nullptr)
             obstacular(jog2);
-        desenhar();
     }
 }

@@ -1,4 +1,5 @@
 #include "../../../includes/Entidades/Personagens/Jogador.h"
+#include "../../../includes/Observadores/ObservadorJog.h"
 
 using namespace Entidades::Personagens;
 
@@ -14,10 +15,11 @@ Entidades::Personagens::Jogador::Jogador(Jogador* j2) :
 	dimensoes = sf::Vector2f(40.f, 40.f);
 	setTam();
 	setQJog();
+	observadorJog = new Observadores::ObservadorJog(this);
 }
 
 Entidades::Personagens::Jogador::Jogador() :
-	pontos(0), jogador2(NULL), vidas(10)
+	pontos(0), jogador2(nullptr), vidas(10)
 {
 	setQJog();
 	id = idEntes::jogaDor;
@@ -25,6 +27,7 @@ Entidades::Personagens::Jogador::Jogador() :
 	vely = pulo;
 	corpo.setPosition(sf::Vector2f(200.f, 100.f));
 	corpo.setFillColor(sf::Color::Green);
+	observadorJog = new Observadores::ObservadorJog(this);
 }
 
 Entidades::Personagens::Jogador:: Jogador(float x, float y): vidas(10){
@@ -34,11 +37,15 @@ Entidades::Personagens::Jogador:: Jogador(float x, float y): vidas(10){
 	velx = velocidadeJogador;
 	vely = pulo;
 	corpo.setFillColor(sf::Color::Green);
+	observadorJog = new Observadores::ObservadorJog(this);
 }
 
 Entidades::Personagens::Jogador::~Jogador()
 {
 	jogador2 = nullptr;
+	if(observadorJog != nullptr)
+		delete observadorJog;
+	observadorJog = nullptr;
 }
 
 void Entidades::Personagens::Jogador::Pular()
@@ -77,7 +84,7 @@ void Entidades::Personagens::Jogador::setQJog()
 
 const qJogador Entidades::Personagens::Jogador::getQJog() const
 {
-    return qJogador();
+    return qJog;
 }
 
 void Entidades::Personagens::Jogador::mover()
@@ -86,8 +93,18 @@ void Entidades::Personagens::Jogador::mover()
 }
 void Entidades::Personagens::Jogador::executar()
 {
-	mover();
-	desenhar();
+	if(vidas <= 0)
+	{
+		if(observadorJog->getEstadoAtivo())
+			observadorJog->mudaEstadoAtivo();
+	}
+
+	else if(!observadorJog->getEstadoAtivo())
+	{
+		observadorJog->mudaEstadoAtivo();
+	}
+
+	//mover();
 }
 
 void Entidades::Personagens::Jogador::setJogador2(Jogador* j2)
@@ -113,4 +130,10 @@ int Entidades::Personagens::Jogador::getVidas(){
 void Entidades::Personagens::Jogador::resetaVelocidade()
 {
 	velx = velocidadeJogador;
+}
+
+void Entidades::Personagens::Jogador::mudaAtivo()
+{
+	if(observadorJog->getEstadoAtivo())
+		observadorJog->mudaEstadoAtivo();
 }

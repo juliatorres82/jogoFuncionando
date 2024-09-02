@@ -159,11 +159,10 @@ void Gerenciador_Estados::vaiSerCoop()
     if(menuSel->HaDoisJogadores())
     {
         jogando->criaFase(true);
-        return;
     }
+    else 
+        jogando->criaFase(false);
     
-    jogando->criaFase(false);
-
     menuPausa->setFase(jogando->getFase());
 }
 

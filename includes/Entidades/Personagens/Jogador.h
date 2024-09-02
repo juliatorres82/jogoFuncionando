@@ -1,12 +1,17 @@
 #pragma once
 #include "Inimigo.h"
-#define velocidadeJogador 4.0f
-#define pulo -8.0f
+#define velocidadeJogador 5.0f
+#define pulo -20.0f
 
 enum qJogador
 {
 	jg1, jg2
 };
+
+namespace Observadores
+{
+    class ObservadorJog;
+}
 
 namespace Entidades
 {
@@ -19,7 +24,7 @@ namespace Entidades
 			int pontos;
 			Jogador* jogador2;
 			qJogador qJog;
-
+			Observadores::ObservadorJog* observadorJog;
 
 		public:
 			Jogador();
@@ -43,6 +48,7 @@ namespace Entidades
 			void setVidas(int vidaNova);
 			int getVidas();
             void resetaVelocidade();
+            void mudaAtivo();
         };
     }
 }

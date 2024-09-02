@@ -5,7 +5,7 @@
 
 namespace Observadores
 {
-    class ObservadorJogador;
+    class ObservadorJog;
 }
 namespace Estados
 {
@@ -13,12 +13,13 @@ namespace Estados
     {
         private:
             Fases::Fase* fase;
-            Observadores::ObservadorJogador* observadorJogador;
+            Observadores::ObservadorJog* observadorJog;
             
         public:
             Jogando(const std::string& id = "Jogando");
             ~Jogando();
             void criaFase(bool coop);
+            
             void exec();
             void atualizar();
             void pausar();

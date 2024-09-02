@@ -8,9 +8,8 @@
 #include "../Entidades/Obstaculos/Gosma.h"
 #include "../Entidades/Personagens/Fantasma.h"
 #include "../Entidades/Personagens/Lagarto.h"
-#include "../Entidades/Personagens/Chefao.h"
 #include <fstream>
-//#include <nlohmann/json.hpp>
+#include <nlohmann/json.hpp>
 
 
 #include "../../json.hpp" // Inclui a biblioteca JSON
@@ -46,11 +45,16 @@ class Fase : public Ente {
         virtual void criaFundo() = 0; 
         vector<vector<vector<int>>> converteJsonParaMatriz(const std::string& caminhoArquivoJson, int numLayers);
         void criarTudo(int posx, int poxy, int valor);
-        void tratarColisoes();
-        virtual void setCaminho(std::string caminhoArq) = 0; 
-        ListaEntidades *getListaJogadores();
-        virtual void executar() = 0;
         void setsJogadores();
+        virtual void setCaminho(std::string caminhoArq) = 0; 
+
+        ListaEntidades *getListaJogadores();
+        Jogador *getJogador1();
+        Jogador *getJogador2();
+
+        void executar();
+        virtual void atualizar() = 0;
+        void tratarColisoes();
         virtual void desenhar() = 0;
         //virtual sf::Sprite criaSprites() = 0; //criar sprites de jogadores, inimigos e obstáculos;
 };

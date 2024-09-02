@@ -7,6 +7,7 @@ namespace Entidades::Obstaculos {
 Gosma:: Gosma (int posx, int posy): Obstaculo(false), viscosidade(0.5){
     corpo.setPosition(posx, posy);
     corpo.setFillColor(sf::Color::Red);
+    pGC = pGC->getInstancia();
 }
 
     Gosma:: ~Gosma() {
@@ -15,6 +16,7 @@ Gosma:: Gosma (int posx, int posy): Obstaculo(false), viscosidade(0.5){
     }
 
     void Gosma::obstacular(Entidades::Personagens::Jogador *j1) {
+
         if(pGC->haColisao(this, j1))
         {   
             if(j1->getVelocidadex() > 0)
@@ -31,8 +33,6 @@ Gosma:: Gosma (int posx, int posy): Obstaculo(false), viscosidade(0.5){
             obstacular(jog1);
         if(jog2 != nullptr)
             obstacular(jog2);
-        
-        desenhar();
         
     }
 }

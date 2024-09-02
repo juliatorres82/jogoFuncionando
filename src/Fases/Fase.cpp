@@ -21,10 +21,11 @@ Fase::Fase(bool coop) : Ente() {
 
 Fase::~Fase() {
 
+    cout << "Fase::~Fase()" << endl;
     /* desalocando jogadores*/
     Lista<Entidade>::Iterador it = listaJogadores->getInicio();
     Entidade* pE = nullptr;
-
+    pGC->limpar();
     while(!it.isNulo()){
        pE = (*it);
 
@@ -35,7 +36,6 @@ Fase::~Fase() {
        ++it;
     }
     listaJogadores->limpar();
-
 
    /* desalocando inimigos*/
     it = listaInimigos->getInicio();
@@ -121,6 +121,7 @@ void Fase:: criarTudo(int posx, int posy, int valor) {
                         pGC->incluirObstaculos(plataformaGelo);
                         break;
                     }
+            
                     case 32: {
                         Espinho* espinho = new Espinho(posx, posy);
                         listaObstaculos->incluir(espinho);
@@ -139,7 +140,7 @@ void Fase:: criarTudo(int posx, int posy, int valor) {
                         pGC->incluirInimigos(lagarto);
                         break;
                     }
-                   case 29: { //ver na fase 2 para saber o valor do tile 
+                    case 29: {
                         Gosma* gosma = new Gosma(posx, posy);
                         listaObstaculos->incluir(gosma);
                         pGC->incluirObstaculos(gosma);
@@ -234,6 +235,11 @@ void Fase:: tratarColisoes() {
     pGC->tratarColisoes();
 }
 
+void Fases::Fase::executar(){
+    desenhar();
+    atualizar();
+    tratarColisoes();
+}
 
 void Fases::Fase:: setsJogadores(){
     Lista<Entidade>::Iterador it = listaJogadores->getInicio();
@@ -259,7 +265,28 @@ void Fases::Fase:: setsJogadores(){
     }
 }
 
-
 ListaEntidades* Fase::getListaJogadores(){
     return listaJogadores;
+}
+
+Jogador* Fase::getJogador1(){
+    if(listaJogadores->getPrimeiro() == nullptr){
+        cout << "Jogador 1 não encontrado" << endl;
+        return nullptr;
+    }
+    return static_cast<Jogador*>(listaJogadores->getPrimeiro());
+}
+
+Jogador *Fases::Fase::getJogador2()
+{
+    if(ehCoop){
+        Lista<Entidade>::Iterador it = listaJogadores->getInicio();
+        it.operator++();
+        if(it.isNulo()){
+            cout << "Jogador 2 não encontrado" << endl;
+            return nullptr;
+        }
+        return static_cast<Jogador*>(*it);
+    }
+    return nullptr;
 }
